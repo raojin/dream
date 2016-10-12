@@ -1,9 +1,10 @@
 package com.qmdj.domin.user;
 
 /**
- * 
- * 搭建项目时候用来测试测
- * */
+*@Description: 搭建项目时用来测试的
+*@author chenjin
+*@date 2016/10/12
+*/
 public class UserTest {
 	
 	private int id;

@@ -3,6 +3,11 @@ package com.qmdj.domin.base;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+*@Description: 实体类基类
+*@author chenjin
+*@date 2016/10/12
+*/
 public class BaseDO implements Serializable{
 
 	private static final long serialVersionUID = -4529028591118244850L;

@@ -5,10 +5,10 @@ import java.io.Serializable;
 import com.qmdj.domin.base.BaseDO;
 
 /**
- * Created by chenjin on 2016/10/12.
- * 
- * 用户基础信息
- */
+*@Description: 用户基本信息
+*@author chenjin
+*@date 2016/10/12
+*/
 public class User extends BaseDO implements Serializable{
 
 	private static final long serialVersionUID = 6345395190141768910L;
