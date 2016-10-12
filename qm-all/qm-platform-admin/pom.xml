@@ -8,14 +8,13 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>qm-all</groupId>
-  <artifactId>qm-organization-admin</artifactId>
- <version>0.0.1-SNAPSHOT</version>
+  <artifactId>qm-platform-admin</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>qm-organization-admin</name>
+  <name>qm-platform-admin</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-      
-		<dependency>
+    <dependency>
 			<groupId>qm-all</groupId>
 			<artifactId>qm-biz</artifactId>
 			<version>${qmdj.version}</version>
@@ -114,7 +113,6 @@
 				<artifactId>freemarker</artifactId>
 				<version>2.3.20</version>
 			</dependency>
-    
   </dependencies>
   
   <profiles>
@@ -132,7 +130,8 @@
         </properties>
     </profile>
 </profiles>  
+  
   <build>
-    <finalName>qm-organization-admin</finalName>
+    <finalName>qm-platform-admin</finalName>
   </build>
 </project>

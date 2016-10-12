@@ -10,6 +10,8 @@
   <modules>
   	<module>qm-biz</module>
   	<module>qm-organization-admin</module>
+    <module>qm-web</module>
+    <module>qm-platform-admin</module>
   </modules>
   
   <properties>
