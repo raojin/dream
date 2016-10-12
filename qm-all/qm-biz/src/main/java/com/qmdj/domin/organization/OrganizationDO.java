@@ -30,6 +30,13 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	
 	/**
 	 * 
+	 *机构详细地址
+	 * */
+	private String addrName;
+	
+	
+	/**
+	 * 
 	 * 标题
 	 * */
 	private String tile;
@@ -186,6 +193,13 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	public void setCourseIds(String courseIds) {
 		this.courseIds = courseIds;
 	}
-	
+
+	public String getAddrName() {
+		return addrName;
+	}
+
+	public void setAddrName(String addrName) {
+		this.addrName = addrName;
+	}
 	
 }

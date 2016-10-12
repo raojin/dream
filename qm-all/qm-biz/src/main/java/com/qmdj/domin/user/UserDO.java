@@ -33,14 +33,14 @@ public class UserDO extends BaseDO implements Serializable{
 	
 	/**
 	 * 
-	 * 身份 1:教师,2:家长,3:学生,4:机构负责人
+	 * 身份 1:教师,2:家长,3:学生,4:机构教师
 	 */
     private Integer identity;
     
     
 	/**
 	 * 
-	 * 真实姓名
+	 * 地址  以后考虑做地图的时候换成经纬度
 	 * */
 	private String addrName;
 	
@@ -67,18 +67,6 @@ public class UserDO extends BaseDO implements Serializable{
 	 * 邮箱
 	 * */
 	private String email;
-	
-	/**
-	 * 
-	 * 学历
-	 * */
-	private String education;
-	
-	/**
-	 * 
-	 * 状态 1:审核通过（默认）,2审核中（教师需要被审核，默认审核中）,3:审核不通过（不展示） 4（删除）
-	 */
-	private Integer status;
 	
 	/**
 	 * 
@@ -148,22 +136,6 @@ public class UserDO extends BaseDO implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getEducation() {
-		return education;
-	}
-
-	public void setEducation(String education) {
-		this.education = education;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 
 	public static long getSerialversionuid() {
