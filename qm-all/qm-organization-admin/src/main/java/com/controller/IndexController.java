@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSONObject;
-import com.qmdj.domin.user.User;
+import com.qmdj.domin.user.UserTest;
 import com.service.UserService;
 import com.service.impl.RedisClientImpl;
 import com.service.impl.UserServiceImpl;
