@@ -9,11 +9,16 @@ import com.qmdj.domin.base.BaseDO;
 *@author chenjin
 *@date 2016/10/12
 */
-public class User extends BaseDO implements Serializable{
+public class UserDO extends BaseDO implements Serializable{
 
 	private static final long serialVersionUID = 6345395190141768910L;
 	
- 
+	 /**
+	  * 
+	  * 头像
+	  * */
+    private String image;
+	
 	/**
 	 *
 	 * 登陆账号
@@ -28,7 +33,7 @@ public class User extends BaseDO implements Serializable{
 	
 	/**
 	 * 
-	 * 身份 1:教师,2:家长,3:学生,4机构
+	 * 身份 1:教师,2:家长,3:学生,4:机构负责人
 	 */
     private Integer identity;
     
@@ -71,9 +76,15 @@ public class User extends BaseDO implements Serializable{
 	
 	/**
 	 * 
-	 * 状态；－1，删除，0，默认值；
+	 * 状态 1:审核通过（默认）,2审核中（教师需要被审核，默认审核中）,3:审核不通过（不展示） 4（删除）
 	 */
 	private Integer status;
+	
+	/**
+	 * 
+	 * 介绍
+	 * */
+	private String introduce;
 
 	public String getLoginName() {
 		return loginName;
@@ -158,5 +169,22 @@ public class User extends BaseDO implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getIntroduce() {
+		return introduce;
+	}
+
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+	
 	
 }
