@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.qmdj.biz.util.DwzJsonResultUtil;
 import com.qmdj.common.base.Result;
 import com.qmdj.domin.user.UserDO;
-import com.qmdj.platform.service.impl.org.OrgUserSericeImpl;
+import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
 
 @Controller
 @RequestMapping("/org")

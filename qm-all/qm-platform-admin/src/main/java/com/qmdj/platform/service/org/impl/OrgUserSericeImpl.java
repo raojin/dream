@@ -1,4 +1,4 @@
-package com.qmdj.platform.service.impl.org;
+package com.qmdj.platform.service.org.impl;
 
 import java.util.List;
 

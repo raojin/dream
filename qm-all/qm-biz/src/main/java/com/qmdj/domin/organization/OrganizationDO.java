@@ -78,11 +78,6 @@ public class OrganizationDO extends BaseDO  implements Serializable{
    private String images;
    
    /**
-    * 课程类型 com.qmdj.domin.course.CoueseTypeEnum
-    * */
-   private String courseTypes; 
-   
-   /**
     * 
     * 办教课程
     * */
@@ -176,14 +171,6 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 
 	public void setStatus(Integer status) {
 		this.status = status;
-	}
-
-	public String getCourseTypes() {
-		return courseTypes;
-	}
-
-	public void setCourseTypes(String courseTypes) {
-		this.courseTypes = courseTypes;
 	}
 
 	public String getCourseIds() {

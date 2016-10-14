@@ -15,7 +15,7 @@ public class CourseDO extends BaseDO  implements Serializable {
 	
 	/**
 	 * 
-	 * 课程类型 com.qmdj.domin.course.CoueseTypeEnum
+	 * 课程类型 com.qmdj.domin.course.CousesTypeDO
 	 * */
 	private Integer couseTypeId;
 	

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import redis.clients.jedis.Jedis;
+import com.qmdj.common.base.Result;
+import com.qmdj.domin.user.Staff;
+import com.qmdj.platform.service.staff.StaffService;
 
 /**
 *@Description: 首页IndexController
@@ -18,17 +20,37 @@ import redis.clients.jedis.Jedis;
 @Controller
 public class IndexController{
 	
-	@RequestMapping("/login")
+	@Autowired
+	private StaffService staffService;
+	
+	@RequestMapping("/index")
 	public String index(Model model,HttpServletRequest request,HttpServletResponse response){
-		System.out.println("去登陆");
-		model.addAttribute("name", "陈金");
+		return "public/index.html";
+	}
+	
+	@RequestMapping("/tologin")
+	public String tologin(Model model,HttpServletRequest request,HttpServletResponse response){
+		return "public/login.html";
+	}
+
+	@RequestMapping("/login")
+	public String login(Model model,HttpServletRequest request,HttpServletResponse response,String loginName,String password){
+		Result<Staff> re=staffService.login(loginName, password);
+		String message=null;
+		if(re!=null){
+			if(re.isSuccess()){
+				model.addAttribute("staff", re.getDate());
+				request.getSession().setAttribute("staff", re.getCode());
+				return "public/index.html";
+			}else{
+				message=re.getMessage();
+			}
+       }else{
+    	   message="系统错误";
+       }
+		model.addAttribute("error", message);
 		return "public/login.html";
 	}
 	
-	@RequestMapping("/index")
-	public String IndexMenu(Model model,HttpServletRequest request,HttpServletResponse response){
-		System.out.println("去登陆");
-		return "public/index.html";
-		
-	}
+	
 }
