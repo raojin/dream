@@ -37,4 +37,5 @@
        select * from qmdj_user where status=#{userId}
       </select>
       
+      
 </mapper>
