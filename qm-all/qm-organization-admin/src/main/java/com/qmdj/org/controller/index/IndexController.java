@@ -8,12 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.alibaba.fastjson.JSONObject;
 import com.qmdj.org.service.UserService;
 import com.qmdj.org.service.impl.RedisClientImpl;
 import com.qmdj.org.service.impl.UserServiceImpl;
-
-import redis.clients.jedis.Jedis;
 
 /**
 *@Description: 首页IndexController
