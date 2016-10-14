@@ -3,22 +3,38 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dao.UserDAO">
+<mapper namespace="com.qmdj.dao.user.UserDAO">
+
+	<resultMap type="User" id="userRemappering">
+	<result column="id" property="id" />
+	<result column="gmt_create" property="gmtCreate"/>
+	<result column="gmt_modified" property="gmtModified"/>
+	<result column="login_name" property="loginName"/>
+	<result column="password" property="password"/>
+	<result column="identity" property="identity"/>
+	<result column="name" property="name"/>
+	<result column="sex" property="sex"/>
+	<result column="link_phone" property="linkPhone"/>
+	<result column="introduce" property="introduce"/>
+	<result column="image" property="image"/>
+	<result column="status" property="status"/>
+	<result column="email" property="email"/>
+	</resultMap>
            
-     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-         <selectKey resultType="int" order="AFTER" keyProperty="id">
+     <insert id="saveUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+         <selectKey resultType="long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID()
         </selectKey>
-         insert into days_user(  
-         state,
-         nickname) 
-         values 
-         (        
-         #{state},
-         #{nickname})
+         insert into qmdj_user(gmt_modified,gmt_create,login_name,password,identity,name,sex,link_phone,age,introduce,image,status,email) 
+        values (now(),now(),#{loginName},#{password},#{identity},#{name},#{sex},#{linkPhone},#{age},#{introduce},#{image},1,#{email})
       </insert>
       
-  <select id="queryUserById" resultType="User" parameterType="int">
-   select * from days_user where id=#{id}
- </select>
+      <select id="queryUserList" resultMap="userRemappering">
+       select * from qmdj_user where status=1
+      </select>
+      
+      <select id="queryUserByUserId" resultType="User" parameterType ="int">
+       select * from qmdj_user where status=#{userId}
+      </select>
+      
 </mapper>

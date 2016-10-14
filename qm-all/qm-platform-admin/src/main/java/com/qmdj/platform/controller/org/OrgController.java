@@ -1,5 +1,7 @@
 package com.qmdj.platform.controller.org;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,9 +48,10 @@ public class OrgController {
 	   public  String  userSave(Model model,HttpServletRequest request,HttpServletResponse response,UserDO userDO){
 		   String message="success";
 		   try {
+			   userDO.setIdentity(5);
 			Result<Integer> re=orgUserSerice.saveUser(userDO);
 			   if(re!=null){
-				    if(re.isSuccess()){
+				    if(re.isSuccess()&&re.getDate()>0){
 				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orguserlist");
 				    }else{
 				    	message="error:"+re.getCode()+re.getMessage();
@@ -57,11 +60,15 @@ public class OrgController {
 			} catch (Exception e) {
 				message="error"+e.getMessage();
 			}
-		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, "message","orguserlist");
+		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"orguserlist");
 	   }
+	   
+	   
 	   
 	    @RequestMapping("/userList")
 	   public  String  userList(Model model,HttpServletRequest request,HttpServletResponse response){
+	    	Result<List<UserDO>> re= orgUserSerice.queryUserList();
+	    	model.addAttribute("userList", re.getDate());
 		   return "org/userlist.html";
 	   }
 

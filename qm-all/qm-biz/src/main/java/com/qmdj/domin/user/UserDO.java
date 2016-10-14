@@ -78,6 +78,12 @@ public class UserDO extends BaseDO implements Serializable{
 	 * 介绍
 	 * */
 	private String introduce;
+	
+	/**
+	 * 
+	 * 状态 1:正常，2删除
+	 * */
+	private Integer status;
 
 	public String getLoginName() {
 		return loginName;
@@ -166,6 +172,13 @@ public class UserDO extends BaseDO implements Serializable{
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	
 }

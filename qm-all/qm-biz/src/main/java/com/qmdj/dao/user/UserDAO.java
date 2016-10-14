@@ -2,13 +2,16 @@ package com.qmdj.dao.user;
 
 
 
-import com.qmdj.domin.user.UserTest;
+import java.util.List;
+
+import com.qmdj.domin.user.UserDO;
 
 public interface UserDAO {
 	
-	public int insertUser(UserTest user);
+	public int saveUser(UserDO userDO);
 	
-	public UserTest queryUserById(int id);
+	public UserDO queryUserByUserId(int userId);
 	
+	public List<UserDO> queryUserList();
 
 }

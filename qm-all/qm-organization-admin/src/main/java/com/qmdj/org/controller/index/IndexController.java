@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSONObject;
 import com.qmdj.org.service.UserService;
 import com.qmdj.org.service.impl.RedisClientImpl;
-import com.qmdj.org.service.impl.UserServiceImpl;
 
 import redis.clients.jedis.Jedis;
 
@@ -41,10 +40,6 @@ public class IndexController{
 		System.out.println("去登陆");
 		return "public/index.html";
 		
-	}
-	
-	public void setUserService(UserServiceImpl userService) {
-		this.userService = userService;
 	}
 
 	public void setRedisClient(RedisClientImpl redisClient) {
