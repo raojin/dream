@@ -1,0 +1,51 @@
+<h2 class="contentTitle">机构负责人信息</h2>
+<form method="post" action="org/userSave" class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
+<div class="pageContent">
+	<div class="pageFormContent sortDrag" layoutH="97">
+		<dl>
+			<dt>登 录 名：</dt><dd><input name="loginName"  class="required" alt="请输入登录名" type="text"></dd>
+		</dl>
+		<dl>
+			<dt>密   码：</dt><dd><input name="password"  class="required" alt="请输入密码" type="text"></dd>
+		</dl>
+		 <dl>
+			<dt>身   份：</dt><dd><input  value="机构负责人" class="required" readonly="readonly"  type="text"></dd>
+		</dl> 
+		<dl>
+			<dt>姓   名：</dt><dd><input name="name"  class="required" alt="请输入姓名" type="text"></dd>
+		</dl>
+		
+		<dl>
+			<dt>性别：</dt><dd><input type="radio" name="sex" value="1">男 <input type="radio" name="sex" value="2">女</dd>
+		</dl>
+		<dl>
+			<dt>年龄：</dt><dd><input name="age" class="digits"  alt="必须为整数" type="text"/></dd>
+		</dl>
+		<dl>
+			<dt>联系电话：</dt><dd><input name="linkPhone" class="required" alt="电话,可以跟登录名一样" type="text"/></dd>
+		</dl>
+		<dl>
+			<dt>详细地址：</dt><dd><input name="addrName"  class="required" alt="请输入详细地址" type="text"></dd>
+		</dl>
+		
+		<dl>
+			<dt>邮箱：</dt><dd><input name="email" type="text"/></dd>
+		</dl>
+
+		<dl class="nowrap">
+			<dt>个人介绍：</dt>
+			<dd>
+				<textarea class="editor" name="introduce" rows="15" cols="95"></textarea>
+			</dd>
+		</dl>
+	</div>
+	
+	<div class="formBar">
+		<ul>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+			<li><div class="button"><div class="buttonContent"><button class="close" type="button">关闭</button></div></div></li>
+		</ul>
+	</div>  
+
+</div>
+</form>

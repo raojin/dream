@@ -16,7 +16,7 @@ public class BaseDO implements Serializable{
 	/**
 	 * 主键
 	 */
-	private Long Id;
+	private Long id;
 
 	/**
 	 * 创建时间
@@ -28,14 +28,13 @@ public class BaseDO implements Serializable{
 	 */
 	private Date gmtModified;
 
-	
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public Date getGmtCreate() {

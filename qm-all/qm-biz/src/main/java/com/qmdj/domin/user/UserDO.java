@@ -33,10 +33,21 @@ public class UserDO extends BaseDO implements Serializable{
 	
 	/**
 	 * 
-	 * 身份 1:教师,2:家长,3:学生,4:机构教师
+	 * 身份 1:教师,2:家长,3:学生,4:机构教师,5:机构负责人
 	 */
     private Integer identity;
     
+    /**
+     * 
+     * 真实姓名
+     * */
+    private String name;
+    
+    /**
+     * 
+     * 性别
+     * */
+    private String sex;
     
 	/**
 	 * 
@@ -58,12 +69,6 @@ public class UserDO extends BaseDO implements Serializable{
 	
 	/**
 	 * 
-	 * 地址
-	 * */
-	private String addre;
-	
-	/**
-	 * 
 	 * 邮箱
 	 * */
 	private String email;
@@ -73,6 +78,12 @@ public class UserDO extends BaseDO implements Serializable{
 	 * 介绍
 	 * */
 	private String introduce;
+	
+	/**
+	 * 
+	 * 状态 1:正常，2删除
+	 * */
+	private Integer status;
 
 	public String getLoginName() {
 		return loginName;
@@ -122,24 +133,12 @@ public class UserDO extends BaseDO implements Serializable{
 		this.age = age;
 	}
 
-	public String getAddre() {
-		return addre;
-	}
-
-	public void setAddre(String addre) {
-		this.addre = addre;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public String getImage() {
@@ -157,6 +156,29 @@ public class UserDO extends BaseDO implements Serializable{
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	
 }
