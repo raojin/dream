@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qmdj.biz.util.DwzJsonResultUtil;
 import com.qmdj.common.base.Result;
+import com.qmdj.domin.organization.OrganizationDO;
 import com.qmdj.domin.user.UserDO;
 import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
 
@@ -28,6 +29,11 @@ public class OrgController {
 		   return "org/add.html";
 	   }
    
+		@RequestMapping("/addOrganization")
+		   public  String  AddOrg(Model model,HttpServletRequest request,HttpServletResponse response,OrganizationDO org){
+			
+			   return "org/add.html";
+		   }
 	    @RequestMapping("/list")
 	   public  String  orgList(Model model,HttpServletRequest request,HttpServletResponse response){
 		   return "org/list.html";
