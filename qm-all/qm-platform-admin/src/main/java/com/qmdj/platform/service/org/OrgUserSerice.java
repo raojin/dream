@@ -14,16 +14,16 @@ public interface OrgUserSerice {
 	
 
 	/**
-	 * 添加公益创建人
+	 * 添加机构负责人
 	 * 
 	 * @param UserDO
 	 * @return id
-	 * @author ShenQuan 
+	 * @author chenjin 2016年10月23日
 	 */
 	public Result<Integer> saveUser(UserDO userDO);
 	
 	/**
-	 * 更新公益创建人
+	 * 更新机构负责人
 	 * 
 	 * @param UserDO
 	 * @return Boolean 
