@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.qmdj.common.base.ReCode;
 import com.qmdj.common.base.Result;
 import com.qmdj.dao.user.StaffDAO;
-import com.qmdj.domin.user.Staff;
+import com.qmdj.domin.user.StaffDO;
 import com.qmdj.platform.service.staff.StaffService;
 
 @Service
@@ -17,15 +17,15 @@ public class StaffServiceImpl implements StaffService {
 	private StaffDAO staffDAO;
 
 	@Override
-	public Result<Staff> login(String loginName,String password) {
-		Result<Staff> re=new Result<Staff>();
+	public Result<StaffDO> login(String loginName,String password) {
+		Result<StaffDO> re=new Result<StaffDO>();
 		if(StringUtils.isBlank(loginName)||StringUtils.isBlank(password)){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getCode());
 			return re;
 		}
 		try {
-			Staff satff=staffDAO.login(loginName, password);
+			StaffDO satff=staffDAO.login(loginName, password);
 			if(satff!=null){
 				re.setSuccess(true);
 				re.setDate(satff);

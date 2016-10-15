@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.user.Staff;
+import com.qmdj.domin.user.StaffDO;
 import com.qmdj.platform.service.staff.StaffService;
 
 /**
@@ -35,7 +35,7 @@ public class IndexController{
 
 	@RequestMapping("/login")
 	public String login(Model model,HttpServletRequest request,HttpServletResponse response,String loginName,String password){
-		Result<Staff> re=staffService.login(loginName, password);
+		Result<StaffDO> re=staffService.login(loginName, password);
 		String message=null;
 		if(re!=null){
 			if(re.isSuccess()){

@@ -6,7 +6,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <!-- 命名空间 -->
     <typeAliases>
          <typeAlias alias="User" type="com.qmdj.domin.user.UserDO"/> 
-         <typeAlias alias="Staff" type="com.qmdj.domin.user.Staff"/> 
+         <typeAlias alias="Staff" type="com.qmdj.domin.user.StaffDO"/> 
+         <typeAlias alias="CourseType" type="com.qmdj.domin.course.CourseTypeDO"/> 
     </typeAliases>
 
     <!-- 映射map -->

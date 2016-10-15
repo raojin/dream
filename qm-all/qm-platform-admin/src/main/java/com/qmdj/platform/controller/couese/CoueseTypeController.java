@@ -1,0 +1,58 @@
+package com.qmdj.platform.controller.couese;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.qmdj.biz.util.DwzJsonResultUtil;
+import com.qmdj.common.base.ReCode;
+import com.qmdj.common.base.Result;
+import com.qmdj.domin.course.CourseTypeDO;
+import com.qmdj.platform.service.course.CourseTypeService;
+
+@Controller
+@RequestMapping("/coueseType")
+public class CoueseTypeController {
+
+
+	@Autowired
+	private CourseTypeService coueseTypeService;
+	
+	@RequestMapping("/list")
+	public String list(Model model,HttpServletRequest request,HttpServletResponse response){
+		Result<List<CourseTypeDO>> re= coueseTypeService.queryCoueseTypeList();
+		model.addAttribute("courseTypeList", re.getDate());
+		return  "course/courseTypeList.html";
+	}
+	
+	
+	@RequestMapping("/toAdd")
+	public String tologin(Model model,HttpServletRequest request,HttpServletResponse response){
+		return "course/courseTypeAdd.html";
+	}
+	
+	@RequestMapping("/save")
+	@ResponseBody
+	public String save(Model model,HttpServletRequest request,HttpServletResponse response,CourseTypeDO cousesTypeDO){
+		String message="success";
+		 Result<Integer> re=coueseTypeService.saveCoueseType(cousesTypeDO);
+		 if(re!=null){
+			 if(re.isSuccess()){
+				 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"coueseTypeList");
+			 }else{
+				 message=re.getCode()+":"+re.getMessage();
+			 }
+		 }else{
+			 message=ReCode.SYS_REEOR.getMessage();
+		 }
+		 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"coueseTypeList");
+	}
+	
+}

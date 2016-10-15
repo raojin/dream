@@ -9,7 +9,7 @@ import com.qmdj.domin.base.BaseDO;
 *@author chenjin
 *@date 2016/10/12
 */
-public class Staff extends BaseDO implements Serializable{
+public class StaffDO extends BaseDO implements Serializable{
 
 	private static final long serialVersionUID = 8254062168956914711L;
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.qmdj.domin.base.BaseDO;
 
-public class CousesTypeDO extends BaseDO  implements Serializable{
+public class CourseTypeDO extends BaseDO  implements Serializable{
 
 	private static final long serialVersionUID = -3993661368339960753L;
 	
