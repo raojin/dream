@@ -17,10 +17,12 @@
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    
   </resultMap>
   <sql id="Base_Column_List" >
     id, image, name, addr_name, tile, phone, user_id, detail, start_time, end_time, images, 
-    course_ids, status, gmt_create, gmt_modified
+    course_ids, status, gmt_create, gmt_modified,is_del
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -37,13 +39,14 @@
       addr_name, tile, phone, 
       user_id, detail, start_time, 
       end_time, images, course_ids, 
-      status, gmt_create, gmt_modified
+      status, gmt_create, gmt_modified,is_del
       )
     values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{addrName,jdbcType=VARCHAR}, #{tile,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
       #{endTime,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{courseIds,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      #{status,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP},
+      #{is_del,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.qmdj.dao.organization.OrganizationDAO" >
@@ -94,6 +97,9 @@
       <if test="gmtModified != null" >
         gmt_modified,
       </if>
+       <if test="isDel != null" >
+        is_del,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -140,6 +146,9 @@
       </if>
       <if test="gmtModified != null" >
         #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+       <if test="isDel != null" >
+        #{is_del,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -188,6 +197,9 @@
       <if test="gmtModified != null" >
         gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
+       <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -207,6 +219,7 @@
       status = #{status,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      is_del = #{isDel,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

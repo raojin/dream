@@ -89,6 +89,22 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	  * */
    private Integer status;
    
+   /**
+    * 
+    * 是否删除
+    * */
+   private Integer  isDel;
+   
+
+   
+	public Integer getIsDel() {
+	return isDel;
+}
+
+public void setIsDel(Integer isDel) {
+	this.isDel = isDel;
+}
+
 	public String getName() {
 		return name;
 	}
