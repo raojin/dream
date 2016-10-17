@@ -10,7 +10,7 @@ import com.qmdj.domin.base.BaseDO;
 *@author chenjin
 *@date 2016/10/12
 */
-public class Teaching extends BaseDO implements Serializable{
+public class TeachingDO extends BaseDO implements Serializable{
 
 	private static final long serialVersionUID = 4598288964369536060L;
 
@@ -27,7 +27,7 @@ public class Teaching extends BaseDO implements Serializable{
      private String  courseIds;
 
      /**
-      * 课程类型（以,号隔开） com.qmdj.domin.course.CoueseTypeEnum
+      * 课程类型（以,号隔开） com.qmdj.domin.course.CourseTypeDO
       * */
      private String courseTypes; 
      

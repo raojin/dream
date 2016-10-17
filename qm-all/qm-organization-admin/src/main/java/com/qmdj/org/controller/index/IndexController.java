@@ -18,12 +18,6 @@ import com.qmdj.org.service.impl.RedisClientImpl;
 */
 @Controller
 public class IndexController{
-
-	@Autowired
- private UserService userService;	
-	
-	@Autowired
- private RedisClientImpl redisClient;
 	
 	@RequestMapping("/login")
 	public String index(Model model,HttpServletRequest request,HttpServletResponse response){
@@ -39,7 +33,4 @@ public class IndexController{
 		
 	}
 
-	public void setRedisClient(RedisClientImpl redisClient) {
-		this.redisClient = redisClient;
-	}
 }

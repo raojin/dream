@@ -24,6 +24,13 @@ public class CourseDO extends BaseDO  implements Serializable {
 	 * 课程名
 	 * */
 	private String couseName;
+	
+	
+	/**
+	 * 
+	 * 类型 1:自定义 ,2 平台添加
+	 * */
+	private Integer type;
 
 	
 	public Integer getCouseTypeId() {
@@ -40,6 +47,14 @@ public class CourseDO extends BaseDO  implements Serializable {
 
 	public void setCouseName(String couseName) {
 		this.couseName = couseName;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 	
 
