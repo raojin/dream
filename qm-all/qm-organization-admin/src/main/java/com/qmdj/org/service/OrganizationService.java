@@ -4,6 +4,10 @@ import com.qmdj.domin.organization.OrganizationDO;
 
 public interface OrganizationService {
 	
-	public OrganizationDO queryByid(OrganizationDO org);
+	public OrganizationDO queryByid(int org);
+	
+	public Integer save(OrganizationDO org);
+	
+	public Integer update(OrganizationDO org);
 
 }
