@@ -75,6 +75,21 @@
  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
         p:basePackage="com.qmdj.dao.*" 
         p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
+        
+            	<!-- mybatis分页插件 -->
+	<bean id="pagehelper" class="com.github.pagehelper.PageHelper">
+		<property name="properties">
+			<props>
+				<prop key="offsetAsPageNum">true</prop>
+				<prop key="rowBoundsWithCount">true</prop>
+				<prop key="pageSizeZero">true</prop>
+				<prop key="reasonable">false</prop>
+				<prop key="supportMethodsArguments">false</prop>
+			</props>
+		</property>
+	</bean>
+	
+        
  
    <!-- 对数据源进行事务管理 -->
   <bean id="transactionManager" 

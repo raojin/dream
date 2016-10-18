@@ -1,11 +1,18 @@
 package com.qmdj.platform.service.org.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageInfo;
 import com.qmdj.dao.organization.OrganizationDAO;
+import com.qmdj.domin.form.OrgForm;
 import com.qmdj.domin.organization.OrganizationDO;
 import com.qmdj.platform.service.org.OrganizationService;
 
+@Service
 public class OrganizationServiceImpl implements OrganizationService {
 	
 	@Autowired
@@ -18,17 +25,32 @@ public class OrganizationServiceImpl implements OrganizationService {
 
 	@Override
 	public boolean save(OrganizationDO org) {
+		
+		org.setGmtCreate(new Date());
 		int insertSelective = organizationDAO.insertSelective(org);
 		if(insertSelective==1){
 			return true;
-		}else
+		}
 			return false;
 	}
 
 	@Override
-	public Integer update(OrganizationDO org) {
+	public boolean update(OrganizationDO org) {
+		int updateByPrimaryKeySelective = organizationDAO.updateByPrimaryKeySelective(org);
+		if(updateByPrimaryKeySelective==1){
+			return true;
+		}
+		return false;
+	}
+
+
+	@Override
+	public PageInfo<OrganizationDO> queryList(OrgForm orgForm) {
 		
-		return organizationDAO.updateByPrimaryKeySelective(org);
+		List<OrganizationDO> selectListOrg = organizationDAO.selectListOrg(orgForm.enablePaging());
+		System.out.println(selectListOrg.size());
+		PageInfo<OrganizationDO> pageInfo = new PageInfo<OrganizationDO>(selectListOrg);
+		return pageInfo;
 	}
 
 }

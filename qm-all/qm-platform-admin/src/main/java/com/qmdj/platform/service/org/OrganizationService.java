@@ -1,16 +1,17 @@
 package com.qmdj.platform.service.org;
 
-import org.springframework.stereotype.Service;
-
+import com.github.pagehelper.PageInfo;
+import com.qmdj.domin.form.OrgForm;
 import com.qmdj.domin.organization.OrganizationDO;
 
-@Service
 public interface OrganizationService {
 	
 	public OrganizationDO queryByid(int org);
 	
 	public boolean save(OrganizationDO org);
 	
-	public Integer update(OrganizationDO org);
+	public boolean update(OrganizationDO org);
+	
+	public PageInfo<OrganizationDO> queryList(OrgForm org);
 
 }
