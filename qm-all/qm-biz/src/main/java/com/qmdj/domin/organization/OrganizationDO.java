@@ -3,6 +3,10 @@ package com.qmdj.domin.organization;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.qmdj.domin.base.BaseDO;
 
 /**
@@ -26,12 +30,14 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 * 机构名称
 	 * */
+	@NotNull
 	private String name;
 	
 	/**
 	 * 
 	 *机构详细地址
 	 * */
+	@NotNull
 	private String addrName;
 	
 	
@@ -39,48 +45,58 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 * 标题
 	 * */
-	private String tile;
+	@NotNull
+	private String title;
 	
 	/**
 	 * 
 	 * 联系方式
 	 * */
+	@NotNull
 	private String phone;
 	
     /**
      * 
      *负责人ID
      */
+	@NotNull
 	private Long userId;
     
     /**
      * 
      * 结构介绍
-     * */	
+     * */
+	@NotNull
 	private String detail;
 	
 	/**
 	 * 
 	 * 开始时间
 	 * */
+	@NotNull
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date  startTime;
 	
 	/**
 	 * 
 	 * 结束时间
 	 * */
+	@NotNull
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date  endTime;
 	
 	 /**
 	  * 
 	  * 图片集
 	  * */
+	@NotNull
    private String images;
    
    /**
     * 
     * 办教课程
     * */
+	
    private String  courseIds;
 
 	 /**
@@ -121,6 +137,8 @@ public void setIsDel(Integer isDel) {
 		this.userId = userId;
 	}
 
+
+
 	public Date getStartTime() {
 		return startTime;
 	}
@@ -153,12 +171,12 @@ public void setIsDel(Integer isDel) {
 		this.image = image;
 	}
 
-	public String getTile() {
-		return tile;
+	public String gettitle() {
+		return title;
 	}
 
-	public void setTile(String tile) {
-		this.tile = tile;
+	public void settitle(String title) {
+		this.title = title;
 	}
 
 	public String getImages() {

@@ -4,6 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:beans="http://www.springframework.org/schema/beans"
   xsi:schemaLocation="
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
@@ -15,6 +16,8 @@
     <!-- 扫描controller（controller层注入） -->
    <context:component-scan base-package="com.qmdj.platform"/>
    
+   <mvc:annotation-driven/>
+   
    <!-- 避免IE在ajax请求时，返回json出现下载 -->
    <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">		
 		<property name="supportedMediaTypes">
@@ -23,6 +26,35 @@
 			</list>
 		</property>
 	</bean>
+	
+<!-- 	<bean id="dateEditor"
+        class="org.springframework.beans.propertyeditors.CustomDateEditor">
+  
+        <constructor-arg>
+            <bean class="java.text.SimpleDateFormat">
+                <constructor-arg value="yyyy-MM-dd HH:mm:ss" />
+            </bean>
+        </constructor-arg>
+        <constructor-arg value="true" />
+  
+    </bean>
+  
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date">
+                    <ref local="dateEditor" />
+                </entry>
+            </map>
+        </property>
+    </bean> -->
+    
+    <!-- Only needed because we install custom converters to support the examples in the org.springframewok.samples.mvc.convert package -->
+<!-- 	<beans:bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> -->
+<!-- 		<beans:property name="formatterRegistrars"> -->
+<!--             <beans:bean class="org.springframework.format.datetime.DateFormatterRegistrar" /> -->
+<!-- 		</beans:property> -->
+<!-- 	</beans:bean> -->
 	
 	<!-- FreeMarker视图解析 。 -->
 	<bean id="freemarkerConfiguration"
