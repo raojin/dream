@@ -31,6 +31,12 @@ public class CourseDO extends BaseDO  implements Serializable {
 	 * 类型 1:自定义 ,2 平台添加
 	 * */
 	private Integer type;
+	
+	/**
+	 * 
+	 * 状态 1:正常 ,2 隐藏
+	 * */
+	private Integer status;
 
 	
 	public Integer getCouseTypeId() {
@@ -55,6 +61,14 @@ public class CourseDO extends BaseDO  implements Serializable {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	
 

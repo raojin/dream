@@ -1,8 +1,8 @@
-package com.qmdj.org.service.impl;
+package com.qmdj.organization.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.qmdj.org.service.RedisClient;
+import com.qmdj.organization.service.RedisClient;
 
 import redis.clients.jedis.Jedis;
 

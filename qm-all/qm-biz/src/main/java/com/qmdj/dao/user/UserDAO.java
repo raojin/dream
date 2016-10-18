@@ -13,5 +13,7 @@ public interface UserDAO {
 	public UserDO queryUserByUserId(int userId);
 	
 	public List<UserDO> queryUserList();
+	
+	public UserDO login(String loginName,String password);
 
 }
