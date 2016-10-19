@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
+import com.qmdj.common.base.Result;
 import com.qmdj.dao.organization.OrganizationDAO;
 import com.qmdj.domin.form.OrgForm;
 import com.qmdj.domin.organization.OrganizationDO;
@@ -19,38 +20,52 @@ public class OrganizationServiceImpl implements OrganizationService {
 	private OrganizationDAO organizationDAO;
 
 	@Override
-	public OrganizationDO queryByid(int id) {
-		return organizationDAO.selectByPrimaryKey(id);
+	public Result<OrganizationDO> queryByid(int id) {
+		Result<OrganizationDO> re=new Result<OrganizationDO>();
+		OrganizationDO selectByPrimaryKey = organizationDAO.selectByPrimaryKey(id);
+		if(selectByPrimaryKey!=null){
+			re.setSuccess(true);
+			re.setDate(selectByPrimaryKey);
+		}
+		return re;
 	}
 
 	@Override
-	public boolean save(OrganizationDO org) {
-		
+	public Result<Integer> save(OrganizationDO org) {
+		Result<Integer> re=new Result<Integer>();
 		org.setGmtCreate(new Date());
 		int insertSelective = organizationDAO.insertSelective(org);
 		if(insertSelective==1){
-			return true;
+			re.setSuccess(true);
+			re.setDate(insertSelective);
 		}
-			return false;
+		return re;
 	}
 
 	@Override
-	public boolean update(OrganizationDO org) {
-		int updateByPrimaryKeySelective = organizationDAO.updateByPrimaryKeySelective(org);
-		if(updateByPrimaryKeySelective==1){
-			return true;
+	public Result<Integer> update(OrganizationDO org) {
+		Result<Integer> re=new Result<Integer>();
+		org.setGmtCreate(new Date());
+		int insertSelective = organizationDAO.updateByPrimaryKeySelective(org);
+		if(insertSelective==1){
+			re.setSuccess(true);
+			re.setDate(insertSelective);
 		}
-		return false;
+		return re;
 	}
 
 
 	@Override
-	public PageInfo<OrganizationDO> queryList(OrgForm orgForm) {
-		
+	public Result<PageInfo<OrganizationDO>> queryList(OrgForm orgForm) {
+		Result<PageInfo<OrganizationDO>> re=new Result<PageInfo<OrganizationDO>>();
 		List<OrganizationDO> selectListOrg = organizationDAO.selectListOrg(orgForm.enablePaging());
 		System.out.println(selectListOrg.size());
 		PageInfo<OrganizationDO> pageInfo = new PageInfo<OrganizationDO>(selectListOrg);
-		return pageInfo;
+		if(pageInfo!=null){
+			re.setSuccess(true);
+			re.setDate(pageInfo);
+		}
+		return re;
 	}
 
 }

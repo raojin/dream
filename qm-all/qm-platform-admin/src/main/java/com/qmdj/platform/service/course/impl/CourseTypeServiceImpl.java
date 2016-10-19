@@ -33,7 +33,7 @@ public class CourseTypeServiceImpl implements CourseTypeService {
 		}
 		try {
 			cousesTypeDO.setType(2);
-			int id=coueseTypeDAO.saveCourseType(cousesTypeDO);
+			int id=coueseTypeDAO.insertSelective(cousesTypeDO);
 			if(id>0){
 				re.setSuccess(true);
 				re.setDate(id);

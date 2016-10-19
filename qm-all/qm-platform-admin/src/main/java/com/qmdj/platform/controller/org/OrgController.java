@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
-import com.qmdj.biz.util.core.Constant;
+import com.qmdj.biz.util.DwzJsonResultUtil;
+import com.qmdj.common.base.Result;
 import com.qmdj.domin.form.OrgForm;
 import com.qmdj.domin.organization.OrganizationDO;
 import com.qmdj.platform.service.org.impl.OrganizationServiceImpl;
@@ -19,6 +21,7 @@ import com.qmdj.platform.service.org.impl.OrganizationServiceImpl;
 @Controller
 @RequestMapping("/org")
 public class OrgController {
+	
 	
 	@Autowired
 	private OrganizationServiceImpl organizationService;
@@ -29,39 +32,82 @@ public class OrgController {
 		}
    
 		
+		@ResponseBody
 		@RequestMapping("/addOrganization")
 	   public  String  addOrg(Model model,HttpServletRequest request,HttpServletResponse response,@Valid OrganizationDO org){
-		if(organizationService.save(org)){
-			model.addAttribute("message", Constant.SUCCESS);
-		}else{
-			model.addAttribute("message", Constant.FAIL);
-		}
-		return "result/success.html";
+			 String message="success";
+			  try {
+			Result<Integer> re = organizationService.save(org);
+			  if(re!=null){
+				    if(re.isSuccess()&&re.getDate()>0){
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"addOrganization");
+				    }else{
+				    	message="error:"+re.getCode()+re.getMessage();
+				    }
+			     }
+			} catch (Exception e) {
+				message="error"+e.getMessage();
+			}
+		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"addOrganization");
 		}
 		
+		
+		@ResponseBody
 		@RequestMapping("/update")
 		   public  String  toUpdateOrg(Model model,HttpServletRequest request,HttpServletResponse response,int orgId){
-			OrganizationDO organizationDO = organizationService.queryByid(orgId);
-			model.addAttribute("queryByid", organizationDO);
-			   return "org/update.html";
+			 String message="success";
+			  try {
+				  Result<OrganizationDO> re = organizationService.queryByid(orgId);
+			  if(re!=null){
+				    if(re.isSuccess()){
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"toUpdateOrganization");
+				    }else{
+				    	message="error:"+re.getCode()+re.getMessage();
+				    }
+			     }
+			} catch (Exception e) {
+				message="error"+e.getMessage();
 			}
+		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"toUpdateOrganization");
+			}
+		
+		@ResponseBody
 		@RequestMapping("/updateOrganization")
 		   public  String  updateOrg(Model model,HttpServletRequest request,HttpServletResponse response,OrganizationDO org){
-			if(organizationService.update(org)){
-				model.addAttribute("message", Constant.SUCCESS);
-			}else{
-				model.addAttribute("message", Constant.FAIL);
+			 String message="success";
+			  try {
+				  Result<Integer> re = organizationService.update(org);
+			  if(re!=null){
+				    if(re.isSuccess()){
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"updateOrganization");
+				    }else{
+				    	message="error:"+re.getCode()+re.getMessage();
+				    }
+			     }
+			} catch (Exception e) {
+				message="error"+e.getMessage();
 			}
-			return "result/success.html";
+		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"updateOrganization");
 			}
 		
 		
+		@ResponseBody
 	    @RequestMapping("/list")
 	   public  String  orgList(Model model,HttpServletRequest request,HttpServletResponse response,OrgForm orgForm){
-	    	PageInfo<OrganizationDO> queryList = organizationService.queryList(orgForm);
-	    	System.out.println(queryList.getSize());
-	    	model.addAttribute(Constant.BEAN_LIST, queryList);
-		   return "org/list.html";
+	    	 String message="success";
+			  try {
+				  Result<PageInfo<OrganizationDO>> re = organizationService.queryList(orgForm);
+			  if(re!=null){
+				    if(re.isSuccess()){
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"OrganizationList");
+				    }else{
+				    	message="error:"+re.getCode()+re.getMessage();
+				    }
+			     }
+			} catch (Exception e) {
+				message="error"+e.getMessage();
+			}
+		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"OrganizationList");
 	    }
 	    
 		@RequestMapping("/save")
