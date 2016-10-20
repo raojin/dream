@@ -10,5 +10,7 @@ public class Constant {
 	public static String SUCCESS="SUCCESS";
 	public static String FAIL="FAIL";
 	public static String BEAN_LIST="BeanList";
+	public static String BEAN="Bean";
+	
 
 }

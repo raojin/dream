@@ -2,6 +2,8 @@ package com.qmdj.domin.course;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import com.qmdj.domin.base.BaseDO;
 
 /**
@@ -17,12 +19,14 @@ public class CourseDO extends BaseDO  implements Serializable {
 	 * 
 	 * 课程类型 com.qmdj.domin.course.CousesTypeDO
 	 * */
+	@NotNull
 	private Integer couseTypeId;
 	
 	/**
 	 * 
 	 * 课程名
 	 * */
+	@NotNull
 	private String couseName;
 	
 	

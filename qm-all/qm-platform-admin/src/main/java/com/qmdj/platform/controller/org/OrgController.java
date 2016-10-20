@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.util.DwzJsonResultUtil;
+import com.qmdj.biz.util.core.Constant;
 import com.qmdj.common.base.Result;
 import com.qmdj.domin.form.OrgForm;
 import com.qmdj.domin.organization.OrganizationDO;
@@ -91,24 +92,13 @@ public class OrgController {
 			}
 		
 		
-		@ResponseBody
 	    @RequestMapping("/list")
 	   public  String  orgList(Model model,HttpServletRequest request,HttpServletResponse response,OrgForm orgForm){
-	    	 String message="success";
-			  try {
-				  Result<PageInfo<OrganizationDO>> re = organizationService.queryList(orgForm);
-			  if(re!=null){
-				    if(re.isSuccess()){
-				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"OrganizationList");
-				    }else{
-				    	message="error:"+re.getCode()+re.getMessage();
-				    }
-			     }
-			} catch (Exception e) {
-				message="error"+e.getMessage();
-			}
-		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"OrganizationList");
-	    }
+			PageInfo<OrganizationDO> queryList = organizationService.queryList(orgForm);
+			model.addAttribute(Constant.BEAN_LIST, queryList);
+			return "org/list.html";
+
+		}
 	    
 		@RequestMapping("/save")
 	   public  String  save(Model model,HttpServletRequest request,HttpServletResponse response){

@@ -103,7 +103,7 @@
   </update>
   
   
-      <select id="queryCourseTypeList" resultMap="BaseResultMap">
-       select * from qmdj_course_type where status=1
-      </select>
+  <select id="queryCourseTypeList" resultMap="BaseResultMap">
+   select * from qmdj_course_type where status=1
+  </select>
 </mapper>

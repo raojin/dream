@@ -29,4 +29,23 @@ public interface CourseTypeService {
 	 * @author chenjin 2016年10月15日 
 	 */
 	public Result<List<CourseTypeDO>> queryCoueseTypeList();
+	
+	
+	/**
+	 * 修改课程类型
+	 * 
+	 * @param 
+	 * @return id
+	 * @author xw 2016年10月20日09:03:35
+	 */
+	public Result<Integer> updateCoueseType(CourseTypeDO cousesTypeDO);
+	
+	/**
+	 * 根据ID查询
+	 * 
+	 * @param 
+	 * @return id
+	 * @author xw 2016年10月20日09:03:35
+	 */
+	public CourseTypeDO selectCoueseTypeById(int id);
 }

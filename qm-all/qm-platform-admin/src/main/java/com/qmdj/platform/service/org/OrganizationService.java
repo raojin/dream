@@ -13,6 +13,6 @@ public interface OrganizationService {
 	
 	public Result<Integer> update(OrganizationDO org);
 	
-	public Result<PageInfo<OrganizationDO>> queryList(OrgForm org);
+	public PageInfo<OrganizationDO> queryList(OrgForm org);
 
 }

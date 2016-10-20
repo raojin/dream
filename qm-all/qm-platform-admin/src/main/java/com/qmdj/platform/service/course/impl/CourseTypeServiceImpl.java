@@ -61,4 +61,21 @@ public class CourseTypeServiceImpl implements CourseTypeService {
 		return re;
 	}
 
+	@Override
+	public Result<Integer> updateCoueseType(CourseTypeDO cousesTypeDO) {
+		Result<Integer> re=new Result<Integer>();
+		int updateByPrimaryKeySelective = coueseTypeDAO.updateByPrimaryKeySelective(cousesTypeDO);
+		if(updateByPrimaryKeySelective==1){
+			re.setSuccess(true);
+			re.setDate(updateByPrimaryKeySelective);
+		}
+		return re;
+	}
+
+	@Override
+	public CourseTypeDO selectCoueseTypeById(int id) {
+		CourseTypeDO selectByPrimaryKey = coueseTypeDAO.selectByPrimaryKey(id);
+		return selectByPrimaryKey;
+	}
+
 }

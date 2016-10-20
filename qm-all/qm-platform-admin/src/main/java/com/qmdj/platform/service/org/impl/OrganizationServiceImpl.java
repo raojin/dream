@@ -56,16 +56,10 @@ public class OrganizationServiceImpl implements OrganizationService {
 
 
 	@Override
-	public Result<PageInfo<OrganizationDO>> queryList(OrgForm orgForm) {
-		Result<PageInfo<OrganizationDO>> re=new Result<PageInfo<OrganizationDO>>();
+	public PageInfo<OrganizationDO> queryList(OrgForm orgForm) {
 		List<OrganizationDO> selectListOrg = organizationDAO.selectListOrg(orgForm.enablePaging());
-		System.out.println(selectListOrg.size());
 		PageInfo<OrganizationDO> pageInfo = new PageInfo<OrganizationDO>(selectListOrg);
-		if(pageInfo!=null){
-			re.setSuccess(true);
-			re.setDate(pageInfo);
-		}
-		return re;
+		return pageInfo;
 	}
 
 }
