@@ -1,19 +1,18 @@
 
 <div class="pageContent">
 	
-	<form method="post" action="org/addOrganization" class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
+	<form method="post" action="org/saveOrganization" class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
 		<div class="pageFormContent" layoutH="56">
-		
-			<div >
+		   <p>
+		        <label>首图 ：</label>
 				<img alt="" src="http://ww4.sinaimg.cn/thumbnail/67a81f1djw1enbngye69lj20qo0f00ud.jpg">
-			</div>
+	       </p>
+	       <p></p> <p></p>
+	       <p></p> <p></p>
+	       <p></p> 
 			<p>
 				<label>机 构 名 称 ：</label>
 				<input name="name" class="required"type="text" size="30" alt="机 构 名 称"/>
-			</p>
-			<p>
-				<label>机构详细地址：</label>
-				<input name="addrName" class="required" type="text" size="30" alt="机构详细地址"/>
 			</p>
 			<p>
 				<label>标        题：</label>
@@ -24,12 +23,13 @@
 				<input name="phone" class="required" type="text" size="30" alt="联 系 方 式"/>	
 			</p>
 			<p>
-				<label>负 责 人 ID：</label>
-				<input name="userId" class="required" type="text" size="30" alt="负 责 人 ID"/>
-			</p>
-			<p>
-				<label>结 构 介 绍：</label>
-				<input name="detail"class="required"type="text" size="30" alt="结 构 介 绍"/>
+				<label>负 责 人 ：</label>
+				<select class="combox" name=userId>
+					<option value="0">请选择....</option>
+					<#list userList as user> 
+					<option value="${user.id}">${user.name}</option>
+					</#list>
+				</select>
 			</p>
 			<p>
 				<label>开 始 时 间 ：</label>
@@ -39,18 +39,30 @@
 				<label>结 束 时 间 ：</label>
 				<input name="endTime" class="date textInput readonly" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true" />
 			</p>
+
+			<p>
+				<label>机构详细地址：</label>
+				<input name="addrName" class="required" type="text" size="30" alt="机构详细地址"/>
+			</p>
+			
+			<p></p>
+			
 			<p>
 				<label>图片集：</label>
-				<input name="images" class="required" type="text" size="30" alt="图片集"/>
+				<img alt="" src="http://ww4.sinaimg.cn/thumbnail/67a81f1djw1enbngye69lj20qo0f00ud.jpg">
+				<img alt="" src="http://ww4.sinaimg.cn/thumbnail/67a81f1djw1enbngye69lj20qo0f00ud.jpg">
 			</p>
-			<p>
-				<label>办教课程：</label>
-				<input name="courseIds" class="required" type="text" size="30" alt="办教课程"/>
-			</p>
-			<p>
-				<label>状    态 ：</label>
-				<input name="status" class="required" type="text" size="30" alt="状    态"/>
-			</p>
+		
+			<p></p><p></p>
+			<p></p><p></p>
+			
+			<dl class="nowrap">
+			<dt>结 构 介 绍：</dt>
+			<dd>
+				<textarea class="editor" name="introduce" rows="15" cols="95"></textarea>
+			</dd>
+		</dl>
+			
 		</div>
 		<div class="formBar">
 			<ul>

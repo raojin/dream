@@ -9,11 +9,11 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="detail" property="detail" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="images" property="images" jdbcType="VARCHAR" />
-    <result column="course_ids" property="courseIds" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
@@ -21,7 +21,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, image, name, addr_name, title, phone, user_id, detail, start_time, end_time, 
-    images, course_ids, status, gmt_create, gmt_modified, is_del
+    images, status, gmt_create, gmt_modified, is_del,user_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -37,15 +37,13 @@
     insert into qmdj_organization (id, image, name, 
       addr_name, title, phone, 
       user_id, detail, start_time, 
-      end_time, images, course_ids, 
-      status, gmt_create, gmt_modified, 
-      is_del)
+      end_time, images, status, gmt_create, 
+      gmt_modified, 1)
     values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{addrName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, #{courseIds,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{isDel,jdbcType=INTEGER})
+      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+       now(), now(),1)
   </insert>
   <insert id="insertSelective" parameterType="com.qmdj.domin.organization.OrganizationDO" >
     insert into qmdj_organization
@@ -83,9 +81,6 @@
       <if test="images != null" >
         images,
       </if>
-      <if test="courseIds != null" >
-        course_ids,
-      </if>
       <if test="status != null" >
         status,
       </if>
@@ -97,6 +92,9 @@
       </if>
       <if test="isDel != null" >
         is_del,
+      </if>
+       <if test="userName != null" >
+        user_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -133,9 +131,6 @@
       <if test="images != null" >
         #{images,jdbcType=VARCHAR},
       </if>
-      <if test="courseIds != null" >
-        #{courseIds,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>
@@ -147,6 +142,9 @@
       </if>
       <if test="isDel != null" >
         #{isDel,jdbcType=INTEGER},
+      </if>
+        <if test="isDel != null" >
+        #{userName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -169,7 +167,7 @@
         phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="detail != null" >
         detail = #{detail,jdbcType=VARCHAR},
@@ -183,20 +181,17 @@
       <if test="images != null" >
         images = #{images,jdbcType=VARCHAR},
       </if>
-      <if test="courseIds != null" >
-        course_ids = #{courseIds,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+        gmt_modified = now(),
       </if>
       <if test="isDel != null" >
         is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="nameName != null" >
+        user_name = #{nameName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -213,18 +208,17 @@
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       images = #{images,jdbcType=VARCHAR},
-      course_ids = #{courseIds,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      is_del = #{isDel,jdbcType=INTEGER}
+      gmt_modified = now(),
+      is_del = #{isDel,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   
     <select id="selectListOrg" resultMap="BaseResultMap" parameterType="com.qmdj.domin.form.OrgForm" >
     select 
     <include refid="Base_Column_List" />
-    from qmdj_organization where is_del = 0
+    from qmdj_organization where is_del = 1
   </select>
   
 </mapper>

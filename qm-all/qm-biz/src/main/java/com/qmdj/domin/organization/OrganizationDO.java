@@ -37,7 +37,6 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 *机构详细地址
 	 * */
-	@NotNull
 	private String addrName;
 	
 	
@@ -45,7 +44,6 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 * 标题
 	 * */
-	@NotNull
 	private String title;
 	
 	/**
@@ -61,12 +59,18 @@ public class OrganizationDO extends BaseDO  implements Serializable{
      */
 	@NotNull
 	private Long userId;
+	
+    /**
+     * 
+     *负责人名字
+     */
+	@NotNull
+	private String userName;
     
     /**
      * 
      * 结构介绍
      * */
-	@NotNull
 	private String detail;
 	
 	/**
@@ -89,26 +93,18 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	  * 
 	  * 图片集
 	  * */
-	@NotNull
    private String images;
    
-   /**
-    * 
-    * 办教课程
-    * */
-	
-   private String  courseIds;
-
 	 /**
 	  * 
-	  * 状态 1:审核中（不展示,默认） 2:审核通过（展示） 3:审核不通过（不展示）4:删除
+	  * 状态 1:审核中（不展示,默认） 2:审核通过（展示） 3:审核不通过（不展示）
 	  * */
    private Integer status;
    
-   /**
-    * 
-    * 是否删除
-    * */
+	   /**
+	    * 
+	    * 是否删除  1未删除  2删除
+	    * */
    private Integer  isDel;
    
 
@@ -207,14 +203,6 @@ public void setIsDel(Integer isDel) {
 		this.status = status;
 	}
 
-	public String getCourseIds() {
-		return courseIds;
-	}
-
-	public void setCourseIds(String courseIds) {
-		this.courseIds = courseIds;
-	}
-
 	public String getAddrName() {
 		return addrName;
 	}
@@ -222,5 +210,12 @@ public void setIsDel(Integer isDel) {
 	public void setAddrName(String addrName) {
 		this.addrName = addrName;
 	}
-	
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 }

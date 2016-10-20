@@ -52,8 +52,22 @@ public class OrgUserSericeImpl implements OrgUserSerice {
 
 	@Override
 	public Result<UserDO> queryUserById(long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		Result<UserDO> re=new Result<UserDO>();
+       if(userId<=0){
+    	   re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+       }		
+       try {
+		   UserDO user=userDAO.queryUserByUserId(userId);
+		   re.setSuccess(true);
+		   re.setDate(user);
+	} catch (Exception e) {
+		e.printStackTrace();
+		re.setCode(ReCode.SYS_REEOR.getCode());
+		re.setMessage(ReCode.SYS_REEOR.getMessage()+":"+e);
+	}
+	  return re;
 	}
 
 	@Override

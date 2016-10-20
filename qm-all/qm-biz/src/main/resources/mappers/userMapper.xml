@@ -33,8 +33,8 @@
        select * from qmdj_user where status=1
       </select>
       
-      <select id="queryUserByUserId" resultType="User" parameterType ="int">
-       select * from qmdj_user where status=#{userId}
+      <select id="queryUserByUserId" resultType="User" parameterType ="long">
+       select * from qmdj_user where id=#{userId}
       </select>
       
       
