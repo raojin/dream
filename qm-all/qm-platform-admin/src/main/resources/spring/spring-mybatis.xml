@@ -65,18 +65,7 @@
     </property>
   </bean>
     
-    <!-- mybatis文件配置，扫描所有mapper文件 -->
-      <bean id="sqlSessionFactory"
-          class="org.mybatis.spring.SqlSessionFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:configLocation="classpath:mybatis-config.xml"
-          p:mapperLocations="classpath:mappers/*.xml"/>
-   <!-- spring与mybatis整合配置，扫描所有dao -->
- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-        p:basePackage="com.qmdj.dao.*" 
-        p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
-        
-            	<!-- mybatis分页插件 -->
+        	<!-- mybatis分页插件 -->
 	<bean id="pagehelper" class="com.github.pagehelper.PageHelper">
 		<property name="properties">
 			<props>
@@ -89,6 +78,19 @@
 		</property>
 	</bean>
 	
+    <!-- mybatis文件配置，扫描所有mapper文件 -->
+      <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:configLocation="classpath:mybatis-config.xml"
+          p:mapperLocations="classpath:mappers/*.xml"
+          p:plugins-ref="pagehelper"/>
+   <!-- spring与mybatis整合配置，扫描所有dao -->
+ <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+        p:basePackage="com.qmdj.dao.*" 
+        p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
+        
+        
         
  
    <!-- 对数据源进行事务管理 -->
