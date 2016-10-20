@@ -20,8 +20,8 @@ import com.qmdj.domin.form.CourseForm;
 import com.qmdj.platform.service.course.CourseService;
 
 @Controller
-@RequestMapping("/couese")
-public class CoueseController {
+@RequestMapping("/course")
+public class CourseController {
 
 
 	@Autowired
@@ -64,7 +64,7 @@ public class CoueseController {
 		return "course/toUpdateCourse.html";
 	}
 	
-	@RequestMapping("/updateCousesType")
+	@RequestMapping("/updateCourses")
 	@ResponseBody
 	public String updateCousesType(Model model,HttpServletRequest request,HttpServletResponse response,CourseDO cousesDO){
 		String message="success";

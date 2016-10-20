@@ -3,6 +3,7 @@ package com.qmdj.platform.service.course.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.qmdj.common.base.Result;
@@ -11,6 +12,8 @@ import com.qmdj.domin.course.CourseDO;
 import com.qmdj.domin.form.CourseForm;
 import com.qmdj.platform.service.course.CourseService;
 
+
+@Service
 public class CourseServiceImpl implements CourseService {
 	
 	@Autowired
