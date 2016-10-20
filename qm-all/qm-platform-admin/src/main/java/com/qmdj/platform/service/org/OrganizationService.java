@@ -7,12 +7,14 @@ import com.qmdj.domin.organization.OrganizationDO;
 
 public interface OrganizationService {
 	
-	public Result<OrganizationDO> queryByid(int org);
+	public OrganizationDO queryByid(int org);
 	
 	public Result<Integer> save(OrganizationDO org);
 	
 	public Result<Integer> update(OrganizationDO org);
 	
 	public PageInfo<OrganizationDO> queryList(OrgForm org);
+	
+	public Result<Integer> del(OrganizationDO org);
 
 }

@@ -13,23 +13,6 @@
 	
 	<form onsubmit="return navTabSearch(this);" action="demo_page1.html" method="post">
 	<div class="searchBar">
-		<!--<ul class="searchContent">
-			<li>
-				<label>我的客户：</label>
-				<input type="text"/>
-			</li>
-			<li>
-			<select class="combox" name="province">
-				<option value="">所有省市</option>
-				<option value="北京">北京</option>
-				<option value="上海">上海</option>
-				<option value="天津">天津</option>
-				<option value="重庆">重庆</option>
-				<option value="广东">广东</option>
-			</select>
-			</li>
-		</ul>
-		-->
 		<table class="searchContent">
 			<tr>
 				<td>
@@ -80,6 +63,7 @@
 				<th width="80" align="center">负责人ID</th>
 				<th width="80">状态</th>
 				<th width="80">开始时间</th>
+				<th width="80">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -93,6 +77,7 @@
 				<td>${OrganizationDO.userId}</td>
 				<td>${OrganizationDO.status}</td>
 				<td>${(OrganizationDO.startTime)?string("yyyy-MM-dd HH:mm:ss")}</td>
+				<td><a href="/qm-platform-admin/org/toUpdate?orgId=${OrganizationDO.id}">更新</a>/<a class="delete" href="/qm-platform-admin/org/delOrganization?id=${OrganizationDO.id}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></td>
 			</tr>
 		</#list>
 

@@ -20,14 +20,9 @@ public class OrganizationServiceImpl implements OrganizationService {
 	private OrganizationDAO organizationDAO;
 
 	@Override
-	public Result<OrganizationDO> queryByid(int id) {
-		Result<OrganizationDO> re=new Result<OrganizationDO>();
+	public OrganizationDO queryByid(int id) {
 		OrganizationDO selectByPrimaryKey = organizationDAO.selectByPrimaryKey(id);
-		if(selectByPrimaryKey!=null){
-			re.setSuccess(true);
-			re.setDate(selectByPrimaryKey);
-		}
-		return re;
+		return selectByPrimaryKey;
 	}
 
 	@Override
@@ -61,6 +56,19 @@ public class OrganizationServiceImpl implements OrganizationService {
 		System.out.println(orgForm.getPageNum());
 		PageInfo<OrganizationDO> pageInfo = new PageInfo<OrganizationDO>(selectListOrg);
 		return pageInfo;
+	}
+	
+	@Override
+	public Result<Integer> del(OrganizationDO org) {
+		Result<Integer> re=new Result<Integer>();
+		OrganizationDO selectByPrimaryKey = organizationDAO.selectByPrimaryKey(org.getId().intValue());
+		selectByPrimaryKey.setIsDel(1);
+		int insertSelective = organizationDAO.updateByPrimaryKeySelective(selectByPrimaryKey);
+		if(insertSelective==1){
+			re.setSuccess(true);
+			re.setDate(insertSelective);
+		}
+		return re;
 	}
 
 }

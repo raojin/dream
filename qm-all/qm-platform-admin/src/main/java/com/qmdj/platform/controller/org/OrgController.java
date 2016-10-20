@@ -53,23 +53,11 @@ public class OrgController {
 		}
 		
 		
-		@ResponseBody
-		@RequestMapping("/update")
+		@RequestMapping("/toUpdate")
 		   public  String  toUpdateOrg(Model model,HttpServletRequest request,HttpServletResponse response,int orgId){
-			 String message="success";
-			  try {
-				  Result<OrganizationDO> re = organizationService.queryByid(orgId);
-			  if(re!=null){
-				    if(re.isSuccess()){
-				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"toUpdateOrganization");
-				    }else{
-				    	message="error:"+re.getCode()+re.getMessage();
-				    }
-			     }
-			} catch (Exception e) {
-				message="error"+e.getMessage();
-			}
-		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"toUpdateOrganization");
+			 OrganizationDO queryByid = organizationService.queryByid(orgId);
+			 model.addAttribute(Constant.BEAN, queryByid);
+			 return "org/update.html";
 			}
 		
 		@ResponseBody
@@ -104,5 +92,25 @@ public class OrgController {
 	   public  String  save(Model model,HttpServletRequest request,HttpServletResponse response){
 		   return "org/add.html";
 		}
+		
+		
+		@ResponseBody
+		@RequestMapping("/delOrganization")
+		   public  String  delOrg(Model model,HttpServletRequest request,HttpServletResponse response,OrganizationDO org){
+			 String message="success";
+			  try {
+				  Result<Integer> re = organizationService.del(org);
+			  if(re!=null){
+				    if(re.isSuccess()){
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"updateOrganization");
+				    }else{
+				    	message="error:"+re.getCode()+re.getMessage();
+				    }
+			     }
+			} catch (Exception e) {
+				message="error"+e.getMessage();
+			}
+		return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"updateOrganization");
+			}
 		
 }
