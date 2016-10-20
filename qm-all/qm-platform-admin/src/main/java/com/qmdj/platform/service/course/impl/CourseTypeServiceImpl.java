@@ -26,7 +26,7 @@ public class CourseTypeServiceImpl implements CourseTypeService {
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
 		}
-		if(StringUtils.isBlank(cousesTypeDO.getName())||(cousesTypeDO.getStatus()==0&&cousesTypeDO.getStatus()==null)){
+		if(StringUtils.isBlank(cousesTypeDO.getName())||cousesTypeDO.getStatus()==null){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
