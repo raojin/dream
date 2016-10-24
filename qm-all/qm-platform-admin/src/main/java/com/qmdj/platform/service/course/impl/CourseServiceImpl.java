@@ -1,5 +1,6 @@
 package com.qmdj.platform.service.course.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Result<Integer> save(CourseDO course) {
 		Result<Integer> re= new Result<Integer>(); 
+		course.setGmtCreate(new Date());
 		int insertSelective = courseDAO.insertSelective(course);
 		if(insertSelective == 1 ){
 			re.setSuccess(true);
@@ -53,4 +55,15 @@ public class CourseServiceImpl implements CourseService {
 		return selectByPrimaryKey;
 	}
 
+	@Override
+	public Result<Integer> del(CourseDO course){
+		Result<Integer> re= new Result<Integer>();
+		course.setIsDel(1);
+		int insertSelective = courseDAO.updateByPrimaryKeySelective(course);
+		if(insertSelective == 1 ){
+			re.setSuccess(true);
+			re.setDate(insertSelective);
+		}
+		return re;
+	}
 }

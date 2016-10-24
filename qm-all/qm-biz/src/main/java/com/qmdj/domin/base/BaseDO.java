@@ -27,7 +27,22 @@ public class BaseDO implements Serializable{
 	 * 修改时间
 	 */
 	private Date gmtModified;
+	
+	/**
+	 * 
+	 * 是否删除 0 未删除 1已删除
+	 * */
+	private Integer isDel;
 
+	
+
+	public Integer getIsDel() {
+		return isDel;
+	}
+
+	public void setIsDel(Integer isDel) {
+		this.isDel = isDel;
+	}
 
 	public Long getId() {
 		return id;

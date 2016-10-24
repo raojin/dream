@@ -81,4 +81,21 @@ public class CourseController {
 		 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"coueseTypeList");
 	}
 	
+	@RequestMapping("/delCourses")
+	@ResponseBody
+	public String delCousesType(Model model,HttpServletRequest request,HttpServletResponse response,CourseDO courseDO){
+		String message="success";
+		 Result<Integer> re=coueseService.del(courseDO);
+		 if(re!=null){
+			 if(re.isSuccess()){
+				 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"delCourses");
+			 }else{
+				 message=re.getCode()+":"+re.getMessage();
+			 }
+		 }else{
+			 message=ReCode.SYS_REEOR.getMessage();
+		 }
+		 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"delCourses");
+	}
+	
 }

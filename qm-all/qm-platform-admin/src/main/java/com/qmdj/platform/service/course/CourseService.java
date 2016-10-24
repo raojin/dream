@@ -42,5 +42,14 @@ public interface CourseService {
 	 * @Date 2016年10月20日10:12:33
 	 */
 	public CourseDO select(int id);
+	
+	/**
+	 * 修改course 用于删除
+	 * @param course
+	 * @return
+	 * @author xw
+	 * @Date 2016年10月24日10:57:56
+	 */
+	Result<Integer> del(CourseDO course);
 
 }

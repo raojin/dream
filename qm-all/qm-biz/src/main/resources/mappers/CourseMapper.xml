@@ -3,8 +3,8 @@
 <mapper namespace="com.qmdj.dao.course.CourseDAO" >
   <resultMap id="BaseResultMap" type="com.qmdj.domin.course.CourseDO" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="couse_type_id" property="couseTypeId" jdbcType="INTEGER" />
-    <result column="couse_name" property="couseName" jdbcType="VARCHAR" />
+    <result column="course_type_id" property="courseTypeId" jdbcType="INTEGER" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="is_del" property="isDel" jdbcType="INTEGER" />
@@ -12,7 +12,7 @@
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, couse_type_id, couse_name, type, status, is_del, gmt_create, gmt_modified
+    id, course_type_id, course_name, type, status, is_del, gmt_create, gmt_modified
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,10 +25,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qmdj.domin.course.CourseDO" >
-    insert into qmdj_course (id, couse_type_id, couse_name, 
+    insert into qmdj_course (id, course_type_id, course_name, 
       type, status, is_del, 
       gmt_create, gmt_modified)
-    values (#{id,jdbcType=INTEGER}, #{couseTypeId,jdbcType=INTEGER}, #{couseName,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{courseTypeId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, 
       #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
@@ -38,11 +38,11 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="couseTypeId != null" >
-        couse_type_id,
+      <if test="courseTypeId != null" >
+        course_type_id,
       </if>
-      <if test="couseName != null" >
-        couse_name,
+      <if test="courseName != null" >
+        course_name,
       </if>
       <if test="type != null" >
         type,
@@ -64,11 +64,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="couseTypeId != null" >
-        #{couseTypeId,jdbcType=INTEGER},
+      <if test="courseTypeId != null" >
+        #{courseTypeId,jdbcType=INTEGER},
       </if>
-      <if test="couseName != null" >
-        #{couseName,jdbcType=VARCHAR},
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
@@ -90,11 +90,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.domin.course.CourseDO" >
     update qmdj_course
     <set >
-      <if test="couseTypeId != null" >
-        couse_type_id = #{couseTypeId,jdbcType=INTEGER},
+      <if test="courseTypeId != null" >
+        course_type_id = #{courseTypeId,jdbcType=INTEGER},
       </if>
-      <if test="couseName != null" >
-        couse_name = #{couseName,jdbcType=VARCHAR},
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
@@ -116,8 +116,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qmdj.domin.course.CourseDO" >
     update qmdj_course
-    set couse_type_id = #{couseTypeId,jdbcType=INTEGER},
-      couse_name = #{couseName,jdbcType=VARCHAR},
+    set course_type_id = #{courseTypeId,jdbcType=INTEGER},
+      course_name = #{courseName,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       is_del = #{isDel,jdbcType=INTEGER},
@@ -130,7 +130,7 @@
     select 
     <include refid="Base_Column_List" />
     from qmdj_course
-    where  and is_del = 0
+    where  is_del = 0
   </select>
   
 </mapper>

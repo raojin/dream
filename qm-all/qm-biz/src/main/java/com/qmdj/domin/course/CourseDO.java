@@ -20,14 +20,14 @@ public class CourseDO extends BaseDO  implements Serializable {
 	 * 课程类型 com.qmdj.domin.course.CousesTypeDO
 	 * */
 	@NotNull
-	private Integer couseTypeId;
+	private Integer courseTypeId;
 	
 	/**
 	 * 
 	 * 课程名
 	 * */
 	@NotNull
-	private String couseName;
+	private String courseName;
 	
 	
 	/**
@@ -42,21 +42,22 @@ public class CourseDO extends BaseDO  implements Serializable {
 	 * */
 	private Integer status;
 
-	
-	public Integer getCouseTypeId() {
-		return couseTypeId;
+
+
+	public Integer getCourseTypeId() {
+		return courseTypeId;
 	}
 
-	public void setCouseTypeId(Integer couseTypeId) {
-		this.couseTypeId = couseTypeId;
+	public void setCourseTypeId(Integer courseTypeId) {
+		this.courseTypeId = courseTypeId;
 	}
 
-	public String getCouseName() {
-		return couseName;
+	public String getCourseName() {
+		return courseName;
 	}
 
-	public void setCouseName(String couseName) {
-		this.couseName = couseName;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 
 	public Integer getType() {

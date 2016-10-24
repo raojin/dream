@@ -1,5 +1,7 @@
 package com.qmdj.platform.controller.index;
 
+import java.lang.reflect.Method;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.qmdj.common.base.Result;
 import com.qmdj.domin.user.StaffDO;
@@ -33,7 +36,7 @@ public class IndexController{
 		return "public/login.html";
 	}
 
-	@RequestMapping("/login")
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(Model model,HttpServletRequest request,HttpServletResponse response,String loginName,String password){
 		Result<StaffDO> re=staffService.login(loginName, password);
 		String message=null;
@@ -49,6 +52,11 @@ public class IndexController{
     	   message="系统错误";
        }
 		model.addAttribute("error", message);
+		return "public/login.html";
+	}
+	
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String loginGet(Model model,HttpServletRequest request,HttpServletResponse response){
 		return "public/login.html";
 	}
 	
