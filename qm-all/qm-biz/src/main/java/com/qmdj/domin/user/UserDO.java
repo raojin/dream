@@ -47,7 +47,7 @@ public class UserDO extends BaseDO implements Serializable{
      * 
      * 性别
      * */
-    private String sex;
+    private Integer sex;
     
 	/**
 	 * 
@@ -165,14 +165,6 @@ public class UserDO extends BaseDO implements Serializable{
 		this.name = name;
 	}
 
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
 	public Integer getStatus() {
 		return status;
 	}
@@ -180,5 +172,12 @@ public class UserDO extends BaseDO implements Serializable{
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
+
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
 }

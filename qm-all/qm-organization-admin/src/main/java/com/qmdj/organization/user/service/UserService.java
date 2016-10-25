@@ -1,7 +1,7 @@
 package com.qmdj.organization.user.service;
 
+import com.qmdj.biz.pogo.bo.UserBO;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.user.UserDO;
 
 /**
 *@Description: 用户信息接口
@@ -10,6 +10,6 @@ import com.qmdj.domin.user.UserDO;
 */
 public interface UserService {
 	
-	public Result<UserDO> login(String logName,String password);
+	public Result<UserBO> login(String logName,String password);
 
 }
