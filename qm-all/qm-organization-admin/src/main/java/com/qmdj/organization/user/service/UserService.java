@@ -1,7 +1,7 @@
 package com.qmdj.organization.user.service;
 
 import com.qmdj.biz.pogo.bo.UserBO;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.Result;
 
 /**
 *@Description: 用户信息接口

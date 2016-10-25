@@ -1,4 +1,4 @@
-package com.qmdj.common.base;
+package com.qmdj.biz.util;
 
 import java.io.Serializable;
 import java.util.List;

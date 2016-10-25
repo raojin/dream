@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qmdj.biz.domin.UserDO;
 import com.qmdj.biz.util.DwzJsonResultUtil;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
 
 @Controller

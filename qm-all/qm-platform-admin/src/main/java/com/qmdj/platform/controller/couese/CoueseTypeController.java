@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.biz.util.DwzJsonResultUtil;
+import com.qmdj.biz.util.ReCode;
+import com.qmdj.biz.util.Result;
 import com.qmdj.biz.util.core.Constant;
-import com.qmdj.common.base.ReCode;
-import com.qmdj.common.base.Result;
 import com.qmdj.platform.service.course.CourseTypeService;
 
 @Controller

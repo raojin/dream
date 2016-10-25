@@ -10,7 +10,7 @@ import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.dao.OrganizationDAO;
 import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.OrganizationService;
 
 @Service

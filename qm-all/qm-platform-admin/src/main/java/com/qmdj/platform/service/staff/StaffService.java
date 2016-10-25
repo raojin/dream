@@ -1,7 +1,7 @@
 package com.qmdj.platform.service.staff;
 
 import com.qmdj.biz.domin.StaffDO;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.Result;
 
 public interface StaffService {
 	

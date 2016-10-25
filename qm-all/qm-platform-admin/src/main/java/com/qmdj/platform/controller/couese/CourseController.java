@@ -14,9 +14,9 @@ import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.domin.CourseForm;
 import com.qmdj.biz.util.DwzJsonResultUtil;
+import com.qmdj.biz.util.ReCode;
+import com.qmdj.biz.util.Result;
 import com.qmdj.biz.util.core.Constant;
-import com.qmdj.common.base.ReCode;
-import com.qmdj.common.base.Result;
 import com.qmdj.platform.service.course.CourseService;
 
 @Controller

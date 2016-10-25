@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.qmdj.biz.pogo.bo.UserBO;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.Result;
 import com.qmdj.organization.user.service.UserService;
 
 /**

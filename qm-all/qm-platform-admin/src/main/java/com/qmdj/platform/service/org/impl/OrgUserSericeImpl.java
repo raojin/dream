@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.UserDAO;
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.common.base.ReCode;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.ReCode;
+import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.OrgUserSerice;
 
 @Service

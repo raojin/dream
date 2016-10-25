@@ -1,6 +1,6 @@
 package com.qmdj.biz.pogo.qo;
 
-import com.qmdj.common.base.Query;
+import com.qmdj.biz.util.Query;
 
 public class UserQO extends Query {
 

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.StaffDAO;
 import com.qmdj.biz.domin.StaffDO;
-import com.qmdj.common.base.ReCode;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.ReCode;
+import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.staff.StaffService;
 
 @Service

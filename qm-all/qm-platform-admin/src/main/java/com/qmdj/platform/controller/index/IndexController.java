@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.qmdj.biz.domin.StaffDO;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.staff.StaffService;
 
 /**

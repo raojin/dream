@@ -8,8 +8,8 @@ import com.qmdj.biz.dao.UserDAO;
 import com.qmdj.biz.domin.UserDO;
 import com.qmdj.biz.pogo.bo.UserBO;
 import com.qmdj.biz.pogo.bo.util.UserBeanUtil;
-import com.qmdj.common.base.ReCode;
-import com.qmdj.common.base.Result;
+import com.qmdj.biz.util.ReCode;
+import com.qmdj.biz.util.Result;
 import com.qmdj.organization.user.service.UserService;
 
 @Service

@@ -1,4 +1,4 @@
-package com.qmdj.common.base;
+package com.qmdj.biz.util;
 
 public enum ReCode {
 
