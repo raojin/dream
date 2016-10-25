@@ -1,8 +1,6 @@
-package com.qmdj.domin.user;
+package com.qmdj.biz.domin;
 
 import java.io.Serializable;
-
-import com.qmdj.domin.base.BaseDO;
 
 /**
 *@Description: 运营平台管理人信息

@@ -1,4 +1,4 @@
-package com.qmdj.domin.organization;
+package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,8 +6,6 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.qmdj.domin.base.BaseDO;
 
 /**
 *@Description: 机构信息

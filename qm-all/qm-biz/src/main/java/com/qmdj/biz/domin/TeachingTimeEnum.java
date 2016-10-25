@@ -1,4 +1,4 @@
-package com.qmdj.domin.teacher;
+package com.qmdj.biz.domin;
 
 public enum TeachingTimeEnum {
 	

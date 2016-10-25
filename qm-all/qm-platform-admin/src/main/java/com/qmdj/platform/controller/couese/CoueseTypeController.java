@@ -11,11 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.biz.util.DwzJsonResultUtil;
 import com.qmdj.biz.util.core.Constant;
 import com.qmdj.common.base.ReCode;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.course.CourseTypeDO;
 import com.qmdj.platform.service.course.CourseTypeService;
 
 @Controller

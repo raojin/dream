@@ -2,8 +2,8 @@ package com.qmdj.platform.service.org.impl;
 
 import java.util.List;
 
+import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.organization.OrganizationDO;
 import com.qmdj.platform.service.org.OrgService;
 
 /**

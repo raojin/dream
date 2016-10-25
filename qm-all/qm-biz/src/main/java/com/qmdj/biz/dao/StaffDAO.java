@@ -1,9 +1,9 @@
-package com.qmdj.dao.user;
+package com.qmdj.biz.dao;
 
 
 import org.apache.ibatis.annotations.Param;
 
-import com.qmdj.domin.user.StaffDO;
+import com.qmdj.biz.domin.StaffDO;
 
 public interface StaffDAO {
 	

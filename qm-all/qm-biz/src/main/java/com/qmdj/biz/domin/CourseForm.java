@@ -1,4 +1,4 @@
-package com.qmdj.domin.form;
+package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 
@@ -7,9 +7,9 @@ import com.qmdj.biz.util.core.AbstractPageForm;
 /**
  * 分页查询form
  * @author xw
- * @Date 2016年10月18日16:11:44
+ * @Date 2016年10月20日11:01:17
  */
-public class OrgForm extends AbstractPageForm<OrgForm> implements Serializable{
+public class CourseForm extends AbstractPageForm<CourseForm> implements Serializable{
 
 	/**
 	 * 

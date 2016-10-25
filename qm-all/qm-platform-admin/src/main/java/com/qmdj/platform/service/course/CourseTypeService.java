@@ -2,8 +2,8 @@ package com.qmdj.platform.service.course;
 
 import java.util.List;
 
+import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.course.CourseTypeDO;
 
 /**
 *@Description: 课程类型接口

@@ -1,9 +1,9 @@
-package com.qmdj.dao.organization;
+package com.qmdj.biz.dao;
 
 import java.util.List;
 
-import com.qmdj.domin.form.OrgForm;
-import com.qmdj.domin.organization.OrganizationDO;
+import com.qmdj.biz.domin.OrgForm;
+import com.qmdj.biz.domin.OrganizationDO;
 
 public interface OrganizationDAO {
     int deleteByPrimaryKey(Integer id);

@@ -1,7 +1,7 @@
 package com.qmdj.biz.pogo.bo.util;
 
+import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.biz.pogo.bo.OrganizationBO;
-import com.qmdj.domin.organization.OrganizationDO;
 
 /**
  * 类QmdjOrganizationBeanUtil.java的实现描述：工具类

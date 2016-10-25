@@ -3,7 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.qmdj.dao.user.StaffDAO">
+<mapper namespace="com.qmdj.biz.dao.StaffDAO">
 
 	<resultMap type="Staff" id="staffRemappering">
 	<result column="id" property="id" />

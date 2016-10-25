@@ -4,10 +4,10 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qmdj.biz.dao.StaffDAO;
+import com.qmdj.biz.domin.StaffDO;
 import com.qmdj.common.base.ReCode;
 import com.qmdj.common.base.Result;
-import com.qmdj.dao.user.StaffDAO;
-import com.qmdj.domin.user.StaffDO;
 import com.qmdj.platform.service.staff.StaffService;
 
 @Service

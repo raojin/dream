@@ -1,10 +1,10 @@
-package com.qmdj.dao.user;
+package com.qmdj.biz.dao;
 
 
 
 import java.util.List;
 
-import com.qmdj.domin.user.UserDO;
+import com.qmdj.biz.domin.UserDO;
 
 public interface UserDAO {
 	

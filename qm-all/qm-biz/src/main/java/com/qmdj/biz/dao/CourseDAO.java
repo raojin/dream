@@ -1,9 +1,9 @@
-package com.qmdj.dao.course;
+package com.qmdj.biz.dao;
 
 import java.util.List;
 
-import com.qmdj.domin.course.CourseDO;
-import com.qmdj.domin.form.CourseForm;
+import com.qmdj.biz.domin.CourseDO;
+import com.qmdj.biz.domin.CourseForm;
 
 public interface CourseDAO {
     int deleteByPrimaryKey(Integer id);

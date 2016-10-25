@@ -6,10 +6,10 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qmdj.biz.dao.CourseTypeDAO;
+import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.common.base.ReCode;
 import com.qmdj.common.base.Result;
-import com.qmdj.dao.course.CourseTypeDAO;
-import com.qmdj.domin.course.CourseTypeDO;
 import com.qmdj.platform.service.course.CourseTypeService;
 
 @Service

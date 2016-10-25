@@ -1,4 +1,4 @@
-package com.qmdj.domin.base;
+package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,10 +1,8 @@
-package com.qmdj.domin.course;
+package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
-
-import com.qmdj.domin.base.BaseDO;
 
 /**
 *@Description: 课程

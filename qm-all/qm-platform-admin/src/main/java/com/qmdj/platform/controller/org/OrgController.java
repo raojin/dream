@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.qmdj.biz.domin.OrgForm;
+import com.qmdj.biz.domin.OrganizationDO;
+import com.qmdj.biz.domin.UserDO;
 import com.qmdj.biz.util.DwzJsonResultUtil;
 import com.qmdj.biz.util.core.Constant;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.form.OrgForm;
-import com.qmdj.domin.organization.OrganizationDO;
-import com.qmdj.domin.user.UserDO;
 import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
 import com.qmdj.platform.service.org.impl.OrganizationServiceImpl;
 

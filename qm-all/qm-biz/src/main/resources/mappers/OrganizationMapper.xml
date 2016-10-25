@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qmdj.dao.organization.OrganizationDAO" >
-  <resultMap id="BaseResultMap" type="com.qmdj.domin.organization.OrganizationDO" >
+<mapper namespace="com.qmdj.biz.dao.OrganizationDAO" >
+  <resultMap id="BaseResultMap" type="com.qmdj.biz.domin.OrganizationDO" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="images" property="images" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="status" property="status"/>
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_del" property="isDel" jdbcType="INTEGER" />
@@ -33,7 +33,7 @@
     delete from qmdj_organization
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qmdj.domin.organization.OrganizationDO" >
+  <insert id="insert" parameterType="com.qmdj.biz.domin.OrganizationDO" >
     insert into qmdj_organization (id, image, name, 
       addr_name, title, phone, 
       user_id, detail, start_time, 
@@ -42,10 +42,10 @@
     values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{addrName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, #{status},
        now(), now(),1)
   </insert>
-  <insert id="insertSelective" parameterType="com.qmdj.domin.organization.OrganizationDO" >
+  <insert id="insertSelective" parameterType="com.qmdj.biz.domin.OrganizationDO" >
     insert into qmdj_organization
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -132,7 +132,7 @@
         #{images,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
+        #{status},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -148,7 +148,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.domin.organization.OrganizationDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.biz.domin.OrganizationDO" >
     update qmdj_organization
     <set >
       <if test="image != null" >
@@ -167,7 +167,7 @@
         phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId},
       </if>
       <if test="detail != null" >
         detail = #{detail,jdbcType=VARCHAR},
@@ -196,26 +196,26 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qmdj.domin.organization.OrganizationDO" >
+  <update id="updateByPrimaryKey" parameterType="com.qmdj.biz.domin.OrganizationDO" >
     update qmdj_organization
     set image = #{image,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       addr_name = #{addrName,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=VARCHAR},
+      user_id = #{userId},
       detail = #{detail,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       images = #{images,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
+      status = #{status},
       gmt_modified = now(),
       is_del = #{isDel,jdbcType=INTEGER},
       user_name = #{userName,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-    <select id="selectListOrg" resultMap="BaseResultMap" parameterType="com.qmdj.domin.form.OrgForm" >
+    <select id="selectListOrg" resultMap="BaseResultMap" parameterType="com.qmdj.biz.domin.OrgForm" >
     select 
     <include refid="Base_Column_List" />
     from qmdj_organization where is_del = 1

@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
+import com.qmdj.biz.dao.OrganizationDAO;
+import com.qmdj.biz.domin.OrgForm;
+import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.common.base.Result;
-import com.qmdj.dao.organization.OrganizationDAO;
-import com.qmdj.domin.form.OrgForm;
-import com.qmdj.domin.organization.OrganizationDO;
 import com.qmdj.platform.service.org.OrganizationService;
 
 @Service

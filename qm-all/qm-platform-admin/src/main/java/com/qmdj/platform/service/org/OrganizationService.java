@@ -1,9 +1,9 @@
 package com.qmdj.platform.service.org;
 
 import com.github.pagehelper.PageInfo;
+import com.qmdj.biz.domin.OrgForm;
+import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.form.OrgForm;
-import com.qmdj.domin.organization.OrganizationDO;
 
 public interface OrganizationService {
 	

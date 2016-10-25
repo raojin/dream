@@ -1,8 +1,6 @@
-package com.qmdj.domin.course;
+package com.qmdj.biz.domin;
 
 import java.io.Serializable;
-
-import com.qmdj.domin.base.BaseDO;
 
 public class CourseTypeDO extends BaseDO  implements Serializable{
 

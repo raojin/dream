@@ -2,8 +2,8 @@ package com.qmdj.platform.service.org;
 
 import java.util.List;
 
+import com.qmdj.biz.domin.UserDO;
 import com.qmdj.common.base.Result;
-import com.qmdj.domin.user.UserDO;
 
 /**
 *@Description: 添加机构负责人信息

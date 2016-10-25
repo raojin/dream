@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
+import com.qmdj.biz.dao.CourseDAO;
+import com.qmdj.biz.domin.CourseDO;
+import com.qmdj.biz.domin.CourseForm;
 import com.qmdj.common.base.Result;
-import com.qmdj.dao.course.CourseDAO;
-import com.qmdj.domin.course.CourseDO;
-import com.qmdj.domin.form.CourseForm;
 import com.qmdj.platform.service.course.CourseService;
 
 @Service

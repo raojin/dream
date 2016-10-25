@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qmdj.dao.course.CourseDAO" >
-  <resultMap id="BaseResultMap" type="com.qmdj.domin.course.CourseDO" >
+<mapper namespace="com.qmdj.biz.dao.CourseDAO" >
+  <resultMap id="BaseResultMap" type="com.qmdj.biz.domin.CourseDO" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="course_type_id" property="courseTypeId" jdbcType="INTEGER" />
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     delete from qmdj_course
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qmdj.domin.course.CourseDO" >
+  <insert id="insert" parameterType="com.qmdj.biz.domin.CourseDO" >
     insert into qmdj_course (id, course_type_id, course_name, 
       type, status, is_del, 
       gmt_create, gmt_modified)
@@ -32,7 +32,7 @@
       #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.qmdj.domin.course.CourseDO" >
+  <insert id="insertSelective" parameterType="com.qmdj.biz.domin.CourseDO" >
     insert into qmdj_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.domin.course.CourseDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.biz.domin.CourseDO" >
     update qmdj_course
     <set >
       <if test="courseTypeId != null" >
@@ -114,7 +114,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qmdj.domin.course.CourseDO" >
+  <update id="updateByPrimaryKey" parameterType="com.qmdj.biz.domin.CourseDO" >
     update qmdj_course
     set course_type_id = #{courseTypeId,jdbcType=INTEGER},
       course_name = #{courseName,jdbcType=VARCHAR},
@@ -126,7 +126,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-    <select id="selectCourseList" resultMap="BaseResultMap" parameterType="com.qmdj.domin.form.CourseForm" >
+    <select id="selectCourseList" resultMap="BaseResultMap" parameterType="com.qmdj.biz.domin.CourseForm" >
     select 
     <include refid="Base_Column_List" />
     from qmdj_course
