@@ -5,7 +5,7 @@ import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.service.common.Result;
 
-public interface OrganizationService {
+public interface OrganizationTempService {
 	
 	public OrganizationDO queryByid(int org);
 	

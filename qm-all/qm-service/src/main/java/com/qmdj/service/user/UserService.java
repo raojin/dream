@@ -9,7 +9,11 @@ import com.qmdj.service.common.Result;
 *@date 2016/10/12
 */
 public interface UserService {
-	
+	/**
+	 * @param  logName password
+	 * @return Result<UserBO>
+	 * @author chenjin
+	 * */
 	public Result<UserBO> login(String logName,String password);
 
 }

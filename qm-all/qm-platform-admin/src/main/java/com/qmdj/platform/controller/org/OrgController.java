@@ -18,7 +18,7 @@ import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.biz.domin.UserDO;
 import com.qmdj.biz.util.core.Constant;
 import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
-import com.qmdj.platform.service.org.impl.OrganizationServiceImpl;
+import com.qmdj.platform.service.org.impl.OrganizationTempServiceImpl;
 import com.qmdj.service.common.DwzJsonResultUtil;
 import com.qmdj.service.common.Result;
 
@@ -30,12 +30,12 @@ public class OrgController {
 	private OrgUserSericeImpl orgUserSerice;
 	
 	@Autowired
-	private OrganizationServiceImpl organizationService;
+	private OrganizationTempServiceImpl organizationTempService;
 	
 
     @RequestMapping("/list")
     public  String  orgList(Model model,HttpServletRequest request,HttpServletResponse response,OrgForm orgForm){
-		PageInfo<OrganizationDO> queryList = organizationService.queryList(orgForm);
+		PageInfo<OrganizationDO> queryList = organizationTempService.queryList(orgForm);
 		model.addAttribute(Constant.BEAN_LIST, queryList);
 		return "org/list.html";
 
@@ -58,7 +58,7 @@ public class OrgController {
 		     org.setUserName(reuser.getDate().getName());
 		     org.setStatus(2);
 		     org.setIsDel(1);
-			 Result<Integer> re = organizationService.save(org);
+			 Result<Integer> re = organizationTempService.save(org);
 			  if(re!=null){
 				    if(re.isSuccess()&&re.getDate()>0){
 				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orglist");
@@ -76,7 +76,7 @@ public class OrgController {
 		
 		@RequestMapping("/toUpdate")
 		   public  String  toUpdateOrg(Model model,int orgId){
-			 OrganizationDO queryByid = organizationService.queryByid(orgId);
+			 OrganizationDO queryByid = organizationTempService.queryByid(orgId);
 			 Result<List<UserDO>> userlist=orgUserSerice.queryUserList();
 			 model.addAttribute("userList", userlist.getDate());
 			 model.addAttribute(Constant.BEAN, queryByid);
@@ -88,7 +88,7 @@ public class OrgController {
 		   public  String  updateOrg(Model model,OrganizationDO org){
 			 String message="success";
 			  try {
-				  Result<Integer> re = organizationService.update(org);
+				  Result<Integer> re = organizationTempService.update(org);
 			  if(re!=null){
 				    if(re.isSuccess()){
 				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"updateOrganization");
