@@ -28,7 +28,7 @@
     values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{type,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.qmdj.biz.dao.CourseTypeDAO" >
+  <insert id="insertSelective" parameterType="com.qmdj.biz.domin.CourseTypeDO" >
     insert into qmdj_course_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.biz.dao.CourseTypeDAO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.biz.domin.CourseTypeDO" >
     update qmdj_course_type
     <set >
       <if test="gmtCreate != null" >
@@ -92,7 +92,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qmdj.biz.dao.CourseTypeDAO" >
+  <update id="updateByPrimaryKey" parameterType="com.qmdj.biz.domin.CourseTypeDO" >
     update qmdj_course_type
     set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
