@@ -3,8 +3,8 @@ package com.qmdj.platform.service.org.impl;
 import java.util.List;
 
 import com.qmdj.biz.domin.OrganizationDO;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.OrgService;
+import com.qmdj.service.common.Result;
 
 /**
 *@Description: 机构信息

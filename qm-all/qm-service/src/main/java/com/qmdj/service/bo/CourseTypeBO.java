@@ -1,4 +1,4 @@
-package com.qmdj.biz.pogo.bo;
+package com.qmdj.service.bo;
 
 /**
  * 类QmdjCourseTypeBO.java的实现描述：

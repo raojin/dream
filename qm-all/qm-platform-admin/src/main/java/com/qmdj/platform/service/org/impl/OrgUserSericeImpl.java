@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.UserDAO;
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.biz.util.ReCode;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.OrgUserSerice;
+import com.qmdj.service.common.ReCode;
+import com.qmdj.service.common.Result;
 
 @Service
 public class OrgUserSericeImpl implements OrgUserSerice {

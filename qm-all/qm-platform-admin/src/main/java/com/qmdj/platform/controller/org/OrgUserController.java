@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.biz.util.DwzJsonResultUtil;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
+import com.qmdj.service.common.DwzJsonResultUtil;
+import com.qmdj.service.common.Result;
 
 @Controller
 @RequestMapping("/orgUser")

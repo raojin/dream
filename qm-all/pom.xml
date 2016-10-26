@@ -13,6 +13,7 @@
   	<module>qm-organization-admin</module>
     <module>qm-web</module>
     <module>qm-platform-admin</module>
+    <module>qm-service</module>
   </modules>
   
   <properties>

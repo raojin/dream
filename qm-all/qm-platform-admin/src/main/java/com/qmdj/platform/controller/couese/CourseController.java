@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.domin.CourseForm;
-import com.qmdj.biz.util.DwzJsonResultUtil;
-import com.qmdj.biz.util.ReCode;
-import com.qmdj.biz.util.Result;
 import com.qmdj.biz.util.core.Constant;
 import com.qmdj.platform.service.course.CourseService;
+import com.qmdj.service.common.DwzJsonResultUtil;
+import com.qmdj.service.common.ReCode;
+import com.qmdj.service.common.Result;
 
 @Controller
 @RequestMapping("/course")

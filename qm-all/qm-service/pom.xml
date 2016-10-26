@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>qm-all</groupId>
+    <artifactId>qm-all</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>qm-all</groupId>
+  <artifactId>qm-service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>qm-service</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+        <dependency>
+			<groupId>qm-all</groupId>
+			<artifactId>qm-biz</artifactId>
+			<version>${qmdj.version}</version>
+		</dependency>
+  </dependencies>
+  
+  <profiles>
+    <profile>
+        <id>jdk-1.8</id>
+        <!-- 另外一种激活方式 -->
+        <activation>
+            <activeByDefault>true</activeByDefault>
+            <jdk>1.8</jdk>
+        </activation>
+        <properties>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        </properties>
+    </profile>
+</profiles>  
+  
+  <build>
+    <finalName>qm-platform-admin</finalName>
+     <plugins> 
+		<plugin> 
+		<groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-compiler-plugin</artifactId> 
+		<version>2.3.2</version> 
+			<configuration> 
+				<source>1.8</source> 
+				<target>1.8</target> 
+			</configuration> 
+		</plugin> 
+	</plugins>
+  </build>
+</project>

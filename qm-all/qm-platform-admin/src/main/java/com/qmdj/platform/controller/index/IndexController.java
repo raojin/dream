@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.qmdj.biz.domin.StaffDO;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.staff.StaffService;
+import com.qmdj.service.common.Result;
 
 /**
 *@Description: 首页IndexController

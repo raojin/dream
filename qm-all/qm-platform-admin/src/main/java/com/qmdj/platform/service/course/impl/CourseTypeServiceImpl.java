@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.CourseTypeDAO;
 import com.qmdj.biz.domin.CourseTypeDO;
-import com.qmdj.biz.util.ReCode;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.course.CourseTypeService;
+import com.qmdj.service.common.ReCode;
+import com.qmdj.service.common.Result;
 
 @Service
 public class CourseTypeServiceImpl implements CourseTypeService {

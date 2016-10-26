@@ -1,7 +1,9 @@
-package com.qmdj.biz.util;
+package com.qmdj.service.common;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.qmdj.biz.util.Query;
 
 /**
  * @Class Pagination

@@ -1,7 +1,7 @@
-package com.qmdj.biz.pogo.bo.util;
+package com.qmdj.service.bo.util;
 
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.biz.pogo.bo.UserBO;
+import com.qmdj.service.bo.UserBO;
 
 /**
  * 类QmdjUserBeanUtil.java的实现描述：工具类

@@ -3,7 +3,7 @@ package com.qmdj.platform.service.org;
 import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
-import com.qmdj.biz.util.Result;
+import com.qmdj.service.common.Result;
 
 public interface OrganizationService {
 	

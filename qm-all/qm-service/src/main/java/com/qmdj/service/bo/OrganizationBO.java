@@ -1,4 +1,4 @@
-package com.qmdj.biz.pogo.bo;
+package com.qmdj.service.bo;
 
 import java.util.Date;
 

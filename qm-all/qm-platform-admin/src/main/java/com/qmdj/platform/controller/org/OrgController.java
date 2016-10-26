@@ -16,11 +16,11 @@ import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.biz.util.DwzJsonResultUtil;
-import com.qmdj.biz.util.Result;
 import com.qmdj.biz.util.core.Constant;
 import com.qmdj.platform.service.org.impl.OrgUserSericeImpl;
 import com.qmdj.platform.service.org.impl.OrganizationServiceImpl;
+import com.qmdj.service.common.DwzJsonResultUtil;
+import com.qmdj.service.common.Result;
 
 @Controller
 @RequestMapping("/org")

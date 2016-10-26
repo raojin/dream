@@ -1,4 +1,4 @@
-package com.qmdj.biz.util;
+package com.qmdj.service.common;
 
 public class Result<T> {
 

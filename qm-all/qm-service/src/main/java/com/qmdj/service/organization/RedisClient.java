@@ -1,4 +1,4 @@
-package com.qmdj.organization.service;
+package com.qmdj.service.organization;
 
 import redis.clients.jedis.Jedis;
 

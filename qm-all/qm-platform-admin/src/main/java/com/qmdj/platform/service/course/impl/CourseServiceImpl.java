@@ -10,8 +10,8 @@ import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.dao.CourseDAO;
 import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.domin.CourseForm;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.course.CourseService;
+import com.qmdj.service.common.Result;
 
 @Service
 public class CourseServiceImpl implements CourseService {

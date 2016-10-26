@@ -3,7 +3,7 @@ package com.qmdj.platform.service.course;
 import java.util.List;
 
 import com.qmdj.biz.domin.CourseTypeDO;
-import com.qmdj.biz.util.Result;
+import com.qmdj.service.common.Result;
 
 /**
 *@Description: 课程类型接口

@@ -3,7 +3,7 @@ package com.qmdj.platform.service.course;
 import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.domin.CourseForm;
-import com.qmdj.biz.util.Result;
+import com.qmdj.service.common.Result;
 
 public interface CourseService {
 	

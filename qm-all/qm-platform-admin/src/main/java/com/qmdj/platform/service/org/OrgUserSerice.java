@@ -3,7 +3,7 @@ package com.qmdj.platform.service.org;
 import java.util.List;
 
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.biz.util.Result;
+import com.qmdj.service.common.Result;
 
 /**
 *@Description: 添加机构负责人信息

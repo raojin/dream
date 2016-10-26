@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.qmdj.biz.pogo.bo.UserBO;
-import com.qmdj.biz.util.Result;
-import com.qmdj.organization.user.service.UserService;
+import com.qmdj.service.bo.UserBO;
+import com.qmdj.service.common.Result;
+import com.qmdj.service.user.UserService;
 
 /**
 *@Description: 首页IndexController

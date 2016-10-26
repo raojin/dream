@@ -1,4 +1,4 @@
-package com.qmdj.organization.user.service.impl;
+package com.qmdj.service.user.impl;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.UserDAO;
 import com.qmdj.biz.domin.UserDO;
-import com.qmdj.biz.pogo.bo.UserBO;
-import com.qmdj.biz.pogo.bo.util.UserBeanUtil;
-import com.qmdj.biz.util.ReCode;
-import com.qmdj.biz.util.Result;
-import com.qmdj.organization.user.service.UserService;
+import com.qmdj.service.bo.UserBO;
+import com.qmdj.service.bo.util.UserBeanUtil;
+import com.qmdj.service.common.ReCode;
+import com.qmdj.service.common.Result;
+import com.qmdj.service.user.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{

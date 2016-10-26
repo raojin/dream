@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.StaffDAO;
 import com.qmdj.biz.domin.StaffDO;
-import com.qmdj.biz.util.ReCode;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.staff.StaffService;
+import com.qmdj.service.common.ReCode;
+import com.qmdj.service.common.Result;
 
 @Service
 public class StaffServiceImpl implements StaffService {

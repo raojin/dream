@@ -10,8 +10,8 @@ import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.dao.OrganizationDAO;
 import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
-import com.qmdj.biz.util.Result;
 import com.qmdj.platform.service.org.OrganizationService;
+import com.qmdj.service.common.Result;
 
 @Service
 public class OrganizationServiceImpl implements OrganizationService {

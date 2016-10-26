@@ -1,7 +1,7 @@
-package com.qmdj.biz.pogo.bo.util;
+package com.qmdj.service.bo.util;
 
 import com.qmdj.biz.domin.CourseTypeDO;
-import com.qmdj.biz.pogo.bo.CourseTypeBO;
+import com.qmdj.service.bo.CourseTypeBO;
 
 /**
  * 类QmdjCourseTypeBeanUtil.java的实现描述：工具类
