@@ -3,19 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>qm-all</groupId>
+    <groupId>com.qmdj</groupId>
     <artifactId>qm-all</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>qm-all</groupId>
   <artifactId>qm-platform-admin</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>qm-platform-admin</name>
   <url>http://maven.apache.org</url>
   <dependencies>
 		<dependency>
-			<groupId>qm-all</groupId>
+			<groupId>com.qmdj</groupId>
 			<artifactId>qm-service</artifactId>
 			<version>${qmdj.version}</version>
 		</dependency>

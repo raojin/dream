@@ -1,6 +1,5 @@
 package com.qmdj.platform.controller.index;
 
-import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
