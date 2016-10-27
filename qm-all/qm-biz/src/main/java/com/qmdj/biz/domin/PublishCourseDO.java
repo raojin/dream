@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 
 /**
-*@Description: 教师发布的任教
+*@Description: 发布办学课程
 *@author chenjin
 *@date 2016/10/12
 */
-public class TeachingDO extends BaseDO implements Serializable{
+public class PublishCourseDO extends BaseDO implements Serializable{
 
 	private static final long serialVersionUID = 4598288964369536060L;
 
 	/**
 	 * 
-	 * userId
+	 * parent
 	 * */
-	private Long userId;
+	private Long parentId;
 	
 	/**
 	 * 
@@ -25,19 +25,19 @@ public class TeachingDO extends BaseDO implements Serializable{
      private String  courseIds;
 
      /**
-      * 课程类型（以,号隔开） com.qmdj.domin.course.CourseTypeDO
+      * 课程类型 com.qmdj.biz.domin.CourseTypeDO
       * */
-     private String courseTypes; 
+     private Long courseType; 
      
      /**
       * 
       *授课方式 1:老师上门,2:学生上门
       */
-     private String teachingWay;
+     private Integer teachingWay;
      
      /**
       * 
-      *授课时间(存Id 以逗号隔开)  com.qmdj.domin.teacher.TeachingTimeEnum
+      *授课时间(以逗号隔开)  com.qmdj.biz.domin.TeachingTimeEnum
       */
      private String teachingTimes;
      
@@ -58,37 +58,26 @@ public class TeachingDO extends BaseDO implements Serializable{
       * 时间类型 1:/小时，2:/天，3:/周，4:/月
       * */
      private Integer timeType;
+     
+     /**
+      * 
+      * 排序，值越大越靠前
+      * */
+     private Integer sort;
+     
+     /**
+      * 
+      * 1:正常（显示），2:隐藏 ，
+      * */
+     private Integer status;
 
-	public Long getUserId() {
-		return userId;
+
+	public Long getCourseType() {
+		return courseType;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public String getCourseIds() {
-		return courseIds;
-	}
-
-	public void setCourseIds(String courseIds) {
-		this.courseIds = courseIds;
-	}
-
-	public String getCourseTypes() {
-		return courseTypes;
-	}
-
-	public void setCourseTypes(String courseTypes) {
-		this.courseTypes = courseTypes;
-	}
-
-	public String getTeachingWay() {
-		return teachingWay;
-	}
-
-	public void setTeachingWay(String teachingWay) {
-		this.teachingWay = teachingWay;
+	public void setCourseType(Long courseType) {
+		this.courseType = courseType;
 	}
 
 	public String getTeachingAddre() {
@@ -122,5 +111,47 @@ public class TeachingDO extends BaseDO implements Serializable{
 	public void setTeachingTimes(String teachingTimes) {
 		this.teachingTimes = teachingTimes;
 	}
-     
+
+	public String getCourseIds() {
+		return courseIds;
+	}
+
+	public void setCourseIds(String courseIds) {
+		this.courseIds = courseIds;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
+	public Integer getTeachingWay() {
+		return teachingWay;
+	}
+
+	public void setTeachingWay(Integer teachingWay) {
+		this.teachingWay = teachingWay;
+	}
+	
+
+	
 }

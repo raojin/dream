@@ -7,7 +7,7 @@ import java.io.Serializable;
 *@author chenjin
 *@date 2016/10/12
 */
-public class TeacherDO implements Serializable{
+public class TeacherDO extends BaseDO implements Serializable{
 
 	private static final long serialVersionUID = 3801273681205489552L;
 
@@ -22,6 +22,12 @@ public class TeacherDO implements Serializable{
 	 * 1:机构教师 ,2 家教教师
 	 */
     private Integer identity;
+    
+    /**
+     * 
+     * 机构Id  是机构教师时 organizationId不能为空
+     * */
+    private Long organizationId;
     
     /**
      * 
@@ -67,17 +73,9 @@ public class TeacherDO implements Serializable{
      
  	/**
  	 * 
- 	 * 状态 1:审核通过  2:审核不通过
+ 	 * 状态 1:审核通过 2审核中 3:审核不通过
  	 */
  	private Integer status;
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
 
 	public Integer getIdentity() {
 		return identity;
@@ -150,5 +148,21 @@ public class TeacherDO implements Serializable{
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
- 	
+
+	public Long getOrganizationId() {
+		return organizationId;
+	}
+
+	public void setOrganizationId(Long organizationId) {
+		this.organizationId = organizationId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	
 }

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uhu.dao.QmdjTeacherDao">
+	<resultMap id="BaseResultMap" type="com.uhu.dao.model.QmdjTeacherDO">
+		<result column="id" property="id" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="userId" property="userid" />
+		<result column="identity" property="identity" />
+		<result column="organizationId" property="organizationid" />
+		<result column="isPublic" property="ispublic" />
+		<result column="code" property="code" />
+		<result column="education" property="education" />
+		<result column="name" property="name" />
+		<result column="school" property="school" />
+		<result column="professional" property="professional" />
+		<result column="images" property="images" />
+		<result column="status" property="status" />
+	</resultMap>
+	
+	<parameterMap id="QmdjTeacherDO" type="com.uhu.dao.model.QmdjTeacherDO"/>
+	
+	<sql id="Base_Column_List">
+		id,gmt_create, gmt_modified, userId, identity, organizationId, isPublic, code, education, name, school, professional, images, status
+	</sql>
+	
+	<insert id="insert" parameterMap="QmdjTeacherDO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qmdj_teacher (
+			gmt_create, gmt_modified, userId, identity, organizationId, isPublic, code, education, name, school, professional, images, status
+		)
+		VALUES (
+			#{gmtCreate}, #{gmtModified}, #{userid}, #{identity}, #{organizationid}, #{ispublic}, #{code}, #{education}, #{name}, #{school}, #{professional}, #{images}, #{status}
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.Long">
+		DELETE FROM qmdj_teacher WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterMap="QmdjTeacherDO">
+        UPDATE qmdj_teacher SET 
+	        	<if test="gmtCreate!=null">
+					gmt_create = #{gmtCreate},
+				</if>
+	        	<if test="gmtModified!=null">
+					gmt_modified = #{gmtModified},
+				</if>
+	        	<if test="userid!=null">
+					userId = #{userid},
+				</if>
+	        	<if test="identity!=null">
+					identity = #{identity},
+				</if>
+	        	<if test="organizationid!=null">
+					organizationId = #{organizationid},
+				</if>
+	        	<if test="ispublic!=null">
+					isPublic = #{ispublic},
+				</if>
+	        	<if test="code!=null">
+					code = #{code},
+				</if>
+	        	<if test="education!=null">
+					education = #{education},
+				</if>
+	        	<if test="name!=null">
+					name = #{name},
+				</if>
+	        	<if test="school!=null">
+					school = #{school},
+				</if>
+	        	<if test="professional!=null">
+					professional = #{professional},
+				</if>
+	        	<if test="images!=null">
+					images = #{images},
+				</if>
+	        	<if test="status!=null">
+					status = #{status},
+				</if>
+		update_time = now()
+        WHERE id = #{id}        		
+	</update>
+	
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_teacher
+		WHERE id = #{id}
+	</select>
+	
+	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="QmdjTeacherDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_teacher
+		<include refid="whereCondition" />
+	</select>
+	
+	<sql id="whereCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id!=null">
+				and id = #{id}
+			</if>
+			<if test="gmtCreate!=null">
+				and gmt_create = #{gmtCreate}
+			</if>
+			<if test="gmtModified!=null">
+				and gmt_modified = #{gmtModified}
+			</if>
+			<if test="userid!=null">
+				and userId = #{userid}
+			</if>
+			<if test="identity!=null">
+				and identity = #{identity}
+			</if>
+			<if test="organizationid!=null">
+				and organizationId = #{organizationid}
+			</if>
+			<if test="ispublic!=null">
+				and isPublic = #{ispublic}
+			</if>
+			<if test="code!=null">
+				and code = #{code}
+			</if>
+			<if test="education!=null">
+				and education = #{education}
+			</if>
+			<if test="name!=null">
+				and name = #{name}
+			</if>
+			<if test="school!=null">
+				and school = #{school}
+			</if>
+			<if test="professional!=null">
+				and professional = #{professional}
+			</if>
+			<if test="images!=null">
+				and images = #{images}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+		</trim>
+	</sql>
+</mapper>
