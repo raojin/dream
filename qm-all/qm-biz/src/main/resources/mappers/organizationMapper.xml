@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qmdj.biz.dao.OrganizationDAO" >
-  <resultMap id="BaseResultMap" type="com.qmdj.biz.domin.OrganizationDO" >
+  <resultMap id="organizationMappering" type="com.qmdj.biz.domin.OrganizationDO" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -19,11 +19,14 @@
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_del" property="isDel" jdbcType="INTEGER" />
   </resultMap>
+  
+  	<parameterMap id="OrganizationDO" type="com.qmdj.biz.domin.OrganizationDO"/>
+  
   <sql id="Base_Column_List" >
     id, image, name, addr_name, title, phone, user_id, detail, start_time, end_time, 
     images, status, gmt_create, gmt_modified, is_del,user_name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="organizationMappering" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from qmdj_organization
@@ -215,10 +218,35 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-    <select id="selectListOrg" resultMap="BaseResultMap" parameterType="com.qmdj.biz.domin.OrgForm" >
+    <select id="selectListOrg" resultMap="organizationMappering" parameterType="com.qmdj.biz.domin.OrgForm" >
     select 
     <include refid="Base_Column_List" />
     from qmdj_organization where is_del = 1
   </select>
+  
+  
+  <select id="findOrganizationForPage" resultMap="organizationMappering" parameterType="com.qmdj.biz.pogo.qo.OrganizationQO">
+		SELECT from *
+		<include refid="pageQueryCondition" />
+
+		<if test="begin != null and pageSize != null">
+			LIMIT #{begin}, #{pageSize}
+		</if>
+	</select>
+
+	<select id="findOrganizationForPageCount" resultType="java.lang.Integer" parameterType="com.qmdj.biz.pogo.qo.OrganizationQO">
+		SELECT
+		count(id)
+		FROM qmdj_organization
+		<include refid="pageQueryCondition" />
+	</select>
+
+	<sql id="pageQueryCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="name!=null">
+				and name = #{name}
+			</if>
+		</trim>
+	</sql>
   
 </mapper>

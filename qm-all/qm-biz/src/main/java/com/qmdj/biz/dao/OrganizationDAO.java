@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
+import com.qmdj.biz.pogo.qo.OrganizationQO;
 
 public interface OrganizationDAO {
     int deleteByPrimaryKey(Integer id);
@@ -19,5 +20,13 @@ public interface OrganizationDAO {
     int updateByPrimaryKey(OrganizationDO record);
     
     List<OrganizationDO> selectListOrg(OrgForm orgForm);
+    
+    
+    List<OrganizationDO> findOrganizationForPage(OrganizationQO queryQO);
+    
+    int  findOrganizationForPageCount(OrganizationQO queryQO);
+    
+    
+    
     
 }

@@ -1,6 +1,8 @@
 package com.qmdj.service.organization;
 
+import com.qmdj.biz.pogo.qo.OrganizationQO;
 import com.qmdj.service.bo.OrganizationBO;
+import com.qmdj.service.common.Pagination;
 import com.qmdj.service.common.Result;
 
 /**
@@ -18,5 +20,17 @@ public interface OrganizationService {
 	 * @data   2016/10/26 
 	 * */
 	public Result<OrganizationBO> queryByOrganizationId(long orgId);
+	
+	
+	
+	/**
+	 * @param  OrganizationQO 分页查询机构
+	 * @return Result<Pagination<OrganizationBO>>
+	 * @author chenjin
+	 * @data   2016/10/27 
+	 * */
+	public Result<Pagination<OrganizationBO>> queryOrganizationForPage(OrganizationQO queryQO);
+		
+	
 	
 }
