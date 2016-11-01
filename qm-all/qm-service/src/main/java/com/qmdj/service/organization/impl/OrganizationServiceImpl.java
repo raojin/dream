@@ -75,30 +75,5 @@ public class OrganizationServiceImpl implements OrganizationService {
 		}
 		return re;
 	}
-
-	@Override
-	public Result<List<OrganizationBO>> queryOrganization(Integer type) {
-		Result<List<OrganizationBO>> re=new Result<List<OrganizationBO>>();
-		 if(type==0){
-			 type=null;
-		 }
-		 List<OrganizationDO> listDO=new ArrayList<>();
-		 try {
-			 listDO= organizationDAO.findOrganizationBytype(type);
-			 List<OrganizationBO> list=new ArrayList<>();
-			 for(OrganizationDO orgDO:listDO){
-				 list.add(OrganizationBeanUtil.qmdjOrganizationDOToBO(orgDO));
-			 }
-				re.setDate(list);
-				re.setSuccess(true);
-				re.setDate(list);
-		} catch (Exception e) {
-			re.setCode(ReCode.SYS_REEOR.getCode());
-			re.setMessage(ReCode.SYS_REEOR.getMessage());
-		}
-		return re;
-	}
-
-	
 	
 }
