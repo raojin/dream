@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		response.sendRedirect(request.getContextPath() + "/index");
-	%>
+	<h1>hello word</h1>
 </body>
 </html>	

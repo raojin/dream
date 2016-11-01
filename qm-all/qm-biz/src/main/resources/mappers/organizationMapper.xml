@@ -248,5 +248,12 @@
 			</if>
 		</trim>
 	</sql>
+	
+	<!-- 随后添加 -->
+	<select id="findOrganizationBytype" resultType="organizationMappering" parameterType="java.lang.Integer">
+		SELECT
+		count(id)
+		FROM qmdj_organization
+	</select>
   
 </mapper>

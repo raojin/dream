@@ -12,9 +12,10 @@
   <name>qm-web</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-    <dependency>
-			<groupId>qm-all</groupId>
-			<artifactId>qm-biz</artifactId>
+  
+    	<dependency>
+			<groupId>com.qmdj</groupId>
+			<artifactId>qm-service</artifactId>
 			<version>${qmdj.version}</version>
 		</dependency>
 		    

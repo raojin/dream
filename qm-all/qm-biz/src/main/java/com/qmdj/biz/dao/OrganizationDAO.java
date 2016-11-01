@@ -21,11 +21,12 @@ public interface OrganizationDAO {
     
     List<OrganizationDO> selectListOrg(OrgForm orgForm);
     
-    
     List<OrganizationDO> findOrganizationForPage(OrganizationQO queryQO);
     
     int  findOrganizationForPageCount(OrganizationQO queryQO);
     
+    /*type 1:精品, 2:普通*/
+    List<OrganizationDO> findOrganizationBytype(Integer type);
     
     
     

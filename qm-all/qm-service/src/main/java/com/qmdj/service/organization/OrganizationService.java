@@ -1,5 +1,7 @@
 package com.qmdj.service.organization;
 
+import java.util.List;
+
 import com.qmdj.biz.pogo.qo.OrganizationQO;
 import com.qmdj.service.bo.OrganizationBO;
 import com.qmdj.service.common.Pagination;
@@ -31,6 +33,19 @@ public interface OrganizationService {
 	 * */
 	public Result<Pagination<OrganizationBO>> queryOrganizationForPage(OrganizationQO queryQO);
 		
+	
+	
+	/**
+	 * 查询有效的机构列表
+	 * @param   type 0:全部 1:精品 2:普通
+	 * @return Result<List<OrganizationBO>>
+	 * @author chenjin
+	 * @data   2016/11/1 
+	 * */
+	public Result<List<OrganizationBO>>  queryOrganization(Integer type);
+	
+	
+	
 	
 	
 }
