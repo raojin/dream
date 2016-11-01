@@ -23,7 +23,7 @@ public class IndexController{
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/toLogin")
+	@RequestMapping("/tologin")
 	public String toLogin(Model model,HttpServletRequest request,HttpServletResponse response){
 		return "public/login.html";
 	}
