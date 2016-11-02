@@ -25,6 +25,9 @@ public class IndexController{
 	
 	@RequestMapping("/tologin")
 	public String toLogin(Model model,HttpServletRequest request,HttpServletResponse response){
+		System.out.println("sssssss");
+		System.out.println("sssssss");
+		System.out.println("sssssss");
 		return "public/login.html";
 	}
 	
