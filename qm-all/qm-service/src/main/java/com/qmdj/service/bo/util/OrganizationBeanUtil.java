@@ -35,6 +35,8 @@ public class OrganizationBeanUtil {
         targetObj.setGmtModified(srcObj.getGmtModified());//最后操作时间
         targetObj.setIsDel(srcObj.getIsDel());//是否删除 1未删除 2已删除
         targetObj.setUserName(srcObj.getUserName());//负责人名字
+        targetObj.setSort(srcObj.getSort());//排序值
+        targetObj.setTags(srcObj.getSort());//标签
         return targetObj;
     }
 
@@ -59,6 +61,8 @@ public class OrganizationBeanUtil {
         targetObj.setGmtModified(srcObj.getGmtModified());//最后操作时间
         targetObj.setIsDel(srcObj.getIsDel());//是否删除 1未删除 2已删除
         targetObj.setUserName(srcObj.getUserName());//负责人名字
+        targetObj.setSort(srcObj.getSort());//排序值
+        targetObj.setTags(srcObj.getSort());//标签
         return targetObj;
     }
 }

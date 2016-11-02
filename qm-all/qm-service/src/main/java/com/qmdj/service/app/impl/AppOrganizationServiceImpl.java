@@ -23,26 +23,31 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 	private OrganizationDAO organizationDAO;
 
 	@Override
-	public Result<Map<Integer,List<OrganizationBO>>> queryOrganization(Integer type) {
+	public Result<Map<Integer,List<OrganizationBO>>> queryOrganization(Integer tags) {
 		Result<Map<Integer,List<OrganizationBO>>> re=new Result<Map<Integer,List<OrganizationBO>>>();
 		Map<Integer,List<OrganizationBO>> map=new HashMap<Integer,List<OrganizationBO>>();
-		 if(type==0){
-			 type=null;
+		 if(tags==0){
+			 tags=null;
 		 }
 		 List<OrganizationDO> listDO=new ArrayList<>();
 		 try {
-			 listDO= organizationDAO.findOrganizationBytype(type);
+			 listDO= organizationDAO.findOrganizationBytags(tags);
 			 List<OrganizationBO> list=new ArrayList<>();
 			 for(OrganizationDO orgDO:listDO){
 				 list.add(OrganizationBeanUtil.qmdjOrganizationDOToBO(orgDO));
 			 }
-			 if(type!=0){
-				 map.put(type, list);
+			 if(tags!=0){
+				 map.put(tags, list);
 			 }else{
 				 List<OrganizationBO> plist=list;
 				 List<OrganizationBO> jlist=list;
-//				 for(OrganizationBO orgBO:list){
-//				 } 暂时没有数据 
+				 for(OrganizationBO orgBO:list){
+					 if(orgBO.getTags()==1){
+						 jlist.add(orgBO);
+					 }else if(orgBO.getTags()==0){
+						 plist.add(orgBO);
+					 }
+				 } 
 				 map.put(1, plist);
 				 map.put(2, jlist);
 			 }

@@ -73,6 +73,18 @@ public class OrganizationBO {
      * 负责人名字
      */
     private String userName;
+    
+    /**
+     * 标签  0:普通 默认， 1：精品 
+     * */
+    private Integer tags;
+    
+    
+    /**
+     * 
+     * 排序值
+     * */
+    private Integer sort;
 
     public OrganizationBO() {
     }
@@ -198,5 +210,21 @@ public class OrganizationBO {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public Integer getTags() {
+		return tags;
+	}
+
+	public void setTags(Integer tags) {
+		this.tags = tags;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
 	}
 }

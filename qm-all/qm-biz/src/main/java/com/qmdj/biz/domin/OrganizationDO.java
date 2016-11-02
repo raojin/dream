@@ -105,6 +105,18 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	    * */
    private Integer  isDel;
    
+   
+   /**
+    * 标签  0:普通 默认， 1：精品 
+    * */
+   private Integer tags;
+   
+   
+   /**
+    * 
+    * 排序值
+    * */
+   private Integer sort;
 
    
 	public Integer getIsDel() {
@@ -216,4 +228,21 @@ public void setIsDel(Integer isDel) {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	public Integer getTags() {
+		return tags;
+	}
+
+	public void setTags(Integer tags) {
+		this.tags = tags;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	
 }

@@ -25,8 +25,8 @@ public interface OrganizationDAO {
     
     int  findOrganizationForPageCount(OrganizationQO queryQO);
     
-    /*type 1:精品, 2:普通*/
-    List<OrganizationDO> findOrganizationBytype(Integer type);
+    /*tags 1:精品, 2:普通*/
+    List<OrganizationDO> findOrganizationBytags(Integer tags);
     
     
     

@@ -17,14 +17,16 @@
     <result column="status" property="status"/>
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
-    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+     <result column="tags" property="tags" jdbcType="INTEGER" />
+      <result column="is_del" property="isDel" jdbcType="INTEGER" />
   </resultMap>
   
   	<parameterMap id="OrganizationDO" type="com.qmdj.biz.domin.OrganizationDO"/>
   
   <sql id="Base_Column_List" >
     id, image, name, addr_name, title, phone, user_id, detail, start_time, end_time, 
-    images, status, gmt_create, gmt_modified, is_del,user_name
+    images, status, gmt_create, gmt_modified, is_del,user_name,tags,sort
   </sql>
   <select id="selectByPrimaryKey" resultMap="organizationMappering" parameterType="java.lang.Integer" >
     select 
@@ -41,12 +43,12 @@
       addr_name, title, phone, 
       user_id, detail, start_time, 
       end_time, images, status, gmt_create, 
-      gmt_modified, 1)
+      gmt_modified,sort,tags)
     values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{addrName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, #{status},
-       now(), now(),1)
+      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, 1,
+       now(), now(),#{sort},0)
   </insert>
   <insert id="insertSelective" parameterType="com.qmdj.biz.domin.OrganizationDO" >
     insert into qmdj_organization
@@ -193,7 +195,13 @@
       <if test="isDel != null" >
         is_del = #{isDel,jdbcType=INTEGER},
       </if>
-      <if test="nameName != null" >
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+       <if test="tags != null" >
+        tags = #{tags,jdbcType=INTEGER},
+      </if>
+       <if test="nameName != null" >
         user_name = #{nameName,jdbcType=VARCHAR},
       </if>
     </set>
@@ -249,11 +257,13 @@
 		</trim>
 	</sql>
 	
-	<!-- 随后添加 -->
-	<select id="findOrganizationBytype" resultType="organizationMappering" parameterType="java.lang.Integer">
+	<select id="findOrganizationBytags" resultMap="organizationMappering" parameterType="java.lang.Integer">
 		SELECT
 		count(id)
-		FROM qmdj_organization
+		FROM qmdj_organization where is_del=1
+		<if test="tags!=null">
+				and tags = #{tags}
+		</if>
 	</select>
   
 </mapper>
