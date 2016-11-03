@@ -1,6 +1,6 @@
 package com.qmdj.service.bo.util;
 
-import com.qmdj.biz.domin.CourseDO;
+import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.service.bo.CourseBO;
 
 /**
@@ -14,11 +14,11 @@ public class CourseBeanUtil {
     private CourseBeanUtil(){
     }
 
-    public static CourseDO qmdjCourseBOToDO(CourseBO srcObj) {
+    public static CourseTypeDO qmdjCourseBOToDO(CourseBO srcObj) {
         if (srcObj == null) {
             return null;
         }
-        CourseDO targetObj = new CourseDO();
+        CourseTypeDO targetObj = new CourseTypeDO();
         targetObj.setId(srcObj.getQmdjCourseId());//主键Id
         targetObj.setCourseTypeId(srcObj.getCourseTypeId());//课程类型
         targetObj.setCourseName(srcObj.getCourseName());//课程名称
@@ -27,7 +27,7 @@ public class CourseBeanUtil {
         return targetObj;
     }
 
-    public static CourseBO qmdjCourseDOToBO(CourseDO srcObj) {
+    public static CourseBO qmdjCourseDOToBO(CourseTypeDO srcObj) {
         if (srcObj == null) {
             return null;
         }

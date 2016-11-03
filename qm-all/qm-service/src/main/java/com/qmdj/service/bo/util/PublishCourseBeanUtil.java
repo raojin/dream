@@ -1,6 +1,6 @@
 package com.qmdj.service.bo.util;
 
-import com.qmdj.biz.domin.PublishCourseDO;
+import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.service.bo.PublishCourseBO;
 
 /**
@@ -14,11 +14,11 @@ public class PublishCourseBeanUtil {
     private PublishCourseBeanUtil(){
     }
 
-    public static PublishCourseDO publishCourseBOToDO(PublishCourseBO srcObj) {
+    public static CourseDO publishCourseBOToDO(PublishCourseBO srcObj) {
         if (srcObj == null) {
             return null;
         }
-        PublishCourseDO targetObj = new PublishCourseDO();
+        CourseDO targetObj = new CourseDO();
         targetObj.setId(srcObj.getPublishCourseId());//id
         targetObj.setParentId(srcObj.getParentid());//家教发布的就是userId  机构发布的就是orgId  
         targetObj.setCourseIds(srcObj.getCourseIds());//辅导课程（courseId,以,号隔开）当机构发布套餐的时候ids为多个
@@ -33,7 +33,7 @@ public class PublishCourseBeanUtil {
         return targetObj;
     }
 
-    public static PublishCourseBO publishCourseDOToBO(PublishCourseDO srcObj) {
+    public static PublishCourseBO publishCourseDOToBO(CourseDO srcObj) {
         if (srcObj == null) {
             return null;
         }

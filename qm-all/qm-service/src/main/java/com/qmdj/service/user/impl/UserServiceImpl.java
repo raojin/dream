@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 		}
 		try {
 			UserDO user=userDAO.login(loginName, password);
-			UserBO userBO=UserBeanUtil.qmdjUserDOToBO(user);
+			UserBO userBO=UserBeanUtil.userDOToBO(user);
 			if(userBO!=null){
 				re.setSuccess(true);
 				re.setDate(userBO);
