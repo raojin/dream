@@ -63,8 +63,24 @@ public class UserBO {
      * age
      */
     private Integer age;
+    
+	/**
+	 * 
+	 * 地址  以后考虑做地图的时候换成经纬度
+	 * */
+	private String addrName;
 
-    public UserBO() {
+    public String getAddrName() {
+		return addrName;
+	}
+
+
+	public void setAddrName(String addrName) {
+		this.addrName = addrName;
+	}
+
+
+	public UserBO() {
     }
 
    

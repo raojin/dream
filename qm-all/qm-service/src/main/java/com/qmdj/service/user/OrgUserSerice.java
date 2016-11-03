@@ -1,8 +1,9 @@
-package com.qmdj.platform.service.org;
+package com.qmdj.service.user;
 
 import java.util.List;
 
 import com.qmdj.biz.domin.UserDO;
+import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.common.Result;
 
 /**
@@ -20,7 +21,7 @@ public interface OrgUserSerice {
 	 * @return id
 	 * @author chenjin 2016年10月23日
 	 */
-	public Result<Integer> saveUser(UserDO userDO);
+	public Result<Integer> saveUser(UserBO userBO);
 	
 	/**
 	 * 更新机构负责人
@@ -29,7 +30,7 @@ public interface OrgUserSerice {
 	 * @return Boolean 
 	 * @author chenjin 2016年10月23日 
 	 */
-	public Result<Boolean> updateUser(UserDO userDO);
+	public Result<Boolean> updateUser(UserBO userBO);
 	
 	/**
 	 * 根据Id查询机构负责人信息
@@ -38,7 +39,7 @@ public interface OrgUserSerice {
 	 * @return Id
 	 * @author chenjin 2016年10月23日 
 	 */
-	public Result<UserDO> queryUserById(long userId);
+	public Result<UserBO> queryUserById(long userId);
 	
 	
 	/**
@@ -48,7 +49,7 @@ public interface OrgUserSerice {
 	 * @return List<UserDO>
 	 * @author chenjin 2016年10月23日 
 	 */
-	public Result<List<UserDO>> queryUserList();
+	public Result<List<UserBO>> queryUserList();
 	
 	
 	/**
@@ -59,4 +60,5 @@ public interface OrgUserSerice {
 	 * @author chenjin 2016年10月13日 
 	 */
 	public Result<Integer> daleteUserById(long userId);
+	
 }

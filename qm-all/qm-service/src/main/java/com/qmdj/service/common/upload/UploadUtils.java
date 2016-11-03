@@ -4,7 +4,12 @@ package com.qmdj.service.common.upload;
 import main.java.com.UpYun;
 import org.apache.commons.lang.StringUtils;
 
+import com.alibaba.fastjson.util.Base64;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
 
@@ -20,8 +25,17 @@ public class UploadUtils {
 
     private static final String FILE_DIR = "/qmdj/file";
 
-    private static final String FILE_SECRET = "qhm";
-
+    private static final String FILE_SECRET = "qmdj";
+/**
+ * 
+ * 
+ upyun.bucket.name=uhuimage
+upyun.operator.name=uhuimage
+upyun.operator.pwd=!uhu@1024
+upyun.domain.url=http://uhuimage.b0.upaiyun.com
+ * 
+ * 
+ * */
     // 间隔标识符 用于分隔文件 URL 和文件参数
     private static final String SEPARATOR = "!";
 
@@ -30,9 +44,9 @@ public class UploadUtils {
     // 声明并初始化友护云工具类
     private static UpYun upyun;
     
-    private static String bucket="qmdjpicture";
-    private static String username="qmdjpic";
-    private static String password="qmdj123!"; 
+    private static String bucket="qmdjpicture";//qmdjpicture
+    private static String username="quan123";//quan123
+    private static String password="quan1234"; //quan1234
 
     static {
 
@@ -160,8 +174,36 @@ public class UploadUtils {
             // 非图片文件使用原始名称
             path.append(FILE_DIR).append("/").append(fileName);
         }
-
         return path.toString();
     }
+    
+    public static byte[] File2byte(String filePath) throws IOException  
+    {  
+        byte[] buffer = null;  
+            File file = new File(filePath);  
+            FileInputStream fis = new FileInputStream(file);  
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();  
+            byte[] b = new byte[1024];  
+            int n;  
+            while ((n = fis.read(b)) != -1)  
+            {  
+                bos.write(b, 0, n);  
+            }  
+            fis.close();  
+            bos.close();  
+            buffer = bos.toByteArray();  
+        return buffer;  
+    }  
+    
+    
+    public static void main(String[] args) {
+		File file=new File("/Users/chenjin/Downloads/1477631034583.jpg");
+		try {
+			byte[] bo= UploadUtils.File2byte("/Users/chenjin/Downloads/1477631034583.jpg");
+			System.out.println("fileName="+UploadUtils.imageUpload(file,false));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 

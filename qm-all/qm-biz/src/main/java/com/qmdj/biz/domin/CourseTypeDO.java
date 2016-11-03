@@ -2,15 +2,31 @@ package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 
-public class CourseTypeDO extends BaseDO  implements Serializable{
+import javax.validation.constraints.NotNull;
 
-	private static final long serialVersionUID = -3993661368339960753L;
+/**
+*@Description: 课程
+*@author chenjin
+*@date 2016/10/12
+*/
+public class CourseTypeDO extends BaseDO  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * 
-	 * 类型名称 如:学龄前，小学，中学，高中，钢琴...
-	 */
-	private String name;
+	 * 课程类型 com.qmdj.domin.course.CousesTypeDO
+	 * */
+	@NotNull
+	private Integer courseTypeId;
+	
+	/**
+	 * 
+	 * 课程名
+	 * */
+	@NotNull
+	private String courseName;
+	
 	
 	/**
 	 * 
@@ -20,16 +36,33 @@ public class CourseTypeDO extends BaseDO  implements Serializable{
 	
 	/**
 	 * 
-	 * 状态 1:展示,2:不展示
+	 * 状态 1:正常 ,2 隐藏
 	 * */
 	private Integer status;
+	
+	
+	/**
+	 * 
+	 * 值越大越靠前
+	 * */
+	private Integer sort;
 
-	public String getName() {
-		return name;
+
+
+	public Integer getCourseTypeId() {
+		return courseTypeId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCourseTypeId(Integer courseTypeId) {
+		this.courseTypeId = courseTypeId;
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 
 	public Integer getType() {
@@ -46,6 +79,14 @@ public class CourseTypeDO extends BaseDO  implements Serializable{
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
 	}
 
 }

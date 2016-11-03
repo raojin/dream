@@ -14,7 +14,7 @@ public class UserBeanUtil {
     private UserBeanUtil(){
     }
 
-    public static UserDO qmdjUserBOToDO(UserBO srcObj) {
+    public static UserDO userBOToDO(UserBO srcObj) {
         if (srcObj == null) {
             return null;
         }
@@ -36,7 +36,7 @@ public class UserBeanUtil {
         return targetObj;
     }
 
-    public static UserBO qmdjUserDOToBO(UserDO srcObj) {
+    public static UserBO userDOToBO(UserDO srcObj) {
         if (srcObj == null) {
             return null;
         }

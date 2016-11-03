@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.qmdj.biz.domin.StaffDO;
-import com.qmdj.platform.service.staff.StaffService;
+import com.qmdj.service.bo.StaffBO;
 import com.qmdj.service.common.Result;
+import com.qmdj.service.user.StaffService;
 
 /**
 *@Description: 首页IndexController
@@ -37,7 +37,7 @@ public class IndexController{
 
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(Model model,HttpServletRequest request,HttpServletResponse response,String loginName,String password){
-		Result<StaffDO> re=staffService.login(loginName, password);
+		Result<StaffBO> re=staffService.login(loginName, password);
 		String message=null;
 		if(re!=null){
 			if(re.isSuccess()){
