@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.common.Result;
@@ -24,11 +25,10 @@ public class IndexController{
 	private UserService userService;
 	
 	@RequestMapping("/tologin")
+	@ResponseBody
 	public String toLogin(Model model,HttpServletRequest request,HttpServletResponse response){
 		System.out.println("sssssss");
-		System.out.println("sssssss");
-		System.out.println("sssssss");
-		return "public/login.html";
+		return "ssss";
 	}
 	
 	@RequestMapping("/login")
