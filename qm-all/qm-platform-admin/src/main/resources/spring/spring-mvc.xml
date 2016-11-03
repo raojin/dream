@@ -15,9 +15,7 @@
     
     <!-- 扫描controller（controller层注入） -->
    <context:component-scan base-package="com.qmdj.platform"/>
-   <mvc:annotation-driven/>
-     <!-- 
-     <mvc:annotation-driven/>-->
+   
     <!-- 扫描service（service层注入） -->
    <context:component-scan base-package="com.qmdj.service"/>
  
@@ -29,36 +27,6 @@
 			</list>
 		</property>
 	</bean>
-	
-<!-- 	<bean id="dateEditor"
-        class="org.springframework.beans.propertyeditors.CustomDateEditor">
-  
-        <constructor-arg>
-            <bean class="java.text.SimpleDateFormat">
-                <constructor-arg value="yyyy-MM-dd HH:mm:ss" />
-            </bean>
-        </constructor-arg>
-        <constructor-arg value="true" />
-  
-    </bean>
-  
-    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-        <property name="customEditors">
-            <map>
-                <entry key="java.util.Date">
-                    <ref local="dateEditor" />
-                </entry>
-            </map>
-        </property>
-    </bean> -->
-    
-    <!-- Only needed because we install custom converters to support the examples in the org.springframewok.samples.mvc.convert package -->
-<!-- 	<beans:bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> -->
-<!-- 		<beans:property name="formatterRegistrars"> -->
-<!--             <beans:bean class="org.springframework.format.datetime.DateFormatterRegistrar" /> -->
-<!-- 		</beans:property> -->
-<!-- 	</beans:bean> -->
-	
 	<!-- FreeMarker视图解析 。 -->
 	<bean id="freemarkerConfiguration"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">

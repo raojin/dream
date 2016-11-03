@@ -138,7 +138,15 @@
 </profiles>  
   
   <build>
-    <finalName>qm-platform-admin</finalName>
+     <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
      <plugins> 
 		<plugin> 
 		<groupId>org.apache.maven.plugins</groupId> 
@@ -150,5 +158,6 @@
 			</configuration> 
 		</plugin> 
 	</plugins>
+	<finalName>qm-platform-admin</finalName>
   </build>
 </project>
