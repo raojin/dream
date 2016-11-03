@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.qmdj.biz.util.core.Constant;
 import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.common.Result;
 import com.qmdj.service.user.UserService;
@@ -33,7 +34,8 @@ public class IndexController{
 		Result<UserBO> re=userService.login(loginName, password);
 		if(re!=null){
 			if(re.isSuccess()){
-				request.getSession().setAttribute("user", re.getDate());
+//				request.getSession().setAttribute("user", re.getDate());
+				model.addAttribute("user", re);
 				return index(model);
 			}else{
 				model.addAttribute("error", re.getMessage());
@@ -45,7 +47,7 @@ public class IndexController{
 	
 	@RequestMapping("/index")
 	public String index(Model model){
-		return "public/index.html";
+		return "public/index1.jsp";
 		
 	}
 
