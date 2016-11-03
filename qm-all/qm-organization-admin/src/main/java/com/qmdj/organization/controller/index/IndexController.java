@@ -29,7 +29,7 @@ public class IndexController{
 	@ResponseBody
 	public String toLogin(Model model,HttpServletRequest request,HttpServletResponse response){
 		System.out.println("sssssss");
-		return "ssss";
+		return "sssssssssss";
 	}
 	
 	@RequestMapping("/login")
@@ -37,7 +37,7 @@ public class IndexController{
 		Result<UserBO> re=userService.login(loginName, password);
 		if(re!=null){
 			if(re.isSuccess()){
-//				request.getSession().setAttribute("user", re.getDate());
+				request.getSession().setAttribute("user", re.getDate());
 				model.addAttribute("user", re);
 				return index(model);
 			}else{
@@ -50,7 +50,8 @@ public class IndexController{
 	
 	@RequestMapping("/index")
 	public String index(Model model){
-		return "public/index1.jsp";
+		model.addAttribute("name", "chenjin");
+		return "public/login.html";
 		
 	}
 
