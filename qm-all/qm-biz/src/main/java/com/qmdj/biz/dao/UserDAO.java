@@ -4,6 +4,8 @@ package com.qmdj.biz.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.qmdj.biz.domin.UserDO;
 
 public interface UserDAO {
@@ -14,6 +16,6 @@ public interface UserDAO {
 	
 	public List<UserDO> queryUserList();
 	
-	public UserDO login(String loginName,String password);
+	public UserDO login(@Param("loginName")String loginName,@Param("password")String password);
 
 }

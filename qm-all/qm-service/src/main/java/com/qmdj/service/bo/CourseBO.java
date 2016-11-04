@@ -35,8 +35,56 @@ public class CourseBO {
      * 状态 1:正常 ,2 隐藏
      */
     private Integer status;
+    
+    /**
+	 * 
+	 * parent
+	 * */
+	private Long parentId;
+    /**
+     * 课程类型 com.qmdj.biz.domin.CourseTypeDO
+     * */
+    private Long courseType; 
+    
+    /**
+     * 
+     * 价钱
+     * */
+    private long price;
+    
+    
 
-    public CourseBO() {
+    public long getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(long price) {
+		this.price = price;
+	}
+
+
+	public Long getCourseType() {
+		return courseType;
+	}
+
+
+	public void setCourseType(Long courseType) {
+		this.courseType = courseType;
+	}
+
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
+
+	public CourseBO() {
     }
 
    

@@ -30,8 +30,13 @@ public class UserServiceImpl implements UserService{
 			UserDO user=userDAO.login(loginName, password);
 			UserBO userBO=UserBeanUtil.userDOToBO(user);
 			if(userBO!=null){
-				re.setSuccess(true);
-				re.setDate(userBO);
+				if(userBO.getIdentity()==4 || userBO.getIdentity() == 5){
+					re.setSuccess(true);
+					re.setDate(userBO);
+				}else{
+					re.setCode(ReCode.AUTH_ERROR.getCode());
+					re.setMessage(ReCode.AUTH_ERROR.getMessage());
+				}
 			}else{
 				re.setCode(ReCode.SYS_REEOR.getCode());
 				re.setMessage("用户名或密码错误");

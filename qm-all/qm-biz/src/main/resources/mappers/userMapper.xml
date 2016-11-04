@@ -36,6 +36,11 @@
       <select id="queryUserByUserId" resultType="User" parameterType ="long">
        select * from qmdj_user where id=#{userId}
       </select>
-      
+    
+       <select id="login" resultType="User">
+       select * from qmdj_user where login_name=#{loginName} and password=#{password}
+       
+      </select>
+        
       
 </mapper>

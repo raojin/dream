@@ -251,6 +251,9 @@ table.dataTable thead .sorting:after {
 .panel-green > a:hover {
   color: #3d8b3d;
 }
+.red{
+	color:red;
+}
 .panel-red {
   border-color: #d9534f;
 }
