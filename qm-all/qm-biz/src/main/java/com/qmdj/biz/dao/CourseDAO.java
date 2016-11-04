@@ -6,7 +6,7 @@ import com.qmdj.biz.domin.CourseDO;
  *  DAO接口
  * 
  * @Author chenjin 
- * @Date 2016年10月27日
+ * @Date 2016年11月04日
  */
 public interface CourseDAO{
 
@@ -18,7 +18,7 @@ public interface CourseDAO{
      * @return int
      * <PRE>
      * author chenjin  
-     * Date 2016年10月27日
+     * Date 2016年11月04日
      * </PRE>
      */
     int insert(CourseDO record);
@@ -31,7 +31,7 @@ public interface CourseDAO{
      * @return int
      * <PRE>
      * author chenjin  
-     * Date 2016年10月27日
+     * Date 2016年11月04日
      * </PRE>
      */
     int deleteById(Long id);
@@ -44,7 +44,7 @@ public interface CourseDAO{
      * @return int
      * <PRE>
      * author chenjin  
-     * Date 2016年10月27日
+     * Date 2016年11月04日
      * </PRE>
      */
     int updateById(CourseDO record);
@@ -54,10 +54,10 @@ public interface CourseDAO{
      * 方法findById的功能描述：根据Id查询
      * 
      * @param id
-     * @return QmdjPublishCourseDO
+     * @return QmdjCourseDO
      * <PRE>
      * author chenjin  
-     * Date 2016年10月27日
+     * Date 2016年11月04日
      * </PRE>
      */
     CourseDO findById(Long id);

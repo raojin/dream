@@ -15,37 +15,31 @@
 		<result column="time_type" property="timeType" />
 		<result column="status" property="status" />
 		<result column="sort" property="sort" />
-		<result column="introduce" property="introduce" />
 		<result column="title" property="title" />
+		<result column="introduce" property="introduce" />
 	</resultMap>
 	
 	<parameterMap id="CourseDO" type="com.qmdj.biz.domin.CourseDO"/>
 	
 	<sql id="Base_Column_List">
-		id,gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort
+		id,gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort, title, introduce
 	</sql>
 	
 	<insert id="insert" parameterMap="CourseDO" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO qmdj_publish_course (
-			gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort
+		INSERT INTO qmdj_course (
+			gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort, title, introduce
 		)
 		VALUES (
-			#{gmtCreate}, #{gmtModified}, #{parentid}, #{courseIds}, #{courseType}, #{teachingWay}, #{teachingTimes}, #{teachingAddre}, #{price}, #{timeType}, #{status}, #{sort}
+			now(), now(), #{parentid}, #{courseIds}, #{courseType}, #{teachingWay}, #{teachingTimes}, #{teachingAddre}, #{price}, #{timeType}, #{status}, #{sort}, #{title}, #{introduce}
 		)
 	</insert>
 	
 	<delete id="deleteById" parameterType="java.lang.Long">
-		DELETE FROM qmdj_publish_course WHERE id = #{id}
+		DELETE FROM qmdj_course WHERE id = #{id}
 	</delete>
 	
 	<update id="update" parameterMap="CourseDO">
-        UPDATE qmdj_publish_course SET 
-	        	<if test="gmtCreate!=null">
-					gmt_create = #{gmtCreate},
-				</if>
-	        	<if test="gmtModified!=null">
-					gmt_modified = #{gmtModified},
-				</if>
+        UPDATE qmdj_course SET 
 	        	<if test="parentid!=null">
 					parentId = #{parentid},
 				</if>
@@ -76,21 +70,27 @@
 	        	<if test="sort!=null">
 					sort = #{sort},
 				</if>
-		update_time = now()
+	        	<if test="title!=null">
+					title = #{title},
+				</if>
+	        	<if test="introduce!=null">
+					introduce = #{introduce},
+				</if>
+		gmt_modified = now()
         WHERE id = #{id}        		
 	</update>
 	
 	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
 		SELECT
 		<include refid="Base_Column_List" />
-		FROM qmdj_publish_course
+		FROM qmdj_course
 		WHERE id = #{id}
 	</select>
 	
 	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="CourseDO">
 		SELECT
 		<include refid="Base_Column_List" />
-		FROM qmdj_publish_course
+		FROM qmdj_course
 		<include refid="whereCondition" />
 	</select>
 	
@@ -134,6 +134,12 @@
 			</if>
 			<if test="sort!=null">
 				and sort = #{sort}
+			</if>
+			<if test="title!=null">
+				and title = #{title}
+			</if>
+			<if test="introduce!=null">
+				and introduce = #{introduce}
 			</if>
 		</trim>
 	</sql>

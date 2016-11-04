@@ -1,119 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qmdj.biz.dao.CourseNavDAO" >
-  <resultMap id="BaseResultMap" type="com.qmdj.biz.domin.CourseNavDO" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
-    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="sort" property="sort" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, gmt_create, gmt_modified, name, status, type,sort
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from qmdj_course_type
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from qmdj_course_type
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.qmdj.biz.domin.CourseNavDO" >
-    insert into qmdj_course_type (id, gmt_create, gmt_modified, 
-      name, status, type,sort)
-    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},#{sort,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.qmdj.biz.domin.CourseNavDO" >
-    insert into qmdj_course_type
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="gmtCreate != null" >
-        gmt_create,
-      </if>
-      <if test="gmtModified != null" >
-        gmt_modified,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="sort != null" >
-        sort,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=INTEGER},
-      </if>
-       <if test="sort != null" >
-        #{sort,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qmdj.biz.domin.CourseNavDO" >
-    update qmdj_course_type
-    <set >
-      <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=INTEGER},
-      </if>
-       <if test="sort != null" >
-        sort = #{sort,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.qmdj.biz.domin.CourseNavDO" >
-    update qmdj_course_type
-    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      name = #{name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      type = #{type,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  
-  
-  <select id="queryCourseTypeList" resultMap="BaseResultMap">
-   select * from qmdj_course_type where status=1
-  </select>
+<mapper namespace="com.qmdj.biz.dao.CourseNavDAO">
+	<resultMap id="BaseResultMap" type="com.qmdj.biz.domin.CourseNavDO">
+		<result column="id" property="id" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="name" property="name" />
+		<result column="status" property="status" />
+		<result column="type" property="type" />
+		<result column="sort" property="sort" />
+	</resultMap>
+	
+	<parameterMap id="CourseNavDO" type="com.qmdj.biz.domin.CourseNavDO"/>
+	
+	<sql id="Base_Column_List">
+		id,gmt_create, gmt_modified, name, status, type, sort
+	</sql>
+	
+	<insert id="insert" parameterMap="CourseNavDO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qmdj_course_nav (
+			gmt_create, gmt_modified, name, status, type, sort
+		)
+		VALUES (
+			now(), now(), #{name}, #{status}, #{type}, #{sort}
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.Long">
+		DELETE FROM qmdj_course_nav WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterMap="CourseNavDO">
+        UPDATE qmdj_course_nav SET 
+	        	<if test="name!=null">
+					name = #{name},
+				</if>
+	        	<if test="status!=null">
+					status = #{status},
+				</if>
+	        	<if test="type!=null">
+					type = #{type},
+				</if>
+	        	<if test="sort!=null">
+					sort = #{sort},
+				</if>
+		gmt_modified = now()
+        WHERE id = #{id}        		
+	</update>
+	
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_course_nav
+		WHERE id = #{id}
+	</select>
+	
+	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="CourseNavDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_course_nav
+		<include refid="whereCondition" />
+	</select>
+	
+	<sql id="whereCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id!=null">
+				and id = #{id}
+			</if>
+			<if test="gmtCreate!=null">
+				and gmt_create = #{gmtCreate}
+			</if>
+			<if test="gmtModified!=null">
+				and gmt_modified = #{gmtModified}
+			</if>
+			<if test="name!=null">
+				and name = #{name}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="type!=null">
+				and type = #{type}
+			</if>
+			<if test="sort!=null">
+				and sort = #{sort}
+			</if>
+		</trim>
+	</sql>
 </mapper>

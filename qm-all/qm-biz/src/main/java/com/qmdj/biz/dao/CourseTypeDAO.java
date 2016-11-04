@@ -1,22 +1,64 @@
 package com.qmdj.biz.dao;
 
-import java.util.List;
-
 import com.qmdj.biz.domin.CourseTypeDO;
-import com.qmdj.biz.domin.CourseForm;
 
-public interface CourseTypeDAO {
-    int deleteByPrimaryKey(Integer id);
+/**
+ *  DAO接口
+ * 
+ * @Author chenjin 
+ * @Date 2016年11月04日
+ */
+public interface CourseTypeDAO{
 
-    int insert(CourseTypeDO record);
-
+    /**
+     * 
+     * 方法insert的功能描述：新增
+     * 
+     * @param record
+     * @return int
+     * <PRE>
+     * author chenjin  
+     * Date 2016年11月04日
+     * </PRE>
+     */
     int insertSelective(CourseTypeDO record);
 
-    CourseTypeDO selectByPrimaryKey(Integer id);
+    /**
+     * 
+     * 方法deleteById的功能描述：根据Id删除
+     * 
+     * @param id
+     * @return int
+     * <PRE>
+     * author chenjin  
+     * Date 2016年11月04日
+     * </PRE>
+     */
+    int deleteById(Long id);
 
-    int updateByPrimaryKeySelective(CourseTypeDO record);
+    /**
+     * 
+     * 方法updateById的功能描述：根据Id更新
+     * 
+     * @param record
+     * @return int
+     * <PRE>
+     * author chenjin  
+     * Date 2016年11月04日
+     * </PRE>
+     */
+    int updateById(CourseTypeDO record);
 
-    int updateByPrimaryKey(CourseTypeDO record);
-    
-    List<CourseTypeDO> selectCourseList(CourseForm courseForm);
+    /**
+     * 
+     * 方法findById的功能描述：根据Id查询
+     * 
+     * @param id
+     * @return QmdjCourseTypeDO
+     * <PRE>
+     * author chenjin  
+     * Date 2016年11月04日
+     * </PRE>
+     */
+    CourseTypeDO findById(Long id);
 }
