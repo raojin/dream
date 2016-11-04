@@ -4,90 +4,73 @@ package com.qmdj.service.bo;
  * 类QmdjCourseBO.java的实现描述：
  * 
  * @Author chenjin 
- * @Date 2016年10月27日
+ * @Date 2016年11月04日
  */
 public class CourseBO {
     /**
-     * 主键Id
+     * id
      */
-    private Long qmdjCourseId;
+    private Long courseId;
     /**
-     * 创建时间
+     * gmtCreate
      */
     private java.util.Date gmtCreate;
     /**
-     * 修改时间
+     * gmtModified
      */
     private java.util.Date gmtModified;
     /**
-     * 课程类型
+     * 家教发布的就是userId  机构发布的就是orgId  
      */
-    private Integer courseTypeId;
+    private Long parentid;
     /**
-     * 课程名称
+     * 辅导课程（courseId,以,号隔开）当机构发布套餐的时候ids为多个
      */
-    private String courseName;
-    /**
-     * 类型 1:自定义 ,2 平台添加
-     */
-    private Integer type;
-    /**
-     * 状态 1:正常 ,2 隐藏
-     */
-    private Integer status;
-    
-    /**
-	 * 
-	 * parent
-	 * */
-	private Long parentId;
+    private String courseIds;
     /**
      * 课程类型 com.qmdj.biz.domin.CourseTypeDO
-     * */
-    private Long courseType; 
-    
+     */
+    private Long courseType;
     /**
-     * 
+     * 授课方式 1:老师上门,2:学生上门
+     */
+    private Integer teachingWay;
+    /**
+     * 授课时间(以逗号隔开)  com.qmdj.biz.domin.TeachingTimeEnum
+     */
+    private String teachingTimes;
+    /**
+     * 授课区域,家教教师时不能为空
+     */
+    private String teachingAddre;
+    /**
      * 价钱
-     * */
-    private long price;
-    
-    
+     */
+    private Long price;
+    /**
+     * 时间类型 1:/小时，2:/天，3:/周，4:/月
+     */
+    private Integer timeType;
+    /**
+     * 1:正常 ,2:隐藏，（家教教师为 3:等待预约，4:已经预约, 2:隐藏）
+     */
+    private Integer status;
+    /**
+     * 排序，值越大越靠前
+     */
+    private Integer sort;
+    /**
+     * 标题
+     */
+    private String title;
+    /**
+     * 课程介绍，目录
+     */
+    private String introduce;
 
-    public long getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(long price) {
-		this.price = price;
-	}
-
-
-	public Long getCourseType() {
-		return courseType;
-	}
-
-
-	public void setCourseType(Long courseType) {
-		this.courseType = courseType;
-	}
-
-
-	public Long getParentId() {
-		return parentId;
-	}
-
-
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
-
-
-	public CourseBO() {
+    public CourseBO() {
     }
 
-   
     public java.util.Date getGmtCreate(){
         return gmtCreate;
     }
@@ -102,40 +85,41 @@ public class CourseBO {
     public void setGmtModified(java.util.Date gmtModified){
         this.gmtModified = gmtModified;
     }
+    public String getCourseIds(){
+        return courseIds;
+    }
+
+    public void setCourseIds(String courseIds){
+        this.courseIds = courseIds;
+    }
+    public Integer getTeachingWay(){
+        return teachingWay;
+    }
+
+    public void setTeachingWay(Integer teachingWay){
+        this.teachingWay = teachingWay;
+    }
+    public String getTeachingTimes(){
+        return teachingTimes;
+    }
+
+    public void setTeachingTimes(String teachingTimes){
+        this.teachingTimes = teachingTimes;
+    }
+    public String getTeachingAddre(){
+        return teachingAddre;
+    }
+
+    public void setTeachingAddre(String teachingAddre){
+        this.teachingAddre = teachingAddre;
+    }
    
-    public Long getQmdjCourseId() {
-		return qmdjCourseId;
-	}
-
-
-	public void setQmdjCourseId(Long qmdjCourseId) {
-		this.qmdjCourseId = qmdjCourseId;
-	}
-
-
-	public Integer getCourseTypeId() {
-		return courseTypeId;
-	}
-
-
-	public void setCourseTypeId(Integer courseTypeId) {
-		this.courseTypeId = courseTypeId;
-	}
-
-
-	public String getCourseName(){
-        return courseName;
+    public Integer getTimeType(){
+        return timeType;
     }
 
-    public void setCourseName(String courseName){
-        this.courseName = courseName;
-    }
-    public Integer getType(){
-        return type;
-    }
-
-    public void setType(Integer type){
-        this.type = type;
+    public void setTimeType(Integer timeType){
+        this.timeType = timeType;
     }
     public Integer getStatus(){
         return status;
@@ -144,4 +128,57 @@ public class CourseBO {
     public void setStatus(Integer status){
         this.status = status;
     }
+    public Integer getSort(){
+        return sort;
+    }
+
+    public void setSort(Integer sort){
+        this.sort = sort;
+    }
+    public String getTitle(){
+        return title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public String getIntroduce(){
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce){
+        this.introduce = introduce;
+    }
+
+	public Long getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+
+	public Long getParentid() {
+		return parentid;
+	}
+
+	public void setParentid(Long parentid) {
+		this.parentid = parentid;
+	}
+
+	public Long getCourseType() {
+		return courseType;
+	}
+
+	public void setCourseType(Long courseType) {
+		this.courseType = courseType;
+	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
 }

@@ -1,44 +1,62 @@
 package com.qmdj.service.bo.util;
 
-import com.qmdj.biz.domin.CourseTypeDO;
+import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.service.bo.CourseBO;
 
 /**
  * 类QmdjCourseBeanUtil.java的实现描述：工具类
  * 
  * @Author chenjin 
- * @Date 2016年10月27日
+ * @Date 2016年11月04日
  */
 public class CourseBeanUtil {
 
     private CourseBeanUtil(){
     }
 
-    public static CourseTypeDO qmdjCourseBOToDO(CourseBO srcObj) {
+    public static CourseDO courseBOToDO(CourseBO srcObj) {
         if (srcObj == null) {
             return null;
         }
-        CourseTypeDO targetObj = new CourseTypeDO();
-        targetObj.setId(srcObj.getQmdjCourseId());//主键Id
-        targetObj.setCourseTypeId(srcObj.getCourseTypeId());//课程类型
-        targetObj.setCourseName(srcObj.getCourseName());//课程名称
-        targetObj.setType(srcObj.getType());//类型 1:自定义 ,2 平台添加
-        targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏
+        CourseDO targetObj = new CourseDO();
+        targetObj.setId(srcObj.getCourseId());//id
+        targetObj.setGmtCreate(srcObj.getGmtCreate());//gmtCreate
+        targetObj.setGmtModified(srcObj.getGmtModified());//gmtModified
+        targetObj.setParentId(srcObj.getParentid());//家教发布的就是userId  机构发布的就是orgId  
+        targetObj.setCourseIds(srcObj.getCourseIds());//辅导课程（courseId,以,号隔开）当机构发布套餐的时候ids为多个
+        targetObj.setCourseType(srcObj.getCourseType());//课程类型 com.qmdj.biz.domin.CourseTypeDO
+        targetObj.setTeachingWay(srcObj.getTeachingWay());//授课方式 1:老师上门,2:学生上门
+        targetObj.setTeachingTimes(srcObj.getTeachingTimes());//授课时间(以逗号隔开)  com.qmdj.biz.domin.TeachingTimeEnum
+        targetObj.setTeachingAddre(srcObj.getTeachingAddre());//授课区域,家教教师时不能为空
+        targetObj.setPrice(srcObj.getPrice());//价钱
+        targetObj.setTimeType(srcObj.getTimeType());//时间类型 1:/小时，2:/天，3:/周，4:/月
+        targetObj.setStatus(srcObj.getStatus());//1:正常 ,2:隐藏，（家教教师为 3:等待预约，4:已经预约, 2:隐藏）
+        targetObj.setSort(srcObj.getSort());//排序，值越大越靠前
+        targetObj.setTitle(srcObj.getTitle());//标题
+        targetObj.setIntroduce(srcObj.getIntroduce());//课程介绍，目录
         return targetObj;
     }
 
-    public static CourseBO qmdjCourseDOToBO(CourseTypeDO srcObj) {
+    public static CourseBO qmdjCourseDOToBO(CourseDO srcObj) {
         if (srcObj == null) {
             return null;
         }
         CourseBO targetObj = new CourseBO();
-        targetObj.setQmdjCourseId(srcObj.getId());//主键Id
-        targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间
-        targetObj.setGmtModified(srcObj.getGmtModified());//修改时间
-        targetObj.setCourseTypeId(srcObj.getCourseTypeId());//课程类型
-        targetObj.setCourseName(srcObj.getCourseName());//课程名称
-        targetObj.setType(srcObj.getType());//类型 1:自定义 ,2 平台添加
-        targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏
+        targetObj.setCourseId(srcObj.getId());//id
+        targetObj.setGmtCreate(srcObj.getGmtCreate());//gmtCreate
+        targetObj.setGmtModified(srcObj.getGmtModified());//gmtModified
+        targetObj.setParentid(srcObj.getParentId());//家教发布的就是userId  机构发布的就是orgId  
+        targetObj.setCourseIds(srcObj.getCourseIds());//辅导课程（courseId,以,号隔开）当机构发布套餐的时候ids为多个
+        targetObj.setCourseType(srcObj.getCourseType());//课程类型 com.qmdj.biz.domin.CourseTypeDO
+        targetObj.setTeachingWay(srcObj.getTeachingWay());//授课方式 1:老师上门,2:学生上门
+        targetObj.setTeachingTimes(srcObj.getTeachingTimes());//授课时间(以逗号隔开)  com.qmdj.biz.domin.TeachingTimeEnum
+        targetObj.setTeachingAddre(srcObj.getTeachingAddre());//授课区域,家教教师时不能为空
+        targetObj.setPrice(srcObj.getPrice());//价钱
+        targetObj.setTimeType(srcObj.getTimeType());//时间类型 1:/小时，2:/天，3:/周，4:/月
+        targetObj.setStatus(srcObj.getStatus());//1:正常 ,2:隐藏，（家教教师为 3:等待预约，4:已经预约, 2:隐藏）
+        targetObj.setSort(srcObj.getSort());//排序，值越大越靠前
+        targetObj.setTitle(srcObj.getTitle());//标题
+        targetObj.setIntroduce(srcObj.getIntroduce());//课程介绍，目录
         return targetObj;
     }
 }

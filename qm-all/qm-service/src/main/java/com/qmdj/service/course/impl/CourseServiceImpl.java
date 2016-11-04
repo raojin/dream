@@ -17,7 +17,7 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	public Result<Integer> addCourse(CourseBO course) {
 		Result<Integer> re = new Result<Integer>();
-		if(course==null || course.getParentId() == null || course.getCourseType() == null || course.getPrice() <= 0){
+		if(course==null || course.getParentid() == null || course.getCourseType() == null || course.getPrice() <= 0){
 			//缺少参数
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
