@@ -48,9 +48,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 	public Result<Pagination<OrganizationBO>> queryOrganizationForPage(OrganizationQO queryQO) {
 		Result<Pagination<OrganizationBO>> re=new Result<Pagination<OrganizationBO>>();
 		if(queryQO==null){
-			re.setCode(ReCode.PARAM_ERROR.getCode());
-			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			return re;
+			queryQO=new OrganizationQO();
 		}
 		
 		try {
@@ -73,6 +71,18 @@ public class OrganizationServiceImpl implements OrganizationService {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
+		return re;
+	}
+
+	@Override
+	public Result<Boolean> insertOrganization(OrganizationBO organizationBO) {
+		Result<Boolean> re=new Result<Boolean>();
+		return re;
+	}
+
+	@Override
+	public Result<Boolean> updateOrganization(OrganizationBO organizationBO) {
+		Result<Boolean> re=new Result<Boolean>();
 		return re;
 	}
 	

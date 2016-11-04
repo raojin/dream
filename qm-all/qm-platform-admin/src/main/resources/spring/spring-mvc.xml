@@ -13,8 +13,9 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
     
+        
     <!-- 扫描controller（controller层注入） -->
-   <context:component-scan base-package="com.qmdj.platform"/>
+   <context:component-scan base-package="com.qmdj.platform.controller"/>
    
     <!-- 扫描service（service层注入） -->
    <context:component-scan base-package="com.qmdj.service"/>
@@ -27,6 +28,7 @@
 			</list>
 		</property>
 	</bean>
+	
 	<!-- FreeMarker视图解析 。 -->
 	<bean id="freemarkerConfiguration"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">

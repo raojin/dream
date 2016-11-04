@@ -1,6 +1,5 @@
 package com.qmdj.service.organization;
 
-import java.util.List;
 
 import com.qmdj.biz.pogo.qo.OrganizationQO;
 import com.qmdj.service.bo.OrganizationBO;
@@ -33,4 +32,22 @@ public interface OrganizationService {
 	 * */
 	public Result<Pagination<OrganizationBO>> queryOrganizationForPage(OrganizationQO queryQO);
 	
+	
+	/**
+	 * @param  OrganizationBO 保存机构信息
+	 * @return Result<Boolean>
+	 * @author chenjin
+	 * @data   2016/11/3
+	 * */
+	public Result<Boolean> insertOrganization(OrganizationBO organizationBO);
+	
+	
+	/**
+	 * @param  OrganizationBO 更新机构信息
+	 * @return Result<Boolean>
+	 * @author chenjin
+	 * @data   2016/11/3
+	 * */
+	public Result<Boolean> updateOrganization(OrganizationBO organizationBO);
+		
 }

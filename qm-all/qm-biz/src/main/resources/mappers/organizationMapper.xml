@@ -234,7 +234,7 @@
   
   
   <select id="findOrganizationForPage" resultMap="organizationMappering" parameterType="com.qmdj.biz.pogo.qo.OrganizationQO">
-		SELECT from *
+		SELECT * from  qmdj_organization
 		<include refid="pageQueryCondition" />
 
 		<if test="begin != null and pageSize != null">

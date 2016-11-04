@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<#assign contextPath=springMacroRequestContext.getContextPath() />
 	<div id="login">
 		<div id="login_header">
 			<h1 class="login_logo">
@@ -46,12 +47,12 @@
 			<div class="login_banner"><img src="themes/default/images/login_banner.jpg" /></div>
 			<div class="login_main">
 				<ul class="helpList">
-					<li><a href="#">忘记密码怎么办？</a></li>
+					<li><a href="#">忘记密码怎么办?</a></li>
 					<li><a href="#">登录失败怎么办？</a></li>
 					<li><a href="#">如果你还没有账号,请在这里注册？</a></li>
 				</ul>
 				<div class="login_inner">
-					<p>您在实用过程中有什么疑问？${name}</p>
+					<p>您在实用过程中有什么疑问?</p>
 					<p>请你给出你宝贵的意见或者建议。</p>
 				</div>
 			</div>

@@ -1,3 +1,4 @@
+package com.qmdj.platform.controller.organization;
 //package com.qmdj.platform.controller.org;
 //
 //import java.util.List;
