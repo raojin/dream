@@ -88,7 +88,7 @@ upyun.domain.url=http://uhuimage.b0.upaiyun.com
 
                 return path + SEPARATOR + FILE_SECRET;
             }
-            return path;
+            return DOMAIN+path;
         }
 
         return "";
@@ -129,7 +129,7 @@ upyun.domain.url=http://uhuimage.b0.upaiyun.com
 
                 return path + SEPARATOR + FILE_SECRET;
             }
-            return path;
+            return DOMAIN+path;
         }
 
         return "";
@@ -197,9 +197,8 @@ upyun.domain.url=http://uhuimage.b0.upaiyun.com
     
     
     public static void main(String[] args) {
-		File file=new File("/Users/chenjin/Downloads/1477631034583.jpg");
+		File file=new File("/Users/chenjin/Downloads/9C264ED1-4E5D-4C1A-BBCE-6BE77D9664E3.png");
 		try {
-			byte[] bo= UploadUtils.File2byte("/Users/chenjin/Downloads/1477631034583.jpg");
 			System.out.println("fileName="+UploadUtils.imageUpload(file,false));
 		} catch (IOException e) {
 			e.printStackTrace();
