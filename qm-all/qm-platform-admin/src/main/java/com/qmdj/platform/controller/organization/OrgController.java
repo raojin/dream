@@ -5,12 +5,12 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.qmdj.biz.pogo.qo.OrganizationQO;
 import com.qmdj.biz.util.core.Constant;
@@ -39,7 +39,6 @@ public class OrgController {
 		model.addAttribute(Constant.BEAN_LIST, queryList.getDate());
 		model.addAttribute(Constant.BEAN, queryQO);
 		return "org/list.html";
-
 	}
    
 		@ResponseBody
@@ -50,10 +49,10 @@ public class OrgController {
 		     Result<UserBO> reuser= orgUserSerice.queryUserById(org.getUserId());
 		     org.setUserName(reuser.getDate().getName());
 		     org.setStatus(2);
-		     org.setIsDel(1); //orgUserSerice.save(org);
-			 Result<Integer> re = new  Result<Integer>();
+		     org.setIsDel(1); 
+			 Result<Boolean> re= organizationService.insertOrganization(org);
 			  if(re!=null){
-				    if(re.isSuccess()&&re.getDate()>0){
+				    if(re.isSuccess()&&re.getDate()){
 				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orglist");
 				    }else{
 				    	message="error:"+re.getCode()+re.getMessage();
@@ -84,10 +83,10 @@ public class OrgController {
 		   public  String  updateOrg(Model model,OrganizationBO org){
 			 String message="success";
 			  try {
-				  Result<Integer> re = new   Result<Integer>();// organizationTempService.update(org);
+				  Result<Boolean> re = organizationService.updateOrganization(org); 
 			  if(re!=null){
-				    if(re.isSuccess()){
-				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"updateOrganization");
+				    if(re.isSuccess()&&re.getDate()){
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orglist");
 				    }else{
 				    	message="error:"+re.getCode()+re.getMessage();
 				    }
@@ -95,7 +94,7 @@ public class OrgController {
 			} catch (Exception e) {
 				message="error"+e.getMessage();
 			}
-		   return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"updateOrganization");
+		   return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"orglist");
 			}
 		
 }

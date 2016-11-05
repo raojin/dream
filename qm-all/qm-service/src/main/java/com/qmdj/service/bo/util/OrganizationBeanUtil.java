@@ -2,6 +2,8 @@ package com.qmdj.service.bo.util;
 
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.service.bo.OrganizationBO;
+import com.qmdj.service.common.date.DateStyle;
+import com.qmdj.service.common.date.DateUtil;
 
 /**
  * 类QmdjOrganizationBeanUtil.java的实现描述：工具类
@@ -27,8 +29,8 @@ public class OrganizationBeanUtil {
         targetObj.setPhone(srcObj.getPhone());//联系方式
         targetObj.setUserId(srcObj.getUserId());//负责人
         targetObj.setDetail(srcObj.getDetail());//机构介绍
-        targetObj.setStartTime(srcObj.getStartTime());//开始时间
-        targetObj.setEndTime(srcObj.getEndTime());//介绍时间
+        targetObj.setStartTime(DateUtil.StringToDate(srcObj.getStartTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//开始时间
+        targetObj.setEndTime(DateUtil.StringToDate(srcObj.getEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//介绍时间
         targetObj.setImages(srcObj.getImages());//图片集
         targetObj.setStatus(srcObj.getStatus());//状态 1:审核中（不展示,默认） 2:审核通过（展示） 3:审核不通过（不展示）4:删除
         targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间
@@ -53,8 +55,8 @@ public class OrganizationBeanUtil {
         targetObj.setPhone(srcObj.getPhone());//联系方式
         targetObj.setUserId(srcObj.getUserId());//负责人
         targetObj.setDetail(srcObj.getDetail());//机构介绍
-        targetObj.setStartTime(srcObj.getStartTime());//开始时间
-        targetObj.setEndTime(srcObj.getEndTime());//介绍时间
+        targetObj.setStartTime(DateUtil.dateToString(srcObj.getStartTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//开始时间
+        targetObj.setEndTime(DateUtil.dateToString(srcObj.getEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//介绍时间
         targetObj.setImages(srcObj.getImages());//图片集
         targetObj.setStatus(srcObj.getStatus());//状态 1:审核中（不展示,默认） 2:审核通过（展示） 3:审核不通过（不展示）4:删除
         targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间

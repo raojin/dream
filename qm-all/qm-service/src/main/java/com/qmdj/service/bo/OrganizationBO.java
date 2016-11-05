@@ -1,6 +1,5 @@
 package com.qmdj.service.bo;
 
-import java.util.Date;
 
 /**
  * 类QmdjOrganizationBO.java的实现描述：
@@ -44,11 +43,12 @@ public class OrganizationBO {
     /**
      * 开始时间
      */
-    private Date startTime;
+    private String startTime;
     /**
-     * 介绍时间
+     * 结束时间
      */
-    private Date endTime;
+    private String endTime;
+    
     /**
      * 图片集
      */
@@ -142,22 +142,6 @@ public class OrganizationBO {
     public void setDetail(String detail){
         this.detail = detail;
     }
-    
-    public Date getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
 
 	public String getImages(){
         return images;
@@ -226,5 +210,21 @@ public class OrganizationBO {
 
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 }

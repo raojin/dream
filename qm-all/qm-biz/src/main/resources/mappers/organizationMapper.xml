@@ -39,15 +39,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qmdj.biz.domin.OrganizationDO" >
-    insert into qmdj_organization (id, image, name, 
-      addr_name, title, phone, 
-      user_id, detail, start_time, 
-      end_time, images, status, gmt_create, 
-      gmt_modified,sort,tags)
-    values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+     insert into qmdj_organization (image, name, user_name,addr_name, title, phone,user_id, detail, start_time,end_time, images, status, 
+    gmt_create, gmt_modified,sort,tags)
+    values (#{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},#{userName}
       #{addrName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{images,jdbcType=VARCHAR}, 1,
+      #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime}, 
+      #{endTime}, #{images,jdbcType=VARCHAR}, 1,
        now(), now(),#{sort},0)
   </insert>
   <insert id="insertSelective" parameterType="com.qmdj.biz.domin.OrganizationDO" >

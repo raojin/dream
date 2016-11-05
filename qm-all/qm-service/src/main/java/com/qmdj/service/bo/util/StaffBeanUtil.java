@@ -16,7 +16,6 @@ public class StaffBeanUtil {
 		
 		StaffDO targetObj=new StaffDO();
 		targetObj.setId(srcObj.getId());
-		targetObj.setIsDel(srcObj.getIsDel());
 		targetObj.setLinkPhone(srcObj.getLinkPhone());
 		targetObj.setLoginName(srcObj.getLoginName());
 		targetObj.setName(srcObj.getName());
@@ -32,7 +31,6 @@ public class StaffBeanUtil {
 		}
 		StaffBO targetObj =new StaffBO();
 		targetObj.setId(srcObj.getId());
-		targetObj.setIsDel(srcObj.getIsDel());
 		targetObj.setLinkPhone(srcObj.getLinkPhone());
 		targetObj.setLoginName(srcObj.getLoginName());
 		targetObj.setName(srcObj.getName());

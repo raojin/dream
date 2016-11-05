@@ -37,13 +37,14 @@
 	<table class="table" width="100%" layoutH="138">
 		<thead>
 			<tr>
-				<th width="10%">编号</th>
+				<th width="5%">编号</th>
 				<th width="20%">机构名称</th>
-				<th width="20%">标题</th>
+				<th width="10%">标题</th>
 				<th width="20%">机构详细地址</th>
 				<th width="10%">负责人</th>
 				<th width="10%">状态</th>
-				<th width="10%">操作</th>
+				<th width="5%">是否删除</th>
+				<th width="20%">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -54,8 +55,21 @@
 				<td>${organization.title}</td>
 				<td>${organization.addrName}</td>
 				<td>${organization.userName}</td>
-				<td><#if organization.isDel=1>正常 <#else>删除</#if></td>
-				<td><a href="org/toAdd?orgId=${organization.organizationId}" target="navTab" rel="updateorg">更新</a>
+				<td>
+				<#if organization.status=1>审核中</#if>
+				<#if organization.status=2>正常，审核通过</#if>
+				<#if organization.status=3>审核为通过</#if>
+				</td>
+				
+				<td>
+				<#if organization.isDel=1>正常</#if>
+				<#if organization.isDel=2>已删除</#if>
+				</td>
+				
+				<td>
+				   <a title="删除" target="ajaxTodo" href="demo/common/ajaxDone.html?id=xxx" class="btnDel">删除</a>
+				   <a title="编辑" target="navTab" href="org/toAdd?orgId=${organization.organizationId}" class="btnEdit">编辑</a>
+				   <a title="审核通过" target="ajaxTodo" href="demo_page4.html?uid={sid_user}" >审核通过</a>
 				</td>
 			</tr>
 		</#list>

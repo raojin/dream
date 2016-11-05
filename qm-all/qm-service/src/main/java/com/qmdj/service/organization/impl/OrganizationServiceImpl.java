@@ -3,25 +3,30 @@ package com.qmdj.service.organization.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.OrganizationDAO;
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.biz.pogo.qo.OrganizationQO;
-import com.qmdj.biz.util.Query;
 import com.qmdj.service.bo.OrganizationBO;
+import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.bo.util.OrganizationBeanUtil;
 import com.qmdj.service.common.Pagination;
 import com.qmdj.service.common.ReCode;
 import com.qmdj.service.common.Result;
 import com.qmdj.service.organization.OrganizationService;
+import com.qmdj.service.user.OrgUserSerice;
 
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
 	
 	@Autowired
 	private OrganizationDAO organizationDAO;
+	
+	@Autowired
+    private OrgUserSerice orgUserSerice;
 
 	@Override
 	public Result<OrganizationBO> queryByOrganizationId(long orgId) {
@@ -75,14 +80,61 @@ public class OrganizationServiceImpl implements OrganizationService {
 	}
 
 	@Override
-	public Result<Boolean> insertOrganization(OrganizationBO organizationBO) {
+	public Result<Boolean> insertOrganization(OrganizationBO org) {
 		Result<Boolean> re=new Result<Boolean>();
+		if(org==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		if(org.getUserId()==null||org.getUserId()<=0||StringUtils.isBlank(org.getPhone())||org.getSort()==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+		   return re;
+		}
+		try {
+			Result<UserBO> reUser=orgUserSerice.queryUserById(org.getUserId());
+			if(reUser.isSuccess()){
+			 org.setUserName(reUser.getDate().getName());
+			 }
+			OrganizationDO  record=OrganizationBeanUtil.qmdjOrganizationBOToDO(org);
+			organizationDAO.insert(record);
+			re.setDate(true);
+			re.setSuccess(true);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+			e.printStackTrace();
+		}
 		return re;
 	}
 
 	@Override
-	public Result<Boolean> updateOrganization(OrganizationBO organizationBO) {
+	public Result<Boolean> updateOrganization(OrganizationBO org) {
 		Result<Boolean> re=new Result<Boolean>();
+		if(org==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		if(org.getOrganizationId()==null||org.getUserId()==null||org.getUserId()<=0||StringUtils.isBlank(org.getPhone())||org.getSort()==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+		   return re;
+		}
+		try {
+			Result<UserBO> reUser=orgUserSerice.queryUserById(org.getUserId());
+			if(reUser.isSuccess()){
+			 org.setUserName(reUser.getDate().getName());
+			 }
+			OrganizationDO  record=OrganizationBeanUtil.qmdjOrganizationBOToDO(org);
+			organizationDAO.updateByPrimaryKey(record);
+			re.setDate(true);
+			re.setSuccess(true);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
 		return re;
 	}
 	

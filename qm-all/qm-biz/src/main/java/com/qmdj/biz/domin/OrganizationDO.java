@@ -3,10 +3,6 @@ package com.qmdj.biz.domin;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 /**
 *@Description: 机构信息
 *@author chenjin
@@ -28,7 +24,6 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 * 机构名称
 	 * */
-	@NotNull
 	private String name;
 	
 	/**
@@ -48,21 +43,18 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 * 联系方式
 	 * */
-	@NotNull
 	private String phone;
 	
     /**
      * 
      *负责人ID
      */
-	@NotNull
 	private Long userId;
 	
     /**
      * 
      *负责人名字
      */
-	@NotNull
 	private String userName;
     
     /**
@@ -75,16 +67,12 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	 * 
 	 * 开始时间
 	 * */
-	@NotNull
-	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date  startTime;
 	
 	/**
 	 * 
 	 * 结束时间
 	 * */
-	@NotNull
-	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date  endTime;
 	
 	 /**
@@ -99,13 +87,6 @@ public class OrganizationDO extends BaseDO  implements Serializable{
 	  * */
    private Integer status;
    
-	   /**
-	    * 
-	    * 是否删除  1未删除  2删除
-	    * */
-   private Integer  isDel;
-   
-   
    /**
     * 标签  0:普通 默认， 1：精品 
     * */
@@ -117,15 +98,7 @@ public class OrganizationDO extends BaseDO  implements Serializable{
     * 排序值
     * */
    private Integer sort;
-
-   
-	public Integer getIsDel() {
-	return isDel;
-}
-
-public void setIsDel(Integer isDel) {
-	this.isDel = isDel;
-}
+	
 
 	public String getName() {
 		return name;

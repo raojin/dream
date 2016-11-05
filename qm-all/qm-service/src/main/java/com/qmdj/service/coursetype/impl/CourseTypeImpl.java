@@ -27,7 +27,6 @@ public class CourseTypeImpl implements CourseTypeService{
 		Result<Integer> re=new Result<Integer>();
 		try {
 			courseType.setGmtCreate(new Date());
-			courseType.setIsDel(0);
 			if(courseType.getStatus()==null){
 				courseType.setStatus(2);
 			}

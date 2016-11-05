@@ -1,15 +1,22 @@
 
 <div class="pageContent">
 	
-	<form method="post" action="org/saveOrganization" class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
+	<form method="post" action="org/updateOrganization" class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
 		<div class="pageFormContent" layoutH="56">
-		   <p>
-		        <label>首图 ：</label>
-				<img alt="" src="http://ww4.sinaimg.cn/thumbnail/67a81f1djw1enbngye69lj20qo0f00ud.jpg">
-	       </p>
-	       <p></p> <p></p>
-	       <p></p> <p></p>
-	       <p></p> 
+		
+		<div class="unit" style="height: 80px">
+				<label>首图：</label>
+				<p style="width:240px">
+				<#if Bean.image=null> <img  id="orgimageUpdatePreview"  width="50" height="50" /> <#else><img alt="" src="${Bean.image}" width="220" height="110"> </#if>
+				<input type="hidden"  name="organizationId" value="${Bean.organizationId}" />
+				<input type="hidden" id="orgUpdateimage" name="image" />
+				<input type="hidden" name="status" value="${Bean.status}" />
+				<input type="hidden" name="isDel"  value="${Bean.isDel}" />
+				<p><input type="file" name="file" id="add_bank_file_upload_orgUpdate" /></p>
+	  	</div>
+	      
+	       	<p></p>
+	       	<p></p>
 			<p>
 				<label>机 构 名 称 ：</label>
 				<input name="name" class="required"type="text" value="${Bean.name}"  size="30" alt="机 构 名 称"/>
@@ -24,49 +31,41 @@
 			</p>
 			<p>
 				<label>负 责 人 ：</label>
-				<select class="combox" name=userId>
+				<select class="combox" name="userId">
 					<option value="0">请选择....</option>
 					<#list userList as user> 
-					<option value="${user.id}">${user.name}</option>
+					 <option value="${user.userId}" <#if Bean.userId=user.userId > selected= "selected"</#if> >${user.name}</option>
 					</#list>
 				</select>
 			</p>
 			<p>
 				<label>开 始 时 间 ：</label>
-				<input name="startTime"class="date textInput readonly" value="${Bean.startTime? string("yyyy-MM-dd HH:mm:ss")}" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true"  />
+				<input name="startTime"class="date textInput readonly" value="${Bean.startTime}" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true"  />
 			</p>
 			<p>
 				<label>结 束 时 间 ：</label>
-				<input name="endTime" class="date textInput readonly" value="${Bean.endTime? string("yyyy-MM-dd HH:mm:ss")}"  datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true" />
+				<input name="endTime" class="date textInput readonly" value="${Bean.endTime}" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true" />
 			</p>
 
 			<p>
 				<label>机构详细地址：</label>
 				<input name="addrName" class="required" type="text" size="30" value="${Bean.addrName}" alt="机构详细地址"/>
 			</p>
-			
-			<p></p>
-			
-			<p>
-				<label>图片集：</label>
-				<img alt="" src="http://ww4.sinaimg.cn/thumbnail/67a81f1djw1enbngye69lj20qo0f00ud.jpg">
-				<img alt="" src="http://ww4.sinaimg.cn/thumbnail/67a81f1djw1enbngye69lj20qo0f00ud.jpg">
+			  <p>
+				<label>排序值 ：</label>
+				<input name="sort" class="required" type="text" value="${Bean.sort}" size="30" alt="整数,值越大与靠前"/>
 			</p>
-		
-			<p></p><p></p>
-			<p></p><p></p>
 			
 			<dl class="nowrap">
 			<dt>结 构 介 绍：</dt>
 			<dd>
-				<textarea class="editor" name="introduce" rows="15" cols="95">${Bean.introduce}</textarea>
+				<textarea class="editor" name="detail" rows="15" cols="95">${Bean.detail}</textarea>
 			</dd>
 		</dl>
 			
 		</div>
 		<div class="formBar">
 			<ul>
-				<!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
 				<li>
 					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
@@ -75,3 +74,27 @@
 		</div>
 	</form>
 </div>
+
+	 <script type="text/javascript">
+
+$(function() {
+	 $("#add_bank_file_upload_orgUpdate").uploadify({
+        'method'      : 'post',  
+        'buttonText'  : '请选择', 
+        'swf'         : 'uploadify/scripts/uploadify.swf',
+		'uploader'    : 'upload/JonsImage',
+        'fileObjName' : 'file', 
+        'displayData' : 'speed',
+        'auto' : true,
+        'onUploadSuccess' : function(file, data, response) { 
+        	var json = JSON.parse(data);
+        	if(json.date!=null||json.date!=""){
+        	$("#orgimageUpdatePreview").attr("src",json.date);
+        	$("#orgUpdateimage").attr("value",json.date);
+        	}else{
+        		alert("上传失败，稍后请重试");
+        	}
+        }  
+	 });   
+});
+</script> 
