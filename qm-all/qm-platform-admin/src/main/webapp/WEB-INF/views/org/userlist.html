@@ -26,7 +26,6 @@
 		<div class="subBar">
 			<ul>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
-				<li><a class="button" href="demo_page6.html" target="dialog" mask="true" title="查询框"><span>高级检索</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -35,29 +34,28 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="demo_page4.html" target="navTab"><span>添加</span></a></li>
+			<li><a class="add" href="orgUser/userAdd" target="navTab"><span>添加</span></a></li>
 			<li><a class="delete" href="demo/common/ajaxDone.html?uid={sid_user}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
 			<li><a class="edit" href="demo_page4.html?uid={sid_user}" target="navTab"><span>修改</span></a></li>
-			<li class="line">line</li>
-			<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
 		</ul>
 	</div>
 	<table class="table" width="100%" layoutH="138">
 		<thead>
 			<tr>
-				<th width="80">登陆名</th>
-				<th width="120">姓名</th>
-				<th>邮箱</th>
-				<th width="100">身份</th>
-				<th width="150">年龄</th>
-				<th width="80" align="center">性别</th>
-				<th width="150">创建时间</th>
-				<th width="150">修改时间</th>
-				<th width="80">操 作</th>
+				<th width="15%">登陆名</th>
+				<th width="10%">姓名</th>
+				<th width="15%">邮箱</th>
+				<th width="5%">身份</th>
+				<th width="5%">年龄</th>
+				<th width="5%" align="center">性别</th>
+				<th width="5%">状态</th>
+				<th width="15%">创建时间</th>
+				<th width="15%">修改时间</th>
+				<th width="10%">操 作</th>
 			</tr>
 		</thead>
 		<tbody>
-		 <#list userList as user> 
+		 <#list BeanList.data as user> 
 			<tr target="sid_user" rel="1">
 				<td>${user.loginName}</td>
 				<td>${user.name!}</td>
@@ -65,11 +63,12 @@
 				<td><#if user.identity=5>机构负责人</#if></td>
 				<td>${user.age!}</td>
 				<td><#if user.sex=1>男 <#else> 女</#if></td>
+				<td><#if user.status=1>正常 <#else> <span style="color:red"> 删除 </span></#if></td>
 				<td>${user.gmtCreate?string("yyyy-MM-dd HH:mm:ss")}</td>
 				<td>${user.gmtModified?string("yyyy-MM-dd HH:mm:ss")}</td>
 				<td>
-				 <a href="＃">修改</a>
-				 <a href="＃">删除</a>
+				 <a target="navTab" href="orgUser/userAdd?userId=${user.userId}">修改</a>
+				 <a target="ajaxTodo" href="orgUser/userUpdate?userId=${user.userId}&status=2">删除</a>
 				</td>
 			</tr>
 		</#list>	
@@ -84,7 +83,7 @@
 				<option value="100">100</option>
 				<option value="200">200</option>
 			</select>
-			<span>条，共${totalCount}条</span>
+			<span>条，共${BeanList.totalCount}条</span>
 		</div>
 
 		<div class="pagination" targetType="navTab" totalCount="200" numPerPage="20" pageNumShown="10" currentPage="1"></div>

@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.qmdj.biz.pogo.qo.OrganizationQO;
 import com.qmdj.biz.util.core.Constant;
@@ -81,11 +80,12 @@ public class OrgController {
 		@ResponseBody
 		@RequestMapping("/updateOrganization")
 		   public  String  updateOrg(Model model,OrganizationBO org){
-			 String message="success";
+			 String message="error";
 			  try {
 				  Result<Boolean> re = organizationService.updateOrganization(org); 
 			  if(re!=null){
 				    if(re.isSuccess()&&re.getDate()){
+				    	message="success";
 				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orglist");
 				    }else{
 				    	message="error:"+re.getCode()+re.getMessage();
@@ -96,5 +96,26 @@ public class OrgController {
 			}
 		   return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"orglist");
 			}
+		
+		
+		@ResponseBody
+		@RequestMapping("/updateOrgStatus")
+		public String updateOrgStatus(Long orgId,@RequestParam(value = "isDel",required=false) Integer isDel,
+				@RequestParam(value = "status",required=false) Integer status){
+			 String message="error";
+			 if(orgId!=null){
+				 OrganizationBO org=new OrganizationBO();
+				 org.setStatus(status);
+				 org.setIsDel(isDel);
+				 org.setOrganizationId(orgId);
+				 Result<Boolean> re = organizationService.updateOrganization(org);
+				 if(re.isSuccess()&&re.isSuccess()){
+					 message="success";
+					 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orglist");
+				 }
+			 }
+			return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"orglist");
+		}
+		
 		
 }

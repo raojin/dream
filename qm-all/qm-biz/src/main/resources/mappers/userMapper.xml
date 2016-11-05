@@ -4,43 +4,174 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.qmdj.biz.dao.UserDAO">
-
-	<resultMap type="User" id="userRemappering">
-	<result column="id" property="id" />
-	<result column="gmt_create" property="gmtCreate"/>
-	<result column="gmt_modified" property="gmtModified"/>
-	<result column="login_name" property="loginName"/>
-	<result column="password" property="password"/>
-	<result column="identity" property="identity"/>
-	<result column="name" property="name"/>
-	<result column="sex" property="sex"/>
-	<result column="link_phone" property="linkPhone"/>
-	<result column="introduce" property="introduce"/>
-	<result column="image" property="image"/>
-	<result column="status" property="status"/>
-	<result column="email" property="email"/>
+       <resultMap id="BaseResultMap" type="com.qmdj.biz.domin.UserDO">
+		<result column="id" property="id" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="login_name" property="loginName" />
+		<result column="password" property="password" />
+		<result column="identity" property="identity" />
+		<result column="name" property="name" />
+		<result column="sex" property="sex" />
+		<result column="link_phone" property="linkPhone" />
+		<result column="introduce" property="introduce" />
+		<result column="image" property="image" />
+		<result column="status" property="status" />
+		<result column="email" property="email" />
+		<result column="age" property="age" />
 	</resultMap>
+	
+	<parameterMap id="UserDO" type="com.qmdj.biz.domin.UserDO"/>
            
-     <insert id="saveUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+     <sql id="Base_Column_List">
+		id,gmt_create, gmt_modified, login_name, password, identity, name, sex, link_phone, introduce, image, status, email, age
+	</sql>      
+           
+     <insert id="saveUser" parameterMap="UserDO" useGeneratedKeys="true" keyProperty="id">
          <selectKey resultType="long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID()
         </selectKey>
          insert into qmdj_user(gmt_modified,gmt_create,login_name,password,identity,name,sex,link_phone,age,introduce,image,status,email) 
-        values (now(),now(),#{loginName},#{password},#{identity},#{name},#{sex},#{linkPhone},#{age},#{introduce},#{image},1,#{email})
+         values (now(),now(),#{loginName},#{password},#{identity},#{name},#{sex},#{linkPhone},#{age},#{introduce},#{image},1,#{email})
       </insert>
       
-      <select id="queryUserList" resultMap="userRemappering">
+      	<insert id="insert" parameterMap="UserDO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qmdj_user (
+			gmt_create, gmt_modified, login_name, password, identity, name, sex, link_phone, introduce, image, status, email, age
+		)
+		VALUES (
+			now(), now(), #{loginName}, #{password}, #{identity}, #{name}, #{sex}, #{linkPhone}, #{introduce}, #{image}, 1, #{email}, #{age}
+		)
+	</insert>
+	
+	<update id="update" parameterMap="UserDO">
+        UPDATE qmdj_user SET 
+	        	<if test="loginName!=null">
+					login_name = #{loginName},
+				</if>
+	        	<if test="password!=null">
+					password = #{password},
+				</if>
+	        	<if test="identity!=null">
+					identity = #{identity},
+				</if>
+	        	<if test="name!=null">
+					name = #{name},
+				</if>
+	        	<if test="sex!=null">
+					sex = #{sex},
+				</if>
+	        	<if test="linkPhone!=null">
+					link_phone = #{linkPhone},
+				</if>
+	        	<if test="introduce!=null">
+					introduce = #{introduce},
+				</if>
+	        	<if test="image!=null">
+					image = #{image},
+				</if>
+	        	<if test="status!=null">
+					status = #{status},
+				</if>
+	        	<if test="email!=null">
+					email = #{email},
+				</if>
+	        	<if test="age!=null">
+					age = #{age},
+				</if>
+       gmt_modified = now()
+            where id=#{id}		
+	</update>
+      
+      <select id="queryUserList" resultMap="BaseResultMap">
        select * from qmdj_user where status=1
       </select>
       
-      <select id="queryUserByUserId" resultType="User" parameterType ="long">
+      <select id="queryUserByUserId" resultMap="BaseResultMap" parameterType ="long">
        select * from qmdj_user where id=#{userId}
       </select>
     
-       <select id="login" resultType="User">
+       <select id="login" resultMap="BaseResultMap">
        select * from qmdj_user where login_name=#{loginName} and password=#{password}
-       
       </select>
         
+       <select id="findByCondition" resultMap="BaseResultMap" parameterMap="UserDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_user
+		<include refid="whereCondition" />
+	</select>
+	
+	<sql id="whereCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id!=null">
+				and id = #{id}
+			</if>
+			<if test="gmtCreate!=null">
+				and gmt_create = #{gmtCreate}
+			</if>
+			<if test="gmtModified!=null">
+				and gmt_modified = #{gmtModified}
+			</if>
+			<if test="loginName!=null">
+				and login_name = #{loginName}
+			</if>
+			<if test="password!=null">
+				and password = #{password}
+			</if>
+			<if test="identity!=null">
+				and identity = #{identity}
+			</if>
+			<if test="name!=null">
+				and name = #{name}
+			</if>
+			<if test="sex!=null">
+				and sex = #{sex}
+			</if>
+			<if test="linkPhone!=null">
+				and link_phone = #{linkPhone}
+			</if>
+			<if test="introduce!=null">
+				and introduce = #{introduce}
+			</if>
+			<if test="image!=null">
+				and image = #{image}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="email!=null">
+				and email = #{email}
+			</if>
+			<if test="age!=null">
+				and age = #{age}
+			</if>
+		</trim>
+	</sql>
+      
+      
+        <select id="findOrgUserForPage" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.UserQO">
+		SELECT * from  qmdj_user
+		<include refid="pageQueryCondition" />
+
+		<if test="begin != null and pageSize != null">
+			LIMIT #{begin}, #{pageSize}
+		</if>
+	</select>
+
+	<select id="findOrgUserForPageCount" resultType="java.lang.Integer" parameterType="com.qmdj.biz.pogo.qo.UserQO">
+		SELECT
+		count(id)
+		FROM qmdj_user
+		<include refid="pageQueryCondition" />
+	</select>
+
+	<sql id="pageQueryCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="loginName!=null">
+				and login_name = #{loginName}
+			</if>
+		</trim>
+	</sql>
       
 </mapper>

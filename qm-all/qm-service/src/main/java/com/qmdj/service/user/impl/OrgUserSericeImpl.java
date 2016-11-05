@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.UserDAO;
 import com.qmdj.biz.domin.UserDO;
+import com.qmdj.biz.pogo.qo.UserQO;
 import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.bo.util.UserBeanUtil;
+import com.qmdj.service.common.Pagination;
 import com.qmdj.service.common.ReCode;
 import com.qmdj.service.common.Result;
 import com.qmdj.service.user.OrgUserSerice;
@@ -36,9 +38,7 @@ public class OrgUserSericeImpl implements OrgUserSerice {
 			return re;
 		}
 	    try {
-	    	
-	    	
-			int id=userDAO.saveUser(UserBeanUtil.userBOToDO(userBO));
+			int id=userDAO.insert(UserBeanUtil.userBOToDO(userBO));
 			re.setDate(id);
 			re.setSuccess(true);
 		} catch (Exception e) {
@@ -52,7 +52,27 @@ public class OrgUserSericeImpl implements OrgUserSerice {
 
 	@Override
 	public Result<Boolean> updateUser(UserBO userBO) {
-		return null;
+		
+		Result<Boolean> re=new Result<Boolean>();
+		if(userBO==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		if(userBO.getUserId()==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		UserDO userDO=UserBeanUtil.userBOToDO(userBO);
+		try {
+			    userDAO.update(userDO);
+				re.setDate(true);
+				re.setSuccess(true);
+				return re;
+		} catch (Exception e) {
+			return re;
+		}
 	}
 
 	@Override
@@ -95,11 +115,36 @@ public class OrgUserSericeImpl implements OrgUserSerice {
 	}
 
 	@Override
-	public Result<Integer> daleteUserById(long userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result<Pagination<UserBO>> queryOrgUserForPage(UserQO queryQO) {
+		Result<Pagination<UserBO>> re=new Result<Pagination<UserBO>>();
+		if(queryQO==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		
+		try {
+			List<UserDO> users=userDAO.findOrgUserForPage(queryQO);
+			List<UserBO> list=new ArrayList<>();
+			if(users!=null){
+				for(UserDO userDO:users){
+					list.add(UserBeanUtil.userDOToBO(userDO));
+				}
+			}
+			int count=userDAO.findOrgUserForPageCount(queryQO);
+			
+			Pagination<UserBO> page=new Pagination<UserBO>();
+			page.setData(list);
+			page.setTotalCount(count);
+			
+			re.setDate(page);
+			re.setSuccess(true);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+			e.printStackTrace();
+		}
+		return re;
 	}
-
-	
 
 }

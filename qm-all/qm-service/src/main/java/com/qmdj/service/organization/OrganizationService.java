@@ -49,5 +49,6 @@ public interface OrganizationService {
 	 * @data   2016/11/3
 	 * */
 	public Result<Boolean> updateOrganization(OrganizationBO organizationBO);
+	
 		
 }

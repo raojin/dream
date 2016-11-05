@@ -117,23 +117,26 @@ public class OrganizationServiceImpl implements OrganizationService {
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
 		}
-		if(org.getOrganizationId()==null||org.getUserId()==null||org.getUserId()<=0||StringUtils.isBlank(org.getPhone())||org.getSort()==null){
+		if(org.getOrganizationId()==null){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 		   return re;
 		}
 		try {
+		   if(org.getUserId()!=null){
 			Result<UserBO> reUser=orgUserSerice.queryUserById(org.getUserId());
 			if(reUser.isSuccess()){
 			 org.setUserName(reUser.getDate().getName());
 			 }
+		   }
 			OrganizationDO  record=OrganizationBeanUtil.qmdjOrganizationBOToDO(org);
-			organizationDAO.updateByPrimaryKey(record);
+			organizationDAO.updateByPrimaryKeySelective(record);
 			re.setDate(true);
 			re.setSuccess(true);
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
+			e.printStackTrace();
 		}
 		return re;
 	}

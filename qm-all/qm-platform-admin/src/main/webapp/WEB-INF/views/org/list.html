@@ -57,20 +57,33 @@
 				<td>${organization.userName}</td>
 				<td>
 				<#if organization.status=1>审核中</#if>
-				<#if organization.status=2>正常，审核通过</#if>
-				<#if organization.status=3>审核为通过</#if>
+				<#if organization.status=2><span style="color:blue">审核通过</span></#if>
+				<#if organization.status=3><span style="color:red">审核未通过</span></#if>
 				</td>
 				
 				<td>
 				<#if organization.isDel=1>正常</#if>
-				<#if organization.isDel=2>已删除</#if>
+				<#if organization.isDel=2><span style="color:red">已删除</span></#if>
 				</td>
 				
 				<td>
-				   <a title="删除" target="ajaxTodo" href="demo/common/ajaxDone.html?id=xxx" class="btnDel">删除</a>
-				   <a title="编辑" target="navTab" href="org/toAdd?orgId=${organization.organizationId}" class="btnEdit">编辑</a>
-				   <a title="审核通过" target="ajaxTodo" href="demo_page4.html?uid={sid_user}" >审核通过</a>
-				</td>
+				  <a  target="navTab" href="org/toAdd?orgId=${organization.organizationId}">编辑</a>&nbsp;
+				<#if organization.isDel =1>  
+				   <a target="ajaxTodo" href="org/updateOrgStatus?orgId=${organization.organizationId}&isDel=2" >删除</a>&nbsp;
+				   <#if organization.status =1>
+				   <a target="ajaxTodo" href="org/updateOrgStatus?orgId=${organization.organizationId}&status=2" >审核通过</a>&nbsp;&nbsp;
+				   <a target="ajaxTodo" href="org/updateOrgStatus?orgId=${organization.organizationId}&status=3" >审核不通过</a>
+				  </#if> 
+				   <#if organization.status =2>
+				   <a target="ajaxTodo" href="org/updateOrgStatus?orgId=${organization.organizationId}&status=3" >审核不通过</a>
+				  </#if>
+				   <#if organization.status =3>
+				   <a target="ajaxTodo" href="org/updateOrgStatus?orgId=${organization.organizationId}&status=2" >审核通过</a>&nbsp;&nbsp;
+				  </#if>
+				 <#else> 
+				   <a target="ajaxTodo" href="org/updateOrgStatus?orgId=${organization.organizationId}&isDel=1" >正常</a>&nbsp;
+				</#if>
+			</td>
 			</tr>
 		</#list>
 
@@ -87,8 +100,10 @@
 			</select>
 			<span>条，共${BeanList.totalCount}条</span>
 		</div>
-
 		<div class="pagination" targetType="navTab" totalCount="200" numPerPage="20" pageNumShown="10" currentPage="1"></div>
-
 	</div>
 </div>
+
+<script type="text/javascript">
+
+</script>

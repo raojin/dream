@@ -198,8 +198,8 @@
        <if test="tags != null" >
         tags = #{tags,jdbcType=INTEGER},
       </if>
-       <if test="nameName != null" >
-        user_name = #{nameName,jdbcType=VARCHAR},
+       <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

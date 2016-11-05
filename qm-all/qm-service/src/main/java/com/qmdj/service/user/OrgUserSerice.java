@@ -2,8 +2,9 @@ package com.qmdj.service.user;
 
 import java.util.List;
 
-import com.qmdj.biz.domin.UserDO;
+import com.qmdj.biz.pogo.qo.UserQO;
 import com.qmdj.service.bo.UserBO;
+import com.qmdj.service.common.Pagination;
 import com.qmdj.service.common.Result;
 
 /**
@@ -53,12 +54,11 @@ public interface OrgUserSerice {
 	
 	
 	/**
-	 * 删除机构负责人
-	 * 
-	 * @param userId
-	 * @return int
-	 * @author chenjin 2016年10月13日 
-	 */
-	public Result<Integer> daleteUserById(long userId);
+	 * @param  OrganizationQO 机构负责人
+	 * @return Result<Pagination<OrganizationBO>>
+	 * @author chenjin
+	 * @data   2016/10/27 
+	 * */
+	public Result<Pagination<UserBO>> queryOrgUserForPage(UserQO queryQO);
 	
 }
