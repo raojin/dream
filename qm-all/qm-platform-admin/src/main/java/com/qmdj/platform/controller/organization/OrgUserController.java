@@ -72,8 +72,8 @@ public class OrgUserController {
 			   Result<Boolean> re=orgUserSerice.updateUser(userBO);
 				    if(re.isSuccess()&&re.getDate()){
 				    	 message="success";
-				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orguserlist");
+				    	 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"orguseradd");
 				    }
-		   return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"orguserlist");
+		   return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_300, message,"orguseradd");
 	   }
 }
