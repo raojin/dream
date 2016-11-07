@@ -1,3 +1,4 @@
+package com.qmdj.platform.controller.course;
 //package com.qmdj.platform.controller.couese;
 //
 //import java.util.List;

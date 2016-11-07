@@ -1,6 +1,9 @@
 package com.qmdj.biz.dao;
 
+import java.util.List;
+
 import com.qmdj.biz.domin.CourseNavDO;
+import com.qmdj.biz.pogo.qo.CourseNavQO;
 
 /**
  *  DAO接口
@@ -54,11 +57,22 @@ public interface CourseNavDAO{
      * 方法findById的功能描述：根据Id查询
      * 
      * @param id
-     * @return QmdjCourseNavDO
+     * @return CourseNavDO
      * <PRE>
      * author chenjin  
      * Date 2016年11月04日
      * </PRE>
      */
     CourseNavDO findById(Long id);
+    
+    /**
+     * 分页查询
+     * */
+    List<CourseNavDO> queryForPage(CourseNavQO querQO);
+    
+    
+    /**
+     * 分页查询总条数
+     * */
+    int  queryForPageCount(CourseNavQO querQO);
 }
