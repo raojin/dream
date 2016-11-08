@@ -101,7 +101,7 @@ public class CourseNavServiceImpl implements CourseNavService{
 	@Override
 	public Result<Pagination<CourseNavBO>> queryForPage(CourseNavQO querQO) {
 		Result<Pagination<CourseNavBO>> re=new Result<Pagination<CourseNavBO>>();
-		if(querQO!=null){
+		if(querQO==null){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
