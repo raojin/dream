@@ -75,4 +75,9 @@ public interface CourseNavDAO{
      * 分页查询总条数
      * */
     int  queryForPageCount(CourseNavQO querQO);
+    
+    /**
+     * 多条件查询
+     * */
+    List<CourseNavDO> findByCondition(CourseNavDO courseNavDO);
 }

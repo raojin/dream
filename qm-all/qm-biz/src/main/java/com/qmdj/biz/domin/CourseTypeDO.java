@@ -18,7 +18,7 @@ public class CourseTypeDO extends BaseDO  implements Serializable {
 	 * 课程类型 com.qmdj.domin.course.CousesTypeDO
 	 * */
 	@NotNull
-	private Integer courseTypeId;
+	private Long courseTypeId;
 	
 	/**
 	 * 
@@ -48,12 +48,11 @@ public class CourseTypeDO extends BaseDO  implements Serializable {
 	private Integer sort;
 
 
-
-	public Integer getCourseTypeId() {
+	public Long getCourseTypeId() {
 		return courseTypeId;
 	}
 
-	public void setCourseTypeId(Integer courseTypeId) {
+	public void setCourseTypeId(Long courseTypeId) {
 		this.courseTypeId = courseTypeId;
 	}
 

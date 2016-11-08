@@ -22,7 +22,14 @@ public class CourseTypeBO {
     /**
      * 课程导航Id
      */
-    private Integer courseNavid;
+    private Long courseNavId;
+    
+    /**
+     * 
+     * 可惜类型名称
+     * */
+    private String navName;
+    
     /**
      * 课程类型名称
      */
@@ -94,11 +101,19 @@ public class CourseTypeBO {
 		this.courseTypeId = courseTypeId;
 	}
 
-	public Integer getCourseNavid() {
-		return courseNavid;
+	public Long getCourseNavId() {
+		return courseNavId;
 	}
 
-	public void setCourseNavid(Integer courseNavid) {
-		this.courseNavid = courseNavid;
+	public void setCourseNavId(Long courseNavId) {
+		this.courseNavId = courseNavId;
+	}
+
+	public String getNavName() {
+		return navName;
+	}
+
+	public void setNavName(String navName) {
+		this.navName = navName;
 	}
 }

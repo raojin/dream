@@ -22,7 +22,7 @@ public class CourseTypeBeanUtil {
         targetObj.setId(srcObj.getCourseTypeId());//主键Id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间
         targetObj.setGmtModified(srcObj.getGmtModified());//修改时间
-        targetObj.setCourseTypeId(srcObj.getCourseNavid());//课程导航Id
+        targetObj.setCourseTypeId(srcObj.getCourseNavId());//课程导航Id
         targetObj.setCourseName(srcObj.getCourseName());//课程类型名称
         targetObj.setType(srcObj.getType());//类型 1:自定义 ,2 平台添加
         targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏 自定义默认为2
@@ -38,7 +38,7 @@ public class CourseTypeBeanUtil {
         targetObj.setCourseTypeId(srcObj.getId());//主键Id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间
         targetObj.setGmtModified(srcObj.getGmtModified());//修改时间
-        targetObj.setCourseNavid(srcObj.getCourseTypeId());//课程导航Id
+        targetObj.setCourseNavId(srcObj.getCourseTypeId());//课程导航Id
         targetObj.setCourseName(srcObj.getCourseName());//课程类型名称
         targetObj.setType(srcObj.getType());//类型 1:自定义 ,2 平台添加
         targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏 自定义默认为2

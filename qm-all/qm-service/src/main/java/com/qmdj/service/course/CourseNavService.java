@@ -1,6 +1,8 @@
 package com.qmdj.service.course;
 
 
+import java.util.List;
+
 import com.qmdj.biz.pogo.qo.CourseNavQO;
 import com.qmdj.service.bo.CourseNavBO;
 import com.qmdj.service.common.Pagination;
@@ -40,6 +42,10 @@ public interface CourseNavService {
 	 * */
 	public Result<Pagination<CourseNavBO>> queryForPage(CourseNavQO querQO);
 	
-	
+	/**
+	 * 
+	 * 多条件查询
+	 * */
+	public Result<List<CourseNavBO>> queryByCondition(CourseNavBO courseNavBO);
 
 }

@@ -1,4 +1,4 @@
-<form id="pagerForm" method="post" action="org/list">
+<form id="pagerForm" method="post" action="coueseType/list">
 	<input type="hidden" name="currentPage" value="${BeanList.currentPage}" />
 	<input type="hidden" name="pageSize" value="${BeanList.pageSize}" />
 </form>
@@ -7,13 +7,13 @@
 <div class="pageHeader">
 
 
-	<form onsubmit="return navTabSearch(this);" action="coueseNav/list" method="post">
+	<form onsubmit="return navTabSearch(this);" action="coueseType/list" method="post">
 	
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
 				<td>
-					课程导航：<input type="text" name="name" value="${Bean.name}"/>
+					课程类型名称：<input type="text" name="courseName"/>
 				</td>
 				
 			</tr>
@@ -30,32 +30,34 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="coueseNav/toAdd" target="navTab"><span>添加</span></a></li>
+			<li><a class="add" href="coueseType/toAdd" target="navTab"><span>添加</span></a></li>
 		</ul>
 	</div>
 	<table class="table" width="100%" layoutH="138">
 		<thead>
 			<tr>
-				<th width="80">课程导航名称</th>
-				<th width="120">状态</th>
-				<th width="120">类型</th>
-				<th width="120">展示顺序</th>
-				<th width="150">创建时间</th>
-				<th width="150">修改时间</th>
-				<th width="80">操 作</th>
+				<th width="15%">课程类型名称</th>
+				<th width="15%">所属导航</th>
+				<th width="10%">类型</th>
+				<th width="10%">展示顺序</th>
+				<th width="15%">创建时间</th>
+				<th width="15%">修改时间</th>
+				<th width="10%">状态</th>
+				<th width="10%">操 作</th>
 			</tr>
 		</thead>
 		<tbody>
-		 <#list BeanList.data as courseNav> 
+		 <#list BeanList.data as courseType> 
 			<tr target="sid_user" rel="1">
-				<td>${courseNav.name!}</td>
-				<td><#if courseNav.type=1>机构导航 <#else>家教导航</#if></td>
-				<td><#if courseNav.status=1>展示 <#else> 不展示</#if></td>
-				<td>${courseNav.sort!}</td>
-				<td>${courseNav.gmtCreate?string("yyyy-MM-dd HH:mm:ss")}</td>
-				<td>${courseNav.gmtModified?string("yyyy-MM-dd HH:mm:ss")}</td>
+				<td>${courseType.courseName!}</td>
+				<td>${courseType.navName!}</td>
+				<td><#if courseType.type=1>平台定义 <#else>自定义</#if></td>
+				<td>${courseType.sort!}</td>
+				<td>${courseType.gmtCreate?string("yyyy-MM-dd HH:mm:ss")}</td>
+				<td>${courseType.gmtModified?string("yyyy-MM-dd HH:mm:ss")}</td>
+				<td><#if courseType.status=1>展示 <#else> 不展示</#if></td>
 				<td>
-				 <a  target="navTab" href="coueseNav/toAdd?courseNavId=${courseNav.courseNavId}"><span style="color:blue">修改</span></a>
+				 <a  target="navTab" href="coueseType/toAdd?courseTypeId=${courseType.courseTypeId}"><span style="color:blue">修改</span></a>
 				</td>
 			</tr>
 		</#list>	

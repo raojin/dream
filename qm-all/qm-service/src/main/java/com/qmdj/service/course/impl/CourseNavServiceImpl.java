@@ -130,4 +130,28 @@ public class CourseNavServiceImpl implements CourseNavService{
 		return re;
 	}
 
+	@Override
+	public Result<List<CourseNavBO>> queryByCondition(CourseNavBO courseNavBO) {
+		Result<List<CourseNavBO>> re=new Result<List<CourseNavBO>>();
+		CourseNavDO courseNavDO= CourseNavBeanUtil.courseNavBOToDO(courseNavBO);
+		if(courseNavBO==null){
+			courseNavDO=new CourseNavDO();
+		}
+		try {
+			List<CourseNavDO> courseNavList= courseNavDAO.findByCondition(courseNavDO);
+			
+			List<CourseNavBO> list=new ArrayList<>();
+			for(CourseNavDO navDO:courseNavList){
+				list.add(CourseNavBeanUtil.qmdjCourseNavDOToBO(navDO));
+			}
+			re.setDate(list);
+			re.setSuccess(true);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+			e.printStackTrace();
+		}
+		return re;
+	}
+
 }
