@@ -1,4 +1,4 @@
-package com.qmdj.service.coursetype.impl;
+package com.qmdj.service.course.impl;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.bo.util.UserBeanUtil;
 import com.qmdj.service.common.ReCode;
 import com.qmdj.service.common.Result;
-import com.qmdj.service.coursetype.CourseTypeService;
+import com.qmdj.service.course.CourseTypeService;
 
 
 @Service

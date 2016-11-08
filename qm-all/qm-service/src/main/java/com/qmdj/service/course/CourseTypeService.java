@@ -1,4 +1,4 @@
-package com.qmdj.service.coursetype;
+package com.qmdj.service.course;
 
 import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.service.common.Result;
