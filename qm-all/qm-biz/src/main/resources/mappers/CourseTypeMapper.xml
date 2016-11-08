@@ -31,7 +31,7 @@
 		DELETE FROM qmdj_course_type WHERE id = #{id}
 	</delete>
 	
-	<update id="update" parameterMap="CourseTypeDO">
+	<update id="updateById" parameterMap="CourseTypeDO">
         UPDATE qmdj_course_type SET 
 	        	<if test="courseNavid!=null">
 					course_navId = #{courseNavid},
@@ -52,7 +52,7 @@
         WHERE id = #{id}        		
 	</update>
 	
-	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_course_type
@@ -91,6 +91,30 @@
 			</if>
 			<if test="sort!=null">
 				and sort = #{sort}
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="queryForPage" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.CourseTypeQO">
+		SELECT * from  qmdj_course_type
+		<include refid="pageQueryCondition" />
+
+		<if test="begin != null and pageSize != null">
+			LIMIT #{begin}, #{pageSize}
+		</if>
+	</select>
+
+	<select id="queryForPageCount" resultType="java.lang.Integer" parameterType="com.qmdj.biz.pogo.qo.CourseTypeQO">
+		SELECT
+		count(id)
+		FROM qmdj_course_type
+		<include refid="pageQueryCondition" />
+	</select>
+
+	<sql id="pageQueryCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="name!=null">
+				and name = #{name}
 			</if>
 		</trim>
 	</sql>

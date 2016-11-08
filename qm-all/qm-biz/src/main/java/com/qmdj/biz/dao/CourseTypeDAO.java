@@ -1,6 +1,9 @@
 package com.qmdj.biz.dao;
 
+import java.util.List;
+
 import com.qmdj.biz.domin.CourseTypeDO;
+import com.qmdj.biz.pogo.qo.CourseTypeQO;
 
 /**
  *  DAO接口
@@ -61,4 +64,18 @@ public interface CourseTypeDAO{
      * </PRE>
      */
     CourseTypeDO findById(Long id);
+    
+    
+    /**
+     * author chenjin 
+     * 分页查询
+     * */
+    List<CourseTypeDO> queryForPage(CourseTypeQO queryQO);
+    
+    
+    /**
+     * author chenjin 
+     * 分页查询条数
+     * */
+    int queryForPageCount(CourseTypeQO queryQO);
 }
