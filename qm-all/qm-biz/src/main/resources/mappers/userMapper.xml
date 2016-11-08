@@ -43,6 +43,91 @@
 			now(), now(), #{loginName}, #{password}, #{identity}, #{name}, #{sex}, #{linkPhone}, #{introduce}, #{image}, 1, #{email}, #{age}
 		)
 	</insert>
+	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.UserDO" >
+    insert into qmdj_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="linkPhone != null" >
+        link_phone,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="linkPhone != null" >
+        #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
 	
 	<update id="update" parameterMap="UserDO">
         UPDATE qmdj_user SET 
@@ -92,7 +177,7 @@
       </select>
     
        <select id="login" resultMap="BaseResultMap">
-       select * from qmdj_user where login_name=#{loginName} and password=#{password}
+       select * from qmdj_user where login_name=#{loginName} and password=#{password} and status = 1
       </select>
         
        <select id="findByCondition" resultMap="BaseResultMap" parameterMap="UserDO">

@@ -50,5 +50,13 @@ public interface OrganizationService {
 	 * */
 	public Result<Boolean> updateOrganization(OrganizationBO organizationBO);
 	
+	/**
+	 * @param  根据userId查询
+	 * @return Result<Boolean>
+	 * @author xw
+	 * @data   2016年11月8日17:11:07
+	 * */
+	public Result<OrganizationBO> selectOrganizationByUserid(Long userId);
+	
 		
 }

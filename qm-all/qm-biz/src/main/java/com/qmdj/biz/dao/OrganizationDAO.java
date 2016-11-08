@@ -28,6 +28,9 @@ public interface OrganizationDAO {
     /*tags 1:精品, 2:普通*/
     List<OrganizationDO> findOrganizationBytags(Integer tags);
     
+    //根据userid查询
+    OrganizationDO selectOrgByUserid(long userId);
+    
     
     
 }

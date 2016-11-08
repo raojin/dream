@@ -22,7 +22,7 @@ public class CourseBeanUtil {
         targetObj.setId(srcObj.getCourseId());//id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//gmtCreate
         targetObj.setGmtModified(srcObj.getGmtModified());//gmtModified
-        targetObj.setParentId(srcObj.getParentid());//家教发布的就是userId  机构发布的就是orgId  
+        targetObj.setParentid(srcObj.getParentid());//家教发布的就是userId  机构发布的就是orgId  
         targetObj.setCourseIds(srcObj.getCourseIds());//辅导课程（courseId,以,号隔开）当机构发布套餐的时候ids为多个
         targetObj.setCourseType(srcObj.getCourseType());//课程类型 com.qmdj.biz.domin.CourseTypeDO
         targetObj.setTeachingWay(srcObj.getTeachingWay());//授课方式 1:老师上门,2:学生上门
@@ -45,7 +45,7 @@ public class CourseBeanUtil {
         targetObj.setCourseId(srcObj.getId());//id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//gmtCreate
         targetObj.setGmtModified(srcObj.getGmtModified());//gmtModified
-        targetObj.setParentid(srcObj.getParentId());//家教发布的就是userId  机构发布的就是orgId  
+        targetObj.setParentid(srcObj.getParentid());//家教发布的就是userId  机构发布的就是orgId  
         targetObj.setCourseIds(srcObj.getCourseIds());//辅导课程（courseId,以,号隔开）当机构发布套餐的时候ids为多个
         targetObj.setCourseType(srcObj.getCourseType());//课程类型 com.qmdj.biz.domin.CourseTypeDO
         targetObj.setTeachingWay(srcObj.getTeachingWay());//授课方式 1:老师上门,2:学生上门

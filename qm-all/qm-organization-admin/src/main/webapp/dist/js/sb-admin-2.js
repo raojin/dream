@@ -48,8 +48,10 @@ $(function() {
 
 
 $("#loginBtn").click(function(){
-	{
 		$("#loginForm").submit();
-	};
 });
 
+
+$("#courseAddBtn").click(function(){
+	$("#courseAddForm").submit();
+});

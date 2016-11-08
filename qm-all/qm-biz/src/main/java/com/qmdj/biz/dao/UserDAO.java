@@ -28,5 +28,7 @@ public interface UserDAO {
 	public List<UserDO> findOrgUserForPage(UserQO queryQO);
 	
 	public int findOrgUserForPageCount(UserQO queryQO);
+	
+	int insertSelective(UserDO userDO);
 
 }

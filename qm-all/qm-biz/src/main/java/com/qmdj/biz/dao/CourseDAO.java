@@ -1,6 +1,9 @@
 package com.qmdj.biz.dao;
 
+import java.util.List;
+
 import com.qmdj.biz.domin.CourseDO;
+import com.qmdj.biz.pogo.qo.CourseQO;
 
 /**
  *  DAO接口
@@ -22,6 +25,20 @@ public interface CourseDAO{
      * </PRE>
      */
     int insert(CourseDO record);
+    
+    /**
+     * 
+     * 方法insert的功能描述：新增
+     * 
+     * @param record
+     * @return int
+     * <PRE>
+     * author chenjin  
+     * Date 2016年11月7日16:21:41
+     * </PRE>
+     */
+    int insertSelective(CourseDO record);
+
 
     /**
      * 
@@ -47,7 +64,7 @@ public interface CourseDAO{
      * Date 2016年11月04日
      * </PRE>
      */
-    int updateById(CourseDO record);
+    int update(CourseDO record);
 
     /**
      * 
@@ -61,4 +78,32 @@ public interface CourseDAO{
      * </PRE>
      */
     CourseDO findById(Long id);
+    
+    
+    /**
+     * 
+     * 查询总条数
+     * 
+     * @param id
+     * @return  List<CourseDO>
+     * <PRE>
+     * author xw  
+     * Date 2016年11月04日
+     * </PRE>
+     */
+    int queryForPageCount(CourseQO courseQO);
+    
+    /**
+     * 
+     * 分页查询
+     * 
+     * @param id
+     * @return  List<CourseDO>
+     * <PRE>
+     * author xw  
+     * Date 2016年11月04日
+     * </PRE>
+     */
+    List<CourseQO> queryForPage(CourseQO courseQO);
+    
 }

@@ -262,5 +262,12 @@
 				and tags = #{tags}
 		</if>
 	</select>
+	
+	
+	<select id="selectOrgByUserid" resultMap="organizationMappering" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_organization where  user_id=#{userId} and is_del=1 
+	</select>
   
 </mapper>

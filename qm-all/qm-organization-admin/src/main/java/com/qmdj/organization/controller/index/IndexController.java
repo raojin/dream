@@ -34,6 +34,14 @@ public class IndexController{
 		return "public/login.html";
 	}
 	
+	@RequestMapping("/adminIndex")
+	public String index(Model model,HttpServletRequest request,HttpServletResponse response){
+		UserBO attribute = (UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
+		Result<UserBO> re=new Result<UserBO>();
+		re.setDate(attribute);
+		model.addAttribute(Constant.BEAN, re);
+		return "public/index2.html";
+	}
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String loginGet(Model model,HttpServletRequest request,HttpServletResponse response){
 		return "public/login.html";
@@ -46,7 +54,7 @@ public class IndexController{
 			if(re.isSuccess()){
 				request.getSession().setAttribute(Constant.SESSION_BEAN, re.getDate());
 				model.addAttribute(Constant.BEAN, re);
-				return "public/index1.html";
+				return "public/index2.html";
 				
 			}else{
 				model.addAttribute(Constant.ERROR, re.getMessage());

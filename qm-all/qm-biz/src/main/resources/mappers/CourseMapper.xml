@@ -34,6 +34,98 @@
 		)
 	</insert>
 	
+	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.CourseDO" >
+    insert into qmdj_course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="courseIds != null" >
+        course_ids,
+      </if>
+      <if test="courseType != null" >
+        course_type,
+      </if>
+      <if test="teachingWay != null" >
+        teaching_way,
+      </if>
+      <if test="teachingTimes != null" >
+        teaching_times,
+      </if>
+      <if test="teachingAddre != null" >
+        teaching_addre,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="timeType != null" >
+        time_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="courseIds != null" >
+        #{courseIds,jdbcType=VARCHAR},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=INTEGER},
+      </if>
+      <if test="teachingWay != null" >
+        #{teachingWay,jdbcType=INTEGER},
+      </if>
+      <if test="teachingTimes != null" >
+        #{teachingTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingAddre != null" >
+        #{teachingAddre,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="timeType != null" >
+        #{timeType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+	
 	<delete id="deleteById" parameterType="java.lang.Long">
 		DELETE FROM qmdj_course WHERE id = #{id}
 	</delete>
@@ -140,6 +232,23 @@
 			</if>
 			<if test="introduce!=null">
 				and introduce = #{introduce}
+			</if>
+		</trim>
+	</sql>
+	
+	
+	
+	<select id="queryForPageCount" resultType="java.lang.Integer" parameterType="com.qmdj.biz.pogo.qo.CourseQO">
+		SELECT
+		count(id)
+		FROM qmdj_course
+		<include refid="pageQueryCondition" />
+	</select>
+
+	<sql id="pageQueryCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="name!=null">
+				and name = #{name}
 			</if>
 		</trim>
 	</sql>

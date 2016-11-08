@@ -140,5 +140,26 @@ public class OrganizationServiceImpl implements OrganizationService {
 		}
 		return re;
 	}
+
+	@Override
+	public Result<OrganizationBO> selectOrganizationByUserid(Long userId) {
+		Result<OrganizationBO> re=new Result<OrganizationBO>();
+		if(userId == null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+		   return re;
+		}
+		try {
+			OrganizationDO selectOrgByUserid = organizationDAO.selectOrgByUserid(userId);
+			re.setDate(OrganizationBeanUtil.qmdjOrganizationDOToBO(selectOrgByUserid));
+			re.setSuccess(true);
+		} catch (Exception e) {
+				re.setCode(ReCode.SYS_REEOR.getCode());
+				re.setMessage(ReCode.SYS_REEOR.getMessage());
+				e.printStackTrace();
+			}
+	
+		return re;
+	}
 	
 }

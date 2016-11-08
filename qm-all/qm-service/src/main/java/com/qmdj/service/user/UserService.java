@@ -15,5 +15,14 @@ public interface UserService {
 	 * @author chenjin
 	 * */
 	public Result<UserBO> login(String logName,String password);
+	
+	/**
+	 * @param  logName password
+	 * @return Result<UserBO>
+	 * @author xw
+	 * */
+	public Result<Integer> addUser(UserBO userBO);
+	
+	
 
 }

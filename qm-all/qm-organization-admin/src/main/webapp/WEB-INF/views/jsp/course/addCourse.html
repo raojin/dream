@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>后台管理系统Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+ <div id="wrapper" class="col-lg-12">
+		<div class="nav-panel-box fl col-lg-3">
+			<iframe src="nav.html" frameborder="no" width="100%" height="100%"></iframe>
+		</div>
+	      <div id="page-wrapper" class="col-lg-9">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Forms</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Basic Form Elements
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="courseAddForm" role="form" method="post" action="addCourse">
+                                        <div class="form-group col-lg-6">
+                                            <label>辅导课程</label>
+                                            <input class="form-control" name="courseIds">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>课程类型</label>
+                                            <input class="form-control" name="courseType">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>授课方式</label>
+                                            <input class="form-control" name="teachingWay">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>授课区域（家教教师时不能为空）</label>
+                                            <input class="form-control" name="teachingAddre">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>价钱</label>
+                                            <input class="form-control" name="price">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                           <!--  <label>时间类型</label>
+                                            <input class="form-control" name="timeType"> -->
+                                        <div  id="form-teachingTimes"  class="form-group col-lg-6">
+                                            <label>授课时间</label>
+                                            <input class="form-control" name="teachingTimes">
+                                        </div>
+                                           <div id="form-timeType" class="form-group col-lg-6">
+                                                <label for="disabledSelect">时间类型</label>
+                                                <select id="disabledSelect" class="form-control"  name="timeType">
+                                                    <option value="1">小时</option>
+                                                    <option value="2">天</option>
+                                                    <option value="3">周</option>
+                                                    <option value="4">月</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>排序（值越大越靠前）</label>
+                                            <input class="form-control" name="sort">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>标题</label>
+                                            <input class="form-control" name="title">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>课程介绍（目录）</label>
+                                             <textarea class="form-control" rows="3"  name="introduce"></textarea>
+                                        </div>
+                                         <div class="form-group col-lg-6">
+                                            <label>状态</label>
+                                            <div class="form-control">
+                                             <label class="radio-inline">
+                                                <input type="radio" name="status" id="optionsRadiosInline1" value="1" checked>正常
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="status" id="optionsRadiosInline2" value="2">隐藏
+                                            </label>
+                                             <label class="radio-inline">
+                                                <input type="radio" name="status" id="optionsRadiosInline3" value="3">已经预约
+                                            </label>
+                                            </div>
+                                           <!--  <input class="form-control" name="status"> -->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                     <div class="form-group col-lg-6">
+                        <button id="courseAddBtn" type="button" class="btn btn-success">Submit Button</button>
+                    	<button type="reset" class="btn btn-default">Reset Button</button>
+                     </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+</div>
+
+
+	  <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="vendor/raphael/raphael.min.js"></script>
+    <script src="vendor/morrisjs/morris.min.js"></script>
+    <script src="data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+</body>
+</html>

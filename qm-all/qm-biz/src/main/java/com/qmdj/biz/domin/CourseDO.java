@@ -16,7 +16,7 @@ public class CourseDO extends BaseDO implements Serializable{
 	 * 
 	 * parent
 	 * */
-	private Long parentId;
+	private Long parentid;
 	
 	/**
 	 * 
@@ -147,12 +147,14 @@ public class CourseDO extends BaseDO implements Serializable{
 		this.status = status;
 	}
 
-	public Long getParentId() {
-		return parentId;
+
+
+	public Long getParentid() {
+		return parentid;
 	}
 
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
+	public void setParentid(Long parentid) {
+		this.parentid = parentid;
 	}
 
 	public Integer getTeachingWay() {
