@@ -17,12 +17,11 @@ import com.qmdj.service.bo.util.CourseBeanUtil;
 import com.qmdj.service.common.ReCode;
 import com.qmdj.service.common.Result;
 import com.qmdj.service.course.CourseService;
-import com.qmdj.service.user.impl.UserServiceImpl;
 
 @Service
 public class CourseServiceImpl implements CourseService{
 	
-	private Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+	private Logger log = LoggerFactory.getLogger(CourseServiceImpl.class);
 	@Autowired
 	CourseDAO courseDAO;
 
