@@ -41,13 +41,13 @@ public class CourseTypeController {
 	
 	@RequestMapping("/toAdd")
 	public String tologin(Model model,@RequestParam(value = "courseTypeId",required=false) Long courseTypeId){
+		Result<List<CourseNavBO>> navRe=courseNavService.queryByCondition(null);
+		model.addAttribute("courseNavList", navRe.getDate());
 		if(courseTypeId!=null){
 			Result<CourseTypeBO> re=courseTypeService.queryCourseTypeById(courseTypeId);
 			model.addAttribute(Constant.BEAN, re.getDate());
 			return "courseType/courseTypeUpdaye.html";
 		}
-		Result<List<CourseNavBO>> navRe=courseNavService.queryByCondition(null);
-		model.addAttribute("courseNavList", navRe.getDate());
 		return "courseType/courseTypeAdd.html";
 	}
 	

@@ -13,7 +13,7 @@
 		<table class="searchContent">
 			<tr>
 				<td>
-					课程类型名称：<input type="text" name="courseName"/>
+					课程类型名称：<input type="text" name="courseTypeName"/>
 				</td>
 				
 			</tr>
@@ -49,9 +49,9 @@
 		<tbody>
 		 <#list BeanList.data as courseType> 
 			<tr target="sid_user" rel="1">
-				<td>${courseType.courseName!}</td>
-				<td>${courseType.navName!}</td>
-				<td><#if courseType.type=1>平台定义 <#else>自定义</#if></td>
+				<td>${courseType.courseTypeName!}</td>
+				<td>${courseType.courseNavName!}</td>
+				<td><#if courseType.type=1>自定义 <#else>平台添加</#if></td>
 				<td>${courseType.sort!}</td>
 				<td>${courseType.gmtCreate?string("yyyy-MM-dd HH:mm:ss")}</td>
 				<td>${courseType.gmtModified?string("yyyy-MM-dd HH:mm:ss")}</td>
