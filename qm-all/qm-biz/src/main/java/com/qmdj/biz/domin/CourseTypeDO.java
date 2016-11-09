@@ -2,8 +2,6 @@ package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-
 /**
 *@Description: 课程
 *@author chenjin
@@ -15,17 +13,21 @@ public class CourseTypeDO extends BaseDO  implements Serializable {
 	
 	/**
 	 * 
-	 * 课程类型 com.qmdj.domin.course.CousesTypeDO
+	 * 课程导航 
 	 * */
-	@NotNull
-	private Long courseTypeId;
+	private Long courseNavId;
 	
 	/**
 	 * 
-	 * 课程名
+	 * 导航名称
 	 * */
-	@NotNull
-	private String courseName;
+	private String courseNavName;
+	
+	/**
+	 * 
+	 * 课程类型名
+	 * */
+	private String courseTypeName;
 	
 	
 	/**
@@ -48,20 +50,12 @@ public class CourseTypeDO extends BaseDO  implements Serializable {
 	private Integer sort;
 
 
-	public Long getCourseTypeId() {
-		return courseTypeId;
+	public String getCourseTypeName() {
+		return courseTypeName;
 	}
 
-	public void setCourseTypeId(Long courseTypeId) {
-		this.courseTypeId = courseTypeId;
-	}
-
-	public String getCourseName() {
-		return courseName;
-	}
-
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+	public void setCourseTypeName(String courseTypeName) {
+		this.courseTypeName = courseTypeName;
 	}
 
 	public Integer getType() {
@@ -86,6 +80,22 @@ public class CourseTypeDO extends BaseDO  implements Serializable {
 
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+
+	public Long getCourseNavId() {
+		return courseNavId;
+	}
+
+	public void setCourseNavId(Long courseNavId) {
+		this.courseNavId = courseNavId;
+	}
+
+	public String getCourseNavName() {
+		return courseNavName;
+	}
+
+	public void setCourseNavName(String courseNavName) {
+		this.courseNavName = courseNavName;
 	}
 
 }

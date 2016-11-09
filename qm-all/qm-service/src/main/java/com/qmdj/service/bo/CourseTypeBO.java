@@ -26,14 +26,14 @@ public class CourseTypeBO {
     
     /**
      * 
-     * 可惜类型名称
+     * 课程导航名称
      * */
-    private String navName;
+    private String courseNavName;
     
     /**
      * 课程类型名称
      */
-    private String courseName;
+    private String courseTypeName;
     /**
      * 类型 1:自定义 ,2 平台添加
      */
@@ -46,8 +46,17 @@ public class CourseTypeBO {
      * 排序，值越大越靠前，自定义类型默认为0
      */
     private Integer sort;
+    
 
-    public CourseTypeBO() {
+    public String getCourseNavName() {
+		return courseNavName;
+	}
+
+	public void setCourseNavName(String courseNavName) {
+		this.courseNavName = courseNavName;
+	}
+
+	public CourseTypeBO() {
     }
 
     public java.util.Date getGmtCreate(){
@@ -63,13 +72,6 @@ public class CourseTypeBO {
 
     public void setGmtModified(java.util.Date gmtModified){
         this.gmtModified = gmtModified;
-    }
-    public String getCourseName(){
-        return courseName;
-    }
-
-    public void setCourseName(String courseName){
-        this.courseName = courseName;
     }
     public Integer getType(){
         return type;
@@ -109,11 +111,11 @@ public class CourseTypeBO {
 		this.courseNavId = courseNavId;
 	}
 
-	public String getNavName() {
-		return navName;
+	public String getCourseTypeName() {
+		return courseTypeName;
 	}
 
-	public void setNavName(String navName) {
-		this.navName = navName;
+	public void setCourseTypeName(String courseTypeName) {
+		this.courseTypeName = courseTypeName;
 	}
 }

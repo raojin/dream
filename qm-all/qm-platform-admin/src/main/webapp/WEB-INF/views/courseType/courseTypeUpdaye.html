@@ -2,14 +2,13 @@
 	
 	<form method="post" action="coueseType/updateCousesType"   class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
 		<div class="pageFormContent" layoutH="56">
-	  <input type="hidden"  name="type" value="2" />
 	  <input type="hidden"  name="courseNavId" value="${Bean.courseNavId}" />
 			<p>
 				<label>课程导航 ：</label>
 				<select class="combox" name="courseNavId" class="required" >
 					<option value="0">请选择....</option>
 					<#list courseNavList as courseNav> 
-					<option value="${courseNav.courseNavId}">${courseNav.name}</option>
+					<option value="${courseNav.courseNavId}" <#if Bean.courseNavId=courseNav.courseNavId > selected= "selected"</#if>  >${courseNav.name}</option>
 					</#list>
 				</select>
 			</p>

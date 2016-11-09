@@ -6,15 +6,14 @@ public class CourseTypeQO  extends Query {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String name;
+	private String courseTypeName;
 
-	public String getName() {
-		return name;
+	public String getCourseTypeName() {
+		return courseTypeName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCourseTypeName(String courseTypeName) {
+		this.courseTypeName = courseTypeName;
 	}
-	
 
 }

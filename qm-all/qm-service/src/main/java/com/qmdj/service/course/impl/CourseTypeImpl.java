@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qmdj.biz.dao.CourseNavDAO;
 import com.qmdj.biz.dao.CourseTypeDAO;
+import com.qmdj.biz.domin.CourseNavDO;
 import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.biz.pogo.qo.CourseTypeQO;
 import com.qmdj.service.bo.CourseTypeBO;
@@ -20,7 +22,10 @@ import com.qmdj.service.course.CourseTypeService;
 public class CourseTypeImpl implements CourseTypeService{
 	
 	@Autowired
-	CourseTypeDAO courseTypeDAO;
+	private CourseTypeDAO courseTypeDAO;
+	
+	@Autowired
+	private CourseNavDAO courseNavDAO;
 
 	@Override
 	public Result<Boolean> inserCourseType(CourseTypeBO courseType) {
@@ -31,14 +36,24 @@ public class CourseTypeImpl implements CourseTypeService{
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
 		}
+		if(courseType.getCourseNavId()==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
 		
 		try {
+			CourseNavDO courseNavDO= courseNavDAO.findById(courseType.getCourseNavId());
+			if(courseNavDO!=null){
+				courseTypeDO.setCourseNavName(courseNavDO.getName());
+			}
 		 courseTypeDAO.insertSelective(courseTypeDO);
 		 re.setSuccess(true);
 		 re.setDate(true);
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		    e.printStackTrace();
 		}
 		return re;
 	}
@@ -52,7 +67,16 @@ public class CourseTypeImpl implements CourseTypeService{
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
 		}
+		if(courseTypeBO.getCourseNavId()==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
 		try {
+			CourseNavDO courseNavDO= courseNavDAO.findById(courseTypeBO.getCourseNavId());
+			if(courseNavDO!=null){
+				courseTypeDO.setCourseNavName(courseNavDO.getName());
+			}
 			courseTypeDAO.updateById(courseTypeDO);
 			re.setSuccess(true);
 			re.setDate(true);

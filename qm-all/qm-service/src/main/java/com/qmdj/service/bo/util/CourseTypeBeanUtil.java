@@ -22,8 +22,9 @@ public class CourseTypeBeanUtil {
         targetObj.setId(srcObj.getCourseTypeId());//主键Id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间
         targetObj.setGmtModified(srcObj.getGmtModified());//修改时间
-        targetObj.setCourseTypeId(srcObj.getCourseNavId());//课程导航Id
-        targetObj.setCourseName(srcObj.getCourseName());//课程类型名称
+        targetObj.setCourseNavId(srcObj.getCourseNavId());//课程导航Id
+        targetObj.setCourseNavName(srcObj.getCourseNavName());//课程导航名称
+        targetObj.setCourseTypeName(srcObj.getCourseTypeName());//课程类型名称
         targetObj.setType(srcObj.getType());//类型 1:自定义 ,2 平台添加
         targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏 自定义默认为2
         targetObj.setSort(srcObj.getSort());//排序，值越大越靠前，自定义类型默认为0
@@ -38,8 +39,9 @@ public class CourseTypeBeanUtil {
         targetObj.setCourseTypeId(srcObj.getId());//主键Id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//创建时间
         targetObj.setGmtModified(srcObj.getGmtModified());//修改时间
-        targetObj.setCourseNavId(srcObj.getCourseTypeId());//课程导航Id
-        targetObj.setCourseName(srcObj.getCourseName());//课程类型名称
+        targetObj.setCourseNavId(srcObj.getCourseNavId());//课程导航Id
+        targetObj.setCourseTypeName(srcObj.getCourseTypeName());//课程类型名称
+        targetObj.setCourseNavName(srcObj.getCourseNavName());//课程导航名称
         targetObj.setType(srcObj.getType());//类型 1:自定义 ,2 平台添加
         targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏 自定义默认为2
         targetObj.setSort(srcObj.getSort());//排序，值越大越靠前，自定义类型默认为0
