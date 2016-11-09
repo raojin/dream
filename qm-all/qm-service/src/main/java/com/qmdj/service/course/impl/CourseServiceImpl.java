@@ -44,8 +44,7 @@ public class CourseServiceImpl implements CourseService{
 			re.setSuccess(true);
 			re.setDate(insertSelective);
 		}
-		log.info("返回参数：{}",Constant.GSON.toJson(re));
-		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 
@@ -54,7 +53,7 @@ public class CourseServiceImpl implements CourseService{
 		log.info("请求入参：course：{}",Constant.GSON.toJson(course));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(course==null){
+		if(course==null || course.getStatus() == 0){
 			//缺少参数
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
@@ -74,28 +73,33 @@ public class CourseServiceImpl implements CourseService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}",Constant.GSON.toJson(re));
-		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 
 	@Override
-	public Result<Integer> delCourse(CourseBO course) {
+	public Result<Integer> delCourse(long course) {
 		log.info("请求入参：course：{}",Constant.GSON.toJson(course));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(course==null||course.getCourseId()==null){
+		if(course<=0){
 			//缺少参数
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
 			return re;
 		}
-		
+		CourseDO findById = courseDAO.getById(course);
+		if(findById == null){
+			//对象不存在
+			re.setCode(ReCode.FIND_ERROR.getCode());
+			re.setMessage(ReCode.FIND_ERROR.getMessage());
+			log.info("对象不存在，请求耗时：{}",System.currentTimeMillis()-startTime);
+			return re;
+		}
 		try {
-			CourseDO courseBOToDO = CourseBeanUtil.courseBOToDO(course);
-			course.setStatus(0);
-			int update = courseDAO.update(courseBOToDO);
+			findById.setStatus(100);
+			int update = courseDAO.update(findById);
 			if(update==1){
 				re.setSuccess(true);
 				re.setDate(update);
@@ -104,9 +108,7 @@ public class CourseServiceImpl implements CourseService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		
-		log.info("返回参数：{}",Constant.GSON.toJson(re));
-		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 
@@ -129,8 +131,7 @@ public class CourseServiceImpl implements CourseService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}",Constant.GSON.toJson(re));
-		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 

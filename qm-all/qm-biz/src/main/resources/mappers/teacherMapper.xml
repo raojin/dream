@@ -32,6 +32,91 @@
 			#{gmtCreate}, #{gmtModified}, #{userid}, #{identity}, #{organizationid}, #{ispublic}, #{code}, #{education}, #{name}, #{school}, #{professional}, #{images}, #{status}
 		)
 	</insert>
+	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.TeacherDO" >
+    insert into qmdj_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="organizationid != null" >
+        organizationId,
+      </if>
+      <if test="ispublic != null" >
+        isPublic,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="professional != null" >
+        professional,
+      </if>
+      <if test="images != null" >
+        images,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="organizationid != null" >
+        #{organizationid,jdbcType=INTEGER},
+      </if>
+      <if test="ispublic != null" >
+        #{ispublic,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null" >
+        #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
 	
 	<delete id="deleteById" parameterType="java.lang.Long">
 		DELETE FROM qmdj_teacher WHERE id = #{id}

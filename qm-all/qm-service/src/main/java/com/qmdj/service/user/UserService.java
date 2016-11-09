@@ -17,11 +17,28 @@ public interface UserService {
 	public Result<UserBO> login(String logName,String password);
 	
 	/**
-	 * @param  logName password
+	 * 添加user
+	 * @param  userBO
 	 * @return Result<UserBO>
 	 * @author xw
 	 * */
 	public Result<Integer> addUser(UserBO userBO);
+	
+	/**
+	 * 更新user
+	 * @param  userBO
+	 * @return Result<UserBO>
+	 * @author xw
+	 * */
+	public Result<Integer> updateUser(UserBO userBO);
+	
+	/**
+	 * 删除user
+	 * @param  userBO
+	 * @return Result<UserBO>
+	 * @author xw
+	 * */
+	public Result<Integer> delUser(long userBOId);
 	
 	
 

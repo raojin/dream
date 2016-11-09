@@ -22,6 +22,12 @@ public interface TeacherDAO{
      * </PRE>
      */
     int insert(TeacherDO record);
+    /**
+     * 添加teacher
+     * @param record
+     * @return
+     */
+    int insertSelective(TeacherDO record);
 
     /**
      * 

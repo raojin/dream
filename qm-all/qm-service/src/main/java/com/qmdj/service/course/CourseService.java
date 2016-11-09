@@ -31,7 +31,7 @@ public interface CourseService {
 	 * @param course
 	 * @return
 	 */
-	Result<Integer> delCourse(CourseBO course);
+	Result<Integer> delCourse(long courseId);
 	
 	/**
 	 * 分页查询

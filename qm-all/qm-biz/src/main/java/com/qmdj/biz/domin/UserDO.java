@@ -2,10 +2,6 @@ package com.qmdj.biz.domin;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 /**
 *@Description: 用户基本信息
 *@author chenjin
@@ -25,14 +21,12 @@ public class UserDO extends BaseDO implements Serializable{
 	 *
 	 * 登陆账号
 	 * */
-    @NotEmpty
 	private String loginName;
 	
 	/**
 	 * 
      *密码
      **/
-    @NotEmpty
 	private String password;
 	
 	/**

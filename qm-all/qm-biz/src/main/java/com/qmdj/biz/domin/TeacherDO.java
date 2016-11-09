@@ -73,7 +73,7 @@ public class TeacherDO extends BaseDO implements Serializable{
      
  	/**
  	 * 
- 	 * 状态 1:审核通过 2审核中 3:审核不通过
+ 	 * 状态 1:审核通过 2审核中 3:审核不通过  100 ：删除
  	 */
  	private Integer status;
 

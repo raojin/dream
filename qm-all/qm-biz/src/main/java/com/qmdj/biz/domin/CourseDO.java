@@ -67,7 +67,7 @@ public class CourseDO extends BaseDO implements Serializable{
      
      /**
       * 
-      * 1:正常（显示），2:隐藏 ，
+      *100：删除  1:正常（显示），2:隐藏 ，
       * */
      private Integer status;
      

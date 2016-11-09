@@ -53,8 +53,7 @@ public class UserServiceImpl implements UserService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}",Constant.GSON.toJson(re));
-		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 
@@ -72,7 +71,32 @@ public class UserServiceImpl implements UserService{
 		try {
 			UserDO userBOToDO = UserBeanUtil.userBOToDO(userBO);
 			userBOToDO.setIdentity(4);//默认为机构教师
+			userBOToDO.setStatus(1);//状态为正常
 			int insertSelective = userDAO.insertSelective(userBOToDO);
+			re.setSuccess(true);
+			re.setDate(insertSelective);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		return re;
+	}
+
+	@Override
+	public Result<Integer> updateUser(UserBO userBO) {
+		log.info("请求入参：{}",Constant.GSON.toJson(userBO));
+		long startTime = System.currentTimeMillis();
+		Result<Integer> re = new Result<Integer>();
+		if(userBO==null || userBO.getUserId()==null ||userBO.getStatus() == 2){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			return re;
+		}
+		try {
+			UserDO userBOToDO = UserBeanUtil.userBOToDO(userBO);
+			int insertSelective = userDAO.update(userBOToDO);
 			re.setSuccess(true);
 			re.setDate(insertSelective);
 		} catch (Exception e) {
@@ -81,6 +105,38 @@ public class UserServiceImpl implements UserService{
 		}
 		log.info("返回参数：{}",Constant.GSON.toJson(re));
 		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		return re;
+	}
+
+	@Override
+	public Result<Integer> delUser(long userBOId) {
+		log.info("请求入参：{}",Constant.GSON.toJson(userBOId));
+		long startTime = System.currentTimeMillis();
+		Result<Integer> re = new Result<Integer>();
+		if(userBOId<=0){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			return re;
+		}
+		UserDO queryUserByUserId = userDAO.queryUserByUserId(userBOId);
+		if(queryUserByUserId ==null){
+			//对象不存在
+			re.setCode(ReCode.FIND_ERROR.getCode());
+			re.setMessage(ReCode.FIND_ERROR.getMessage());
+			log.info("对象不存在，请求耗时：{}",System.currentTimeMillis()-startTime);
+			return re;
+		}
+		try {
+			queryUserByUserId.setStatus(2);//删除
+			int insertSelective = userDAO.update(queryUserByUserId);
+			re.setSuccess(true);
+			re.setDate(insertSelective);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 

@@ -77,7 +77,7 @@ public interface CourseDAO{
      * Date 2016年11月04日
      * </PRE>
      */
-    CourseDO findById(Long id);
+    CourseDO getById(Long id);
     
     
     /**
