@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,7 +67,7 @@ public class IndexController{
 	
 	
 	@RequestMapping("/index")
-	public String index(Model model,HttpServletRequest request ,@Valid UserDO user){
+	public String index(Model model,HttpServletRequest request , UserDO user){
 		
 		Result<UserBO> re=userService.login(user.getLoginName(), user.getPassword());
 		if(re!=null){
