@@ -52,7 +52,7 @@
     </bean> 
 	
 	<!-- FreeMarker视图解析 。 -->
-	<bean id="freemarkerConfiguration"
+	<!-- <bean id="freemarkerConfiguration"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="location" value="classpath:freemarker.properties" />
 	</bean>
@@ -82,5 +82,13 @@
 		<property name="order" value="2" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 	</bean>
-
+ -->
+    <!-- 配置JSP视图 -->
+     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/jsp/"/>
+        <property name="suffix" value=".jsp"/>      
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="order" value="1"/>
+     </bean>
 </beans>
