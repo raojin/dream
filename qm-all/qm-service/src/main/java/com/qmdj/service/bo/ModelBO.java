@@ -10,7 +10,7 @@ public class ModelBO {
     /**
      * id
      */
-    private Integer qmdjModelId;
+    private Integer modelId;
     /**
      * gmtCreate
      */
@@ -36,7 +36,7 @@ public class ModelBO {
      */
     private Integer moduleType;
     /**
-     * 图片链接目标地址
+     * 链接目标地址
      */
     private String linkUrl;
     /**
@@ -54,23 +54,27 @@ public class ModelBO {
     /**
      * 开始时间
      */
-    private java.util.Date startTime;
+    private String startTime;
     /**
      * 结束时间
      */
-    private java.util.Date endTime;
+    private String endTime;
 
     public ModelBO() {
     }
 
-    public Integer getQmdjModelId(){
-        return qmdjModelId;
-    }
+   
+    public Integer getModelId() {
+		return modelId;
+	}
 
-    public void setQmdjModelId(Integer qmdjModelId){
-        this.qmdjModelId = qmdjModelId;
-    }
-    public java.util.Date getGmtCreate(){
+
+	public void setModelId(Integer modelId) {
+		this.modelId = modelId;
+	}
+
+
+	public java.util.Date getGmtCreate(){
         return gmtCreate;
     }
 
@@ -140,18 +144,25 @@ public class ModelBO {
     public void setStatus(Integer status){
         this.status = status;
     }
-    public java.util.Date getStartTime(){
-        return startTime;
-    }
 
-    public void setStartTime(java.util.Date startTime){
-        this.startTime = startTime;
-    }
-    public java.util.Date getEndTime(){
-        return endTime;
-    }
 
-    public void setEndTime(java.util.Date endTime){
-        this.endTime = endTime;
-    }
+	public String getStartTime() {
+		return startTime;
+	}
+
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+    
 }

@@ -28,7 +28,7 @@
 			gmt_create, gmt_modified, module_code, pic_url, text, module_type, link_url, module_name, sort, status, start_time, end_time
 		)
 		VALUES (
-			#{gmtCreate}, #{gmtModified}, #{moduleCode}, #{picUrl}, #{text}, #{moduleType}, #{linkUrl}, #{moduleName}, #{sort}, #{status}, #{startTime}, #{endTime}
+			now(), now(), #{moduleCode}, #{picUrl}, #{text}, #{moduleType}, #{linkUrl}, #{moduleName}, #{sort}, #{status}, #{startTime}, #{endTime}
 		)
 	</insert>
 	
@@ -36,16 +36,13 @@
 		DELETE FROM qmdj_model WHERE id = #{id}
 	</delete>
 	
-	<update id="update" parameterMap="ModelDO">
+	<update id="updateById" parameterMap="ModelDO">
         UPDATE qmdj_model SET 
-	        	<if test="gmtCreate!=null">
-					gmt_create = #{gmtCreate},
-				</if>
-	        	<if test="gmtModified!=null">
-					gmt_modified = #{gmtModified},
-				</if>
 	        	<if test="moduleCode!=null">
 					module_code = #{moduleCode},
+				</if>
+				<if test="moduleName!=null">
+					module_name = #{moduleName},
 				</if>
 	        	<if test="picUrl!=null">
 					pic_url = #{picUrl},
@@ -59,9 +56,6 @@
 	        	<if test="linkUrl!=null">
 					link_url = #{linkUrl},
 				</if>
-	        	<if test="moduleName!=null">
-					module_name = #{moduleName},
-				</if>
 	        	<if test="sort!=null">
 					sort = #{sort},
 				</if>
@@ -74,11 +68,11 @@
 	        	<if test="endTime!=null">
 					end_time = #{endTime},
 				</if>
-		update_time = now()
+				gmt_modified = now()
         WHERE id = #{id}        		
 	</update>
 	
-	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_model
@@ -132,6 +126,30 @@
 			</if>
 			<if test="endTime!=null">
 				and end_time = #{endTime}
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="queryForPage" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.ModelQO">
+		SELECT * from  qmdj_model
+		<include refid="pageQueryCondition" />
+
+		<if test="begin != null and pageSize != null">
+			LIMIT #{begin}, #{pageSize}
+		</if>
+	</select>
+
+	<select id="queryForPageCount" resultType="java.lang.Integer" parameterType="com.qmdj.biz.pogo.qo.ModelQO">
+		SELECT
+		count(id)
+		FROM qmdj_model
+		<include refid="pageQueryCondition" />
+	</select>
+
+	<sql id="pageQueryCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="moduleName!=null">
+				and module_name = #{moduleName}
 			</if>
 		</trim>
 	</sql>

@@ -1,6 +1,9 @@
 package com.qmdj.biz.dao;
 
+import java.util.List;
+
 import com.qmdj.biz.domin.ModelDO;
+import com.qmdj.biz.pogo.qo.ModelQO;
 
 /**
  *  DAO接口
@@ -61,4 +64,17 @@ public interface ModelDAO{
      * </PRE>
      */
     ModelDO findById(Long id);
+    
+    
+    /**
+     * 
+     * 分页查询
+     * */
+    List<ModelDO> queryForPage(ModelQO queryQO);
+    
+    /**
+     * 
+     * 分页查询条数
+     * */
+    int queryForPageCount(ModelQO queryQO);
 }

@@ -2,6 +2,8 @@ package com.qmdj.service.bo.util;
 
 import com.qmdj.biz.domin.ModelDO;
 import com.qmdj.service.bo.ModelBO;
+import com.qmdj.service.common.date.DateStyle;
+import com.qmdj.service.common.date.DateUtil;
 
 /**
  * 类QmdjModelBeanUtil.java的实现描述：工具类
@@ -19,7 +21,7 @@ public class ModelBeanUtil {
             return null;
         }
         ModelDO targetObj = new ModelDO();
-        targetObj.setId(srcObj.getQmdjModelId());//id
+        targetObj.setId(srcObj.getModelId());//id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//gmtCreate
         targetObj.setGmtModified(srcObj.getGmtModified());//gmtModified
         targetObj.setModuleCode(srcObj.getModuleCode());//模块编码
@@ -30,17 +32,18 @@ public class ModelBeanUtil {
         targetObj.setModuleName(srcObj.getModuleName());//模块名字
         targetObj.setSort(srcObj.getSort());//排序值，越大与靠前
         targetObj.setStatus(srcObj.getStatus());//状态 2：隐藏 1：显示
-        targetObj.setStartTime(srcObj.getStartTime());//开始时间
-        targetObj.setEndTime(srcObj.getEndTime());//结束时间
+        targetObj.setStartTime(DateUtil.StringToDate(srcObj.getStartTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//开始时间
+        targetObj.setEndTime(DateUtil.StringToDate(srcObj.getEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//介绍时间
         return targetObj;
     }
 
+    
     public static ModelBO qmdjModelDOToBO(ModelDO srcObj) {
         if (srcObj == null) {
             return null;
         }
         ModelBO targetObj = new ModelBO();
-        targetObj.setQmdjModelId(srcObj.getId());//id
+        targetObj.setModelId(srcObj.getId());//id
         targetObj.setGmtCreate(srcObj.getGmtCreate());//gmtCreate
         targetObj.setGmtModified(srcObj.getGmtModified());//gmtModified
         targetObj.setModuleCode(srcObj.getModuleCode());//模块编码
@@ -51,8 +54,8 @@ public class ModelBeanUtil {
         targetObj.setModuleName(srcObj.getModuleName());//模块名字
         targetObj.setSort(srcObj.getSort());//排序值，越大与靠前
         targetObj.setStatus(srcObj.getStatus());//状态 2：隐藏 1：显示
-        targetObj.setStartTime(srcObj.getStartTime());//开始时间
-        targetObj.setEndTime(srcObj.getEndTime());//结束时间
+        targetObj.setStartTime(DateUtil.dateToString(srcObj.getStartTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//开始时间
+        targetObj.setEndTime(DateUtil.dateToString(srcObj.getEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//介绍时间
         return targetObj;
     }
 }

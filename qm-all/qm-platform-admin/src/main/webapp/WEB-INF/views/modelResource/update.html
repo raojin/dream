@@ -1,0 +1,115 @@
+<div class="pageContent">
+	
+	<form method="post" action="modelResourse/updateModel"   class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
+		<div class="pageFormContent" layoutH="56">
+	    <input type="hidden"  name="modelId" value="${Bean.modelId}" />
+	        <p>
+				<label>模块标题 ：</label>
+				<input name="moduleName" value="${Bean.moduleName}" class="required" type="text" size="30"/>	
+			</p>
+	<p></p>
+		    <p>
+				<label>模块编码 ：</label>
+				<input name="moduleCode"  value="${Bean.moduleCode}"  class="required"type="text" size="30" alt="模块标识"/>
+			</p>
+   <p></p>
+		   <p>
+			<label>模块类型：</label><input type="radio" name="moduleType" value="1" checked="checked"  onclick="selctModuleCode(1)" <#if Bean.moduleType=1> checked="checked" </#if> >图片 <input type="radio" name="moduleType" value="2" onclick="selctModuleCode(2)" <#if Bean.moduleType=2> checked="checked" </#if>>文字
+		   </p>
+	<p></p>
+	    <div id="moduleSelsctImge"  <#if Bean.moduleType=2> style="display:none" </#if>>
+	        <div class="unit" style="height: 120px">
+				<label>图片：</label>
+				<p style="width:240px">
+				<#if Bean.picUrl=null> <img id="imagePreview"  width="220" height="110" /> <input type="hidden" id="picUrl" name="picUrl" /> <#else><img alt="" src="${Bean.picUrl}" width="220" height="110"> <input type="hidden" id="imagePreview" name="picUrl" value="${Bean.picUrl}" /> </#if>
+				<p><input type="file" name="file" id="add_bank_file_upload_modelupdate" /></p>
+			</div>
+	       	<p >
+				<label>目标链接地址 ：</label>
+				<input name="linkUrl" value="${Bean.linkUrl}"  type="text" />
+			</p> 
+		 <p></p>	
+		</div>
+		
+		<div id="moduleSelsctText" <#if Bean.moduleType=1> style="display:none" </#if>>
+		   <p>
+				<label>文字内容：</label>
+				<input name="text" value="${Bean.text}"  type="text" size="30"/>	
+			</p>
+		<p></p>	
+		
+		</div>
+			<p>
+				<label>开 始 时 间 ：</label>
+				<input name="startTime" value="${Bean.startTime}" class="date textInput readonly" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true"  />
+			</p>
+	<p></p>
+			<p>
+				<label>结 束 时 间 ：</label>
+				<input name="endTime" value="${Bean.endTime}"  class="date textInput readonly" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true" />
+			</p>
+     <p></p>
+		    <p>
+				<label>排序值 ：</label>
+				<input name="sort" value="${Bean.sort}" class="required" type="text" size="30" alt="整数,值越大与靠前"/>
+			</p>
+    <p></p>	
+			<p>
+			<label>展示状态：</label><input type="radio" name="status" value="1" <#if Bean.status=1> checked="checked" </#if>>展示 <input type="radio" name="status" value="2" <#if Bean.status=2> checked="checked" </#if>>不展示
+		   </p>
+			
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li>
+				<div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div>
+				</li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+	 <script type="text/javascript">
+
+$(function() {
+	 $("#add_bank_file_upload_modelupdate").uploadify({
+        'method'      : 'post',  
+        'buttonText'  : '请选择', 
+        'swf'         : 'uploadify/scripts/uploadify.swf',
+		'uploader'    : 'upload/JonsImage',
+        'fileObjName' : 'file', 
+        'displayData' : 'speed',
+        'auto' : true,
+        'onUploadSuccess' : function(file, data, response) { 
+        	var json = JSON.parse(data);
+        	if(json.date!=null||json.date!=""){
+        	$("#imagePreview").attr("src",json.date);
+        	$("#picUrl").attr("value",json.date);
+        	}else{
+        		alert("上传失败，稍后请重试");
+        	}
+        }  
+	 });   
+});
+
+function selctModuleCode(moduleCode){
+	if(moduleCode==null){
+		moduleCode=1;
+	}
+	if(moduleCode==1){
+		$("#moduleSelsctText").removeAttr('display');
+		$("#moduleSelsctText").css('display','none');
+		$("#moduleSelsctImge").removeAttr('display');
+		$("#moduleSelsctImge").css('display','block');
+	}else{
+		$("#moduleSelsctImge").removeAttr('display');
+		$("#moduleSelsctImge").css('display','none');
+		$("#moduleSelsctText").removeAttr('display');
+		$("#moduleSelsctText").css('display','block');
+	}
+} 
+
+</script> 

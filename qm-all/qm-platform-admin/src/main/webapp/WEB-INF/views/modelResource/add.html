@@ -1,0 +1,112 @@
+<div class="pageContent">
+	
+	<form method="post" action="modelResourse/saveModel"   class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
+		<div class="pageFormContent" layoutH="56">
+	
+	        <p>
+				<label>模块标题 ：</label>
+				<input name="moduleName" class="required" type="text" size="30"/>	
+			</p>
+	<p></p>
+		    <p>
+				<label>模块编码 ：</label>
+				<input name="moduleCode" class="required"type="text" size="30" alt="不可重复"/>
+			</p>
+   <p></p>
+		   <p>
+			<label>模块类型：</label><input type="radio" name="moduleType" value="1" checked="checked"  onclick="selctModuleCode(1)" >图片 <input type="radio" name="moduleType" value="2" onclick="selctModuleCode(2)">文字
+		   </p>
+	<p></p>
+	    <div id="moduleSelsctImge">
+	        <div class="unit" style="height: 120px">
+				<label>图片：</label>
+				<p style="width:240px">
+				<img  id="imagePreview"  width="220" height="110"/>
+				<input type="hidden" id="picUrl" name="picUrl" />
+				<p><input type="file" name="file" id="add_bank_file_upload_modelInsert" /></p>
+			</div>
+	       	<p >
+				<label>目标链接地址 ：</label>
+				<input name="linkUrl"  type="text" />
+			</p> 
+		 <p></p>	
+		</div>
+		
+		<div id="moduleSelsctText" style="display:none">
+		   <p>
+				<label>文字内容：</label>
+				<input name="text"  type="text" size="30"/>	
+			</p>
+		<p></p>	
+		
+		</div>
+			<p>
+				<label>开 始 时 间 ：</label>
+				<input name="startTime"class="date textInput readonly" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true"  />
+			</p>
+	<p></p>
+			<p>
+				<label>结 束 时 间 ：</label>
+				<input name="endTime" class="date textInput readonly" datefmt="yyyy-MM-dd HH:mm:ss" size="30" readonly="true" />
+			</p>
+     <p></p>
+		    <p>
+				<label>排序值 ：</label>
+				<input name="sort" class="required" type="text" size="30" alt="整数,值越大与靠前"/>
+			</p>
+    <p></p>	
+			<p>
+			<label>展示状态：</label><input type="radio" name="status" value="1" >展示 <input type="radio" name="status" value="2">不展示
+		   </p>
+			
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li>
+				<div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div>
+				</li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+	 <script type="text/javascript">
+
+$(function() {
+	 $("#add_bank_file_upload_modelInsert").uploadify({
+        'method'      : 'post',  
+        'buttonText'  : '请选择', 
+        'swf'         : 'uploadify/scripts/uploadify.swf',
+		'uploader'    : 'upload/JonsImage',
+        'fileObjName' : 'file', 
+        'displayData' : 'speed',
+        'auto' : true,
+        'onUploadSuccess' : function(file, data, response) { 
+        	var json = JSON.parse(data);
+        	if(json.date!=null||json.date!=""){
+        	$("#imagePreview").attr("src",json.date);
+        	$("#picUrl").attr("value",json.date);
+        	}else{
+        		alert("上传失败，稍后请重试");
+        	}
+        }  
+	 });   
+});
+
+function selctModuleCode(moduleCode){
+	if(moduleCode==null){
+		moduleCode=1;
+	}
+	if(moduleCode==1){
+		$("#moduleSelsctText").css('display','none');
+		$("#moduleSelsctImge").css('display','block');
+	}else{
+		$("#moduleSelsctImge").css('display','none');
+		$("#moduleSelsctText").css('display','block');
+	}
+} 
+
+</script> 
