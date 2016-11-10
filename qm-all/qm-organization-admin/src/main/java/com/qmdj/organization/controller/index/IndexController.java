@@ -30,7 +30,7 @@ public class IndexController{
 	
 	@RequestMapping("/tologin")
 	public String toLogin(Model model,HttpServletRequest request,HttpServletResponse response){
-		return "public/login.html";
+		return "public/login1";
 	}
 	
 	@RequestMapping("/adminIndex")
