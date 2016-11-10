@@ -10,15 +10,15 @@ public class ArticleBO {
     /**
      * id
      */
-    private Integer qmdjArticleId;
+    private Integer articleId;
     /**
      * gmtCreate
      */
-    private java.util.Date gmtCreate;
+    private String gmtCreate;
     /**
      * gmtModified
      */
-    private java.util.Date gmtModified;
+    private String gmtModified;
     /**
      * 标题
      */
@@ -28,34 +28,37 @@ public class ArticleBO {
      */
     private String content;
     /**
+     * 
+     * 作者
+     * */
+    private String author;
+    /**
+     * 
+     * 摘要
+     * */
+    private String digest;
+    /**
      * 排序值，越大越靠前
      */
     private Integer sort;
+    /**
+     * 
+     * 1正常 2：显示 100删除
+     * */
+    private Integer status;
 
     public ArticleBO() {
     }
 
-    public Integer getQmdjArticleId(){
-        return qmdjArticleId;
-    }
+    public Integer getArticleId() {
+		return articleId;
+	}
 
-    public void setQmdjArticleId(Integer qmdjArticleId){
-        this.qmdjArticleId = qmdjArticleId;
-    }
-    public java.util.Date getGmtCreate(){
-        return gmtCreate;
-    }
 
-    public void setGmtCreate(java.util.Date gmtCreate){
-        this.gmtCreate = gmtCreate;
-    }
-    public java.util.Date getGmtModified(){
-        return gmtModified;
-    }
-
-    public void setGmtModified(java.util.Date gmtModified){
-        this.gmtModified = gmtModified;
-    }
+	public void setArticleId(Integer articleId) {
+		this.articleId = articleId;
+	}
+	
     public String getTitle(){
         return title;
     }
@@ -77,4 +80,45 @@ public class ArticleBO {
     public void setSort(Integer sort){
         this.sort = sort;
     }
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getDigest() {
+		return digest;
+	}
+
+	public void setDigest(String digest) {
+		this.digest = digest;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public String getGmtCreate() {
+		return gmtCreate;
+	}
+
+	public void setGmtCreate(String gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
+
+	public String getGmtModified() {
+		return gmtModified;
+	}
+
+	public void setGmtModified(String gmtModified) {
+		this.gmtModified = gmtModified;
+	}
+    
 }

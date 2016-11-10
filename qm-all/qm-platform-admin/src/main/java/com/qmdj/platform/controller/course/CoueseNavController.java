@@ -68,7 +68,7 @@ public class CoueseNavController {
 		 if(re!=null){
 			 if(re.isSuccess()){
 				 message="success";
-				 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"coueseNavList");
+				 return DwzJsonResultUtil.createJsonString(DwzJsonResultUtil.STATUS_CODE_200, message,"coueseTypeList");
 			 }else{
 				 message=re.getCode()+":"+re.getMessage();
 			 }

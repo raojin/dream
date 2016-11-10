@@ -1,26 +1,41 @@
 <div class="pageContent">
 	
-	<form method="post" action="coueseNav/save"   class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
+	<form method="post" action="article/save"   class="pageForm required-validate" onsubmit="return validateCallback(this,navTabAjaxDone)">
 		<div class="pageFormContent" layoutH="56">
 	       	<p>
-				<label>课程导航名称：</label>
-				<input name="name" class="required" type="text" size="30" alt="名 称"/>
+				<label>文章标题：</label>
+				<input name="title" class="required" type="text" size="30" alt="标题"/>
 			</p>
 			 <p></p>
-		    <p>
+			 
+			 <p>
+				<label>作者：</label>
+				<input name="author"  type="text" size="30" />
+			</p>
+			 <p></p>
+			 
+			 <p>
+				<label>摘要：</label>
+				<input name="digest"  type="text" size="30" />
+			</p>
+			 <p></p>
+			 
+			  <p>
 				<label>排序值 ：</label>
 				<input name="sort" class="required" type="text" size="30" alt="整数,值越大与靠前"/>
-			</p>
+			 </p>
 			 <p></p>
-			
-			<p>
-			<label>类型：</label><input type="radio" name="type" value="1">机构导航 <input type="radio" name="type" value="2">家教导航
-		   </p>
-		   <p></p>
-			
+			 
 		   	<p>
 			<label>展示状态：</label><input type="radio" name="status" value="1" >展示 <input type="radio" name="status" value="2">不展示
 		   </p>
+			
+			<dl class="nowrap">
+			<dt>文章内容：</dt>
+			<dd>
+				<textarea class="editor" name="content" rows="15" cols="95"></textarea>
+			</dd>
+		   </dl>
 		</div>
 		
 		<div class="formBar">

@@ -1,6 +1,9 @@
 package com.qmdj.biz.dao;
 
+import java.util.List;
+
 import com.qmdj.biz.domin.ArticleDO;
+import com.qmdj.biz.pogo.qo.ArticleQO;
 
 /**
  *  DAO接口
@@ -61,4 +64,16 @@ public interface ArticleDAO{
      * </PRE>
      */
     ArticleDO findById(Long id);
+    
+    /**
+     * 
+     * 分页查询
+     * */
+    List<ArticleDO> queryForPage(ArticleQO queryQO);
+    
+    /**
+     * 
+     * 分页查询条数
+     * */
+    int queryForPageCount(ArticleQO queryQO);
 }

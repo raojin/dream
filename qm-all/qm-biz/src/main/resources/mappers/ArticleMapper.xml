@@ -8,20 +8,23 @@
 		<result column="title" property="title" />
 		<result column="content" property="content" />
 		<result column="sort" property="sort" />
+		<result column="author" property="author" />
+		<result column="digest" property="digest" />
+		<result column="status" property="status" />
 	</resultMap>
 	
 	<parameterMap id="ArticleDO" type="com.qmdj.biz.domin.ArticleDO"/>
 	
 	<sql id="Base_Column_List">
-		id,gmt_create, gmt_modified, title, content, sort
+		id,gmt_create, gmt_modified, title, content, sort,author,digest,status
 	</sql>
 	
 	<insert id="insert" parameterMap="ArticleDO" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO qmdj_article (
-			gmt_create, gmt_modified, title, content, sort
+			gmt_create, gmt_modified, title, content, sort,author,digest,status
 		)
 		VALUES (
-			#{gmtCreate}, #{gmtModified}, #{title}, #{content}, #{sort}
+			now(), now(), #{title}, #{content}, #{sort},#{author},#{digest},#{status}
 		)
 	</insert>
 	
@@ -29,14 +32,8 @@
 		DELETE FROM qmdj_article WHERE id = #{id}
 	</delete>
 	
-	<update id="update" parameterMap="ArticleDO">
+	<update id="updateById" parameterMap="ArticleDO">
         UPDATE qmdj_article SET 
-	        	<if test="gmtCreate!=null">
-					gmt_create = #{gmtCreate},
-				</if>
-	        	<if test="gmtModified!=null">
-					gmt_modified = #{gmtModified},
-				</if>
 	        	<if test="title!=null">
 					title = #{title},
 				</if>
@@ -46,11 +43,20 @@
 	        	<if test="sort!=null">
 					sort = #{sort},
 				</if>
-		update_time = now()
+				<if test="author!=null">
+					author = #{author},
+				</if>
+				<if test="digest!=null">
+					digest = #{digest},
+				</if>
+				<if test="status!=null">
+					status = #{status},
+				</if>
+		gmt_modified = now()
         WHERE id = #{id}        		
 	</update>
 	
-	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_article
@@ -83,6 +89,39 @@
 			</if>
 			<if test="sort!=null">
 				and sort = #{sort}
+			</if>
+			<if test="author!=null">
+			  author = #{author},
+			</if>
+			<if test="digest!=null">
+			 digest = #{digest},
+			</if>
+			<if test="status!=null">
+			 status = #{status},
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="queryForPage" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.ArticleQO">
+		SELECT * from  qmdj_article
+		<include refid="pageQueryCondition" />
+
+		<if test="begin != null and pageSize != null">
+			LIMIT #{begin}, #{pageSize}
+		</if>
+	</select>
+
+	<select id="queryForPageCount" resultType="java.lang.Integer" parameterType="com.qmdj.biz.pogo.qo.ArticleQO">
+		SELECT
+		count(id)
+		FROM qmdj_article
+		<include refid="pageQueryCondition" />
+	</select>
+
+	<sql id="pageQueryCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="title!=null">
+				and title = #{title}
 			</if>
 		</trim>
 	</sql>

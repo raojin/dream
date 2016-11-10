@@ -28,9 +28,25 @@ public class ArticleDO {
      */
     private String content;
     /**
+     * 
+     * 作者
+     * */
+    private String author;
+    /**
+     * 
+     * 摘要
+     * */
+    private String digest;
+    /**
      * 排序值，越大越靠前
      */
     private Integer sort;
+    /**
+     * 
+     * 1正常 2：显示 100删除
+     * */
+    private Integer status;
+    
 
     public ArticleDO() {
     }
@@ -77,4 +93,28 @@ public class ArticleDO {
     public void setSort(Integer sort){
         this.sort = sort;
     }
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getDigest() {
+		return digest;
+	}
+
+	public void setDigest(String digest) {
+		this.digest = digest;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }

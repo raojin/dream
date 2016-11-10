@@ -1,0 +1,78 @@
+<form id="pagerForm" method="post" action="article/list">
+	<input type="hidden" name="currentPage" value="${BeanList.currentPage}" />
+	<input type="hidden" name="pageSize" value="${BeanList.pageSize}" />
+</form>
+
+
+<div class="pageHeader">
+
+
+	<form onsubmit="return navTabSearch(this);" action="article/list" method="post">
+	
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					标题：<input type="text" name="title"/>
+				</td>
+				
+			</tr>
+		</table>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="coueseNav/toAdd" target="navTab"><span>添加</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="138">
+		<thead>
+			<tr>
+				<th width="80">标题</th>
+				<th width="120">作者</th>
+				<th width="120">排序</th>
+				<th width="120">状态</th>
+				<th width="150">创建时间</th>
+				<th width="150">修改时间</th>
+				<th width="80">操 作</th>
+			</tr>
+		</thead>
+		<tbody>
+		 <#list BeanList.data as article> 
+			<tr target="sid_user" rel="1">
+				<td>${article.title!}</td>
+				<td>${article.author!}</td>
+				<td>${article.sort!}</td>
+				<td><#if article.status=1>展示 <#else> 不展示</#if></td>
+				<td>${article.gmtCreate}</td>
+				<td>${article.gmtModified}</td>
+				<td>
+				 <a target="navTab" href="article/toAdd?articleId=${article.articleId}"><span style="color:blue">修改</span></a>
+				</td>
+			</tr>
+		</#list>	
+		</tbody>
+	</table>
+	
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="200">200</option>
+			</select>
+			<span>条，共${BeanList.totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="200" numPerPage="20" pageNumShown="10" currentPage="1"></div>
+	</div>
+</div>
