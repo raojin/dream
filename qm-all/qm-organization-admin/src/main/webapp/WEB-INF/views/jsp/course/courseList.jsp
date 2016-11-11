@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -71,7 +72,7 @@
                                         <th>辅导课程</th>
                                         <th>课程类型</th>
                                         <th>授课方式</th>
-                                        <th>授课时间</th>
+                                        <th>授课时间（单位）</th>
                                         <th>标题</th>
                                         <th>课程介绍</th>
                                         <th>状态</th>
@@ -85,12 +86,30 @@
                                         <td>${courseBO.courseIds}</td>
                                         <td>${courseBO.courseType}</td>
                                         <td>${courseBO.teachingWay}</td>
-                                        <td class="center">${courseBO.teachingTimes}/${courseBO.timeType}</td>
+                                        <td class="center">${courseBO.teachingTimes}/
+                                        
+                                        <c:choose>
+										   <c:when test="${courseBO.timeType == '1'}">  
+										        	时      
+										   </c:when>
+										    <c:when test="${courseBO.timeType == '2'}">  
+										        	天      
+										   </c:when>
+										     <c:when test="${courseBO.timeType == '3'}">  
+										        	周     
+										   </c:when>
+										   
+										   <c:otherwise>
+										    		月
+										   </c:otherwise>
+										    
+										</c:choose>
+                                       </td>
                                         <td class="center">${courseBO.title}</td>
                                         <td class="center">${courseBO.introduce}</td>
                                         <td class="center">${courseBO.status}</td>
                                         <td class="center">${courseBO.sort}</td>
-                                        <td class="center">${courseBO.gmtCreate}</td>
+                                        <td class="center"><fmt:formatDate value="${courseBO.gmtCreate}" pattern="yyyy/MM/dd/ HH:mm:ss" /></td>
                                     </tr>
                                  </c:forEach>
                                 </tbody>
