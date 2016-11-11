@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -42,12 +43,12 @@
                                     <input class="form-control" placeholder="账号" name="loginName" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="密码" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="密码" name="password" type="password">
                                 </div>
                               <div class="red">${error}</div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">记住密码 
+                                        <input name="remember" type="checkbox" value="Remember Me">记住我 
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->

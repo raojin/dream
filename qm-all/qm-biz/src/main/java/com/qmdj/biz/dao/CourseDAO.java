@@ -104,6 +104,6 @@ public interface CourseDAO{
      * Date 2016年11月04日
      * </PRE>
      */
-    List<CourseQO> queryForPage(CourseQO courseQO);
+    List<CourseDO> queryForPage(CourseQO courseQO);
     
 }

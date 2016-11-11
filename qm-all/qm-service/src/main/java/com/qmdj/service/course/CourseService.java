@@ -38,7 +38,7 @@ public interface CourseService {
 	 * @param course
 	 * @return
 	 */
-	public Result<PageInfo<CourseQO>> queryForPage(CourseQO course);
+	public Result<PageInfo<CourseBO>> queryForPage(CourseQO course);
 	
 	
 }

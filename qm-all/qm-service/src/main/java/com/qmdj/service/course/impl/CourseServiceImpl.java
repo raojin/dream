@@ -1,6 +1,8 @@
 package com.qmdj.service.course.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -113,10 +115,10 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public Result<PageInfo<CourseQO>> queryForPage(CourseQO course) {
+	public Result<PageInfo<CourseBO>> queryForPage(CourseQO course) {
 		log.info("请求入参：course：{}",Constant.GSON.toJson(course));
 		long startTime = System.currentTimeMillis();
-		Result<PageInfo<CourseQO>> re=new Result<PageInfo<CourseQO>>();
+		Result<PageInfo<CourseBO>> re=new Result<PageInfo<CourseBO>>();
 		if(course==null){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
@@ -124,7 +126,14 @@ public class CourseServiceImpl implements CourseService{
 			return re;
 		}
 		try {
-			PageInfo<CourseQO> pageInfo = new PageInfo<CourseQO>(courseDAO.queryForPage(course.enablePaging()));
+			List<CourseDO> queryForPage = courseDAO.queryForPage(course.enablePaging());
+			List<CourseBO> courseBOlist = new ArrayList<CourseBO>();
+			if(queryForPage!=null){
+				for (CourseDO courseDO : queryForPage) {
+					courseBOlist.add(CourseBeanUtil.qmdjCourseDOToBO(courseDO));
+				}
+			}
+			PageInfo<CourseBO> pageInfo = new PageInfo<CourseBO>(courseBOlist);
 			re.setDate(pageInfo);
 			re.setSuccess(true);
 		} catch (Exception e) {

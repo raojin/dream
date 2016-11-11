@@ -252,4 +252,10 @@
 			</if>
 		</trim>
 	</sql>
+	
+	<select id="queryForPage" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.CourseQO">
+		SELECT 
+		<include refid="Base_Column_List" />
+		from qmdj_course where status !=100  ORDER BY sort DESC ,gmt_create DESC
+	</select>
 </mapper>

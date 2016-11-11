@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
  * @Date 2016年10月18日16:07:26
  */
 public class Constant {
+	public static String MSG="msg";
 	public static String SUCCESS="SUCCESS";
 	public static String FAIL="FAIL";
 	public static String BEAN_LIST="BeanList";

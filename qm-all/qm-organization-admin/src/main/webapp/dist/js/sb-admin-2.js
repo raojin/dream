@@ -53,5 +53,13 @@ $("#loginBtn").click(function(){
 
 
 $("#courseAddBtn").click(function(){
-	$("#courseAddForm").submit();
+	
+	$.ajax({
+	    type: 'post',
+	    url: 'addCourse',
+	    data: $("#courseAddForm").submit(),
+	    success: function(data) {
+	       alert(data);
+	    }
+	});
 });

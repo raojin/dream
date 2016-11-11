@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
 <head>
-	<title>后台管理系统Demo</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-	    <!-- Bootstrap Core CSS -->
+    <meta charset="utf-8">
+    <title>全民督教</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
@@ -18,15 +23,32 @@
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+   <!-- <script src="bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
 </head>
+
 <body>
- <div id="wrapper" class="col-lg-12">
-		<div class="nav-panel-box fl col-lg-3">
-			<iframe src="nav.html" frameborder="no" width="100%" height="100%"></iframe>
-		</div>
+<!-- 头部 s -->
+<jsp:include page="/util/indexheader.jsp"></jsp:include>
+<!-- 头部 e -->
+<div class="ch-container col-lg-10">
+    <div class="row">
+      <!-- 菜单 s -->
+	  <jsp:include page="/util/indexleft.jsp"></jsp:include>
+	  <!-- 菜单 e -->
+       <div id="wrapper" class="col-lg-10">
 	      <div id="page-wrapper" class="col-lg-9">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     <h1 class="page-header">Forms</h1>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -63,8 +85,6 @@
                                             <input class="form-control" name="price">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                           <!--  <label>时间类型</label>
-                                            <input class="form-control" name="timeType"> -->
                                         <div  id="form-teachingTimes"  class="form-group col-lg-6">
                                             <label>授课时间</label>
                                             <input class="form-control" name="teachingTimes">
@@ -125,10 +145,19 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-</div>
+		</div>
+    	<!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+    <hr>
+   <!-- 头部 s -->
+   <div class="col-lg-10">
+	  <jsp:include page="/util/footer.jsp"></jsp:include>
+	</div>
+  <!-- 头部 e -->
 
 
-	  <!-- jQuery -->
+   <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -144,5 +173,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
+
+
 </body>
 </html>

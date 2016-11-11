@@ -1,13 +1,19 @@
 package com.qmdj.service.bo;
 
+import java.io.Serializable;
+
 /**
  * 类QmdjCourseBO.java的实现描述：
  * 
  * @Author chenjin 
  * @Date 2016年11月04日
  */
-public class CourseBO {
+public class CourseBO implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * id
      */
     private Long courseId;

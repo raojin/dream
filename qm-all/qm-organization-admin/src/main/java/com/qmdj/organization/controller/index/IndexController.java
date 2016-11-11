@@ -30,7 +30,7 @@ public class IndexController{
 	
 	@RequestMapping("/tologin")
 	public String toLogin(Model model,HttpServletRequest request,HttpServletResponse response){
-		return "public/login1";
+		return "public/login";
 	}
 	
 	@RequestMapping("/adminIndex")
@@ -39,11 +39,11 @@ public class IndexController{
 		Result<UserBO> re=new Result<UserBO>();
 		re.setDate(attribute);
 		model.addAttribute(Constant.BEAN, re);
-		return "public/index2.html";
+		return "public/index";
 	}
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String loginGet(Model model,HttpServletRequest request,HttpServletResponse response){
-		return "public/login.html";
+		return "public/login";
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
@@ -53,7 +53,7 @@ public class IndexController{
 			if(re.isSuccess()){
 				request.getSession().setAttribute(Constant.SESSION_BEAN, re.getDate());
 				model.addAttribute(Constant.BEAN, re);
-				return "public/index2.html";
+				return "public/index";
 				
 			}else{
 				model.addAttribute(Constant.ERROR, re.getMessage());
@@ -82,7 +82,14 @@ public class IndexController{
 			
 		return "public/login.html";
 		}
+	}
+	@RequestMapping("/loginOut")
+	public String loginOut(Model model,HttpServletRequest request , UserDO user){
+		request.getSession().removeAttribute(Constant.SESSION_BEAN);
+		return "public/login";
 		
 	}
+	
+	
 
 }

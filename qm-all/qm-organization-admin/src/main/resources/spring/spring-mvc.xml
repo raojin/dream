@@ -91,4 +91,21 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <property name="order" value="1"/>
      </bean>
-</beans>
+     
+     
+     <bean id="springSessionInterceptor" class="com.qmdj.organization.filter.FilterUtils" >  
+     </bean>  
+	<bean id="autoPorxyFactoryBean1"  
+	        class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+<!-- 	        <property name="interceptorNames">  
+	            <list>  
+	                <value>springLoginInterceptor</value>  
+	            </list>  
+	        </property> -->  
+	        <property name="beanNames" >  
+	        	<list>  
+	           	 	<value>*Controller</value>  
+	            </list>  
+	        </property>  
+	    </bean>  
+	</beans>
