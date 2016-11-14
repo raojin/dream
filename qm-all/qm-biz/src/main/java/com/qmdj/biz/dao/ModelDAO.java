@@ -77,4 +77,14 @@ public interface ModelDAO{
      * 分页查询条数
      * */
     int queryForPageCount(ModelQO queryQO);
+    
+    
+    /**
+     * 
+     * 条件查询
+     * */
+    List<ModelDO> findByCondition(ModelDO modelDO);
+    
+    
+    List<ModelDO> findByModelQO(ModelQO modelQO);
 }

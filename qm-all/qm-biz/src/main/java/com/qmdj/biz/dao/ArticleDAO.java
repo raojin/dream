@@ -76,4 +76,12 @@ public interface ArticleDAO{
      * 分页查询条数
      * */
     int queryForPageCount(ArticleQO queryQO);
+    
+    /**
+     * 
+     * 多条件查询文章列表
+     * */
+    List<ArticleDO>  findByCondition(ArticleDO articleDO);
+    
+    
 }

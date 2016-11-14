@@ -68,6 +68,7 @@
 		<include refid="Base_Column_List" />
 		FROM qmdj_article
 		<include refid="whereCondition" />
+		order by sort DESC
 	</select>
 	
 	<sql id="whereCondition">

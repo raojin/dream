@@ -26,7 +26,6 @@ public class AppCourseServiceImpl implements AppCourseService {
 
 	@Override
 	public Result<List<AppCourseTypeNavBO>> queryCourse() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -51,7 +50,7 @@ public class AppCourseServiceImpl implements AppCourseService {
 				 }else{
 					 re.setCode(reCourse.getCode());
 					 re.setMessage(reCourse.getMessage());
-					 return re;
+					// return re;
 				 }
 			 }
 			 

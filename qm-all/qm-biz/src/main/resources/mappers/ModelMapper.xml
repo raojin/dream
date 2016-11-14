@@ -86,6 +86,15 @@
 		<include refid="whereCondition" />
 	</select>
 	
+	
+	<select id="findByModelQO" resultMap="BaseResultMap" parameterMap="com.qmdj.biz.pogo.qo.ModelQO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_model where status=1
+		order by sort DESC
+	</select>
+	
+	
 	<sql id="whereCondition">
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
 			<if test="id!=null">

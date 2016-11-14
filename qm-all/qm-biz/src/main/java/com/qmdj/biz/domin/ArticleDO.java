@@ -43,7 +43,7 @@ public class ArticleDO {
     private Integer sort;
     /**
      * 
-     * 1正常 2：显示 100删除
+     * 1正常 2：不显示 100删除
      * */
     private Integer status;
     
