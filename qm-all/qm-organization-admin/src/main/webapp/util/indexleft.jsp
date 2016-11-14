@@ -37,10 +37,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>教师管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">教师列表</a>
+                                    <a href="teacherList">教师列表</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">添加教师</a>
+                                    <a href="toAddTeacher">添加教师</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

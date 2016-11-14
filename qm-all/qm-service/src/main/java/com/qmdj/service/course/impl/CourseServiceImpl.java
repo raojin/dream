@@ -55,17 +55,15 @@ public class CourseServiceImpl implements CourseService{
 		log.info("请求入参：course：{}",Constant.GSON.toJson(course));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(course==null || course.getStatus() == 0){
+		if(course==null || course.getStatus() == 100){
 			//缺少参数
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
 			return re;
 		}
-		
 		try {
 			CourseDO courseBOToDO = CourseBeanUtil.courseBOToDO(course);
-			courseBOToDO.setGmtCreate(new Date());
 			int update = courseDAO.update(courseBOToDO);
 			if(update==1){
 				re.setSuccess(true);
@@ -139,6 +137,28 @@ public class CourseServiceImpl implements CourseService{
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		return re;
+	}
+
+	@Override
+	public Result<CourseBO> selectCourse(long courseId) {
+		log.info("请求入参：course：{}",Constant.GSON.toJson(courseId));
+		long startTime = System.currentTimeMillis();
+		Result<CourseBO> re = new Result<CourseBO>();
+		if(courseId<=0){
+			//缺少参数
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			return re;
+		}
+		CourseDO course = courseDAO.getById(courseId);
+		CourseBO qmdjCourseDOToBO = CourseBeanUtil.qmdjCourseDOToBO(course);
+		if(qmdjCourseDOToBO!=null){
+			re.setSuccess(true);
+			re.setDate(qmdjCourseDOToBO);
 		}
 		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;

@@ -52,6 +52,7 @@ public class IndexController{
 		if(re!=null){
 			if(re.isSuccess()){
 				request.getSession().setAttribute(Constant.SESSION_BEAN, re.getDate());
+				request.getSession().setAttribute(Constant.NAME, re.getDate().getName());
 				model.addAttribute(Constant.BEAN, re);
 				return "public/index";
 				

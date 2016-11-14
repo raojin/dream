@@ -176,7 +176,7 @@
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_course
-		WHERE id = #{id} and status != 0
+		WHERE id = #{id} and status != 100
 	</select>
 	
 	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="CourseDO">
