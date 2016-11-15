@@ -223,7 +223,9 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i><%=session.getAttribute("name") %></a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="toUpdateUser"><i class="fa fa-gear fa-fw"></i>基础信息修改</a>
+                        </li>
+                        <li><a href="toUpdateTeacher"><i class="fa fa-gear fa-fw"></i>职业信息修改</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="loginOut"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

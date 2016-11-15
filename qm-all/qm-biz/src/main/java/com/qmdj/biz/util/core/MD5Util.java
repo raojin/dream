@@ -30,7 +30,6 @@ public class MD5Util {
     // 返回形式只为数字
     private static String byteToNum(byte bByte) {
         int iRet = bByte;
-        System.out.println("iRet1=" + iRet);
         if (iRet < 0) {
             iRet += 256;
         }
@@ -57,10 +56,5 @@ public class MD5Util {
             ex.printStackTrace();
         }
         return resultString;
-    }
-
-    public static void main(String[] args) {
-        String ming = "{'mobilePhone':'18622222222','password':'123456','userSource':'XD00009','timestamp':'1476079337294'}";
-        System.out.println(getMD5Code(ming));
     }
 }

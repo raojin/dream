@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -40,7 +42,7 @@
 <!-- 头部 s -->
 <jsp:include page="/util/indexheader.jsp"></jsp:include>
 <!-- 头部 e -->
-<div class="ch-container col-lg-10">
+<div class="ch-container col-lg-11">
     <div class="row">
       <!-- 菜单 s -->
 	  <jsp:include page="/util/indexleft.jsp"></jsp:include>
@@ -58,23 +60,20 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Form Elements
+                            	个人信息修改
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="courseAddForm" role="form" method="post" action="addCourse">
-                                        <div class="form-group col-lg-6">
-                                            <label>登录名</label>
-                                            <input class="form-control" name="loginName">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>密码</label>
-                                            <input type="password" class="form-control" name="password">
-                                        </div>
+                                    <form id="teacherUpdateForm">
                                         <div class="form-group col-lg-6">
                                             <label>身份</label>
                                            <select id="disabledSelect" class="form-control"  name="identity">
+                                           <c:if test="${Bean.date.identity =='1' }"><option value="1">家教</option></c:if>
+                                           <c:if test="${Bean.date.identity =='2' }"><option value="2">家长</option></c:if>
+                                           <c:if test="${Bean.date.identity =='3' }"><option value="3">学生</option></c:if>
+                                           <c:if test="${Bean.date.identity =='4' }"><option value="4">机构教师</option></c:if>
+                                           <c:if test="${Bean.date.identity =='5' }"><option value="5">机构负责人</option></c:if>
                                                 <option value="1">家教</option>
                                                 <option value="2">家长</option>
                                                 <option value="3">学生</option>
@@ -84,34 +83,36 @@
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>姓名</label>
-                                            <input class="form-control" name="name">
+                                            <input class="form-control" name="name" value="${Bean.date.name}">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>性别</label>
                                             <div class="form-control">
                                              <label class="radio-inline">
-                                                <input type="radio" name="sex" id="optionsRadiosInline1" value="1" checked>男
+                                                <input type="radio" name="sex" id="optionsRadiosInline1" value="1"
+                                                <c:if test="${Bean.date.sex =='1' }">checked</c:if> >男
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="sex" id="optionsRadiosInline2" value="2">女
+                                                <input type="radio" name="sex" id="optionsRadiosInline2" value="2"
+                                                 <c:if test="${Bean.date.sex =='2' }">checked</c:if>>女
                                             </label>
                                             </div>
                                         </div>
                                         <div   class="form-group col-lg-6">
                                             <label>联系电话</label>
-                                            <input class="form-control" name="linkPhone">
+                                            <input class="form-control" name="linkPhone" value="${Bean.date.linkPhone}">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>邮箱</label>
-                                            <input type="email" class="form-control" name="email">
+                                            <input type="email" class="form-control" name="email"  value="${Bean.date.email}">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>年龄</label>
-                                            <input class="form-control" name="age">
+                                            <input class="form-control" name="age"  value="${Bean.date.age}">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>个人介绍</label>
-                                             <textarea class="form-control" rows="3"  name="introduce"></textarea>
+                                            <textarea class="form-control" rows="3"  name="introduce" >${Bean.date.introduce}</textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -123,7 +124,8 @@
                     </div>
                     <!-- /.panel -->
                      <div class="form-group col-lg-6">
-                        <button id="courseAddBtn" type="button" class="btn btn-success">添加</button>
+                        <button id="teacherUpdateBtn" type="button" class="btn btn-success">修改</button>
+                        <div id="updateTeacherMsg" class="updateMsg"></div>
                      </div>
                 </div>
                 <!-- /.col-lg-12 -->

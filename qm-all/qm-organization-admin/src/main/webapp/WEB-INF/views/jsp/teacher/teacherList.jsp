@@ -42,13 +42,13 @@
 <!-- 头部 s -->
 <jsp:include page="/util/indexheader.jsp"></jsp:include>
 <!-- 头部 e -->
-<div class="ch-container col-lg-10">
+<div class="ch-container col-lg-11">
     <div class="row">
       <!-- 菜单 s -->
 	  <jsp:include page="/util/indexleft.jsp"></jsp:include>
 	  <!-- 菜单 e -->
-       <div id="wrapper" class="col-lg-10">
-	      <div id="page-wrapper" class="col-lg-9">
+       <div id="wrapper">
+	      <div id="page-wrapper" class="col-lg-11">
                       <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Tables</h1>
@@ -69,14 +69,17 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>辅导课程</th>
-                                        <th>课程类型</th>
-                                        <th>授课方式</th>
-                                        <th>授课时间（单位）</th>
-                                        <th>标题</th>
-                                        <th>课程介绍</th>
+                                     	<th>头像</th>
+                                        <th>基础信息</th>
+                                        <th>教师类型</th>
+                                        <th>机构ID</th>
+                                        <th>是否愿意家教</th>
+                                        <th>教师编号</th>
+                                        <th>学历</th>
+                                        <th>姓名</th>
+                                        <th>毕业学校</th>
+                                        <th>专业</th>
                                         <th>状态</th>
-                                        <th>排序</th>
                                         <th>创建时间</th>
                                         <th>操作</th>
                                     </tr>
@@ -84,35 +87,23 @@
                                 <tbody>
                                 <c:forEach items="${BeanList.date.list}" var="teacherBO">
                                     <tr class="gradeU">
-                                    	<td class="hidden">${teacherBO.courseId}</td>
-                                        <td>${courseBO.courseIds}</td>
-                                        <td>${courseBO.courseType}</td>
-                                        <td>${courseBO.teachingWay}</td>
-                                        <td class="center">${courseBO.teachingTimes}（
-                                        <c:choose>
-										   <c:when test="${courseBO.timeType == '1'}">  
-										        	时      
-										   </c:when>
-										    <c:when test="${courseBO.timeType == '2'}">  
-										        	天      
-										   </c:when>
-										     <c:when test="${courseBO.timeType == '3'}">  
-										        	周     
-										   </c:when>
-										   <c:otherwise>
-										    		月
-										   </c:otherwise>
-										</c:choose>
-										）
-                                       </td>
-                                        <td class="center">${courseBO.title}</td>
-                                        <td class="center">${courseBO.introduce}</td>
-                                        <td class="center">${courseBO.status}</td>
-                                        <td class="center">${courseBO.sort}</td>
-                                        <td class="center"><fmt:formatDate value="${courseBO.gmtCreate}" pattern="yyyy/MM/dd/ HH:mm:ss" /></td>
+                                    	<td class="hidden">${teacherBO.teacherId}</td>
+                                    	<td>${teacherBO.images}</td>
+                                        <td>${teacherBO.userId}</td>
+                                        
+                                        <td><c:if test="${teacherBO.identity=='1'}">机构教师</c:if><c:if test="2">家教教师</c:if></td>
+                                        <td>${teacherBO.organizationId}</td>
+                                        <td><c:if test="${teacherBO.ispublic=='1'}">是</c:if><c:if test="2">否</c:if></td>
+                                        <td class="center">${teacherBO.code}</td>
+                                        <td class="center">${teacherBO.education}</td>
+                                        <td class="center">${teacherBO.name}</td>
+                                        <td class="center">${teacherBO.school}</td>
+                                        <td class="center">${teacherBO.professional}</td>
+                                        <td class="center">${teacherBO.status}</td>
+                                        <td class="center"><fmt:formatDate value="${teacherBO.gmtCreate}" pattern="yyyy/MM/dd/ HH:mm:ss" /></td>
                                         <td class="center">
-                                        <a href="toUpdateCourse?courseId=${courseBO.courseId}">更新</a>/
-                                        <button type="button" class="delBtn btn btn-danger" data-id="${courseBO.courseId}">删除
+                                        <a href="toUpdateCourse?courseId=${teacherBO.teacherId}">更新</a>/
+                                        <button type="button" class="delBtn btn btn-danger" data-id="${teacherBO.teacherId}">删除
                                         </button>
                                         
                                         </td>

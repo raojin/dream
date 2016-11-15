@@ -71,6 +71,18 @@ public interface TeacherDAO{
      */
      TeacherDO findById(Long id);
      
+     /**
+      * 
+      * 方法findByUserId的功能描述：根据userId查询
+      * 
+      * @param id
+      * @return QmdjTeacherDO
+      * <PRE>
+      * author xw  
+      * Date 2016年11月15日16:21:25
+      * </PRE>
+      */
+      TeacherDO findByUserId(Long id);
      
      /**
       * 

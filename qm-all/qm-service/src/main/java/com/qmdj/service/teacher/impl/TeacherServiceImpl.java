@@ -3,6 +3,7 @@ package com.qmdj.service.teacher.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,7 @@ public class TeacherServiceImpl implements TeacherService{
 		if(teacherBO==null){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 			return re;
 		}
 		try {
@@ -63,11 +64,11 @@ public class TeacherServiceImpl implements TeacherService{
 		log.info("请求入参：course：{}",Constant.GSON.toJson(teacherBO));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(teacherBO==null){
+		if(Objects.isNull(teacherBO)){
 			//缺少参数
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 			return re;
 		}
 		try {
@@ -94,7 +95,7 @@ public class TeacherServiceImpl implements TeacherService{
 			//缺少参数
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 			return re;
 		}
 		 TeacherDO findById = teacherDAO.findById(teacherBOId);
@@ -132,6 +133,67 @@ public class TeacherServiceImpl implements TeacherService{
 		}
 		PageInfo<TeacherBO> pageList =new PageInfo<TeacherBO>(teacherBOList);
 		re.setDate(pageList);
+		return re;
+	}
+
+	@Override
+	public Result<TeacherBO> selectTeacherById(long teacherId) {
+		log.info("请求入参：course：{}",Constant.GSON.toJson(teacherId));
+		long startTime = System.currentTimeMillis();
+		Result<TeacherBO> re = new Result<TeacherBO>();
+		if(teacherId<=0){
+			//缺少参数
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+			return re;
+		}
+		try {
+			TeacherDO findById = teacherDAO.findById(teacherId);
+			if(findById == null){
+				//对象不存在
+				re.setCode(ReCode.FIND_ERROR.getCode());
+				re.setMessage(ReCode.FIND_ERROR.getMessage());
+				log.info("对象不存在，请求耗时：{}",System.currentTimeMillis()-startTime);
+				return re;
+			}
+			TeacherBO qmdjTeacherDOToBO = TeacherBeanUtil.qmdjTeacherDOToBO(findById);
+			re.setSuccess(true);
+			re.setDate(qmdjTeacherDOToBO);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		return re;
+	}
+	@Override
+	public Result<TeacherBO> selectTeacherByUserId(long userId) {
+		log.info("请求入参：course：{}",Constant.GSON.toJson(userId));
+		long startTime = System.currentTimeMillis();
+		Result<TeacherBO> re = new Result<TeacherBO>();
+		if(userId<=0){
+			//缺少参数
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+			return re;
+		}
+		try {
+			TeacherDO findById = teacherDAO.findByUserId(userId);
+			if(findById == null){
+				TeacherBO teacherBO = new TeacherBO();
+				re.setDate(teacherBO);
+			}else{
+				TeacherBO qmdjTeacherDOToBO = TeacherBeanUtil.qmdjTeacherDOToBO(findById);
+				re.setDate(qmdjTeacherDOToBO);
+			}
+			re.setSuccess(true);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 

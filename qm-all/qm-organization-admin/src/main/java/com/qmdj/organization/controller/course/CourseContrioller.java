@@ -1,4 +1,4 @@
-package com.qmdj.organization.controller.index;
+package com.qmdj.organization.controller.course;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +38,6 @@ public class CourseContrioller {
 	@ResponseBody
 	@RequestMapping("/addCourse")
 	public String addCourse(Model model,HttpServletRequest request,HttpServletResponse response,CourseBO course){
-		System.out.println(Constant.GSON.toJson(course));
 		UserBO userBO = (UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
 		Result<Integer> re =new Result<Integer>();
 		if(userBO==null){
