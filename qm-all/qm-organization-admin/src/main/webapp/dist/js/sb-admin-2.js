@@ -156,3 +156,28 @@ $("input").click(function(){
 		"disabled" : "disabled"
 	});
 });
+
+$(".form-control").focus(function(){
+	$(".btn").attr("disabled", false);
+	$(".updateMsg").empty();
+});
+
+
+$("#teacherUpdateBtn").click(function(){
+	$(this).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'updateTeacher',
+		data :$("#teacherUpdateForm").serialize(),
+		success : function(data) {
+			if(data){
+				$("#updateTeacherMsg").html("修改成功");
+			} else {
+				$("#updateTeacherMsg").html("修改失败");
+			}
+		}
+	});
+});
+

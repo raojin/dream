@@ -1,4 +1,4 @@
-package com.qmdj.organization.controller.index;
+package com.qmdj.organization.controller.teacher;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,14 +35,32 @@ public class TeacherController {
 		UserBO userBO =(UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
 		teacherBO.setUserId(userBO.getUserId());
 		teacherBO.setName(userBO.getName());
-		Result<Integer> addTeacher = teacherService.addTeacher(teacherBO);
-		return Constant.GSON.toJson(addTeacher.isSuccess());
+		Result<Integer> re = teacherService.addTeacher(teacherBO);
+		return Constant.GSON.toJson(re.isSuccess());
 	}
 	
 	@RequestMapping("/teacherList")
 	public String teacherList(Model model,HttpServletRequest request,HttpServletResponse response,TeacherQO teacherQO){
-		Result<PageInfo<TeacherBO>> selectTeacherList = teacherService.selectTeacherList(teacherQO);
-		model.addAttribute(Constant.BEAN_LIST, selectTeacherList);
+		Result<PageInfo<TeacherBO>> re = teacherService.selectTeacherList(teacherQO);
+		model.addAttribute(Constant.BEAN_LIST, re);
 		return "teacher/teacherList";
+	}
+	
+	
+	@RequestMapping("/toUpdateTeacher")
+	public String toUpdateTeacher(Model model,HttpServletRequest request,HttpServletResponse response){
+		UserBO userBO =(UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
+		Result<TeacherBO> re = teacherService.selectTeacherByUserId(userBO.getUserId());
+		model.addAttribute(Constant.BEAN, re);
+		return "teacher/updateTeacher";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateTeacher")
+	public String updateTeacher(Model model,HttpServletRequest request,HttpServletResponse response,TeacherBO teacherBO){
+		UserBO userBO =(UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
+		teacherBO.setUserId(userBO.getUserId());
+		Result<Integer> re = teacherService.updateTeacher(teacherBO);
+		return Constant.GSON.toJson(re.isSuccess());
 	}
 }

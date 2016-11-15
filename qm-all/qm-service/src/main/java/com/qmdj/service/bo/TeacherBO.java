@@ -1,13 +1,19 @@
 package com.qmdj.service.bo;
 
+import java.io.Serializable;
+
 /**
  * 类QmdjTeacherBO.java的实现描述：
  * 
  * @Author chenjin 
  * @Date 2016年10月27日
  */
-public class TeacherBO {
+public class TeacherBO implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 主键Id
      */
     private Long teacherId;
@@ -55,8 +61,34 @@ public class TeacherBO {
      * 状态 1:审核通过  2:审核中 3审核不通过
      */
     private Integer status;
+    
+    /**
+     * gmtCreate
+     */
+    private java.util.Date gmtCreate;
+    /**
+     * gmtModified
+     */
+    private java.util.Date gmtModified;
+    
 
-    public TeacherBO() {
+    public java.util.Date getGmtCreate() {
+		return gmtCreate;
+	}
+
+	public void setGmtCreate(java.util.Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
+
+	public java.util.Date getGmtModified() {
+		return gmtModified;
+	}
+
+	public void setGmtModified(java.util.Date gmtModified) {
+		this.gmtModified = gmtModified;
+	}
+
+	public TeacherBO() {
     }
 
     public Long getUserId() {

@@ -1,5 +1,7 @@
 package com.qmdj.service.user.impl;
 
+import java.util.Objects;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,36 +18,36 @@ import com.qmdj.service.common.Result;
 import com.qmdj.service.user.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	private Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
-	
+
 	@Autowired
 	public UserDAO userDAO;
 
 	@Override
 	public Result<UserBO> login(String loginName, String password) {
-		log.info("请求入参：loginName：{}，password，{}",loginName,password);
+		log.info("请求入参：loginName：{}，password，{}", loginName, password);
 		long startTime = System.currentTimeMillis();
-		Result<UserBO> re=new Result<UserBO>();
-		if(StringUtils.isBlank(loginName)||StringUtils.isBlank(password)){
+		Result<UserBO> re = new Result<UserBO>();
+		if (StringUtils.isBlank(loginName) || StringUtils.isBlank(password)) {
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage("用户名或密码不能为空");
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("参数异常，请求耗时：{}", System.currentTimeMillis() - startTime);
 			return re;
 		}
 		try {
-			UserDO user=userDAO.login(loginName, password);
-			UserBO userBO=UserBeanUtil.userDOToBO(user);
-			if(userBO!=null){
-				if(userBO.getIdentity()==4 || userBO.getIdentity() == 5){
+			UserDO user = userDAO.login(loginName, password);
+			UserBO userBO = UserBeanUtil.userDOToBO(user);
+			if (userBO != null) {
+				if (userBO.getIdentity() == 4 || userBO.getIdentity() == 5) {
 					re.setSuccess(true);
 					re.setDate(userBO);
-				}else{
+				} else {
 					re.setCode(ReCode.AUTH_ERROR.getCode());
 					re.setMessage(ReCode.AUTH_ERROR.getMessage());
 				}
-			}else{
+			} else {
 				re.setCode(ReCode.SYS_REEOR.getCode());
 				re.setMessage("用户名或密码错误");
 			}
@@ -53,25 +55,25 @@ public class UserServiceImpl implements UserService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 		return re;
 	}
 
 	@Override
 	public Result<Integer> addUser(UserBO userBO) {
-		log.info("请求入参：{}",Constant.GSON.toJson(userBO));
+		log.info("请求入参：{}", Constant.GSON.toJson(userBO));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(userBO==null){
+		if (userBO == null) {
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("参数异常，请求耗时：{}", System.currentTimeMillis() - startTime);
 			return re;
 		}
 		try {
 			UserDO userBOToDO = UserBeanUtil.userBOToDO(userBO);
-			userBOToDO.setIdentity(4);//默认为机构教师
-			userBOToDO.setStatus(1);//状态为正常
+			userBOToDO.setIdentity(4);// 默认为机构教师
+			userBOToDO.setStatus(1);// 状态为正常
 			int insertSelective = userDAO.insertSelective(userBOToDO);
 			re.setSuccess(true);
 			re.setDate(insertSelective);
@@ -79,19 +81,19 @@ public class UserServiceImpl implements UserService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 		return re;
 	}
 
 	@Override
 	public Result<Integer> updateUser(UserBO userBO) {
-		log.info("请求入参：{}",Constant.GSON.toJson(userBO));
+		log.info("请求入参：{}", Constant.GSON.toJson(userBO));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(userBO==null || userBO.getUserId()==null ||userBO.getStatus() == 2){
-			re.setCode(ReCode.PARAM_ERROR.getCode());
+		if (Objects.isNull(userBO) || Objects.isNull(userBO.getUserId())||Objects.equals(userBO.getStatus(), 2)) {
+			re.setCode(ReCode.PARAM_ERROR.getCode());	
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 			return re;
 		}
 		try {
@@ -103,32 +105,31 @@ public class UserServiceImpl implements UserService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}",Constant.GSON.toJson(re));
-		log.info("请求完成耗时：{}",System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 		return re;
 	}
 
 	@Override
 	public Result<Integer> delUser(long userBOId) {
-		log.info("请求入参：{}",Constant.GSON.toJson(userBOId));
+		log.info("请求入参：{}", Constant.GSON.toJson(userBOId));
 		long startTime = System.currentTimeMillis();
 		Result<Integer> re = new Result<Integer>();
-		if(userBOId<=0){
+		if (userBOId <= 0) {
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
-			log.info("参数异常，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 			return re;
 		}
 		UserDO queryUserByUserId = userDAO.queryUserByUserId(userBOId);
-		if(queryUserByUserId ==null){
-			//对象不存在
+		if (queryUserByUserId == null) {
+			// 对象不存在
 			re.setCode(ReCode.FIND_ERROR.getCode());
 			re.setMessage(ReCode.FIND_ERROR.getMessage());
-			log.info("对象不存在，请求耗时：{}",System.currentTimeMillis()-startTime);
+			log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 			return re;
 		}
 		try {
-			queryUserByUserId.setStatus(2);//删除
+			queryUserByUserId.setStatus(2);// 删除
 			int insertSelective = userDAO.update(queryUserByUserId);
 			re.setSuccess(true);
 			re.setDate(insertSelective);
@@ -136,7 +137,31 @@ public class UserServiceImpl implements UserService{
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
-		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
+		return re;
+	}
+
+	@Override
+	public Result<UserBO> selectUser(long userId) {
+		log.info("请求入参：{}", userId);
+		long startTime = System.currentTimeMillis();
+		Result<UserBO> re = new Result<UserBO>();
+		if (userId <= 0) {
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
+			return re;
+		}
+		try {
+			UserDO user = userDAO.queryUserByUserId(userId);
+			UserBO userBO = UserBeanUtil.userDOToBO(user);
+			re.setSuccess(true);
+			re.setDate(userBO);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}", Constant.GSON.toJson(re), System.currentTimeMillis() - startTime);
 		return re;
 	}
 

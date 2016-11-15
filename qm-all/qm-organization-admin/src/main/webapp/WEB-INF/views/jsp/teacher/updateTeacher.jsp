@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -58,60 +60,52 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Form Elements
+                          	 职业信息修改
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="courseAddForm" role="form" method="post" action="addCourse">
+                                    <form id="teacherUpdateForm">
+                                    <input class="hidden" name="teacherId" value="${Bean.date.teacherId}">
                                         <div class="form-group col-lg-6">
-                                            <label>登录名</label>
-                                            <input class="form-control" name="loginName">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>密码</label>
-                                            <input type="password" class="form-control" name="password">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>身份</label>
-                                           <select id="disabledSelect" class="form-control"  name="identity">
-                                                <option value="1">家教</option>
-                                                <option value="2">家长</option>
-                                                <option value="3">学生</option>
-                                                <option value="4">机构教师</option>
-                                                <option value="5">机构负责人</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>姓名</label>
-                                            <input class="form-control" name="name">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>性别</label>
-                                            <div class="form-control">
+                                           <label>教师类型</label>
+                                           <div class="form-control">
                                              <label class="radio-inline">
-                                                <input type="radio" name="sex" id="optionsRadiosInline1" value="1" checked>男
+                                                <input type="radio" name="identity" id="optionsRadiosInline1" value="1" <c:if test="${Bean.date.identity =='1'}">checked</c:if> >机构教师
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="sex" id="optionsRadiosInline2" value="2">女
+                                                <input type="radio" name="identity" id="optionsRadiosInline2" value="2" <c:if test="${Bean.date.identity =='2'}">checked</c:if>>家教教师
                                             </label>
                                             </div>
                                         </div>
-                                        <div   class="form-group col-lg-6">
-                                            <label>联系电话</label>
-                                            <input class="form-control" name="linkPhone">
+                                        <div class="form-group col-lg-6">
+                                            <label>所属机构（机构教师不能为空）</label>
+                                            <input class="form-control" name="organizationId" value="${Bean.date.organizationId}">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label>邮箱</label>
-                                            <input type="email" class="form-control" name="email">
+                                            <label>是否愿意家教</label>
+                                               <div class="form-control">
+	                                             <label class="radio-inline">
+	                                                <input type="radio" name="ispublic" id="optionsRadiosInline1" value="1" <c:if test="${Bean.date.ispublic =='1'}">checked</c:if> >是
+	                                            </label>
+	                                            <label class="radio-inline">
+	                                                <input type="radio" name="ispublic" id="optionsRadiosInline2" value="2" <c:if test="${Bean.date.ispublic =='2'}">checked</c:if> >否
+	                                            </label>
+	                                           </div>
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label>年龄</label>
-                                            <input class="form-control" name="age">
+                                            <label>学历</label>
+                                            <input class="form-control" name="education" value="${Bean.date.education}">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label>个人介绍</label>
-                                             <textarea class="form-control" rows="3"  name="introduce"></textarea>
+                                        <div  id="form-teachingTimes"  class="form-group col-lg-6">
+                                            <label>毕业学校</label>
+                                            <input class="form-control" name="school" value="${Bean.date.school}">
+                                        </div>
+                                         <div  id="form-teachingTimes"  class="form-group col-lg-6">
+                                            <label>专业</label>
+                                            <input class="form-control" name="professional" value="${Bean.date.professional}">
+                                        </div>
                                         </div>
                                     </form>
                                 </div>
@@ -123,7 +117,8 @@
                     </div>
                     <!-- /.panel -->
                      <div class="form-group col-lg-6">
-                        <button id="courseAddBtn" type="button" class="btn btn-success">添加</button>
+                        <button id="teacherUpdateBtn" type="button" class="btn btn-success">修改</button>
+                        <div id="updateTeacherMsg"></div>
                      </div>
                 </div>
                 <!-- /.col-lg-12 -->

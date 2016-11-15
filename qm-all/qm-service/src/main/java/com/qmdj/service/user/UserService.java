@@ -40,6 +40,14 @@ public interface UserService {
 	 * */
 	public Result<Integer> delUser(long userBOId);
 	
+	/**
+	 * 查询user
+	 * @param  userBO
+	 * @return Result<UserBO>
+	 * @author xw
+	 * */
+	public Result<UserBO> selectUser(long userId);
+	
 	
 
 }

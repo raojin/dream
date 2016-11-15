@@ -122,13 +122,10 @@
 		DELETE FROM qmdj_teacher WHERE id = #{id}
 	</delete>
 	
-	<update id="update" parameterMap="TeacherDO">
+	<update id="updateById" parameterMap="TeacherDO">
         UPDATE qmdj_teacher SET 
 	        	<if test="gmtCreate!=null">
 					gmt_create = #{gmtCreate},
-				</if>
-	        	<if test="gmtModified!=null">
-					gmt_modified = #{gmtModified},
 				</if>
 	        	<if test="userId!=null">
 					userId = #{userId},
@@ -163,7 +160,7 @@
 	        	<if test="status!=null">
 					status = #{status},
 				</if>
-		update_time = now()
+		gmt_modified = now()
         WHERE id = #{id}        		
 	</update>
 	
@@ -227,10 +224,16 @@
 			</if>
 		</trim>
 	</sql>
-	<select id="selectTeacherList" resultMap="BaseResultMap" parameterMap="TeacherDO">
+	<select id="selectTeacherList" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.TeacherQO">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_teacher
-		<include refid="whereCondition" />
+		<!-- <include refid="whereCondition" /> -->
+	</select>
+		<select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_teacher
+		WHERE userId = #{id}
 	</select>
 </mapper>

@@ -19,5 +19,13 @@ public interface TeacherService {
 	Result<Integer> delTeacher(long teacherBOId);
 	
 	Result<PageInfo<TeacherBO>> selectTeacherList(TeacherQO teacherBOId);
+	
+	/**
+	 * 查询
+	 * @return
+	 */
+	Result<TeacherBO> selectTeacherById(long teacherId);
+	
+	Result<TeacherBO> selectTeacherByUserId(long teacherId);
 
 }
