@@ -118,7 +118,7 @@
                     <!-- /.panel -->
                      <div class="form-group col-lg-6">
                         <button id="teacherUpdateBtn" type="button" class="btn btn-success">修改</button>
-                        <div id="updateTeacherMsg"></div>
+                        <div id="updateTeacherMsg" class="updateMsg"></div>
                      </div>
                 </div>
                 <!-- /.col-lg-12 -->

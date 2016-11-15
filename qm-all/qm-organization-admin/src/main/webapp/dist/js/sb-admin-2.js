@@ -159,7 +159,7 @@ $("input").click(function(){
 
 $(".form-control").focus(function(){
 	$(".btn").attr("disabled", false);
-	$(".updateMsg").empty();
+	$(".updateMsg").html("");
 });
 
 
