@@ -79,7 +79,7 @@ public class OrganizationBeanUtil {
         targetObj.setTitle(srcObj.getTitle());//标题
         targetObj.setSort(srcObj.getSort());//排序值
         targetObj.setLowestPrice(lowestPrice);
-        targetObj.setTags(1);//标签 占时还没有这个功能
+        targetObj.setTags(srcObj.getTags());//标签 占时还没有这个功能
         return targetObj;
     }
 }

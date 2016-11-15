@@ -75,7 +75,7 @@ public class OrganizationBO {
     private String userName;
     
     /**
-     * 标签  0:普通 默认， 1：精品 
+     * 标签  2:普通 默认， 1：精品 
      * */
     private Integer tags;
     

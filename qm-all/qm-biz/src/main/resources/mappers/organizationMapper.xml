@@ -256,7 +256,7 @@
 	
 	<select id="findOrganizationBytags" resultMap="organizationMappering" parameterType="java.lang.Integer">
 		SELECT *
-		FROM qmdj_organization where is_del=1
+		FROM qmdj_organization where is_del=1 and status=2
 		<if test="tags!=null">
 				and tags = #{tags}
 		</if>
