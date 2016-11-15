@@ -85,6 +85,4 @@ public interface ModelDAO{
      * */
     List<ModelDO> findByCondition(ModelDO modelDO);
     
-    
-    List<ModelDO> findByModelQO(ModelQO modelQO);
 }

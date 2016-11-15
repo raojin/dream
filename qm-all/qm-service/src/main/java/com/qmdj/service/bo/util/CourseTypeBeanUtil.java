@@ -1,5 +1,8 @@
 package com.qmdj.service.bo.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.service.bo.CourseTypeBO;
 
@@ -46,5 +49,17 @@ public class CourseTypeBeanUtil {
         targetObj.setStatus(srcObj.getStatus());//状态 1:正常 ,2 隐藏 自定义默认为2
         targetObj.setSort(srcObj.getSort());//排序，值越大越靠前，自定义类型默认为0
         return targetObj;
+    }
+    
+    public static List<CourseTypeBO> courseTypeDOToBOList(List<CourseTypeDO> courseTypes){
+    	if(courseTypes==null){
+    		return null;
+    	}
+    	List<CourseTypeBO> list=new ArrayList<CourseTypeBO>();
+    	for( CourseTypeDO type:courseTypes){
+    		list.add(courseTypeDOToBO(type));
+    	}
+		return list;
+    	
     }
 }

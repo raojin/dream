@@ -78,4 +78,11 @@ public interface CourseTypeDAO{
      * 分页查询条数
      * */
     int queryForPageCount(CourseTypeQO queryQO);
+    
+    
+    
+    /**
+     * 多条件查询
+     * */
+    List<CourseTypeDO> findByCondition(CourseTypeDO courseTypeDO);
 }

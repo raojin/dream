@@ -1,6 +1,5 @@
-<form id="pagerForm" method="post" action="org/list">
-	<input type="hidden" name="currentPage" value="${BeanList.currentPage}" />
-	<input type="hidden" name="pageSize" value="${BeanList.pageSize}" />
+<form id="pagerForm" method="post" action="modelResourse/list">
+    <input type="hidden" name="pageNum" value="1" />
 </form>
 
 
@@ -69,6 +68,6 @@
 			</select>
 			<span>条，共${BeanList.totalCount}条</span>
 		</div>
-		<div class="pagination" targetType="navTab" totalCount="200" numPerPage="20" pageNumShown="10" currentPage="1"></div>
+		<div class="pagination" targetType="navTab"  totalCount="${BeanList.totalCount}" numPerPage="${BeanList.numPerPage}" pageNumShown="20" currentPage="${BeanList.currentPage}"></div>
 	</div>
 </div>

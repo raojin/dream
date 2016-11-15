@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.qmdj.biz.pogo.qo.ModelQO;
 import com.qmdj.service.app.AppCourseService;
 import com.qmdj.service.app.AppOrganizationService;
 import com.qmdj.service.bo.OrganizationBO;
@@ -34,10 +36,13 @@ public class IndexController {
 	private AppOrganizationService appOrganizationService;
 	
 	@ResponseBody
-	@RequestMapping("/index/top")
+	@RequestMapping(value="/index/top")
 	public String IndexTop(Model model,HttpServletRequest request,HttpServletResponse response){
-		 List<String> moduleCodes=new ArrayList<String>();
-		 Result<AppHomeTopBO> re= appCourseService.queryAppHomeTop(moduleCodes, 1, 5,true);
+		List<ModelQO> querys=new ArrayList<ModelQO>();
+		querys.add(new ModelQO("logo",1)); 
+		querys.add(new ModelQO("index_nav_model",1));
+		querys.add(new ModelQO("index_top_banner",1));
+		 Result<AppHomeTopBO> re= appCourseService.queryAppHomeTop(querys,5,true);
 		return JSONObject.toJSONString(re);
 	}
 	

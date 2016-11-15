@@ -92,13 +92,13 @@
 				and sort = #{sort}
 			</if>
 			<if test="author!=null">
-			  author = #{author},
+			  author = #{author}
 			</if>
 			<if test="digest!=null">
-			 digest = #{digest},
+			 digest = #{digest}
 			</if>
 			<if test="status!=null">
-			 status = #{status},
+			 status = #{status}
 			</if>
 		</trim>
 	</sql>
@@ -107,8 +107,8 @@
 		SELECT * from  qmdj_article
 		<include refid="pageQueryCondition" />
 
-		<if test="begin != null and pageSize != null">
-			LIMIT #{begin}, #{pageSize}
+		<if test="begin != null and numPerPage != null">
+			LIMIT #{begin}, #{numPerPage}
 		</if>
 	</select>
 

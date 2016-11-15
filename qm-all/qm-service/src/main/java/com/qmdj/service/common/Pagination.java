@@ -33,13 +33,15 @@ public class Pagination<T> implements Serializable {
     /**
      * 每页显示的数据量
      */
-    private Integer pageSize = DEFAULT_PAGE_SIZE;
+    private Integer numPerPage = DEFAULT_PAGE_SIZE;
 
     /**
      * 总页数
 
      */
     private Integer totalPage = 1;
+    
+    private Integer pageNum;
 
     public Pagination() {
         super();
@@ -65,8 +67,10 @@ public class Pagination<T> implements Serializable {
 
     public void setQuery(Query query) {
         if (query != null) {
-            this.pageSize = (query.getPageSize() != null) ? query.getPageSize().intValue() : 0;
+        	this.pageNum=query.getPageNum();
+            this.numPerPage = (query.getNumPerPage() != null) ? query.getNumPerPage().intValue() : 0;
             this.currentPage = (query.getCurrentPage() != null) ? query.getCurrentPage().intValue() : 1;
+            
         }
     }
 
@@ -97,16 +101,16 @@ public class Pagination<T> implements Serializable {
         if (totalCount <= 0) {
             totalPage = 1;
         } else {
-            totalPage = (totalCount + pageSize - 1) / pageSize;
+            totalPage = (totalCount + numPerPage - 1) / numPerPage;
         }
     }
 
-    public Integer getPageSize() {
-        return pageSize;
+    public Integer getNumPerPage() {
+        return numPerPage;
     }
 
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
+    public void setNumPerPage(Integer pageSize) {
+        this.numPerPage = pageSize;
     }
 
     public Integer getTotalPage() {

@@ -97,7 +97,7 @@
 				and sort = #{sort}
 			</if>
 		    <if test="courseNavName">
-				course_nav_name = #{courseNavName},
+				course_nav_name = #{courseNavName}
 			</if>
 		</trim>
 	</sql>
@@ -106,8 +106,8 @@
 		SELECT * from  qmdj_course_type
 		<include refid="pageQueryCondition" />
 
-		<if test="begin != null and pageSize != null">
-			LIMIT #{begin}, #{pageSize}
+		<if test="begin != null and numPerPage != null">
+			LIMIT #{begin}, #{numPerPage}
 		</if>
 	</select>
 

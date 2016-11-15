@@ -1,10 +1,10 @@
 package com.qmdj.service.bo.app;
 
 import java.util.List;
+import java.util.Map;
 
 import com.qmdj.service.bo.ArticleBO;
 import com.qmdj.service.bo.ModelBO;
-import com.qmdj.service.bo.app.AppCourseTypeNavBO;
 
 public class AppHomeTopBO {
 	
@@ -12,7 +12,7 @@ public class AppHomeTopBO {
 	 * 
 	 * 课程导航
 	 * */
-	private List<AppCourseTypeNavBO> appCourseTypes;
+	private List<AppCourseNavBO> courseNavs;
 	
 	/**
 	 * 
@@ -22,17 +22,9 @@ public class AppHomeTopBO {
 	
 	/**
 	 * 
-	 * 模块坑位列表
+	 * 模块坑位列表 key:modelCode  value:List<ModelBO>
 	 * */
-	private List<ModelBO> models;
-
-	public List<AppCourseTypeNavBO> getAppCourseTypes() {
-		return appCourseTypes;
-	}
-
-	public void setAppCourseTypes(List<AppCourseTypeNavBO> appCourseTypes) {
-		this.appCourseTypes = appCourseTypes;
-	}
+	private Map<String,List<ModelBO>> models;
 
 	public List<ArticleBO> getArticles() {
 		return articles;
@@ -42,11 +34,20 @@ public class AppHomeTopBO {
 		this.articles = articles;
 	}
 
-	public List<ModelBO> getModels() {
+	public Map<String, List<ModelBO>> getModels() {
 		return models;
 	}
 
-	public void setModels(List<ModelBO> models) {
+	public void setModels(Map<String, List<ModelBO>> models) {
 		this.models = models;
 	}
+
+	public List<AppCourseNavBO> getCourseNavs() {
+		return courseNavs;
+	}
+
+	public void setCourseNavs(List<AppCourseNavBO> courseNavs) {
+		this.courseNavs = courseNavs;
+	}
+
 }

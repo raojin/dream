@@ -3,6 +3,7 @@ package com.qmdj.service.app.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.ArticleDAO;
@@ -16,6 +17,7 @@ import com.qmdj.service.common.Result;
 @Service
 public class AppArticleServiceImpl implements AppArticleService {
 	
+	@Autowired
 	private ArticleDAO articleDAO;
 
 	

@@ -234,8 +234,8 @@
 		SELECT * from  qmdj_organization
 		<include refid="pageQueryCondition" />
 
-		<if test="begin != null and pageSize != null">
-			LIMIT #{begin}, #{pageSize}
+		<if test="begin != null and numPerPage != null">
+			LIMIT #{begin}, #{numPerPage}
 		</if>
 	</select>
 

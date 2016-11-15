@@ -1,5 +1,8 @@
 package com.qmdj.service.bo.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.qmdj.biz.domin.ModelDO;
 import com.qmdj.service.bo.ModelBO;
 import com.qmdj.service.common.date.DateStyle;
@@ -58,4 +61,17 @@ public class ModelBeanUtil {
         targetObj.setEndTime(DateUtil.dateToString(srcObj.getEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));//介绍时间
         return targetObj;
     }
+    
+    
+    public static List<ModelBO> qmdjModelDOToBOList(List<ModelDO> listDO){
+    	if(listDO==null){
+    		return null;
+    	}
+    	List<ModelBO>  modelBOs=new ArrayList<ModelBO>();
+    	for(ModelDO modelDO:listDO){
+    		modelBOs.add(qmdjModelDOToBO(modelDO));
+    	}
+    	return modelBOs;
+    }
+    
 }

@@ -84,16 +84,8 @@
 		<include refid="Base_Column_List" />
 		FROM qmdj_model
 		<include refid="whereCondition" />
-	</select>
-	
-	
-	<select id="findByModelQO" resultMap="BaseResultMap" parameterMap="com.qmdj.biz.pogo.qo.ModelQO">
-		SELECT
-		<include refid="Base_Column_List" />
-		FROM qmdj_model where status=1
 		order by sort DESC
-	</select>
-	
+	</select> 
 	
 	<sql id="whereCondition">
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -143,8 +135,8 @@
 		SELECT * from  qmdj_model
 		<include refid="pageQueryCondition" />
 
-		<if test="begin != null and pageSize != null">
-			LIMIT #{begin}, #{pageSize}
+		<if test="begin != null and numPerPage != null">
+			LIMIT #{begin}, #{numPerPage}
 		</if>
 	</select>
 

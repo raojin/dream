@@ -1,6 +1,7 @@
 package com.qmdj.biz.pogo.qo;
 
-import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.qmdj.biz.util.Query;
 
@@ -10,24 +11,41 @@ public class ModelQO extends Query{
 	
 	private String moduleName;
 	
-	private List<String> moduleCodes;
-	
 	private Integer moduleType;
 
+	  /**
+     * 模块类型 1:图片 2 :文字
+     */
+	private String moduleCode;
+	
+	
+	public ModelQO(String moduleCode,Integer moduleType){
+		this.moduleCode=moduleCode;
+		this.moduleType=moduleType;
+	}
+	
+	
+	public boolean checkCodeAndType(){
+		if(StringUtils.isBlank(this.moduleCode)){
+			return false;
+		}
+		if(moduleType==null){
+			return false;
+		}
+		if(moduleType!=1&&moduleType!=2){
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
 	public String getModuleName() {
 		return moduleName;
 	}
 
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
-	}
-
-	public List<String> getModuleCodes() {
-		return moduleCodes;
-	}
-
-	public void setModuleCodes(List<String> moduleCodes) {
-		this.moduleCodes = moduleCodes;
 	}
 
 	public Integer getModuleType() {
@@ -41,4 +59,13 @@ public class ModelQO extends Query{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getModuleCode() {
+		return moduleCode;
+	}
+
+	public void setModuleCode(String moduleCode) {
+		this.moduleCode = moduleCode;
+	}
+	
 }

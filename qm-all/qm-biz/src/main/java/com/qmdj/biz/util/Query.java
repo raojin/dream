@@ -16,58 +16,61 @@ public class Query implements Serializable {
 	/**
 	 * 默认每页大小
 	 */
-	private static final int DEFAULT_PAGE_SIZE = 10;
+	private static final int DEFAULT_PAGE_SIZE = 20;
+	
 	private static final Integer DEFAULT_FIRST_PAGE = 1; // 默认第一页
-	private Integer pageSize = DEFAULT_PAGE_SIZE; // 每页大小
-	private Integer currentPage = 1; // 当前页
-	private int begin = 0; // 起始行
+	
+	private Integer numPerPage = DEFAULT_PAGE_SIZE; // 每页大小
+	
+	private Integer pageNum=1; //当前页
+	
+	private Integer begin = 0; // 起始行
+	
 
-	public Integer getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(Integer pageSize) {
-
-        if (pageSize == null || pageSize <= 0) {
-            this.pageSize = DEFAULT_PAGE_SIZE;
-        } else {
-            this.pageSize = pageSize;
-        }
-        // 重新设置查询 begin 位置
-        this.calculateBegin();
-
-	}
+	private Integer currentPage=1; 
+	
+	 public int getStartIndex() {
+	        int pageNum = this.getPageNum() > 0 ? this.getPageNum() - 1 : 0;
+	        return pageNum * this.getNumPerPage();
+	    }
 
 	public Integer getCurrentPage() {
-		return currentPage;
+		 int pageNum = this.getPageNum() > 0 ? this.getPageNum() - 1 : 0;
+		 if(pageNum==0){
+			 return DEFAULT_FIRST_PAGE;
+		 }
+		return pageNum;
 	}
 
 	public void setCurrentPage(Integer currentPage) {
-
-		if (currentPage == null || currentPage <= 0) {
-			this.currentPage = DEFAULT_FIRST_PAGE;
-		} else {
-			this.currentPage = currentPage;
-		}
-
-		// 重新设置查询 begin 位置
-        this.calculateBegin();
+		this.currentPage = currentPage;
 	}
 
-	public int getBegin() {
-		return begin;
+	public Integer getNumPerPage() {
+		return numPerPage;
 	}
 
-	public void setBegin(int begin) {
+
+	public void setNumPerPage(Integer numPerPage) {
+		this.numPerPage = numPerPage;
+	}
+
+
+	public Integer getPageNum() {
+		return pageNum;
+	}
+
+
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public Integer getBegin() {
+		return getStartIndex();
+	}
+
+	public void setBegin(Integer begin) {
 		this.begin = begin;
 	}
-
-    /**
-     * 重新计算 分页起始位置
-     */
-	public void calculateBegin() {
-
-		this.begin = this.pageSize * (this.currentPage - 1);
-	}
-
+	
 }

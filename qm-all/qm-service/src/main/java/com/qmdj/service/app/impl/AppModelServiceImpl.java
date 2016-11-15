@@ -1,7 +1,8 @@
 package com.qmdj.service.app.impl;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,26 +23,27 @@ public class AppModelServiceImpl implements AppModelService {
 	private ModelDAO modelDAO;
 	
 	@Override
-	public Result<List<ModelBO>> queryModelList(List<String> moduleCodes, int moduleType) {
-		Result<List<ModelBO>> re=new Result<List<ModelBO>>();
-		if(moduleCodes==null){
+	public Result<Map<String, List<ModelBO>>> queryModelList(List<ModelQO> querys) {
+		Result<Map<String, List<ModelBO>>> re=new Result<Map<String, List<ModelBO>>>();
+		if(querys==null){
 			re.setCode(ReCode.PARAM_ERROR.getCode());
 			re.setMessage(ReCode.PARAM_ERROR.getMessage());
 			return re;
 		}
 		
-		ModelQO modelQO=new ModelQO();
-		modelQO.setModuleType(moduleType);
-		modelQO.setModuleCodes(moduleCodes);
+		Map<String, List<ModelBO>> map=new HashMap<String,List<ModelBO>>();
 		try {
-			List<ModelDO> listDO= modelDAO.findByModelQO(modelQO);
-			List<ModelBO> list=new ArrayList<>();
-			if(listDO!=null){
-				for(ModelDO m:listDO){
-					list.add(ModelBeanUtil.qmdjModelDOToBO(m));
+			for(ModelQO query:querys){
+				if(query.checkCodeAndType()){
+					ModelDO querym=new ModelDO();
+					querym.setModuleCode(query.getModuleCode());
+					querym.setModuleType(query.getModuleType());
+					querym.setStatus(1);
+					List<ModelDO> listDO=modelDAO.findByCondition(querym);
+					map.put(query.getModuleCode(),ModelBeanUtil.qmdjModelDOToBOList(listDO));
 				}
 			}
-			re.setDate(list);
+			re.setDate(map);
 			re.setSuccess(true);
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
@@ -50,5 +52,6 @@ public class AppModelServiceImpl implements AppModelService {
 		}
 		return re;
 	}
+
 
 }
