@@ -44,7 +44,7 @@
     values (#{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},#{userName}
       #{addrName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{startTime}, 
-      #{endTime}, #{images,jdbcType=VARCHAR}, 1,
+      #{endTime}, #{images,jdbcType=VARCHAR}, 2,
        now(), now(),#{sort},0)
   </insert>
   <insert id="insertSelective" parameterType="com.qmdj.biz.domin.OrganizationDO" >
