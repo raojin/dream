@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qmdj.biz.dao.CourseTheacherDAO">
+	<resultMap id="BaseResultMap" type="com.qmdj.biz.domin.CourseTheacherDO">
+		<result column="id" property="id" />
+		<result column="courseId" property="courseid" />
+		<result column="teacherId" property="teacherid" />
+	</resultMap>
+	
+	<parameterMap id="CourseTheacherDO" type="com.qmdj.biz.domin.CourseTheacherDO"/>
+	
+	<sql id="Base_Column_List">
+		id,courseId, teacherId
+	</sql>
+	
+	<insert id="insert" parameterMap="CourseTheacherDO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qmdj_course_theacher (
+			courseId, teacherId
+		)
+		VALUES (
+			#{courseid}, #{teacherid}
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.Long">
+		DELETE FROM qmdj_course_theacher WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterMap="CourseTheacherDO">
+        UPDATE qmdj_course_theacher SET 
+	        	<if test="courseid!=null">
+					courseId = #{courseid},
+				</if>
+	        	<if test="teacherid!=null">
+					teacherId = #{teacherid},
+				</if>
+		update_time = now()
+        WHERE id = #{id}        		
+	</update>
+	
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_course_theacher
+		WHERE id = #{id}
+	</select>
+	
+	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="CourseTheacherDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_course_theacher
+		<include refid="whereCondition" />
+	</select>
+	
+	<sql id="whereCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id!=null">
+				and id = #{id}
+			</if>
+			<if test="courseid!=null">
+				and courseId = #{courseid}
+			</if>
+			<if test="teacherid!=null">
+				and teacherId = #{teacherid}
+			</if>
+		</trim>
+	</sql>
+</mapper>

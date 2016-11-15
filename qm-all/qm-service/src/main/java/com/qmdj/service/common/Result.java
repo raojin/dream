@@ -2,12 +2,26 @@ package com.qmdj.service.common;
 
 public class Result<T> {
 
+	/**
+	 * 
+	 * 是否成功
+	 * */
 	private boolean isSuccess=false;
 	
+	/**
+	 * 
+	 * 数据集
+	 * */
 	private T date;
-	
+	/**
+	 * 
+	 * 错误信息
+	 * */
 	private String message;
-	
+	/**
+	 * 
+	 * 错误码
+	 * */
 	private String code;
 
 	public boolean isSuccess() {
