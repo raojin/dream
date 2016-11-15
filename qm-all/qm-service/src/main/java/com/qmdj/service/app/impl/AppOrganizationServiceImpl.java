@@ -8,7 +8,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qmdj.biz.dao.CourseDAO;
 import com.qmdj.biz.dao.OrganizationDAO;
+import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.service.app.AppOrganizationService;
 import com.qmdj.service.bo.OrganizationBO;
@@ -22,6 +24,9 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 	@Autowired
 	private OrganizationDAO organizationDAO;
 
+	@Autowired
+	private CourseDAO courseDAO;
+	
 	@Override
 	public Result<Map<Integer,List<OrganizationBO>>> queryOrganization(Integer tags) {
 		Result<Map<Integer,List<OrganizationBO>>> re=new Result<Map<Integer,List<OrganizationBO>>>();
@@ -34,12 +39,13 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 			 listDO= organizationDAO.findOrganizationBytags(tags);
 			 List<OrganizationBO> list=new ArrayList<>();
 			 for(OrganizationDO orgDO:listDO){
-				 list.add(OrganizationBeanUtil.qmdjOrganizationDOToBO(orgDO));
+				 Long lowestPrice=getOrgLowestPrice(orgDO.getId());
+				 list.add(OrganizationBeanUtil.appHomeOrganizationDOToBO(orgDO,lowestPrice));
 			 }
 			
 			 if(tags==null){
-				 List<OrganizationBO> plist=new ArrayList<>();;
-				 List<OrganizationBO> jlist=new ArrayList<>();;
+				 List<OrganizationBO> plist=new ArrayList<>();
+				 List<OrganizationBO> jlist=new ArrayList<>();
 				 for(OrganizationBO orgBO:list){
 					 if(orgBO.getTags()==1){
 						 jlist.add(orgBO);
@@ -47,8 +53,8 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 						 plist.add(orgBO);
 					 }
 				 } 
-				 map.put(1, plist);
-				 map.put(2, jlist);
+				 map.put(1, jlist);
+				 map.put(2, plist);
 			 }else{
 				 map.put(tags, list);
 			 }
@@ -61,8 +67,16 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 		}
 		return re;
 	}
-
 	
+	
+	private Long getOrgLowestPrice(Long orgId){
+		  CourseDO	courseDO= courseDAO.queryLowestPrice(orgId);
+		 Long lowestPrice=0L;
+		  if(courseDO!=null){
+			  lowestPrice=courseDO.getPrice();
+		  }
+		return lowestPrice;
+	};
 	
 	
 }

@@ -85,6 +85,12 @@ public class OrganizationBO {
      * 排序值
      * */
     private Integer sort;
+    
+    /**
+     * 
+     *机构课程的最低价 单位 分
+     * */
+    private Long lowestPrice;
 
     public OrganizationBO() {
     }
@@ -226,5 +232,13 @@ public class OrganizationBO {
 
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	public Long getLowestPrice() {
+		return lowestPrice;
+	}
+
+	public void setLowestPrice(Long lowestPrice) {
+		this.lowestPrice = lowestPrice;
 	}
 }

@@ -67,4 +67,19 @@ public class OrganizationBeanUtil {
         targetObj.setTags(srcObj.getSort());//标签
         return targetObj;
     }
+    
+    public static OrganizationBO appHomeOrganizationDOToBO(OrganizationDO srcObj,Long lowestPrice) {
+        if (srcObj == null) {
+            return null;
+        }
+        OrganizationBO targetObj = new OrganizationBO();
+        targetObj.setOrganizationId(srcObj.getId());//主键ID
+        targetObj.setImage(srcObj.getImage());//首图
+        targetObj.setName(srcObj.getName());//机构名称
+        targetObj.setTitle(srcObj.getTitle());//标题
+        targetObj.setSort(srcObj.getSort());//排序值
+        targetObj.setLowestPrice(lowestPrice);
+        targetObj.setTags(1);//标签 占时还没有这个功能
+        return targetObj;
+    }
 }

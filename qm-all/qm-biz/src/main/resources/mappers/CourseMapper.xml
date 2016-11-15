@@ -258,4 +258,10 @@
 		<include refid="Base_Column_List" />
 		from qmdj_course where status !=100  ORDER BY sort DESC ,gmt_create DESC
 	</select>
+	
+	<select id="queryLowestPrice" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT 
+		<include refid="Base_Column_List" />
+		from qmdj_course where status =1 and parentId=#{orgId}  ORDER BY price ASC  LIMIT 0, 1
+	</select>
 </mapper>

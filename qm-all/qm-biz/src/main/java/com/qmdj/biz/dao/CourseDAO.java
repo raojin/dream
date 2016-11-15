@@ -1,7 +1,6 @@
 package com.qmdj.biz.dao;
 
 import java.util.List;
-
 import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.pogo.qo.CourseQO;
 
@@ -105,5 +104,11 @@ public interface CourseDAO{
      * </PRE>
      */
     List<CourseDO> queryForPage(CourseQO courseQO);
+    
+    
+    /**
+     * 查询改机构课程的最低价
+     * */
+    CourseDO queryLowestPrice(Long orgId);
     
 }
