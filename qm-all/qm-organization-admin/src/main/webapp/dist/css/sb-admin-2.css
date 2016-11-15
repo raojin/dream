@@ -460,3 +460,23 @@ html,body{
 	padding-left: 0;
 	padding-right: 0
 }
+
+
+
+h2 {
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 4em;
+}
+
+#addTeacherMsg,
+#updateMsg{
+	color: red;
+	font-size: 6px;
+}

@@ -1,13 +1,20 @@
 package com.qmdj.service.teacher.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.dao.TeacherDAO;
 import com.qmdj.biz.domin.TeacherDO;
+import com.qmdj.biz.pogo.qo.TeacherQO;
 import com.qmdj.biz.util.core.Constant;
+import com.qmdj.biz.util.core.QmdjUtils;
 import com.qmdj.service.bo.TeacherBO;
 import com.qmdj.service.bo.util.TeacherBeanUtil;
 import com.qmdj.service.common.ReCode;
@@ -35,10 +42,15 @@ public class TeacherServiceImpl implements TeacherService{
 		}
 		try {
 			TeacherDO qmdjTeacherBOToDO = TeacherBeanUtil.qmdjTeacherBOToDO(teacherBO);
+			qmdjTeacherBOToDO.setGmtCreate(new Date());
+			qmdjTeacherBOToDO.setStatus(2);//默认为审核中
+			qmdjTeacherBOToDO.setImages("qiniuImage");//七牛文件保存策略
+			qmdjTeacherBOToDO.setCode(QmdjUtils.getCode(qmdjTeacherBOToDO.getIdentity()));//添加code
 			int insertSelective = teacherDAO.insertSelective(qmdjTeacherBOToDO);
 			re.setSuccess(true);
 			re.setDate(insertSelective);
 		} catch (Exception e) {
+			Constant.GSON.toJson(e.getMessage());
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
@@ -105,6 +117,21 @@ public class TeacherServiceImpl implements TeacherService{
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 		}
 		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
+		return re;
+	}
+
+	@Override
+	public Result<PageInfo<TeacherBO>> selectTeacherList(TeacherQO teacherQO) {
+		Result<PageInfo<TeacherBO>> re = new Result<PageInfo<TeacherBO>>();
+		List<TeacherDO> selectTeacherList = teacherDAO.selectTeacherList(teacherQO.enablePaging());
+		List<TeacherBO> teacherBOList = new ArrayList<TeacherBO>();
+		if(selectTeacherList.size()>0){
+			for (TeacherDO teacherDO : selectTeacherList) {
+				teacherBOList.add(TeacherBeanUtil.qmdjTeacherDOToBO(teacherDO));
+			}
+		}
+		PageInfo<TeacherBO> pageList =new PageInfo<TeacherBO>(teacherBOList);
+		re.setDate(pageList);
 		return re;
 	}
 

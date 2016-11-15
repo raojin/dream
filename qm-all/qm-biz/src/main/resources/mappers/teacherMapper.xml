@@ -5,10 +5,10 @@
 		<result column="id" property="id" />
 		<result column="gmt_create" property="gmtCreate" />
 		<result column="gmt_modified" property="gmtModified" />
-		<result column="userId" property="userid" />
+		<result column="userId" property="userId" />
 		<result column="identity" property="identity" />
-		<result column="organizationId" property="organizationid" />
-		<result column="isPublic" property="ispublic" />
+		<result column="organizationId" property="organizationId" />
+		<result column="isPublic" property="isPublic" />
 		<result column="code" property="code" />
 		<result column="education" property="education" />
 		<result column="name" property="name" />
@@ -29,7 +29,7 @@
 			gmt_create, gmt_modified, userId, identity, organizationId, isPublic, code, education, name, school, professional, images, status
 		)
 		VALUES (
-			#{gmtCreate}, #{gmtModified}, #{userid}, #{identity}, #{organizationid}, #{ispublic}, #{code}, #{education}, #{name}, #{school}, #{professional}, #{images}, #{status}
+			#{gmtCreate}, #{gmtModified}, #{userId}, #{identity}, #{organizationId}, #{isPublic}, #{code}, #{education}, #{name}, #{school}, #{professional}, #{images}, #{status}
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.TeacherDO" >
@@ -41,16 +41,16 @@
       <if test="gmtModified != null" >
         gmt_modified,
       </if>
-      <if test="userid != null" >
+      <if test="userId != null" >
         userId,
       </if>
       <if test="identity != null" >
         identity,
       </if>
-      <if test="organizationid != null" >
+      <if test="organizationId != null" >
         organizationId,
       </if>
-      <if test="ispublic != null" >
+      <if test="isPublic != null" >
         isPublic,
       </if>
       <if test="code != null" >
@@ -82,17 +82,17 @@
       <if test="gmtModified != null" >
         #{gmtModified,jdbcType=TIMESTAMP},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="identity != null" >
         #{identity,jdbcType=INTEGER},
       </if>
-      <if test="organizationid != null" >
-        #{organizationid,jdbcType=INTEGER},
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
       </if>
-      <if test="ispublic != null" >
-        #{ispublic,jdbcType=INTEGER},
+      <if test="isPublic != null" >
+        #{isPublic,jdbcType=INTEGER},
       </if>
       <if test="code != null" >
         #{code,jdbcType=VARCHAR},
@@ -130,17 +130,17 @@
 	        	<if test="gmtModified!=null">
 					gmt_modified = #{gmtModified},
 				</if>
-	        	<if test="userid!=null">
-					userId = #{userid},
+	        	<if test="userId!=null">
+					userId = #{userId},
 				</if>
 	        	<if test="identity!=null">
 					identity = #{identity},
 				</if>
-	        	<if test="organizationid!=null">
-					organizationId = #{organizationid},
+	        	<if test="organizationId!=null">
+					organizationId = #{organizationId},
 				</if>
-	        	<if test="ispublic!=null">
-					isPublic = #{ispublic},
+	        	<if test="isPublic!=null">
+					isPublic = #{isPublic},
 				</if>
 	        	<if test="code!=null">
 					code = #{code},
@@ -174,7 +174,7 @@
 		WHERE id = #{id}
 	</select>
 	
-	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="TeacherDO">
+	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="com.qmdj.biz.pogo.qo.TeacherQO">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_teacher
@@ -192,17 +192,17 @@
 			<if test="gmtModified!=null">
 				and gmt_modified = #{gmtModified}
 			</if>
-			<if test="userid!=null">
-				and userId = #{userid}
+			<if test="userId!=null">
+				and userId = #{userId}
 			</if>
 			<if test="identity!=null">
 				and identity = #{identity}
 			</if>
-			<if test="organizationid!=null">
-				and organizationId = #{organizationid}
+			<if test="organizationId!=null">
+				and organizationId = #{organizationId}
 			</if>
-			<if test="ispublic!=null">
-				and isPublic = #{ispublic}
+			<if test="isPublic!=null">
+				and isPublic = #{isPublic}
 			</if>
 			<if test="code!=null">
 				and code = #{code}
@@ -227,4 +227,10 @@
 			</if>
 		</trim>
 	</sql>
+	<select id="selectTeacherList" resultMap="BaseResultMap" parameterMap="TeacherDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_teacher
+		<include refid="whereCondition" />
+	</select>
 </mapper>

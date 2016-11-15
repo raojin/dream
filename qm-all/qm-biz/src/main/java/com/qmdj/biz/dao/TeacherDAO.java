@@ -1,6 +1,9 @@
 package com.qmdj.biz.dao;
 
+import java.util.List;
+
 import com.qmdj.biz.domin.TeacherDO;
+import com.qmdj.biz.pogo.qo.TeacherQO;
 
 /**
  *  DAO接口
@@ -67,4 +70,18 @@ public interface TeacherDAO{
      * </PRE>
      */
      TeacherDO findById(Long id);
+     
+     
+     /**
+      * 
+      * 方法findById的功能描述：根据Id查询
+      * 
+      * @param id
+      * @return QmdjTeacherDO
+      * <PRE>
+      * author xw  
+      * Date 2016年11月14日18:38:33
+      * </PRE>
+      */
+      List<TeacherDO> selectTeacherList(TeacherQO teacherQO);
 }

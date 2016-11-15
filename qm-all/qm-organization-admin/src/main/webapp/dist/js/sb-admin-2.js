@@ -4,62 +4,155 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 $(function() {
-    $('#side-menu').metisMenu();
+	$('#side-menu').metisMenu();
 });
 
-//Loads the correct sidebar on window load,
-//collapses the sidebar on window resize.
+// Loads the correct sidebar on window load,
+// collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
 $(function() {
-    $(window).bind("load resize", function() {
-        var topOffset = 50;
-        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-        if (width < 768) {
-            $('div.navbar-collapse').addClass('collapse');
-            topOffset = 100; // 2-row-menu
-        } else {
-            $('div.navbar-collapse').removeClass('collapse');
-        }
+	$(window)
+			.bind(
+					"load resize",
+					function() {
+						var topOffset = 50;
+						var width = (this.window.innerWidth > 0) ? this.window.innerWidth
+								: this.screen.width;
+						if (width < 768) {
+							$('div.navbar-collapse').addClass('collapse');
+							topOffset = 100; // 2-row-menu
+						} else {
+							$('div.navbar-collapse').removeClass('collapse');
+						}
 
-        var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
-        height = height - topOffset;
-        if (height < 1) height = 1;
-        if (height > topOffset) {
-            $("#page-wrapper").css("min-height", (height) + "px");
-        }
-    });
+						var height = ((this.window.innerHeight > 0) ? this.window.innerHeight
+								: this.screen.height) - 1;
+						height = height - topOffset;
+						if (height < 1)
+							height = 1;
+						if (height > topOffset) {
+							$("#page-wrapper").css("min-height",
+									(height) + "px");
+						}
+					});
 
-    var url = window.location;
-    // var element = $('ul.nav a').filter(function() {
-    //     return this.href == url;
-    // }).addClass('active').parent().parent().addClass('in').parent();
-    var element = $('ul.nav a').filter(function() {
-        return this.href == url;
-    }).addClass('active').parent();
+	var url = window.location;
+	// var element = $('ul.nav a').filter(function() {
+	// return this.href == url;
+	// }).addClass('active').parent().parent().addClass('in').parent();
+	var element = $('ul.nav a').filter(function() {
+		return this.href == url;
+	}).addClass('active').parent();
 
-    while (true) {
-        if (element.is('li')) {
-            element = element.parent().addClass('in').parent();
-        } else {
-            break;
-        }
-    }
+	while (true) {
+		if (element.is('li')) {
+			element = element.parent().addClass('in').parent();
+		} else {
+			break;
+		}
+	}
 });
 
+// 提交提示
+function sumbit_sure(val) {
+	var gnl = confirm(val);
+	if (gnl == true) {
+		return true;
+	} else {
+		return false;
+	}
+};
 
-$("#loginBtn").click(function(){
-		$("#loginForm").submit();
+$("#loginBtn").click(function() {
+	$("#loginForm").submit();
 });
 
-
-$("#courseAddBtn").click(function(){
-	
+$("#courseAddBtn").click(function() {
+	$("#courseAddBtn").attr({
+		"disabled" : "disabled"
+	});
 	$.ajax({
-	    type: 'post',
-	    url: 'addCourse',
-	    data: $("#courseAddForm").submit(),
-	    success: function(data) {
-	       alert(data);
-	    }
+		type : 'post',
+		url : 'addCourse',
+		data : $("#courseAddForm").serialize(),
+		success : function(data) {
+			if (data) {
+				$("#addMsg").html("修改成功");
+			} else {
+				$("#addMsg").html("修改成功");
+			}
+		}
+	});
+});
+
+$("#courseUpdateBtn").click(function() {
+	var su=sumbit_sure("确定修改");
+	if(!su){
+		return;
+	}
+	$("#courseUpdateBtn").attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'updateCourse',
+		data : $("#courseUpdateForm").serialize(),
+		success : function(data) {
+			if (data) {
+				$("#updateMsg").html("修改成功");
+			} else {
+				$("#updateMsg").html("修改失败");
+			}
+		}
+	});
+});
+
+
+$(".delBtn").click(function() {
+	var id = $(this).data("id");
+	var su=sumbit_sure("确定删除？");
+	if(!su){
+		return;
+	}
+	$("#delBtn" + id).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'delCourse',
+		data :{"courseId":id}, 
+		success : function(data) {
+			if (data) {
+				alert("删除成功");
+				window.location.reload();
+			} else {
+				alert("删除失败");
+			}
+		}
+	});
+});
+
+
+$("#teacherAddBtn").click(function(){
+	$(this).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'addTeacher',
+		data :$("#teacherAddForm").serialize(),
+		success : function(data) {
+			if(data){
+				$("#addTeacherMsg").html("添加成功");
+			} else {
+				$("#addTeacherMsg").html("添加失败");
+			}
+		}
+	});
+});
+
+$("input").click(function(){
+	$("#teacherAddBtn").removeAttr({
+		"disabled" : "disabled"
 	});
 });

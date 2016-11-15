@@ -82,9 +82,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${BeanList.date.list}" var="courseBO">
+                                <c:forEach items="${BeanList.date.list}" var="teacherBO">
                                     <tr class="gradeU">
-                                    	<td class="hidden">${courseBO.courseId}</td>
+                                    	<td class="hidden">${teacherBO.courseId}</td>
                                         <td>${courseBO.courseIds}</td>
                                         <td>${courseBO.courseType}</td>
                                         <td>${courseBO.teachingWay}</td>

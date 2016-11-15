@@ -13,6 +13,13 @@ import com.qmdj.service.common.Result;
 public interface CourseService {
 	
 	/**
+	 * 查询
+	 * @param course
+	 * @return
+	 */
+	Result<CourseBO> selectCourse(long course);
+	
+	/**
 	 * 添加
 	 * @param course
 	 * @return

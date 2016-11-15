@@ -16,6 +16,7 @@ public class Constant {
 	public static String BEAN_LIST="BeanList";
 	public static String BEAN="Bean";
 	public static String SESSION_BEAN="Session_Bean";
+	public static String NAME="name";
 	public static String ERROR="error";
 	public static String ERROR_MESSAGE="账号或密码不能为空";
 	

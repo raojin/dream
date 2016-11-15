@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.pogo.qo.CourseQO;
@@ -34,29 +35,23 @@ public class CourseContrioller {
 	public String toAdd(Model model,HttpServletRequest request,HttpServletResponse response){
 		return "course/addCourse";
 	}
-	
+	@ResponseBody
 	@RequestMapping("/addCourse")
 	public String addCourse(Model model,HttpServletRequest request,HttpServletResponse response,CourseBO course){
 		System.out.println(Constant.GSON.toJson(course));
 		UserBO userBO = (UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
+		Result<Integer> re =new Result<Integer>();
 		if(userBO==null){
-			return "public/login";
+			return Constant.GSON.toJson(re.isSuccess());
 		}
 		course.setCourseId(userBO.getUserId());
 		if(userBO.getIdentity()==5){
-			Result<OrganizationBO> selectOrganizationByUserid = organizationService.selectOrganizationByUserid(course.getCourseId());
+			Result<OrganizationBO>	selectOrganizationByUserid = organizationService.selectOrganizationByUserid(course.getCourseId());
 			Long organizationId = selectOrganizationByUserid.getDate().getOrganizationId();
 			course.setParentid(organizationId);
 		}
-		Result<Integer> re = courseService.addCourse(course);
-		System.out.println(Constant.GSON.toJson(re));
-		if(re.isSuccess()){
-			model.addAttribute(Constant.MSG, true);
-		}else{
-			model.addAttribute(Constant.ERROR, re.getMessage());
-			return "forward:public/login";//toLogin(model,request,response);//"public/login.html";
-		}
-		return toAdd( model, request, response);
+		re = courseService.addCourse(course);
+		return Constant.GSON.toJson(re.isSuccess());
 	}
 	
 	@RequestMapping("/courselist")
@@ -66,5 +61,25 @@ public class CourseContrioller {
 		model.addAttribute(Constant.BEAN_LIST, queryForPage);
 		return "course/courseList";
 	}
-
+	
+	@RequestMapping("/toUpdateCourse")
+	public String toUpdateCourse(Model model,HttpServletRequest request,HttpServletResponse response,long courseId){
+		Result<CourseBO> selectCourse = courseService.selectCourse(courseId);
+		model.addAttribute(Constant.BEAN,selectCourse);
+		return "course/updateCourse";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateCourse")
+	public String updateCourse(Model model,HttpServletRequest request,HttpServletResponse response,CourseBO course){
+		Result<Integer> updateCourse = courseService.updateCourse(course);
+		return Constant.GSON.toJson(updateCourse.isSuccess());
+	}
+	
+	@RequestMapping("/delCourse")
+	public String delCourse(Model model,HttpServletRequest request,HttpServletResponse response,long courseId){
+		Result<Integer> updateCourse = courseService.delCourse(courseId);
+		CourseQO courseQO =new CourseQO(); 
+		return courseList(model, request, response, courseQO);
+	}
 }
