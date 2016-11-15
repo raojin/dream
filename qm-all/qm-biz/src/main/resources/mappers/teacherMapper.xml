@@ -174,7 +174,7 @@
 		WHERE id = #{id}
 	</select>
 	
-	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="com.qmdj.biz.pogo.qo.TeacherQO">
+	<select id="findByCondition" resultMap="BaseResultMap" parameterType="com.qmdj.biz.pogo.qo.TeacherQO">
 		SELECT
 		<include refid="Base_Column_List" />
 		FROM qmdj_teacher

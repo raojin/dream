@@ -25,7 +25,7 @@ public class ModelController {
 
 	
 	@RequestMapping("/list")
-	public String list(Model model,ModelQO querQO){
+	public String list(Model model,@RequestParam(value = "querQO",required=false) ModelQO querQO){
 		Result<Pagination<ModelBO>> re= modelSerice.queryForPage(querQO);
 		model.addAttribute(Constant.BEAN_LIST, re.getDate());
 		return  "modelResource/list.html";
