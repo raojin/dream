@@ -18,6 +18,8 @@ public class ModelQO extends Query{
      */
 	private String moduleCode;
 	
+	public ModelQO(){}
+	
 	
 	public ModelQO(String moduleCode,Integer moduleType){
 		this.moduleCode=moduleCode;

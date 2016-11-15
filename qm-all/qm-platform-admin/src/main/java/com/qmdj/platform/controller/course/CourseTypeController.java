@@ -33,6 +33,9 @@ public class CourseTypeController {
 	
 	@RequestMapping("/list")
 	public String list(Model model,@RequestParam(value = "querQO",required=false) CourseTypeQO querQO){
+		if(querQO==null){
+			querQO =new CourseTypeQO();
+		} 
 		Result<Pagination<CourseTypeBO>> re= courseTypeService.queryForPage(querQO);
 		model.addAttribute(Constant.BEAN_LIST, re.getDate());
 		return  "courseType/courseTypeList.html";
