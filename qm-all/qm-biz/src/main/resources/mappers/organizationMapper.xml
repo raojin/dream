@@ -255,8 +255,7 @@
 	</sql>
 	
 	<select id="findOrganizationBytags" resultMap="organizationMappering" parameterType="java.lang.Integer">
-		SELECT
-		count(id)
+		SELECT *
 		FROM qmdj_organization where is_del=1
 		<if test="tags!=null">
 				and tags = #{tags}

@@ -32,6 +32,7 @@ public class IndexController {
 	@Autowired
 	private AppCourseService appCourseService;
 	
+	@Autowired
 	private AppOrganizationService appOrganizationService;
 	
 	@ResponseBody
@@ -50,6 +51,7 @@ public class IndexController {
 	@RequestMapping("/index/organization")
 	public String IndexOrg(Model model,HttpServletRequest request,HttpServletResponse response){
 		Result<Map<Integer,List<OrganizationBO>>> re= appOrganizationService.queryOrganization(0);
+		System.out.println(JSONObject.toJSONString(re));
 		return JSONObject.toJSONString(re);
 	}
 }

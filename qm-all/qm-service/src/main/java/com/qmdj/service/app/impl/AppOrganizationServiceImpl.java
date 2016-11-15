@@ -36,24 +36,28 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 			 for(OrganizationDO orgDO:listDO){
 				 list.add(OrganizationBeanUtil.qmdjOrganizationDOToBO(orgDO));
 			 }
-			 if(tags!=0){
-				 map.put(tags, list);
-			 }else{
-				 List<OrganizationBO> plist=list;
-				 List<OrganizationBO> jlist=list;
+			
+			 if(tags==null){
+				 List<OrganizationBO> plist=new ArrayList<>();;
+				 List<OrganizationBO> jlist=new ArrayList<>();;
 				 for(OrganizationBO orgBO:list){
 					 if(orgBO.getTags()==1){
 						 jlist.add(orgBO);
-					 }else if(orgBO.getTags()==0){
+					 }else if(orgBO.getTags()==2){
 						 plist.add(orgBO);
 					 }
 				 } 
 				 map.put(1, plist);
 				 map.put(2, jlist);
+			 }else{
+				 map.put(tags, list);
 			 }
+			 re.setDate(map);
+			 re.setSuccess(true);
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
+			e.printStackTrace();
 		}
 		return re;
 	}
