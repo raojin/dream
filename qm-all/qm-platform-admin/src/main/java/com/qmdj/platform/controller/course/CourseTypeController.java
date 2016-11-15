@@ -44,7 +44,9 @@ public class CourseTypeController {
 	
 	@RequestMapping("/toAdd")
 	public String tologin(Model model,@RequestParam(value = "courseTypeId",required=false) Long courseTypeId){
-		Result<List<CourseNavBO>> navRe=courseNavService.queryByCondition(null);
+		CourseNavBO courseNavBO=new CourseNavBO();
+		courseNavBO.setStatus(1);
+		Result<List<CourseNavBO>> navRe=courseNavService.queryByCondition(courseNavBO);
 		model.addAttribute("courseNavList", navRe.getDate());
 		if(courseTypeId!=null){
 			Result<CourseTypeBO> re=courseTypeService.queryCourseTypeById(courseTypeId);

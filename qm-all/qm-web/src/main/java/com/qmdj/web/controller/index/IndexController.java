@@ -42,6 +42,7 @@ public class IndexController {
 		querys.add(new ModelQO("index_nav_model",1));
 		querys.add(new ModelQO("index_top_banner",1));
 		 Result<AppHomeTopBO> re= appCourseService.queryAppHomeTop(querys,5,true);
+		 System.out.println(JSONObject.toJSONString(re));
 		return JSONObject.toJSONString(re);
 	}
 	

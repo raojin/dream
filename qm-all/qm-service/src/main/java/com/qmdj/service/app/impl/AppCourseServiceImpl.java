@@ -70,7 +70,7 @@ public class AppCourseServiceImpl implements AppCourseService {
 					  navBO.getCourseTypes().add(appType);
 				  }
 				}
-				date.add(navBO);
+				 date.add(navBO);
 			}
 			re.setDate(date);
 			re.setSuccess(true);
