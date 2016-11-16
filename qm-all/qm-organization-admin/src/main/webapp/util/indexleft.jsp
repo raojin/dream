@@ -105,7 +105,7 @@
                                     <a href="flot.html">机构账号</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">机构设置</a>
+                                    <a href="toUpdateOrg?orgId=2">机构设置</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">动态列表</a>
