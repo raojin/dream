@@ -4,12 +4,10 @@ package com.qmdj.service.common.upload;
 import main.java.com.UpYun;
 import org.apache.commons.lang.StringUtils;
 
-import com.alibaba.fastjson.util.Base64;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
 

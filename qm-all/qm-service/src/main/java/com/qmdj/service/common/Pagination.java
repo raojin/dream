@@ -121,5 +121,12 @@ public class Pagination<T> implements Serializable {
         this.totalPage = totalPage;
     }
 
+	public Integer getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
 
 }

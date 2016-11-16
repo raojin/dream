@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.qmdj.biz.dao.ArticleDAO;
 import com.qmdj.biz.domin.ArticleDO;
-import com.qmdj.biz.domin.CourseNavDO;
 import com.qmdj.biz.pogo.qo.ArticleQO;
 import com.qmdj.service.article.ArticleService;
 import com.qmdj.service.bo.ArticleBO;
-import com.qmdj.service.bo.CourseNavBO;
 import com.qmdj.service.bo.util.ArticleBeanUtil;
-import com.qmdj.service.bo.util.CourseNavBeanUtil;
 import com.qmdj.service.common.Pagination;
 import com.qmdj.service.common.ReCode;
 import com.qmdj.service.common.Result;

@@ -37,7 +37,7 @@ public class OrganizationBO {
      */
     private Long userId;
     /**
-     * 机构介绍
+     * 机构详情
      */
     private String detail;
     /**
