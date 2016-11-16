@@ -43,7 +43,7 @@
 			now(), now(), #{loginName}, #{password}, #{identity}, #{name}, #{sex}, #{linkPhone}, #{introduce}, #{image}, 1, #{email}, #{age}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.UserDO" >
+	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.UserDO" useGeneratedKeys="true" keyProperty="id" >
     insert into qmdj_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="gmtCreate != null" >

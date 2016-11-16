@@ -1,5 +1,7 @@
 package com.qmdj.organization.controller.course;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,10 +15,12 @@ import com.github.pagehelper.PageInfo;
 import com.qmdj.biz.pogo.qo.CourseQO;
 import com.qmdj.biz.util.core.Constant;
 import com.qmdj.service.bo.CourseBO;
+import com.qmdj.service.bo.CourseTypeBO;
 import com.qmdj.service.bo.OrganizationBO;
 import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.common.Result;
 import com.qmdj.service.course.CourseService;
+import com.qmdj.service.course.CourseTypeService;
 import com.qmdj.service.organization.OrganizationService;
 
 
@@ -28,11 +32,16 @@ public class CourseContrioller {
 	CourseService courseService;
 	
 	@Autowired
+	CourseTypeService courseTypeService;
+	
+	@Autowired
 	OrganizationService organizationService;
 	
 	
 	@RequestMapping("/toAddCourse")
 	public String toAdd(Model model,HttpServletRequest request,HttpServletResponse response){
+		Result<List<CourseTypeBO>> selectCourseType = courseTypeService.selectCourseType();
+		model.addAttribute(Constant.BEAN_LIST, selectCourseType);
 		return "course/addCourse";
 	}
 	@ResponseBody

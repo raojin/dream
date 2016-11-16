@@ -125,4 +125,11 @@
 			</if>
 		</trim>
 	</sql>
+	
+		<select id="selectCourseTypeList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_course_type 
+		where status != 100
+	</select>
 </mapper>

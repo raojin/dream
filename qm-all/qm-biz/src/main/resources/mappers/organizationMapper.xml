@@ -50,9 +50,6 @@
   <insert id="insertSelective" parameterType="com.qmdj.biz.domin.OrganizationDO" >
     insert into qmdj_organization
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="image != null" >
         image,
       </if>
@@ -86,12 +83,8 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="gmtCreate != null" >
         gmt_create,
-      </if>
-      <if test="gmtModified != null" >
         gmt_modified,
-      </if>
       <if test="isDel != null" >
         is_del,
       </if>
@@ -100,9 +93,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="image != null" >
         #{image,jdbcType=VARCHAR},
       </if>
@@ -136,12 +126,8 @@
       <if test="status != null" >
         #{status},
       </if>
-      <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
+      now(), 
+      now(),
       <if test="isDel != null" >
         #{isDel,jdbcType=INTEGER},
       </if>

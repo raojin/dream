@@ -1,5 +1,7 @@
 package com.qmdj.service.course;
 
+import java.util.List;
+
 import com.qmdj.biz.pogo.qo.CourseTypeQO;
 import com.qmdj.service.bo.CourseTypeBO;
 import com.qmdj.service.common.Pagination;
@@ -30,5 +32,11 @@ public interface CourseTypeService {
 	 * 分页查询
 	 * */
 	Result<Pagination<CourseTypeBO>> queryForPage(CourseTypeQO queryQO);
+	
+	/**
+	 * 
+	 * 查询课程类型，
+	 * */
+	Result<List<CourseTypeBO>> selectCourseType(); 
 
 }

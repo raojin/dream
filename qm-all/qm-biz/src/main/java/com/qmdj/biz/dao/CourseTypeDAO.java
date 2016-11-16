@@ -85,4 +85,9 @@ public interface CourseTypeDAO{
      * 多条件查询
      * */
     List<CourseTypeDO> findByCondition(CourseTypeDO courseTypeDO);
+    /**
+     * 查询所有课程类型  添加课程所用（应该还需要优化）
+     * @return
+     */
+    List<CourseTypeDO>  selectCourseTypeList();
 }

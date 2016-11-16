@@ -2,6 +2,8 @@ package com.qmdj.service.course.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import com.qmdj.biz.dao.CourseTypeDAO;
 import com.qmdj.biz.domin.CourseNavDO;
 import com.qmdj.biz.domin.CourseTypeDO;
 import com.qmdj.biz.pogo.qo.CourseTypeQO;
+import com.qmdj.biz.util.core.Constant;
 import com.qmdj.service.bo.CourseTypeBO;
 import com.qmdj.service.bo.util.CourseTypeBeanUtil;
 import com.qmdj.service.common.Pagination;
@@ -20,6 +23,8 @@ import com.qmdj.service.course.CourseTypeService;
 
 @Service
 public class CourseTypeImpl implements CourseTypeService{
+	
+	private Logger log = LoggerFactory.getLogger(CourseTypeImpl.class);
 	
 	@Autowired
 	private CourseTypeDAO courseTypeDAO;
@@ -136,6 +141,28 @@ public class CourseTypeImpl implements CourseTypeService{
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
 			e.printStackTrace();
 		}
+		return re;
+	}
+
+	@Override
+	public Result<List<CourseTypeBO>> selectCourseType() {
+		log.info("请求方法：{}，参数：{}",Constant.GSON.toJson(CourseTypeImpl.class.toString()),"无");
+		long startTime = System.currentTimeMillis();
+		Result<List<CourseTypeBO>> re = new Result<List<CourseTypeBO>>();
+		try {
+			List<CourseTypeDO> selectCourseTypeList = courseTypeDAO.selectCourseTypeList();
+			List<CourseTypeBO> courseBoList= new ArrayList<CourseTypeBO>();
+			for (CourseTypeDO courseTypeDO : selectCourseTypeList) {
+				CourseTypeBO courseTypeDOToBO = CourseTypeBeanUtil.courseTypeDOToBO(courseTypeDO);
+				courseBoList.add(courseTypeDOToBO);
+			}
+			re.setDate(courseBoList);
+			re.setSuccess(true);
+		} catch (Exception e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+		}
+		log.info("返回参数：{}，耗时：{}",Constant.GSON.toJson(re),System.currentTimeMillis()-startTime);
 		return re;
 	}
 	
