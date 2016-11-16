@@ -181,3 +181,21 @@ $("#teacherUpdateBtn").click(function(){
 	});
 });
 
+$("#orgUpdateBtn").click(function(){
+	$(this).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'updateOrg',
+		data :$("#orgUpdateForm").serialize(),
+		success : function(data) {
+			if(data){
+				$("#updateOrgMsg").html("修改成功");
+			} else {
+				$("#updateOrgMsg").html("修改失败");
+			}
+		}
+	});
+});
+
