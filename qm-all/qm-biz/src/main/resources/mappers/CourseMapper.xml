@@ -37,12 +37,8 @@
 	<insert id="insertSelective" parameterType="com.qmdj.biz.domin.CourseDO" >
     insert into qmdj_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="gmtCreate != null" >
         gmt_create,
-      </if>
-      <if test="gmtModified != null" >
         gmt_modified,
-      </if>
       <if test="parentid != null" >
         parentId,
       </if>
@@ -81,12 +77,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
+        now(),
+        now(),
       <if test="parentid != null" >
         #{parentid,jdbcType=INTEGER},
       </if>

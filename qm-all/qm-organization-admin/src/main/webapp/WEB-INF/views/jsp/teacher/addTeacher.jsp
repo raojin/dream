@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -63,7 +65,50 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="teacherAddForm" role="form" method="post" action="addTeacher">
+                                    <form id="teacherAddForm">
+                                     <div class="form-group col-lg-6">
+                                           <label>登录账号</label>
+                                            <input class="form-control" name="loginName">
+                                        </div>
+                                         <div class="form-group col-lg-6">
+                                           <label>密码</label>
+                                            <input type="password" class="form-control" name="password">
+                                        </div>
+                                     <div class="form-group col-lg-6">
+                                           <label>身份</label>
+                                           <select id="disabledSelect" class="form-control"  name="identity">
+                                                <option value="4">机构教师</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>姓名</label>
+                                            <input class="form-control" name="name">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>性别</label>
+                                            <div class="form-control">
+                                             <label class="radio-inline">
+                                                <input type="radio" name="sex" id="optionsRadiosInline1" value="1"
+                                               checked>男
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="sex" id="optionsRadiosInline2" value="2"
+                                                 >女
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <div   class="form-group col-lg-6">
+                                            <label>联系电话</label>
+                                            <input class="form-control" name="linkPhone">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>邮箱</label>
+                                            <input type="email" class="form-control" name="email" >
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>年龄</label>
+                                            <input class="form-control" name="age">
+                                        </div>
                                         <div class="form-group col-lg-6">
                                             <label>教师类型</label>
                                            <div class="form-control">
@@ -103,6 +148,10 @@
                                             <label>专业</label>
                                             <input class="form-control" name="professional">
                                         </div>
+                                        </div>
+                                         <div class="form-group col-lg-6">
+                                            <label>个人介绍</label>
+                                            <textarea class="form-control" rows="3"  name="introduce" ></textarea>
                                         </div>
                                     </form>
                                 </div>

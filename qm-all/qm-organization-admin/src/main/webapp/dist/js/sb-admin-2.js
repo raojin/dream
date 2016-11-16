@@ -77,9 +77,9 @@ $("#courseAddBtn").click(function() {
 		data : $("#courseAddForm").serialize(),
 		success : function(data) {
 			if (data) {
-				$("#addMsg").html("修改成功");
+				$("#addMsg").html("添加成功");
 			} else {
-				$("#addMsg").html("修改成功");
+				$("#addMsg").html("添加失败");
 			}
 		}
 	});

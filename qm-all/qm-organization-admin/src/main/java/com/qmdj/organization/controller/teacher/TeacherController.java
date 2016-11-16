@@ -16,6 +16,7 @@ import com.qmdj.service.bo.TeacherBO;
 import com.qmdj.service.bo.UserBO;
 import com.qmdj.service.common.Result;
 import com.qmdj.service.teacher.TeacherService;
+import com.qmdj.service.user.UserService;
 
 @Controller
 public class TeacherController {
@@ -24,6 +25,9 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
+	@Autowired
+	UserService userService;
+	
 	@RequestMapping("/toAddTeacher")
 	public String toAdd(Model model,HttpServletRequest request,HttpServletResponse response){
 		return "teacher/addTeacher";
@@ -31,9 +35,9 @@ public class TeacherController {
 	
 	@ResponseBody
 	@RequestMapping("/addTeacher")
-	public String addTeacher(Model model,HttpServletRequest request,HttpServletResponse response,TeacherBO teacherBO){
-		UserBO userBO =(UserBO)request.getSession().getAttribute(Constant.SESSION_BEAN);
-		teacherBO.setUserId(userBO.getUserId());
+	public String addTeacher(Model model,HttpServletRequest request,HttpServletResponse response,TeacherBO teacherBO,UserBO userBO){
+		Result<Integer> addUser = userService.addUser(userBO);
+		teacherBO.setUserId(Long.valueOf(addUser.getDate()));
 		teacherBO.setName(userBO.getName());
 		Result<Integer> re = teacherService.addTeacher(teacherBO);
 		return Constant.GSON.toJson(re.isSuccess());

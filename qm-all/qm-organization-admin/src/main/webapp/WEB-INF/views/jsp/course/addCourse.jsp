@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
@@ -70,26 +72,30 @@
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>课程类型</label>
-                                            <input class="form-control" name="courseType">
+                                            <select class="form-control" name="courseType">
+	                                            <c:forEach items="${BeanList.date}" var="courseTypeBO">
+	                                            	<option value="${courseTypeBO.courseTypeId}">${courseTypeBO.courseTypeName}</option>
+	                                            </c:forEach>
+                                            </select>
                                         </div>
-                                        <div class="form-group col-lg-6">
+                                        <!-- <div class="form-group col-lg-6">
                                             <label>授课方式</label>
                                             <input class="form-control" name="teachingWay">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>授课区域（家教教师时不能为空）</label>
                                             <input class="form-control" name="teachingAddre">
-                                        </div>
+                                        </div> -->
                                         <div class="form-group col-lg-6">
-                                            <label>价钱</label>
-                                            <input class="form-control" name="price">
+                                         <label>开课时间</label>
+                                            <input class="form-control" name="teachingTimes">
                                         </div>
                                         <div class="form-group col-lg-6">
                                            <!--  <label>时间类型</label>
                                             <input class="form-control" name="timeType"> -->
                                         <div  id="form-teachingTimes"  class="form-group col-lg-6">
-                                            <label>授课时间</label>
-                                            <input class="form-control" name="teachingTimes">
+                                           <label>价钱</label>
+                                            <input class="form-control" name="price">
                                         </div>
                                            <div id="form-timeType" class="form-group col-lg-6">
                                                 <label for="disabledSelect">时间类型</label>
@@ -122,11 +128,7 @@
                                             <label class="radio-inline">
                                                 <input type="radio" name="status" id="optionsRadiosInline2" value="2">隐藏
                                             </label>
-                                             <label class="radio-inline">
-                                                <input type="radio" name="status" id="optionsRadiosInline3" value="3">已经预约
-                                            </label>
                                             </div>
-                                           <!--  <input class="form-control" name="status"> -->
                                         </div>
                                     </form>
                                 </div>
@@ -139,6 +141,7 @@
                     <!-- /.panel -->
                      <div class="form-group col-lg-6">
                         <button id="courseAddBtn" type="button" class="btn btn-success">添加</button>
+                        <div id="addMsg" class="updateMsg"></div>
                      </div>
                 </div>
                 <!-- /.col-lg-12 -->
