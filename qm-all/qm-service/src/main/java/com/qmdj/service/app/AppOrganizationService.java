@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.qmdj.service.bo.OrganizationBO;
+import com.qmdj.service.bo.app.AppOrgDetailBO;
 import com.qmdj.service.common.Result;
 
 public interface AppOrganizationService {
@@ -18,4 +19,13 @@ public interface AppOrganizationService {
 	 * */
 	public Result<Map<Integer,List<OrganizationBO>>>  queryOrganization(Integer tags);
 
+	
+	/**
+	 * 查询机构详情
+	 * @param   orgId 机构Id  不能为空
+	 * @return Result<AppOrgDetails>
+	 * @author chenjin
+	 * @data   2016/11/15 
+	 * */
+	public Result<AppOrgDetailBO> queryOrganizationDetails(Long orgId);
 }

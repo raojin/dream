@@ -2,6 +2,8 @@ package com.qmdj.biz.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.qmdj.biz.domin.OrgForm;
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.biz.pogo.qo.OrganizationQO;
@@ -26,7 +28,7 @@ public interface OrganizationDAO {
     int  findOrganizationForPageCount(OrganizationQO queryQO);
     
     /*tags 1:精品, 2:普通*/
-    List<OrganizationDO> findOrganizationBytags(Integer tags);
+    List<OrganizationDO> findOrganizationBytags(@Param("tags") Integer tags);
     
     //根据userid查询
     OrganizationDO selectOrgByUserid(long userId);

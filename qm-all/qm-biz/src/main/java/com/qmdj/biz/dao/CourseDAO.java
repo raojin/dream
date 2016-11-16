@@ -111,4 +111,7 @@ public interface CourseDAO{
      * */
     CourseDO queryLowestPrice(Long orgId);
     
+    
+    List<CourseDO> findByCondition(CourseDO courseDO);
+    
 }

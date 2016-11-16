@@ -14,6 +14,7 @@ import com.qmdj.biz.domin.CourseDO;
 import com.qmdj.biz.domin.OrganizationDO;
 import com.qmdj.service.app.AppOrganizationService;
 import com.qmdj.service.bo.OrganizationBO;
+import com.qmdj.service.bo.app.AppOrgDetailBO;
 import com.qmdj.service.bo.util.OrganizationBeanUtil;
 import com.qmdj.service.common.ReCode;
 import com.qmdj.service.common.Result;
@@ -76,6 +77,53 @@ public class AppOrganizationServiceImpl implements AppOrganizationService {
 			  lowestPrice=courseDO.getPrice();
 		  }
 		return lowestPrice;
+	}
+
+
+	@Override
+	public Result<AppOrgDetailBO> queryOrganizationDetails(Long orgId) {
+		Result<AppOrgDetailBO> re=new Result<AppOrgDetailBO>();
+		if(orgId==null){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		if(orgId<=0){
+			re.setCode(ReCode.PARAM_ERROR.getCode());
+			re.setMessage(ReCode.PARAM_ERROR.getMessage());
+			return re;
+		}
+		try {
+			OrganizationDO orgDO=organizationDAO.selectByPrimaryKey(Integer.parseInt(orgId+""));
+			AppOrgDetailBO appOrg=new AppOrgDetailBO();
+			if(orgDO!=null){
+				appOrg.setAddrName(orgDO.getAddrName());
+				CourseDO courseDO=new CourseDO();
+				courseDO.setParentid(orgId);
+				int coutCourse=0;
+				List<CourseDO> list=courseDAO.findByCondition(courseDO);
+				if(list!=null){
+					coutCourse=list.size();
+				}
+				appOrg.setCountCourse(coutCourse);
+				appOrg.setCountScore(0.9); // 现在没有这个功能
+				appOrg.setCountStudent(120); // 现在没有这个功能
+				appOrg.setDetail(orgDO.getDetail());
+				appOrg.setImage(orgDO.getImage());
+				appOrg.setName(orgDO.getName());
+				appOrg.setOrganizationId(orgDO.getId());
+				appOrg.setPhone(orgDO.getPhone());
+				appOrg.setTitle(orgDO.getTitle());
+			}
+			re.setSuccess(true);
+			re.setDate(appOrg);
+			return re;
+		} catch (NumberFormatException e) {
+			re.setCode(ReCode.SYS_REEOR.getCode());
+			re.setMessage(ReCode.SYS_REEOR.getMessage());
+			e.printStackTrace();
+		}
+		return re;
 	};
 	
 	
