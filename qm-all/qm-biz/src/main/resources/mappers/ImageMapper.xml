@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qmdj.biz.dao.ImageDAO">
+	<resultMap id="BaseResultMap" type="com.qmdj.biz.domin.ImageDO">
+		<result column="id" property="id" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="album_id" property="albumId" />
+		<result column="pic_url" property="picUrl" />
+		<result column="pic_name" property="picName" />
+		<result column="status" property="status" />
+	</resultMap>
+	
+	<parameterMap id="ImageDO" type="com.qmdj.biz.domin.ImageDO"/>
+	
+	<sql id="Base_Column_List">
+		id,gmt_create, gmt_modified, album_id, pic_url, pic_name, status
+	</sql>
+	
+	<insert id="insert" parameterMap="ImageDO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qmdj_image (
+			gmt_create, gmt_modified, album_id, pic_url, pic_name, status
+		)
+		VALUES (
+			now, now, #{albumId}, #{picUrl}, #{picName}, #{status}
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.Long">
+		DELETE FROM qmdj_image WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterMap="ImageDO">
+        UPDATE qmdjqmdj_image SET 
+	        	<if test="gmtCreate!=null">
+					gmt_create = #{gmtCreate},
+				</if>
+	        	<if test="gmtModified!=null">
+					gmt_modified = #{gmtModified},
+				</if>
+	        	<if test="albumId!=null">
+					album_id = #{albumId},
+				</if>
+	        	<if test="picUrl!=null">
+					pic_url = #{picUrl},
+				</if>
+	        	<if test="picName!=null">
+					pic_name = #{picName},
+				</if>
+	        	<if test="status!=null">
+					status = #{status},
+				</if>
+		update_time = now()
+        WHERE id = #{id}        		
+	</update>
+	
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_image
+		WHERE id = #{id}
+	</select>
+	
+	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="ImageDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_image
+		<include refid="whereCondition" />
+	</select>
+	
+	<sql id="whereCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id!=null">
+				and id = #{id}
+			</if>
+			<if test="gmtCreate!=null">
+				and gmt_create = #{gmtCreate}
+			</if>
+			<if test="gmtModified!=null">
+				and gmt_modified = #{gmtModified}
+			</if>
+			<if test="albumId!=null">
+				and album_id = #{albumId}
+			</if>
+			<if test="picUrl!=null">
+				and pic_url = #{picUrl}
+			</if>
+			<if test="picName!=null">
+				and pic_name = #{picName}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+		</trim>
+	</sql>
+</mapper>

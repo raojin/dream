@@ -6,42 +6,54 @@ package com.qmdj.biz.domin;
  * @Author chenjin 
  * @Date 2016年11月15日
  */
-public class CourseTheacherDO {
+public class CourseTheacherDO extends BaseDO {
     /**
-     * id
-     */
-    private Integer id;
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
     /**
      * 课程Id
      */
-    private Integer courseid;
+    private Long courseId;
     /**
      * 教师ID
      */
-    private Integer teacherid;
+    private Long teacherId;
+    
+    /**
+     * 状态 1正常 100删除
+     */
+    private Integer status;
 
     public CourseTheacherDO() {
     }
+	public Long getCourseId() {
+		return courseId;
+	}
 
-    public Integer getId(){
-        return id;
-    }
 
-    public void setId(Integer id){
-        this.id = id;
-    }
-    public Integer getCourseid(){
-        return courseid;
-    }
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
 
-    public void setCourseid(Integer courseid){
-        this.courseid = courseid;
-    }
-    public Integer getTeacherid(){
-        return teacherid;
-    }
 
-    public void setTeacherid(Integer teacherid){
-        this.teacherid = teacherid;
-    }
+	public Long getTeacherId() {
+		return teacherId;
+	}
+
+
+	public void setTeacherId(Long teacherId) {
+		this.teacherId = teacherId;
+	}
+
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+    
+    
 }

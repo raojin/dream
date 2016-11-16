@@ -3,38 +3,44 @@
 <mapper namespace="com.qmdj.biz.dao.CourseTheacherDAO">
 	<resultMap id="BaseResultMap" type="com.qmdj.biz.domin.CourseTheacherDO">
 		<result column="id" property="id" />
-		<result column="courseId" property="courseid" />
-		<result column="teacherId" property="teacherid" />
+		<result column="course_id" property="courseId" />
+		<result column="teacher_id" property="teacherId" />
+		<result column="status" property="status" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
 	</resultMap>
 	
 	<parameterMap id="CourseTheacherDO" type="com.qmdj.biz.domin.CourseTheacherDO"/>
 	
 	<sql id="Base_Column_List">
-		id,courseId, teacherId
+		id,course_id, teacher_id, status, gmt_create, gmt_modified
 	</sql>
 	
 	<insert id="insert" parameterMap="CourseTheacherDO" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO qmdj_course_theacher (
-			courseId, teacherId
+			course_id, teacher_id, status, gmt_create, gmt_modified
 		)
 		VALUES (
-			#{courseid}, #{teacherid}
+			#{courseId}, #{teacherId}, #{status}, now(), now()
 		)
 	</insert>
 	
 	<delete id="deleteById" parameterType="java.lang.Long">
-		DELETE FROM qmdj_course_theacher WHERE id = #{id}
+		DELETE FROM qmdjqmdj_course_theacher WHERE id = #{id}
 	</delete>
 	
 	<update id="update" parameterMap="CourseTheacherDO">
         UPDATE qmdj_course_theacher SET 
-	        	<if test="courseid!=null">
-					courseId = #{courseid},
+	        	<if test="courseId!=null">
+					course_id = #{courseId},
 				</if>
-	        	<if test="teacherid!=null">
-					teacherId = #{teacherid},
+	        	<if test="teacherId!=null">
+					teacher_id = #{teacherId},
 				</if>
-		update_time = now()
+	        	<if test="status!=null">
+					status = #{status},
+				</if>
+		gmt_modified = now()
         WHERE id = #{id}        		
 	</update>
 	
@@ -57,11 +63,20 @@
 			<if test="id!=null">
 				and id = #{id}
 			</if>
-			<if test="courseid!=null">
-				and courseId = #{courseid}
+			<if test="courseId!=null">
+				and course_id = #{courseId}
 			</if>
-			<if test="teacherid!=null">
-				and teacherId = #{teacherid}
+			<if test="teacherId!=null">
+				and teacher_id = #{teacherId}
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="gmtCreate!=null">
+				and gmt_create = #{gmtCreate}
+			</if>
+			<if test="gmtModified!=null">
+				and gmt_modified = #{gmtModified}
 			</if>
 		</trim>
 	</sql>

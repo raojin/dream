@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qmdj.biz.dao.AlbumDAO">
+	<resultMap id="BaseResultMap" type="com.qmdj.biz.domin.AlbumDO">
+		<result column="id" property="id" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="stutas" property="stutas" />
+		<result column="name" property="name" />
+		<result column="parent_name" property="parentName" />
+		<result column="parentId" property="parentid" />
+	</resultMap>
+	
+	<parameterMap id="AlbumDO" type="com.qmdj.biz.domin.AlbumDO"/>
+	
+	<sql id="Base_Column_List">
+		id,gmt_create, gmt_modified, stutas, name, parent_name, parentId
+	</sql>
+	
+	<insert id="insert" parameterMap="AlbumDO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qmdj_album (
+			gmt_create, gmt_modified, stutas, name, parent_name, parentId
+		)
+		VALUES (
+			now(), now(), #{stutas}, #{name}, #{parentName}, #{parentid}
+		)
+	</insert>
+	
+	<delete id="deleteById" parameterType="java.lang.Long">
+		DELETE FROM qmdj_album WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterMap="AlbumDO">
+        UPDATE qmdjqmdj_album SET 
+	        	<if test="stutas!=null">
+					stutas = #{stutas},
+				</if>
+	        	<if test="name!=null">
+					name = #{name},
+				</if>
+	        	<if test="parentName!=null">
+					parent_name = #{parentName},
+				</if>
+	        	<if test="parentid!=null">
+					parentId = #{parentid},
+				</if>
+		gmt_modified = now()
+        WHERE id = #{id}        		
+	</update>
+	
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_album
+		WHERE id = #{id}
+	</select>
+	
+	<select id="findByCondition" resultMap="BaseResultMap" parameterMap="AlbumDO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM qmdj_album
+		<include refid="whereCondition" />
+	</select>
+	
+	<sql id="whereCondition">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id!=null">
+				and id = #{id}
+			</if>
+			<if test="gmtCreate!=null">
+				and gmt_create = #{gmtCreate}
+			</if>
+			<if test="gmtModified!=null">
+				and gmt_modified = #{gmtModified}
+			</if>
+			<if test="stutas!=null">
+				and stutas = #{stutas}
+			</if>
+			<if test="name!=null">
+				and name = #{name}
+			</if>
+			<if test="parentName!=null">
+				and parent_name = #{parentName}
+			</if>
+			<if test="parentid!=null">
+				and parentId = #{parentid}
+			</if>
+		</trim>
+	</sql>
+</mapper>
