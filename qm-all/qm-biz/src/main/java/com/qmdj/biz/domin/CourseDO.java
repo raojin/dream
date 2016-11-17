@@ -86,7 +86,7 @@ public class CourseDO extends BaseDO implements Serializable{
      
      private String courseName;
      
-     private Date beginTime;
+     private String beginTime;
 
      
 	public String getCourseName() {
@@ -97,11 +97,13 @@ public class CourseDO extends BaseDO implements Serializable{
 		this.courseName = courseName;
 	}
 
-	public Date getBeginTime() {
+	
+
+	public String getBeginTime() {
 		return beginTime;
 	}
 
-	public void setBeginTime(Date beginTime) {
+	public void setBeginTime(String beginTime) {
 		this.beginTime = beginTime;
 	}
 

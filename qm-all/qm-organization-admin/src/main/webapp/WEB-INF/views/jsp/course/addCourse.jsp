@@ -67,6 +67,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form id="courseAddForm" role="form" method="post" action="addCourse">
+                                    
+                                     <div class="form-group col-lg-6">
+                                            <label>课程名称</label>
+                                            <input class="form-control" name="courseName">
+                                        </div>
                                         <div class="form-group col-lg-6">
                                             <label>辅导课程</label>
                                             <input class="form-control" name="courseIds">
@@ -79,21 +84,15 @@
 	                                            </c:forEach>
                                             </select>
                                         </div>
-                                        <!-- <div class="form-group col-lg-6">
-                                            <label>授课方式</label>
-                                            <input class="form-control" name="teachingWay">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>授课区域（家教教师时不能为空）</label>
-                                            <input class="form-control" name="teachingAddre">
-                                        </div> -->
                                         <div class="form-group col-lg-6">
                                          <label>开课时间</label>
-                                            <input id="datepicker" type="text" class="form-control" name="teachingTimes" readonly>
+                                            <input id="datepicker" type="text" class="form-control" name="beginTime" readonly>
+                                        </div>
+                                         <div class="form-group col-lg-6">
+                                            <label>排序（值越大越靠前）</label>
+                                            <input class="form-control" name="sort">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                           <!--  <label>时间类型</label>
-                                            <input class="form-control" name="timeType"> -->
                                         <div  id="form-teachingTimes"  class="form-group col-lg-6">
                                            <label>价钱</label>
                                             <input class="form-control" name="price">
@@ -107,10 +106,6 @@
                                                     <option value="4">月</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>排序（值越大越靠前）</label>
-                                            <input class="form-control" name="sort">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>状态</label>
@@ -189,7 +184,7 @@
 		    {
 		        field: document.getElementById('datepicker'),
 		        firstDay: 1,
-		        minDate: new Date('2010-01-01'),
+		        minDate: new Date('2016-01-01'),
 		        maxDate: new Date('2020-12-31'),
 		        yearRange: [2000,2020]
 		    });
