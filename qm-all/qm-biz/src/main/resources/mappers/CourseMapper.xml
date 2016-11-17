@@ -17,20 +17,22 @@
 		<result column="sort" property="sort" />
 		<result column="title" property="title" />
 		<result column="introduce" property="introduce" />
+		<result column="course_name" property="courseName" />
+		<result column="begin_time" property="beginTime" />
 	</resultMap>
 	
 	<parameterMap id="CourseDO" type="com.qmdj.biz.domin.CourseDO"/>
 	
 	<sql id="Base_Column_List">
-		id,gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort, title, introduce
+		id,gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort, title, introduce,course_name,begin_time
 	</sql>
 	
 	<insert id="insert" parameterMap="CourseDO" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO qmdj_course (
-			gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort, title, introduce
+			gmt_create, gmt_modified, parentId, course_ids, course_type, teaching_way, teaching_times, teaching_addre, price, time_type, status, sort, title, introduce,course_name,begin_time
 		)
 		VALUES (
-			now(), now(), #{parentid}, #{courseIds}, #{courseType}, #{teachingWay}, #{teachingTimes}, #{teachingAddre}, #{price}, #{timeType}, #{status}, #{sort}, #{title}, #{introduce}
+			now(), now(), #{parentid}, #{courseIds}, #{courseType}, #{teachingWay}, #{teachingTimes}, #{teachingAddre}, #{price}, #{timeType}, #{status}, #{sort}, #{title}, #{introduce},#{courseName},#{beginTime}
 		)
 	</insert>
 	
@@ -75,6 +77,12 @@
       <if test="introduce != null" >
         introduce,
       </if>
+       <if test="courseName != null" >
+        course_name,
+      </if>
+       <if test="beginTime != null" >
+        begin_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
         now(),
@@ -114,6 +122,12 @@
       </if>
       <if test="introduce != null" >
         #{introduce,jdbcType=VARCHAR},
+      </if>
+       <if test="courseName != null" >
+         #{courseName,jdbcType=VARCHAR},
+      </if>
+       <if test="beginTime != null" >
+         #{beginTime,jdbcType=DATETIME},
       </if>
     </trim>
   </insert>
@@ -160,6 +174,12 @@
 	        	<if test="introduce!=null">
 					introduce = #{introduce},
 				</if>
+				 <if test="courseName != null" >
+			         course_name=#{courseName,jdbcType=VARCHAR},
+			      </if>
+			       <if test="beginTime != null" >
+			        begin_time = #{beginTime,jdbcType=DATETIME},
+			      </if>
 		gmt_modified = now()
         WHERE id = #{id}        		
 	</update>

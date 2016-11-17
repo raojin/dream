@@ -13,7 +13,8 @@
 
      <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- date -->
+	<link rel="stylesheet" type="text/css" href="dist/css/pikaday.css"/>
     <!-- MetisMenu CSS -->
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -88,7 +89,7 @@
                                         </div> -->
                                         <div class="form-group col-lg-6">
                                          <label>开课时间</label>
-                                            <input class="form-control" name="teachingTimes">
+                                            <input id="datepicker" type="text" class="form-control" name="teachingTimes" readonly>
                                         </div>
                                         <div class="form-group col-lg-6">
                                            <!--  <label>时间类型</label>
@@ -112,14 +113,6 @@
                                             <input class="form-control" name="sort">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label>标题</label>
-                                            <input class="form-control" name="title">
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                            <label>课程介绍（目录）</label>
-                                             <textarea class="form-control" rows="3"  name="introduce"></textarea>
-                                        </div>
-                                         <div class="form-group col-lg-6">
                                             <label>状态</label>
                                             <div class="form-control">
                                              <label class="radio-inline">
@@ -130,6 +123,15 @@
                                             </label>
                                             </div>
                                         </div>
+                                         <div class="form-group col-lg-6">
+                                            <label>标题</label>
+                                            <input class="form-control" name="title">
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <label>课程介绍（目录）</label>
+                                             <textarea id="editor" class="form-control" rows="3"  name="introduce"></textarea>
+                                        </div>
+                                         
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -177,6 +179,21 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
+    
+   	<script src="dist/js/ckeditor.js"></script>
+	<script src="dist/js/sample.js"></script>
+	<script type="text/javascript" src="dist/js/pikaday.min.js"></script>
+    <script type="text/javascript">
+		initSample();
+   var picker = new Pikaday(
+		    {
+		        field: document.getElementById('datepicker'),
+		        firstDay: 1,
+		        minDate: new Date('2010-01-01'),
+		        maxDate: new Date('2020-12-31'),
+		        yearRange: [2000,2020]
+		    });
+	</script>
 
 
 </body>

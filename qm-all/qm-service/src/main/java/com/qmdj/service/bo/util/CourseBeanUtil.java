@@ -34,6 +34,8 @@ public class CourseBeanUtil {
         targetObj.setSort(srcObj.getSort());//排序，值越大越靠前
         targetObj.setTitle(srcObj.getTitle());//标题
         targetObj.setIntroduce(srcObj.getIntroduce());//课程介绍，目录
+        targetObj.setCourseName(srcObj.getCourseName());//课程名
+        targetObj.setBeginTime(srcObj.getBeginTime());//开课时间
         return targetObj;
     }
 
@@ -57,6 +59,8 @@ public class CourseBeanUtil {
         targetObj.setSort(srcObj.getSort());//排序，值越大越靠前
         targetObj.setTitle(srcObj.getTitle());//标题
         targetObj.setIntroduce(srcObj.getIntroduce());//课程介绍，目录
+        targetObj.setCourseName(srcObj.getCourseName());//课程名
+        targetObj.setBeginTime(srcObj.getBeginTime());//开课时间
         return targetObj;
     }
 }

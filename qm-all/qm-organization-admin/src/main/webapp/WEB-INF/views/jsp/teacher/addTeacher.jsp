@@ -25,6 +25,7 @@
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    
 
    <!-- <script src="bower_components/jquery/jquery.min.js"></script>
 
@@ -149,9 +150,9 @@
                                             <input class="form-control" name="professional">
                                         </div>
                                         </div>
-                                         <div class="form-group col-lg-6">
+                                         <div class="form-group col-lg-12">
                                             <label>个人介绍</label>
-                                            <textarea class="form-control" rows="3"  name="introduce" ></textarea>
+                                            <textarea id="editor" class="form-control" rows="3"  name="introduce" ></textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -200,6 +201,12 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
+    
+   	<script src="dist/js/ckeditor.js"></script>
+	<script src="dist/js/sample.js"></script>
+     <script>
+		initSample();
+	</script>
 
 
 </body>

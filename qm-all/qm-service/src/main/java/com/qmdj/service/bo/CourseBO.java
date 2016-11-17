@@ -1,6 +1,7 @@
 package com.qmdj.service.bo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 类CourseBO.java的实现描述：
@@ -73,8 +74,29 @@ public class CourseBO implements Serializable{
      * 课程介绍，目录
      */
     private String introduce;
+    
+    private String courseName;
+    
+    private Date beginTime;
 
-    public CourseBO() {
+
+    public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	public Date getBeginTime() {
+		return beginTime;
+	}
+
+	public void setBeginTime(Date beginTime) {
+		this.beginTime = beginTime;
+	}
+
+	public CourseBO() {
     }
 
     public java.util.Date getGmtCreate(){

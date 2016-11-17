@@ -1,6 +1,7 @@
 package com.qmdj.biz.domin;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -82,6 +83,27 @@ public class CourseDO extends BaseDO implements Serializable{
       * 课程标题
       * */
      private String title;
+     
+     private String courseName;
+     
+     private Date beginTime;
+
+     
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	public Date getBeginTime() {
+		return beginTime;
+	}
+
+	public void setBeginTime(Date beginTime) {
+		this.beginTime = beginTime;
+	}
 
 	public Long getCourseType() {
 		return courseType;
