@@ -123,7 +123,6 @@ $(".delBtn").click(function() {
 		data :{"courseId":id}, 
 		success : function(data) {
 			if (data) {
-				alert("删除成功");
 				window.location.reload();
 			} else {
 				alert("删除失败");
@@ -198,4 +197,49 @@ $("#orgUpdateBtn").click(function(){
 		}
 	});
 });
+
+
+$("#articleAddBtn").click(function(){
+	$(this).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'addArticle',
+		data :$("#articleAddForm").serialize(),
+		success : function(data) {
+			if(data){
+				$("#addArticleMsg").html("修改成功");
+			} else {
+				$("#addArticleMsg").html("修改失败");
+			}
+		}
+	});
+});
+
+
+$(".delArticleBtn").click(function() {
+	var id = $(this).data("testA");
+	var su=sumbit_sure("确定删除？");
+	if(!su){
+		return;
+	}
+	$("#delBtn" + id).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'delArticle',
+		data :{"articleId":id}, 
+		success : function(data) {
+			if (data) {
+				alert("删除成功");
+				window.location.reload();
+			} else {
+				alert("删除失败");
+			}
+		}
+	});
+});
+
 

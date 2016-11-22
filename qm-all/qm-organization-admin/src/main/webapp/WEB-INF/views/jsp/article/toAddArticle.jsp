@@ -61,12 +61,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            机构动态
+                            	机构动态
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="courseAddForm" role="form" method="post" action="addCourse">
+                                    <form id="articleAddForm" role="form" method="post" action="addCourse">
                                     
                                      <div class="form-group col-lg-6">
                                             <label>标题</label>
@@ -110,8 +110,8 @@
                     </div>
                     <!-- /.panel -->
                      <div class="form-group col-lg-6">
-                        <button id="courseAddBtn" type="button" class="btn btn-success">添加</button>
-                        <div id="addMsg" class="updateMsg"></div>
+                        <button id="articleAddBtn" type="button" class="btn btn-success">添加</button>
+                        <div id="addArticleMsg" class="updateMsg"></div>
                      </div>
                 </div>
                 <!-- /.col-lg-12 -->

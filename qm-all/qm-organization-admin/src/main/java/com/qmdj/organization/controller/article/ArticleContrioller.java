@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
@@ -41,7 +42,7 @@ public class ArticleContrioller {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/addArticle")
+	@RequestMapping(value="/addArticle",method=RequestMethod.POST)
 	public String addArticle(Model model,HttpServletRequest request,HttpServletResponse response,ArticleBO articleBO){
 		Result<Boolean> re = articleService.insertArticle(articleBO);
 		return Constant.GSON.toJson(re.isSuccess());

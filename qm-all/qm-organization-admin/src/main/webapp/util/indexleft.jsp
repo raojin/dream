@@ -108,10 +108,10 @@
                                     <a href="toUpdateOrg?orgId=2">机构设置</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">动态列表</a>
+                                    <a href="articleList">动态列表</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">发布机构动态</a>
+                                    <a href="toAddArticle">发布机构动态</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

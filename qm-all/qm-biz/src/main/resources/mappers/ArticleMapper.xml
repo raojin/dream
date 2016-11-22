@@ -124,6 +124,7 @@
 			<if test="title!=null">
 				and title = #{title}
 			</if>
+			and status !=100
 		</trim>
 	</sql>
 </mapper>
