@@ -90,7 +90,7 @@
                                         <td class="center">${articleBO.gmtCreate}</td>
                                         <td class="center">
                                         <a href="#?courseId=${articleBO.articleId}">更新</a>/
-                                        <button type="button" class="delArticleBtn btn btn-danger" data-test-a="${articleBO.articleId}">删除
+                                        <button type="button" class="delArticleBtn btn btn-danger" data-del-id="${articleBO.articleId}">删除
                                         </button>
                                         </td>
                                     </tr>

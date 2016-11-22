@@ -219,7 +219,7 @@ $("#articleAddBtn").click(function(){
 
 
 $(".delArticleBtn").click(function() {
-	var id = $(this).data("testA");
+	var id = $(this).data("delId");
 	var su=sumbit_sure("确定删除？");
 	if(!su){
 		return;
