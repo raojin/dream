@@ -243,3 +243,21 @@ $(".delArticleBtn").click(function() {
 });
 
 
+$("#articleUpdateBtn").click(function(){
+	$(this).attr({
+		"disabled" : "disabled"
+	});
+	$.ajax({
+		type : 'post',
+		url : 'updateArticle',
+		data :$("#articleUpdateForm").serialize(),
+		success : function(data) {
+			if(data){
+				$("#updateArticleMsg").html("修改成功");
+			} else {
+				$("#updateArticleMsg").html("修改失败");
+			}
+		}
+	});
+});
+

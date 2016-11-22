@@ -48,6 +48,12 @@ public class ArticleContrioller {
 		return Constant.GSON.toJson(re.isSuccess());
 	}
 	
+	@RequestMapping(value="/toUpdateArticle",method=RequestMethod.GET)
+	public String toUpdateArticle(Model model,HttpServletRequest request,HttpServletResponse response,long articleId){
+		Result<ArticleBO> re = articleService.queryArticleById(articleId);
+		model.addAttribute(Constant.BEAN, re);
+		return "article/updateArticle";
+	}
 	@ResponseBody
 	@RequestMapping("/updateArticle")
 	public String updateArticle(Model model,HttpServletRequest request,HttpServletResponse response,ArticleBO articleBO){

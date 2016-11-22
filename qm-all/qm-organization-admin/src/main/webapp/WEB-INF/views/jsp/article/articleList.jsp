@@ -42,7 +42,7 @@
 <!-- 头部 s -->
 <jsp:include page="/util/indexheader.jsp"></jsp:include>
 <!-- 头部 e -->
-<div class="ch-container col-lg-10  col-md-offset-1">
+<div class="ch-container col-lg-10">
     <div class="row">
       <!-- 菜单 s -->
 	  <jsp:include page="/util/indexleft.jsp"></jsp:include>
@@ -89,7 +89,7 @@
                                         <td class="center">${articleBO.sort}</td>
                                         <td class="center">${articleBO.gmtCreate}</td>
                                         <td class="center">
-                                        <a href="#?courseId=${articleBO.articleId}">更新</a>/
+                                        <a href="toUpdateArticle?articleId=${articleBO.articleId}">更新</a>/
                                         <button type="button" class="delArticleBtn btn btn-danger" data-del-id="${articleBO.articleId}">删除
                                         </button>
                                         </td>

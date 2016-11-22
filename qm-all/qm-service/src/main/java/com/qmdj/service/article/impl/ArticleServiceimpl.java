@@ -64,9 +64,11 @@ public class ArticleServiceimpl implements ArticleService {
 		}
 		ArticleDO article=ArticleBeanUtil.articleBOToDO(articleBO);
 		try {
-			articleDAO.updateById(article);
-			re.setSuccess(true);
-			re.setDate(true);
+			int updateById = articleDAO.updateById(article);
+			if(updateById==1){
+				re.setSuccess(true);
+				re.setDate(true);
+			}
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
@@ -146,9 +148,11 @@ public class ArticleServiceimpl implements ArticleService {
 		ArticleDO article=ArticleBeanUtil.articleBOToDO(articleBO);
 		article.setStatus(100);//删除
 		try {
-			articleDAO.updateById(article);
-			re.setSuccess(true);
-			re.setDate(true);
+			int updateById = articleDAO.updateById(article);
+			if(updateById==1){
+				re.setSuccess(true);
+				re.setDate(true);
+			}
 		} catch (Exception e) {
 			re.setCode(ReCode.SYS_REEOR.getCode());
 			re.setMessage(ReCode.SYS_REEOR.getMessage());
