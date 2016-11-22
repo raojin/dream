@@ -61,7 +61,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Form Elements
+                            机构动态
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -69,28 +69,16 @@
                                     <form id="courseAddForm" role="form" method="post" action="addCourse">
                                     
                                      <div class="form-group col-lg-6">
-                                            <label>课程名称</label>
-                                            <input class="form-control" name="courseName">
+                                            <label>标题</label>
+                                            <input class="form-control" name="title">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label>辅导课程</label>
-                                            <input class="form-control" name="courseIds">
+                                            <label>作者</label>
+                                            <input class="form-control" name="author">
                                         </div>
                                         <div class="form-group col-lg-6">
-                                            <label>课程类型</label>
-                                            <select class="form-control" name="courseType">
-	                                            <c:forEach items="${BeanList.date}" var="courseTypeBO">
-	                                            	<option value="${courseTypeBO.courseTypeId}">${courseTypeBO.courseTypeName}</option>
-	                                            </c:forEach>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-lg-6">
-                                         <label>开课时间</label>
-                                            <input id="datepicker" type="text" class="form-control" name="beginTime" readonly>
-                                        </div>
-                                         <div class="form-group col-lg-6">
-                                            <label>排序（值越大越靠前）</label>
-                                            <input class="form-control" name="sort">
+                                            <label>摘要</label>
+                                           <input class="form-control" name="digest">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>状态</label>
@@ -103,28 +91,13 @@
                                             </label>
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-6">
-                                        <div  id="form-teachingTimes"  class="form-group col-lg-6">
-                                           <label>价钱</label>
-                                            <input class="form-control" name="price">
-                                        </div>
-                                           <div id="form-timeType" class="form-group col-lg-6">
-                                                <label for="disabledSelect">时间类型</label>
-                                                <select id="disabledSelect" class="form-control"  name="timeType">
-                                                    <option value="1">小时</option>
-                                                    <option value="2">天</option>
-                                                    <option value="3">周</option>
-                                                    <option value="4">月</option>
-                                                </select>
-                                            </div>
-                                        </div>
                                          <div class="form-group col-lg-6">
-                                            <label>标题</label>
-                                            <input class="form-control" name="title">
+                                            <label>排序（值越大越靠前）</label>
+                                            <input class="form-control" name="sort">
                                         </div>
                                         <div class="form-group col-lg-12">
-                                            <label>课程介绍（目录）</label>
-                                             <textarea id="editor" class="form-control" rows="3"  name="introduce"></textarea>
+                                            <label>内容</label>
+                                             <textarea id="editor" class="form-control" rows="3"  name="content"></textarea>
                                         </div>
                                          
                                     </form>

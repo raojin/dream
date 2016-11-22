@@ -93,8 +93,8 @@
      </bean>
      
      
-     <bean id="springSessionInterceptor" class="com.qmdj.organization.filter.FilterUtils" >  
-     </bean>  
+   <!--   <bean id="springSessionInterceptor" class="com.qmdj.organization.filter.FilterUtils" >  
+     </bean>   -->
 	<bean id="autoPorxyFactoryBean1"  
 	        class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
 <!-- 	        <property name="interceptorNames">  

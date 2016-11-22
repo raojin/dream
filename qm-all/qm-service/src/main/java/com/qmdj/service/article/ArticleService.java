@@ -16,6 +16,11 @@ public interface ArticleService {
      * 插入
      * */
 	public Result<Boolean> insertArticle(ArticleBO article);
+	/**
+	 * 
+	 * 删除
+	 * */
+	public Result<Boolean> delArticle(ArticleBO article);
 	
 	/**
 	 * 
